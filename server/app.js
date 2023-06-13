@@ -1,4 +1,4 @@
-const Server = require("./models/server");
+const Server = require('./server');
 
 const server = new Server();
 
