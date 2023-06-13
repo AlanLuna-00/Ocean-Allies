@@ -11,7 +11,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" className="bg-gray-300">
       <head>
         <link href="https://cdn.tailwindcss.com/2.2.16/tailwind.min.css" rel="stylesheet" />
       </head>
