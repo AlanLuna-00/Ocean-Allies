@@ -1,6 +1,6 @@
 const express = require('express');
 const cors = require('cors');
-const { conn } = require('../db');
+const { conn } = require('./db');
 const cookieParser = require('cookie-parser');
 
 class Server {
@@ -19,7 +19,7 @@ class Server {
     }
 
     conectarDB() {
-        conn().sync({ force: false });
+        conn.sync({ force: false });
     }
 
     middlewares() {
