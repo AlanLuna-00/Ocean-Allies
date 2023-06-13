@@ -1,44 +1,40 @@
-import Image from "next/image"
+import Image from 'next/image';
 
 export default function About() {
+  const developers = [
+    { name: 'Alan', image: '/img/Alan.jpeg' },
+    { name: 'Fran', image: '/img/Fran.jpg' },
+    { name: 'Kevin', image: '/img/Kevin.jpg' },
+    { name: 'Manu', image: '/img/Manu.jpg' },
+    { name: 'Mauri', image: '/img/Mauri.jpg' },
+    { name: 'Pablo', image: '/img/Pablo.jpg' },
+    { name: 'Seba', image: '/img/Seba.jpg' },
+  ];
+
   return (
-    <div className="bg-gray-100 p-8">
-      <h1 className="text-center text-black">About</h1>
-      <div>
-        <h2 className="text-center text-black">Equipo de desarrolladores</h2>
-        <div className="grid grid-cols-2 gap-4">
-          <div>
-            <Image src="/img/Alan.jpeg" alt="Alan" width={300} height={300} />
-            <p className="text-center text-black">Alan</p>
-          </div>
-          <div>
-            <Image src="/img/Fran.jpg" alt="Fran" width={300} height={300} />
-            <p className="text-center text-black">Fran</p>
-          </div>
-          <div>
-            <Image src="/img/Kevin.jpg" alt="Kevin" width={300} height={300} />
-            <p className="text-center text-black">Kevin</p>
-          </div>
-          <div>
-            <Image src="/img/Manu.jpg" alt="Manu" width={300} height={300} />
-            <p className="text-center text-black">Manu</p>
-          </div>
-          <div>
-            <Image src="/img/Mauri.jpg" alt="Mauri" width={300} height={300} />
-            <p className="text-center text-black">Mauri</p>
-          </div>
-          <div>
-            <Image src="/img/Pablo.jpg" alt="Pablo" width={300} height={300} />
-            <p className="text-center text-black">Pablo</p>
-          </div>
-          <div>
-            <Image src="/img/Seba.jpg" alt="Seba" width={300} height={300} />
-            <p className="text-center text-black">Seba</p>
-          </div>
+    <div className="bg-gray-100 py-12 px-6">
+      <h1 className="text-4xl font-bold mb-8 text-center text-black">About</h1>
+      <div className="max-w-4xl mx-auto">
+        <h2 className="text-2xl font-bold mb-6 text-center text-black">Equipo de desarrolladores</h2>
+        <div className="grid grid-cols-2 gap-8">
+          {developers.map((developer) => (
+            <div key={developer.name} className="flex flex-col items-center">
+              <div className="relative w-40 h-40 rounded-full overflow-hidden">
+                <Image
+                  src={developer.image}
+                  alt={developer.name}
+                  layout="fill"
+                  objectFit="cover"
+                  className="transition-all duration-300 ease-in-out hover:scale-105"
+                />
+              </div>
+              <p className="text-lg font-semibold mt-4 text-black">{developer.name}</p>
+            </div>
+          ))}
         </div>
       </div>
     </div>
-  )
+  );
 }
 //   return (
 //     <div>
