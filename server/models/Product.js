@@ -22,7 +22,7 @@ const Product = (sequelize) => {
                 allowNull: false,
             },
             category: {
-                type: DataTypes.STRING(20),
+                type: DataTypes.ENUM('Home', 'Tech', 'Clothing', 'Other'),
                 allowNull: false,
             },
             stock: {

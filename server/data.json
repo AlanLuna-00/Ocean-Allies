@@ -1,0 +1,202 @@
+[
+    {
+        "id": "1",
+        "name": "Product 1",
+        "description": "Description of Product 1",
+        "price": 10,
+        "category": "Home",
+        "stock": 100,
+        "size": "M",
+        "image": "image1.jpg"
+    },
+    {
+        "id": "2",
+        "name": "Product 2",
+        "description": "Description of Product 2",
+        "price": 20,
+        "category": "Tech",
+        "stock": 50,
+        "size": "L",
+        "image": "image2.jpg"
+    },
+    {
+        "id": "3",
+        "name": "Product 3",
+        "description": "Description of Product 3",
+        "price": 15,
+        "category": "Clothing",
+        "stock": 80,
+        "size": "S",
+        "image": "image3.jpg"
+    },
+    {
+        "id": "4",
+        "name": "Product 4",
+        "description": "Description of Product 4",
+        "price": 30,
+        "category": "Other",
+        "stock": 60,
+        "size": "XL",
+        "image": "image4.jpg"
+    },
+    {
+        "id": "5",
+        "name": "Product 5",
+        "description": "Description of Product 5",
+        "price": 25,
+        "category": "Home",
+        "stock": 120,
+        "size": "M",
+        "image": "image5.jpg"
+    },
+    {
+        "id": "6",
+        "name": "Product 6",
+        "description": "Description of Product 6",
+        "price": 18,
+        "category": "Tech",
+        "stock": 70,
+        "size": "S",
+        "image": "image6.jpg"
+    },
+    {
+        "id": "7",
+        "name": "Product 7",
+        "description": "Description of Product 7",
+        "price": 12,
+        "category": "Clothing",
+        "stock": 90,
+        "size": "L",
+        "image": "image7.jpg"
+    },
+    {
+        "id": "8",
+        "name": "Product 8",
+        "description": "Description of Product 8",
+        "price": 28,
+        "category": "Other",
+        "stock": 40,
+        "size": "M",
+        "image": "image8.jpg"
+    },
+    {
+        "id": "9",
+        "name": "Product 9",
+        "description": "Description of Product 9",
+        "price": 22,
+        "category": "Home",
+        "stock": 75,
+        "size": "XL",
+        "image": "image9.jpg"
+    },
+    {
+        "id": "10",
+        "name": "Product 10",
+        "description": "Description of Product 10",
+        "price": 16,
+        "category": "Tech",
+        "stock": 110,
+        "size": "S",
+        "image": "image10.jpg"
+    },
+    {
+        "id": "11",
+        "name": "Product 11",
+        "description": "Description of Product 11",
+        "price": 32,
+        "category": "Clothing",
+        "stock": 55,
+        "size": "M",
+        "image": "image11.jpg"
+    },
+    {
+        "id": "12",
+        "name": "Product 12",
+        "description": "Description of Product 12",
+        "price": 24,
+        "category": "Other",
+        "stock": 85,
+        "size": "L",
+        "image": "image12.jpg"
+    },
+    {
+        "id": "13",
+        "name": "Product 13",
+        "description": "Description of Product 13",
+        "price": 17,
+        "category": "Home",
+        "stock": 95,
+        "size": "S",
+        "image": "image13.jpg"
+    },
+    {
+        "id": "14",
+        "name": "Product 14",
+        "description": "Description of Product 14",
+        "price": 29,
+        "category": "Tech",
+        "stock": 65,
+        "size": "XL",
+        "image": "image14.jpg"
+    },
+    {
+        "id": "15",
+        "name": "Product 15",
+        "description": "Description of Product 15",
+        "price": 21,
+        "category": "Clothing",
+        "stock": 105,
+        "size": "M",
+        "image": "image15.jpg"
+    },
+    {
+        "id": "16",
+        "name": "Product 16",
+        "description": "Description of Product 16",
+        "price": 14,
+        "category": "Other",
+        "stock": 45,
+        "size": "L",
+        "image": "image16.jpg"
+    },
+    {
+        "id": "17",
+        "name": "Product 17",
+        "description": "Description of Product 17",
+        "price": 27,
+        "category": "Home",
+        "stock": 115,
+        "size": "S",
+        "image": "image17.jpg"
+    },
+    {
+        "id": "18",
+        "name": "Product 18",
+        "description": "Description of Product 18",
+        "price": 19,
+        "category": "Tech",
+        "stock": 50,
+        "size": "M",
+        "image": "image18.jpg"
+    },
+    {
+        "id": "19",
+        "name": "Product 19",
+        "description": "Description of Product 19",
+        "price": 33,
+        "category": "Clothing",
+        "stock": 80,
+        "size": "XL",
+        "image": "image19.jpg"
+    },
+    {
+        "id": "20",
+        "name": "Product 20",
+        "description": "Description of Product 20",
+        "price": 26,
+        "category": "Other",
+        "stock": 60,
+        "size": "L",
+        "image": "image20.jpg"
+    }
+]
