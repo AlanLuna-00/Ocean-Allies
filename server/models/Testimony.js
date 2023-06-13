@@ -1,16 +1,16 @@
 const { DataTypes } = require('sequelize');
 
-const Review = (sequelize) => {
+const Testimony = (sequelize) => {
     sequelize.define(
-        'review',
+        'testimony',
         {
             id: {
                 type: DataTypes.UUID,
                 defaultValue: DataTypes.UUIDV4,
                 primaryKey: true,
             },
-            rating: {
-                type: DataTypes.ENUM('1', '2', '3', '4', '5'),
+            name: {
+                type: DataTypes.STRING(100),
                 allowNull: false,
             },
             comment: {
@@ -24,4 +24,4 @@ const Review = (sequelize) => {
     );
 };
 
-module.exports = Review;
+module.exports = Testimony;

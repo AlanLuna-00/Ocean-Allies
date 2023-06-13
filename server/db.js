@@ -24,10 +24,9 @@ fs.readdirSync(path.join(__dirname, '/models'))
             file.slice(-3) === '.js'
     )
     .forEach((file) => {
-        modelDefiners.push(require(path.join(__dirname, '/models', file)));
+        const modelDefiner = require(path.join(__dirname, '/models', file));
+        modelDefiners.push(modelDefiner(sequelize));
     });
-
-modelDefiners.forEach((model) => model(sequelize));
 
 let entries = Object.entries(sequelize.models);
 let capsEntries = entries.map((entry) => [
@@ -38,10 +37,7 @@ sequelize.models = Object.fromEntries(capsEntries);
 
 // Relaciones
 
-const User = sequelize.models.User;
-const Product = sequelize.models.Product;
-const Review = sequelize.models.Review;
-const Testimonio = sequelize.models.Testimonio;
+const { Product, User, Testimony, Review } = sequelize.models;
 
 // Relación User - Review
 User.hasMany(Review);
@@ -52,8 +48,8 @@ Product.hasMany(Review);
 Review.belongsTo(Product);
 
 // Relación User - Testimonio
-User.hasOne(Testimonio);
-Testimonio.belongsTo(User);
+User.hasOne(Testimony);
+Testimony.belongsTo(User);
 
 module.exports = {
     ...sequelize.models,
