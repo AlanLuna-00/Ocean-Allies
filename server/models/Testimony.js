@@ -1,8 +1,8 @@
 const { DataTypes } = require('sequelize');
 
-const Testimonio = (sequelize) => {
+const Testimony = (sequelize) => {
     sequelize.define(
-        'testimonio',
+        'testimony',
         {
             id: {
                 type: DataTypes.UUID,
@@ -24,4 +24,4 @@ const Testimonio = (sequelize) => {
     );
 };
 
-module.exports = Testimonio;
+module.exports = Testimony;
