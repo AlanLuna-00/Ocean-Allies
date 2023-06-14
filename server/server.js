@@ -11,6 +11,7 @@ class Server {
         this.usersPath = '/api/users';
         this.reviewsPath = '/api/reviews';
         this.testimonyPath = '/api/testimony';
+        this.authPath = '/api/auth';
         // Conectar a base de datos
         this.conectarDB();
         // Middlewares
@@ -26,8 +27,6 @@ class Server {
     }
 
     middlewares() {
-        // CORS
-        this.app.use(cors());
         // Lectura y parseo del body
         this.app.use(express.json());
         // Directorio público
@@ -53,7 +52,8 @@ class Server {
     routes() {
         this.app.use(this.productsPath, require('./routes/productRoute'));
         this.app.use(this.usersPath, require('./routes/userRoute'));
-        this.app.use(this.testimonyPath, require('./routes/testimonyRoute'))
+        this.app.use(this.testimonyPath, require('./routes/testimonyRoute'));
+        this.app.use(this.authPath, require('./routes/authRoute'));
     }
 
     listen() {

@@ -1,0 +1,21 @@
+const { serialize } = require('cookie');
+
+const logout = async (req, res) => {
+    try {
+        res.clearCookie('token'); // Elimina la cookie 'token'
+
+        return res.status(200).json({
+            msg: 'Logged out successfully',
+            authToken: null,
+        });
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json({
+            msg: 'Hable con el administrador',
+        });
+    }
+};
+
+module.exports = logout;
+
+module.exports = logout;
