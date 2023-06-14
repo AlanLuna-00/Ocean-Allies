@@ -43,12 +43,7 @@ const getAllProducts = async (page, pageSize, category, price, size) => {
 
         if (totalItems === 0) {
             await saveProductsToDatabase();
-            return {
-                products: savedProducts.rows.slice(offset, offset + limit),
-                totalItems,
-                totalPages,
-                currentPage: page,
-            };
+            return null;
         }
 
         return {

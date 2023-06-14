@@ -14,14 +14,31 @@ const getAllProductsController = async (req, res) => {
         const price = req.query.price || null;
         const size = req.query.size || null;
 
-        const products = await getAllProducts(
+        const result = await getAllProducts(
             page,
             pageSize,
             category,
             price,
             size
         );
-        res.status(200).json(products);
+
+        if (!result) {
+            res.status(404).json({ message: 'No products found' });
+            return;
+        }
+
+        const { products, totalItems, totalPages, currentPage } = result;
+        const nextPage = currentPage < totalPages ? currentPage + 1 : null;
+        const previousPage = currentPage > 1 ? currentPage - 1 : null;
+
+        res.status(200).json({
+            products,
+            totalItems,
+            totalPages,
+            currentPage,
+            nextPage,
+            previousPage,
+        });
     } catch (error) {
         res.status(500).json({ message: 'Error getting products' });
     }
