@@ -53,6 +53,7 @@ class Server {
     routes() {
         this.app.use(this.productsPath, require('./routes/productRoute'));
         this.app.use(this.usersPath, require('./routes/userRoute'));
+        this.app.use(this.testimonyPath, require('./routes/testimonyRoute'))
     }
 
     listen() {
