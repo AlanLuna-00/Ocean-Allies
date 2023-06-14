@@ -93,10 +93,28 @@ const createProduct = async (productData) => {
     }
 };
 
+const updateProduct = async (id, updatedProductData) => {
+    try {
+        const [updatedRowsCount] = await Product.update(updatedProductData, {
+            where: { id },
+        });
+
+        if (updatedRowsCount > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    } catch (error) {
+        console.log(error);
+        throw error;
+    }
+};
+
 module.exports = {
     saveProductsToDatabase,
     getAllProducts,
     getProductsById,
     deleteProduct,
     createProduct,
+    updateProduct,
 };
