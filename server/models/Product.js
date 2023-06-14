@@ -11,6 +11,7 @@ const Product = (sequelize) => {
             },
             name: {
                 type: DataTypes.STRING(100),
+                unique: true,
                 allowNull: false,
             },
             description: {
