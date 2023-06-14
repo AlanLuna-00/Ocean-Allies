@@ -25,7 +25,7 @@ const getAllProducts = async () => {
 
 const getProductsById = async (id) => {
     try {
-        const product = products.find((item) => item.id === id);
+        const product = Product.findByPk(id);
         return product;
     } catch (error) {
         console.log(error);
