@@ -5,6 +5,7 @@ import { setMerchList } from "@/store/Slices/Merch";
 import axios from "axios";
 import { Fragment, useState } from "react";
 import { Dialog, Disclosure, Menu, Transition } from "@headlessui/react";
+import Pagination from "@/components/Pagination";
 
 const Shop = () => {
   const dispatch = useDispatch();
@@ -82,7 +83,7 @@ const Shop = () => {
 
   return (
     <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <div className="flex items-baseline justify-between border-b border-gray-200 pb-6 pt-24">
+      <div className="flex items-baseline justify-between border-b border-gray-200 pb-6">
         <h1 className="text-4xl font-bold tracking-tight text-gray-900">
           New Arrivals
         </h1>
@@ -145,7 +146,7 @@ const Shop = () => {
         </div>
       </div>
 
-      <section aria-labelledby="products-heading" className="pb-24 pt-6">
+      <section aria-labelledby="products-heading" className="pb-9 pt-6">
         <h2 id="products-heading" className="sr-only">
           Products
         </h2>
@@ -234,6 +235,7 @@ const Shop = () => {
           </div>
         </div>
       </section>
+      <Pagination />
     </main>
   );
 };
