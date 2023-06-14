@@ -8,7 +8,9 @@ class Server {
         this.app = express();
         this.port = 8080;
         this.productsPath = '/api/products';
-
+        this.usersPath = '/api/users';
+        this.reviewsPath = '/api/reviews';
+        this.testimonyPath = '/api/testimony';
         // Conectar a base de datos
         this.conectarDB();
         // Middlewares
@@ -18,7 +20,9 @@ class Server {
     }
 
     conectarDB() {
-        conn.sync({ force: false });
+        conn.sync({ force: false }).then(() => {
+            console.log('Base de datos conectada');
+        });
     }
 
     middlewares() {
@@ -48,6 +52,7 @@ class Server {
 
     routes() {
         this.app.use(this.productsPath, require('./routes/productRoute'));
+        this.app.use(this.usersPath, require('./routes/userRoute'));
     }
 
     listen() {
