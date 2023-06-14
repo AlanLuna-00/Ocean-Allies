@@ -17,6 +17,7 @@ const getAllProducts = async () => {
             await saveProductsToDatabase();
             return products;
         }
+        return savedProducts;
     } catch (error) {
         console.log(error);
     }
