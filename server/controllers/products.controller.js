@@ -1,5 +1,6 @@
 const {
     getAllProducts,
+    getProductsByName,
     getProductsById,
     deleteProduct,
     createProduct,
@@ -41,6 +42,24 @@ const getAllProductsController = async (req, res) => {
         });
     } catch (error) {
         res.status(500).json({ message: 'Error getting products' });
+    }
+};
+
+const getProductsNameController = async (req, res) => {
+    try {
+        const name = req.query.query || '';
+
+        const products = await getProductsByName(name);
+
+        if (products.length === 0) {
+            res.status(404).json({ message: 'No products found' });
+            return;
+        }
+
+        res.status(200).json(products);
+    } catch (error) {
+        console.log(error); // Registrar el error en la consola para su análisis
+        res.status(500).json({ message: 'Error getting products by name' });
     }
 };
 
@@ -162,6 +181,7 @@ const updateProductController = async (req, res) => {
 
 module.exports = {
     getAllProductsController,
+    getProductsNameController,
     getProductByIdController,
     deleteProductController,
     createProductController,
