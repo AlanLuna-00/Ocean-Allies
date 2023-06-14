@@ -54,6 +54,7 @@ class Server {
         this.app.use(this.usersPath, require('./routes/userRoute'));
         this.app.use(this.testimonyPath, require('./routes/testimonyRoute'));
         this.app.use(this.authPath, require('./routes/authRoute'));
+        this.app.use(this.reviewsPath, require('./routes/reviewRoute'));
     }
 
     listen() {
