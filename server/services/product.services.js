@@ -9,15 +9,49 @@ const saveProductsToDatabase = async () => {
     }
 };
 
-const getAllProducts = async () => {
+const getAllProducts = async (page, pageSize, category, price, size) => {
     try {
-        const savedProducts = await Product.findAll();
+        const offset = (page - 1) * pageSize;
+        const limit = pageSize;
+        let whereCondition = {};
 
-        if (savedProducts.length === 0) {
-            await saveProductsToDatabase();
-            return products;
+        if (category) {
+            whereCondition.category = category;
         }
-        return savedProducts;
+
+        if (price) {
+            whereCondition.price = price;
+        }
+
+        if (size) {
+            whereCondition.size = size;
+        }
+
+        const savedProducts = await Product.findAndCountAll({
+            where: whereCondition,
+            offset,
+            limit,
+        });
+
+        const totalItems = savedProducts.count;
+        const totalPages = Math.ceil(totalItems / pageSize);
+
+        if (totalItems === 0) {
+            await saveProductsToDatabase();
+            return {
+                products: savedProducts.rows.slice(offset, offset + limit),
+                totalItems,
+                totalPages,
+                currentPage: page,
+            };
+        }
+
+        return {
+            products: savedProducts.rows,
+            totalItems,
+            totalPages,
+            currentPage: page,
+        };
     } catch (error) {
         console.log(error);
     }
