@@ -1,8 +1,12 @@
 "use client";
 import { useState } from "react";
+import axios from "axios";
+import { setCookie } from "cookies-next";
+import { getCookie } from "cookies-next";
+import { useRouter } from "next/navigation";
 
 const Login = () => {
-  const [credentials, setCredentials] = useState();
+  const [credentials, setCredentials] = useState({});
 
   const handleChange = (e) => {
     setCredentials({
@@ -11,9 +15,32 @@ const Login = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(credentials);
+
+    try {
+      // Realiza una petición POST al endpoint de login en el backend
+      const response = await axios.post("/api/login", credentials, {
+        withCredentials: true,
+        credentials: "include",
+        redirect: "follow",
+      });
+
+      console.log(response);
+
+      if (response.status === 200) {
+        setCookie("authToken", response.data.token, {
+          secure: true,
+          sameSite: "none",
+          maxAge: 1000 * 60 * 60 * 4,
+        });
+
+        router.push("/home");
+      }
+    } catch (error) {
+      console.log(error);
+      throw new Error(error);
+    }
   };
 
   return (
