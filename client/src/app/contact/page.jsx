@@ -19,7 +19,7 @@ export default function Contact() {
             </label>
             <input className="w-full" type="email" id="ContactFormEmail" name="contact[email]" />
           </div>
-          {/* Uncomment this section if you want to include phone number input
+          {/* esta seccion es para incluir numero de telefono
           <div className="mb-4">
             <label htmlFor="ContactFormPhone">
               Phone number
