@@ -1,6 +1,6 @@
 [
     {
-        "id": "1",
+        "id": "f0a0b708-564e-47ef-a650-41308f142049",
         "name": "Product 1",
         "description": "Description of Product 1",
         "price": 10,
@@ -10,7 +10,7 @@
         "image": "image1.jpg"
     },
     {
-        "id": "2",
+        "id": "843fd317-6c95-4f81-81b6-93b123d52d7a",
         "name": "Product 2",
         "description": "Description of Product 2",
         "price": 20,
@@ -20,7 +20,7 @@
         "image": "image2.jpg"
     },
     {
-        "id": "3",
+        "id": "e6cc582d-6b06-4a62-8d1c-61b31e05b597",
         "name": "Product 3",
         "description": "Description of Product 3",
         "price": 15,
@@ -30,7 +30,7 @@
         "image": "image3.jpg"
     },
     {
-        "id": "4",
+        "id": "dcd50ad4-21a7-442f-9a4d-d301f7c350ae",
         "name": "Product 4",
         "description": "Description of Product 4",
         "price": 30,
@@ -40,7 +40,7 @@
         "image": "image4.jpg"
     },
     {
-        "id": "5",
+        "id": "156cd77b-66a5-4be7-b97d-5c4af4ac86d6",
         "name": "Product 5",
         "description": "Description of Product 5",
         "price": 25,
@@ -50,7 +50,7 @@
         "image": "image5.jpg"
     },
     {
-        "id": "6",
+        "id": "f94efabe-3650-4a2e-a422-7e49fb00d084",
         "name": "Product 6",
         "description": "Description of Product 6",
         "price": 18,
@@ -60,7 +60,7 @@
         "image": "image6.jpg"
     },
     {
-        "id": "7",
+        "id": "db76e659-91dd-46b0-995c-5238a4d2b8e9",
         "name": "Product 7",
         "description": "Description of Product 7",
         "price": 12,
@@ -70,7 +70,7 @@
         "image": "image7.jpg"
     },
     {
-        "id": "8",
+        "id": "c6ef4b4f-dc0c-46f1-aab9-68c76e39e418",
         "name": "Product 8",
         "description": "Description of Product 8",
         "price": 28,
@@ -80,7 +80,7 @@
         "image": "image8.jpg"
     },
     {
-        "id": "9",
+        "id": "72d56f07-34c5-4ae3-83f5-27078ed2e3c2",
         "name": "Product 9",
         "description": "Description of Product 9",
         "price": 22,
@@ -90,7 +90,7 @@
         "image": "image9.jpg"
     },
     {
-        "id": "10",
+        "id": "f1eeb90a-b165-4a50-9e94-eb262a4c18b2",
         "name": "Product 10",
         "description": "Description of Product 10",
         "price": 16,
@@ -100,7 +100,7 @@
         "image": "image10.jpg"
     },
     {
-        "id": "11",
+        "id": "1f2ff149-8a24-4be3-a1f6-c51ef58ad100",
         "name": "Product 11",
         "description": "Description of Product 11",
         "price": 32,
@@ -110,7 +110,7 @@
         "image": "image11.jpg"
     },
     {
-        "id": "12",
+        "id": "7f7e0710-bd4a-4080-9964-ccbb0a1a9a3f",
         "name": "Product 12",
         "description": "Description of Product 12",
         "price": 24,
@@ -120,7 +120,7 @@
         "image": "image12.jpg"
     },
     {
-        "id": "13",
+        "id": "6e60e88e-7485-4961-a898-8e858aad9571",
         "name": "Product 13",
         "description": "Description of Product 13",
         "price": 17,
@@ -130,7 +130,7 @@
         "image": "image13.jpg"
     },
     {
-        "id": "14",
+        "id": "1fb536b3-8df0-45b3-9d2c-25d19825eece",
         "name": "Product 14",
         "description": "Description of Product 14",
         "price": 29,
@@ -140,7 +140,7 @@
         "image": "image14.jpg"
     },
     {
-        "id": "15",
+        "id": "7ae4bbbf-2532-42f2-9810-38cc28f6992c",
         "name": "Product 15",
         "description": "Description of Product 15",
         "price": 21,
@@ -150,7 +150,7 @@
         "image": "image15.jpg"
     },
     {
-        "id": "16",
+        "id": "b5dddb24-02e6-4bb1-a988-49327df48ebe",
         "name": "Product 16",
         "description": "Description of Product 16",
         "price": 14,
@@ -160,7 +160,7 @@
         "image": "image16.jpg"
     },
     {
-        "id": "17",
+        "id": "0b5c20e5-171a-4ef1-91e6-7c2d7d57fe95",
         "name": "Product 17",
         "description": "Description of Product 17",
         "price": 27,
@@ -170,7 +170,7 @@
         "image": "image17.jpg"
     },
     {
-        "id": "18",
+        "id": "5a49ed0e-7de6-4e7a-9df4-8f8266384a07",
         "name": "Product 18",
         "description": "Description of Product 18",
         "price": 19,
@@ -180,7 +180,7 @@
         "image": "image18.jpg"
     },
     {
-        "id": "19",
+        "id": "b74a1064-13b7-4284-b2b9-3e101e52da2d",
         "name": "Product 19",
         "description": "Description of Product 19",
         "price": 33,
@@ -190,7 +190,7 @@
         "image": "image19.jpg"
     },
     {
-        "id": "20",
+        "id": "76c3de41-293e-47a6-a5df-883c5a132d2e",
         "name": "Product 20",
         "description": "Description of Product 20",
         "price": 26,

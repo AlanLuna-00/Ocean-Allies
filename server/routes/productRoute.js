@@ -1,12 +1,13 @@
 const { Router } = require('express');
-const data = require('../data.json');
+const {
+    getAllProductsController,
+    getProductByIdController,
+} = require('../controllers/products.controller');
 
 const productRoute = Router();
 
-productRoute.get('/', (req, res) => {
-    res.json(data);
-});
-// productRoute.get('/:id', getProductById);
+productRoute.get('/', getAllProductsController);
+productRoute.get('/:id', getProductByIdController);
 // productRoute.post('/', createProduct);
 // productRoute.delete('/:id', deleteProduct);
 // productRoute.put('/:id', updateProduct);
