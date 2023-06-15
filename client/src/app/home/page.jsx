@@ -70,7 +70,6 @@ export default function Home() {
           </div>
         </div>
       </div>
-
       <Testimonials />
     </div>
   );
