@@ -5,6 +5,7 @@ import Navigation from "../components/Navigation";
 import Footer from "@/components/Footer";
 import Providers from "../store/provider"
 
+
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
@@ -14,7 +15,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className="bg-gray-300">
+    <html lang="en" className="bg-white-300">
       <Providers>
         <head>
           <link
