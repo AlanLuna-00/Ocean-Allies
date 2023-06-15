@@ -7,7 +7,7 @@ import Testimonials from "@/components/Testimonials";
 export default function Home() {
   return (
     <div className="container mx-auto p-8 md:max-w-full">
-      <div className="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-1 gap-6 md:max-w-full">
+      <div className="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-1 gap-10 md:max-w-full">
         {/* px-4 pt-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 */}
         <div className="col-span-1 ">
           {/* Contenido de la primera columna */}
@@ -43,7 +43,7 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div className="md:max-w-full py-10 rounded-md bg-cover h-64">
+      <div className="md:max-w-full py-12 rounded-md bg-cover h-64">
         <FotoHome />
       </div>
       <div className=" grid grid-cols-1 lg:grid-cols-2 md:grid-cols-1 gap-20 md:max-w-full p-8 m-20">
