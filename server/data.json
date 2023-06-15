@@ -7,7 +7,8 @@
         "category": "Home",
         "stock": 100,
         "size": "M",
-        "image": "image1.jpg"
+        "image": "image1.jpg",
+        "color": "Black"
     },
     {
         "id": "843fd317-6c95-4f81-81b6-93b123d52d7a",
@@ -17,7 +18,8 @@
         "category": "Tech",
         "stock": 50,
         "size": "L",
-        "image": "image2.jpg"
+        "image": "image2.jpg",
+        "color": "Blue"
     },
     {
         "id": "e6cc582d-6b06-4a62-8d1c-61b31e05b597",
@@ -27,7 +29,8 @@
         "category": "Clothing",
         "stock": 80,
         "size": "S",
-        "image": "image3.jpg"
+        "image": "image3.jpg",
+        "color": "Light Blue"
     },
     {
         "id": "dcd50ad4-21a7-442f-9a4d-d301f7c350ae",
@@ -37,7 +40,8 @@
         "category": "Other",
         "stock": 60,
         "size": "XL",
-        "image": "image4.jpg"
+        "image": "image4.jpg",
+        "color": "Green"
     },
     {
         "id": "156cd77b-66a5-4be7-b97d-5c4af4ac86d6",
@@ -47,7 +51,8 @@
         "category": "Home",
         "stock": 120,
         "size": "M",
-        "image": "image5.jpg"
+        "image": "image5.jpg",
+        "color": "White"
     },
     {
         "id": "f94efabe-3650-4a2e-a422-7e49fb00d084",
@@ -57,7 +62,8 @@
         "category": "Tech",
         "stock": 70,
         "size": "S",
-        "image": "image6.jpg"
+        "image": "image6.jpg",
+        "color": "Black"
     },
     {
         "id": "db76e659-91dd-46b0-995c-5238a4d2b8e9",
@@ -67,7 +73,8 @@
         "category": "Clothing",
         "stock": 90,
         "size": "L",
-        "image": "image7.jpg"
+        "image": "image7.jpg",
+        "color": "Blue"
     },
     {
         "id": "c6ef4b4f-dc0c-46f1-aab9-68c76e39e418",
@@ -77,7 +84,8 @@
         "category": "Other",
         "stock": 40,
         "size": "M",
-        "image": "image8.jpg"
+        "image": "image8.jpg",
+        "color": "Light Blue"
     },
     {
         "id": "72d56f07-34c5-4ae3-83f5-27078ed2e3c2",
@@ -87,7 +95,8 @@
         "category": "Home",
         "stock": 75,
         "size": "XL",
-        "image": "image9.jpg"
+        "image": "image9.jpg",
+        "color": "Green"
     },
     {
         "id": "f1eeb90a-b165-4a50-9e94-eb262a4c18b2",
@@ -97,7 +106,8 @@
         "category": "Tech",
         "stock": 110,
         "size": "S",
-        "image": "image10.jpg"
+        "image": "image10.jpg",
+        "color": "White"
     },
     {
         "id": "1f2ff149-8a24-4be3-a1f6-c51ef58ad100",
@@ -107,7 +117,8 @@
         "category": "Clothing",
         "stock": 55,
         "size": "M",
-        "image": "image11.jpg"
+        "image": "image11.jpg",
+        "color": "Black"
     },
     {
         "id": "7f7e0710-bd4a-4080-9964-ccbb0a1a9a3f",
@@ -117,7 +128,8 @@
         "category": "Other",
         "stock": 85,
         "size": "L",
-        "image": "image12.jpg"
+        "image": "image12.jpg",
+        "color": "Blue"
     },
     {
         "id": "6e60e88e-7485-4961-a898-8e858aad9571",
@@ -127,7 +139,8 @@
         "category": "Home",
         "stock": 95,
         "size": "S",
-        "image": "image13.jpg"
+        "image": "image13.jpg",
+        "color": "Light Blue"
     },
     {
         "id": "1fb536b3-8df0-45b3-9d2c-25d19825eece",
@@ -137,7 +150,8 @@
         "category": "Tech",
         "stock": 65,
         "size": "XL",
-        "image": "image14.jpg"
+        "image": "image14.jpg",
+        "color": "Green"
     },
     {
         "id": "7ae4bbbf-2532-42f2-9810-38cc28f6992c",
@@ -147,56 +161,62 @@
         "category": "Clothing",
         "stock": 105,
         "size": "M",
-        "image": "image15.jpg"
+        "image": "image15.jpg",
+        "color": "White"
     },
     {
-        "id": "b5dddb24-02e6-4bb1-a988-49327df48ebe",
+        "id": "b5dd204c-1423-42a7-a98e-753dd5a5b3ef",
         "name": "QProduct 16",
         "description": "Description of Product 16",
-        "price": 14,
+        "price": 13,
         "category": "Other",
         "stock": 45,
         "size": "L",
-        "image": "image16.jpg"
+        "image": "image16.jpg",
+        "color": "Black"
     },
     {
-        "id": "0b5c20e5-171a-4ef1-91e6-7c2d7d57fe95",
+        "id": "3a1615a4-253f-4e0a-831a-00ea2d221102",
         "name": "RProduct 17",
         "description": "Description of Product 17",
-        "price": 27,
+        "price": 26,
         "category": "Home",
         "stock": 115,
         "size": "S",
-        "image": "image17.jpg"
+        "image": "image17.jpg",
+        "color": "Blue"
     },
     {
-        "id": "5a49ed0e-7de6-4e7a-9df4-8f8266384a07",
+        "id": "4a8fb2a2-11b7-474f-9e82-6b9ef0d35af3",
         "name": "SProduct 18",
         "description": "Description of Product 18",
         "price": 19,
         "category": "Tech",
         "stock": 50,
-        "size": "M",
-        "image": "image18.jpg"
+        "size": "XL",
+        "image": "image18.jpg",
+        "color": "Light Blue"
     },
     {
-        "id": "b74a1064-13b7-4284-b2b9-3e101e52da2d",
+        "id": "42a06f54-32a7-4e0d-9be7-3eaee4fe04fe",
         "name": "TProduct 19",
         "description": "Description of Product 19",
-        "price": 33,
+        "price": 31,
         "category": "Clothing",
-        "stock": 80,
-        "size": "XL",
-        "image": "image19.jpg"
+        "stock": 60,
+        "size": "M",
+        "image": "image19.jpg",
+        "color": "Green"
     },
     {
-        "id": "76c3de41-293e-47a6-a5df-883c5a132d2e",
+        "id": "7ef66d1c-c6fb-4809-aedf-72a6bfb277d0",
         "name": "UProduct 20",
         "description": "Description of Product 20",
-        "price": 26,
+        "price": 23,
         "category": "Other",
-        "stock": 60,
+        "stock": 80,
         "size": "L",
-        "image": "image20.jpg"
+        "image": "image20.jpg",
+        "color": "White"
     }
 ]

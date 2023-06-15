@@ -19,7 +19,8 @@ const getAllProducts = async (
     price,
     size,
     name,
-    sort
+    sort,
+    color
 ) => {
     try {
         const offset = (page - 1) * pageSize;
@@ -38,6 +39,10 @@ const getAllProducts = async (
             whereCondition.name = {
                 [Op.like]: `%${name}%`,
             };
+        }
+
+        if (color) {
+            whereCondition.color = color;
         }
 
         let order = [];
