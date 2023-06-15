@@ -12,6 +12,7 @@ class Server {
         this.reviewsPath = '/api/reviews';
         this.testimonyPath = '/api/testimony';
         this.authPath = '/api/auth';
+        this.purchasePath = '/api/purchase';
         // Conectar a base de datos
         this.conectarDB();
         // Middlewares
@@ -55,6 +56,7 @@ class Server {
         this.app.use(this.testimonyPath, require('./routes/testimonyRoute'));
         this.app.use(this.authPath, require('./routes/authRoute'));
         this.app.use(this.reviewsPath, require('./routes/reviewRoute'));
+        this.app.use(this.purchasePath, require('./routes/purchaseRoute'));
     }
 
     listen() {
