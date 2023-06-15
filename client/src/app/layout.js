@@ -1,14 +1,12 @@
-
 import "./globals.css";
 import { Akshar } from "next/font/google";
 import Navigation from "../components/Navigation";
 import Footer from "@/components/Footer";
-import Providers from "../store/provider"
-
+import Providers from "../store/provider";
 
 const akshar = Akshar({
   subsets: ["latin"],
-  weight: ['400', '700'],
+  weight: ["400", "700"],
 });
 
 export const metadata = {
@@ -18,7 +16,10 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className="bg-white-300">
+    <html
+      lang="en"
+      className="bg-gradient-to-r from-slate-100 via-sky-50 to-slate-100"
+    >
       <Providers>
         <head>
           <link
