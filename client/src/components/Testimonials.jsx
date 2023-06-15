@@ -10,7 +10,7 @@ const Testimonials = () => {
             id: 1,
             name: 'Alan Luna',
             role: 'Photographer',
-            avatar: '/img/Alan.jpg',
+            avatar: 'http://localhost:3000/img/Alan.jpg',
             quote:
                 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus et deleniti nesciunt sint eligendi reprehenderit reiciendis, quibusdam illo, beatae quia fugit consequatur laudantium velit magnam error. Consectetur distinctio fugit doloremque.',
             rating: 5,
@@ -72,13 +72,13 @@ const Testimonials = () => {
             >
                 {testimonials.map((testimonial) => (
                     <div key={testimonial.id} className="p-5 bg-white carousel-item">
-                        <div className="text-center">
+                        <div className=" text-center">
                             <Image
-                                src={testimonial.avatar}
+                                src={"/img/Alan.jpeg"}
                                 alt="avatar"
                                 width={150}
                                 height={150}
-                                className="rounded-full shadow-1-strong mb-4"
+                                className=" rounded-full shadow-1-strong mb-4"
                             />
                             <h5 className="text-lg font-bold mb-3">{testimonial.name}</h5>
                             <p>{testimonial.role}</p>
@@ -112,7 +112,12 @@ const Testimonials = () => {
                 .carousel-item {
                     height: ${maxQuoteLength * 1.5}px;
                     weight: 200px;
-                    
+                }
+                .image-container {
+                    display: inline-block;
+                    text-align: center;
+                    width: 150px;
+                    margin-bottom: 1rem;
                 }
             `}</style>
         </div>
