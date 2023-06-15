@@ -58,10 +58,6 @@ const Footer = () => {
                                 Sed ut perspiciatis unde omnis iste natus error sit voluptatem
                                 accusantium doloremque laudantium, totam rem aperiam.
                             </p>
-                            <p className="mt-4 text-sm text-gray-500">
-                                Eaque ipsa quae ab illo inventore veritatis et quasi architecto
-                                beatae vitae dicta sunt explicabo.
-                            </p>
                         </div>
                     </div>
                     <div className="space-y-2 text-sm">

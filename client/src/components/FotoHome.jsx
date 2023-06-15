@@ -2,7 +2,7 @@ import React from 'react'
 
 function FotoHome() {
     return (
-        <div className="col-span-1">
+        <div className="col-span-1 ">
             {/* Contenido de la primera columna */}
             <div
                 className="h-64 bg-cover bg-center"
