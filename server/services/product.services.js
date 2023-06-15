@@ -45,6 +45,7 @@ const getAllProducts = async (page, pageSize, category, price, size, name) => {
             offset,
             limit,
             order,
+            distinct: true, // Agregar esta opción para obtener solo productos únicos
             include: {
                 model: Purchase,
                 attributes: ['id', 'productId', 'userId'],
