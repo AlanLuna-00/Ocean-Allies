@@ -1,12 +1,13 @@
-
 import "./globals.css";
-import { Inter } from "next/font/google";
+import { Akshar } from "next/font/google";
 import Navigation from "../components/Navigation";
 import Footer from "@/components/Footer";
-import Providers from "../store/provider"
+import Providers from "../store/provider";
 
-
-const inter = Inter({ subsets: ["latin"] });
+const akshar = Akshar({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+});
 
 export const metadata = {
   title: "Ocean Allies",
@@ -15,15 +16,18 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className="bg-white-300">
+    <html
+      lang="en"
+      className="bg-gradient-to-r from-slate-100 via-sky-50 to-slate-100"
+    >
       <Providers>
         <head>
           <link
-            href="https://cdn.tailwindcss.com/2.2.16/tailwind.min.css"
+            href="https://fonts.googleapis.com/css2?family=Akshar:wght@400;700&display=swap"
             rel="stylesheet"
           />
         </head>
-        <body className={inter.className}>
+        <body className={akshar.className}>
           <Navigation />
           {children}
           <Footer />

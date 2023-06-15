@@ -3,10 +3,11 @@ import Message from '@/components/Message';
 
 const ContactForm = () => {
   return (
-    <div className=" py-8 bg-slate-300">
+    <div className=" py-8 bg-slate-300 bg-cover" style={{ backgroundImage: "url(/img/gente-limpiando-basura-naturaleza.jpg)" }}>
       <section className="max-w-4xl mx-auto px-4 ">
-        <div className="bg-white shadow-xl rounded-lg p-8 ">
-          <div className="mb-8">
+      
+        <div className=" shadow-xl rounded-lg p-8 bg-neutral-300 bg-opacity-60">
+          <div className="mb-8 mx-auto  rounded-lg bg-slate-200 shadow-xl p-6">
             <h2 className="text-3xl font-bold mb-4">Contact Us!</h2>
             <p className="text-gray-600">
             We are thrilled to hear your feedback, questions, or suggestions. At Ocean Allies,
@@ -23,7 +24,7 @@ const ContactForm = () => {
           
           <Message/>
 
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 mt-8">
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 mt-8 mb-8 mx-auto rounded-lg bg-slate-200 shadow-xl p-6">
             <div className="text-center">
               <h3 className="text-lg font-bold mb-2">Our Address:</h3>
               <p className="text-gray-600">Argentina, 5000</p>
