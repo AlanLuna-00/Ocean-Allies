@@ -48,7 +48,7 @@ export default function Home() {
         </div>
       </div>
       {/*  */}
-      <div className=" grid grid-cols-1 lg:grid-cols-2 md:grid-cols-1 gap-20 md:max-w-full p-8 m-20">
+      <div className=" grid grid-cols-1 lg:grid-cols-2 md:grid-cols-1 gap-20 md:max-w-full p-8 m-20 ">
         <div className="col-span-1">
           {/* Contenido de la tercera columna */}
           <div

@@ -14,6 +14,8 @@ const getAllProductsController = async (req, res) => {
         const price = req.query.price || null;
         const size = req.query.size || null;
         const name = req.query.name || '';
+        const sort = req.query.sort || null;
+        const color = req.query.color || null;
 
         let result = await getAllProducts(
             page,
@@ -21,7 +23,9 @@ const getAllProductsController = async (req, res) => {
             category,
             price,
             size,
-            name
+            name,
+            sort,
+            color
         );
 
         if (!result) {
@@ -31,7 +35,8 @@ const getAllProductsController = async (req, res) => {
                 category,
                 price,
                 size,
-                name
+                name,
+                sort
             );
         }
 

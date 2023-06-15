@@ -4,12 +4,12 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setMerchList } from "@/store/Slices/Merch";
 import Pagination from "@/components/Pagination";
+import ShoppingCart from "@/components/shoppingCarts";
 import Sort from "@/components/storeComponents/Sort";
 import { Fragment, useState } from "react";
 import { Dialog, Disclosure, Menu, Transition } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import {
-  ChevronDownIcon,
   FunnelIcon,
   MinusIcon,
   PlusIcon,
@@ -34,32 +34,22 @@ const Shop = () => {
     fetchData();
   }, [dispatch]);
 
-  const sortOptions = [
-    { name: "Most Popular", href: "#", current: true },
-    { name: "Best Rating", href: "#", current: false },
-    { name: "Newest", href: "#", current: false },
-    { name: "Price: Low to High", href: "#", current: false },
-    { name: "Price: High to Low", href: "#", current: false },
-  ];
-
   const subCategories = [
-    { name: "Totes", href: "#" },
-    { name: "Backpacks", href: "#" },
-    { name: "Travel Bags", href: "#" },
-    { name: "Hip Bags", href: "#" },
-    { name: "Laptop Sleeves", href: "#" },
+    { name: "T-shirt", href: "#" },
+    { name: "Trousers", href: "#" },
+    { name: "Jacket", href: "#" },
+    { name: "Backpack", href: "#" },
   ];
   const filters = [
     {
       id: "color",
       name: "Color",
       options: [
-        { value: "white", label: "White", checked: false },
-        { value: "beige", label: "Beige", checked: false },
-        { value: "blue", label: "Blue", checked: true },
-        { value: "brown", label: "Brown", checked: false },
-        { value: "green", label: "Green", checked: false },
-        { value: "purple", label: "Purple", checked: false },
+        { value: "Black", label: "White", checked: false },
+        { value: "White", label: "Beige", checked: false },
+        { value: "Blue", label: "Blue", checked: false },
+        { value: "Sky blue", label: "Brown", checked: false },
+        { value: "Green", label: "Green", checked: false },
       ],
     },
     {
@@ -68,7 +58,7 @@ const Shop = () => {
       options: [
         { value: "new-arrivals", label: "New Arrivals", checked: false },
         { value: "sale", label: "Sale", checked: false },
-        { value: "travel", label: "Travel", checked: true },
+        { value: "travel", label: "Travel", checked: false },
         { value: "organization", label: "Organization", checked: false },
         { value: "accessories", label: "Accessories", checked: false },
       ],
@@ -82,7 +72,7 @@ const Shop = () => {
         { value: "12l", label: "12L", checked: false },
         { value: "18l", label: "18L", checked: false },
         { value: "20l", label: "20L", checked: false },
-        { value: "40l", label: "40L", checked: true },
+        { value: "40l", label: "40L", checked: false },
       ],
     },
   ];
@@ -94,9 +84,9 @@ const Shop = () => {
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
 
   return (
-    <div className="bg-white">
+    <div className="">
       <div>
-        {/* Mobile filter dialog */}
+        {/* Pagina para mobile */}
         <Transition.Root show={mobileFiltersOpen} as={Fragment}>
           <Dialog
             as="div"
@@ -125,14 +115,14 @@ const Shop = () => {
                 leaveFrom="translate-x-0"
                 leaveTo="translate-x-full"
               >
-                <Dialog.Panel className="relative ml-auto flex h-full w-full max-w-xs flex-col overflow-y-auto bg-white py-4 pb-12 shadow-xl">
+                <Dialog.Panel className="relative ml-auto flex h-full w-full max-w-xs flex-col overflow-y-auto  py-4 pb-12 shadow-xl">
                   <div className="flex items-center justify-between px-4">
                     <h2 className="text-lg font-medium text-gray-900">
                       Filters
                     </h2>
                     <button
                       type="button"
-                      className="-mr-2 flex h-10 w-10 items-center justify-center rounded-md bg-white p-2 text-gray-400"
+                      className="-mr-2 flex h-10 w-10 items-center justify-center rounded-md  p-2 text-gray-400"
                       onClick={() => setMobileFiltersOpen(false)}
                     >
                       <span className="sr-only">Close menu</span>
@@ -140,7 +130,7 @@ const Shop = () => {
                     </button>
                   </div>
 
-                  {/* Filters */}
+                  {/* Filters mobile */}
                   <form className="mt-4 border-t border-gray-200">
                     <h3 className="sr-only">Categories</h3>
                     <ul
@@ -165,7 +155,7 @@ const Shop = () => {
                         {({ open }) => (
                           <>
                             <h3 className="-mx-2 -my-3 flow-root">
-                              <Disclosure.Button className="flex w-full items-center justify-between bg-white px-2 py-3 text-gray-400 hover:text-gray-500">
+                              <Disclosure.Button className="flex w-full items-center justify-between  px-2 py-3 text-gray-400 hover:text-gray-500">
                                 <span className="font-medium text-gray-900">
                                   {section.name}
                                 </span>
@@ -220,63 +210,28 @@ const Shop = () => {
           </Dialog>
         </Transition.Root>
 
+        {/* Pagina base no Mobile */}
         <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex items-baseline justify-between border-b border-gray-200 pb-6 pt-6">
             <h1 className="text-4xl font-bold tracking-tight text-gray-900">
               shop
             </h1>
+            <div className="">
+              <input
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-auto pl-10 p-2.5  "
+                placeholder="Search"
+              />
+            </div>
 
             <div className="flex items-center">
-              <Menu as="div" className="relative inline-block text-left">
-                <div>
-                  <Menu.Button className="group inline-flex justify-center text-sm font-medium text-gray-700 hover:text-gray-900">
-                    Sort
-                    <ChevronDownIcon
-                      className="-mr-1 ml-1 h-5 w-5 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
-                      aria-hidden="true"
-                    />
-                  </Menu.Button>
-                </div>
-
-                <Transition
-                  as={Fragment}
-                  enter="transition ease-out duration-100"
-                  enterFrom="transform opacity-0 scale-95"
-                  enterTo="transform opacity-100 scale-100"
-                  leave="transition ease-in duration-75"
-                  leaveFrom="transform opacity-100 scale-100"
-                  leaveTo="transform opacity-0 scale-95"
-                >
-                  <Menu.Items className="absolute right-0 z-10 mt-2 w-40 origin-top-right rounded-md bg-white shadow-2xl ring-1 ring-black ring-opacity-5 focus:outline-none">
-                    <div className="py-1">
-                      {sortOptions.map((option) => (
-                        <Menu.Item key={option.name}>
-                          {({ active }) => (
-                            <a
-                              href={option.href}
-                              className={classNames(
-                                option.current
-                                  ? "font-medium text-gray-900"
-                                  : "text-gray-500",
-                                active ? "bg-gray-100" : "",
-                                "block px-4 py-2 text-sm"
-                              )}
-                            >
-                              {option.name}
-                            </a>
-                          )}
-                        </Menu.Item>
-                      ))}
-                    </div>
-                  </Menu.Items>
-                </Transition>
-              </Menu>
+              <Sort />
 
               <button
                 type="button"
                 className="-m-2 ml-5 p-2 text-gray-400 hover:text-gray-500 sm:ml-7"
               >
-                <span className="sr-only">View grid</span>
+                <span className="sr-only">Shopping Cart</span>
+                <ShoppingCart />
                 <ShoppingCartIcon className="h-5 w-5" aria-hidden="true" />
               </button>
               <button
@@ -289,7 +244,6 @@ const Shop = () => {
               </button>
             </div>
           </div>
-
           <section aria-labelledby="products-heading" className="pb-24 pt-6">
             <h2 id="products-heading" className="sr-only">
               Products
@@ -319,7 +273,7 @@ const Shop = () => {
                     {({ open }) => (
                       <>
                         <h3 className="-my-3 flow-root">
-                          <Disclosure.Button className="flex w-full items-center justify-between bg-white py-3 text-sm text-gray-400 hover:text-gray-500">
+                          <Disclosure.Button className="flex w-full items-center justify-between  py-3 text-sm text-gray-400 hover:text-gray-500">
                             <span className="font-medium text-gray-900">
                               {section.name}
                             </span>
@@ -369,7 +323,7 @@ const Shop = () => {
                 ))}
               </form>
 
-              {/* Product grid */}
+              {/* Tabla de productos */}
               <div className="lg:col-span-3">
                 <div class="lg:col-span-3">
                   <div className="container mx-auto">

@@ -12,7 +12,16 @@ const saveProductsToDatabase = async () => {
     }
 };
 
-const getAllProducts = async (page, pageSize, category, price, size, name) => {
+const getAllProducts = async (
+    page,
+    pageSize,
+    category,
+    price,
+    size,
+    name,
+    sort,
+    color
+) => {
     try {
         const offset = (page - 1) * pageSize;
         const limit = pageSize;
@@ -32,6 +41,10 @@ const getAllProducts = async (page, pageSize, category, price, size, name) => {
             };
         }
 
+        if (color) {
+            whereCondition.color = color;
+        }
+
         let order = [];
 
         if (price === 'asc') {
@@ -40,12 +53,18 @@ const getAllProducts = async (page, pageSize, category, price, size, name) => {
             order.push(['price', 'DESC']);
         }
 
+        if (sort === 'asc') {
+            order.push(['name', 'ASC']);
+        } else if (sort === 'desc') {
+            order.push(['name', 'DESC']);
+        }
+
         const savedProducts = await Product.findAndCountAll({
             where: whereCondition,
             offset,
             limit,
             order,
-            distinct: true, // Agregar esta opción para obtener solo productos únicos
+            distinct: true,
             include: {
                 model: Purchase,
                 attributes: ['id', 'productId', 'userId'],
