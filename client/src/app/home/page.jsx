@@ -55,7 +55,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div className="md:max-w-full py-10 rounded-md bg-cover h-64">
+        <div className="md:max-w-full py-12 rounded-md bg-cover h-64">
           <FotoHome />
         </div>
       </div>
