@@ -4,9 +4,11 @@ const { Op } = require('sequelize');
 
 const saveProductsToDatabase = async () => {
     try {
+        // Lógica para guardar los productos en la base de datos
         await Product.bulkCreate(products);
     } catch (error) {
         console.log(error);
+        throw error;
     }
 };
 
