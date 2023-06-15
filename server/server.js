@@ -22,7 +22,7 @@ class Server {
     }
 
     conectarDB() {
-        conn.sync({ force: true }).then(() => {
+        conn.sync({ force: false }).then(() => {
             console.log('Base de datos conectada');
         });
     }
