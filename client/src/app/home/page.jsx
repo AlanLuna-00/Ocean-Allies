@@ -6,12 +6,12 @@ import Testimonials from "@/components/Testimonials";
 
 export default function Home() {
   return (
-    <div className="container m-auto p-4 flex flex-col items-center justify-center">
-      <div className="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-1 gap-3 justify-between mb-4">
+    <div className="container mx-auto p-4">
+      <div className="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-1 gap-4">
         <div className="col-span-1">
           {/* Contenido de la primera columna */}
           <div
-            className="h-64 bg-cover bg-center"
+            className="h-64 bg-cover bg-center rounded-md"
             style={{ backgroundImage: "url(/img/delfin.jpg)" }}
           >
             <h1 className="text-white text-2xl p-4">
@@ -22,7 +22,7 @@ export default function Home() {
         <div className="col-span-1">
           {/* Contenido de la segunda columna */}
           <div
-            className="h-64 bg-cover bg-center"
+            className="h-64 bg-cover bg-center rounded-md"
             style={{ backgroundImage: "url(/img/foca.jpg)" }}
           >
             <h1 className="text-white text-2xl p-4">
@@ -33,7 +33,7 @@ export default function Home() {
         <div className="col-span-1">
           {/* Contenido de la tercera columna */}
           <div
-            className="h-64 bg-cover bg-center"
+            className="h-64 bg-cover bg-center rounded-md"
             style={{ backgroundImage: "url(/img/corales.jpg)" }}
           >
             <h1 className="text-white text-2xl p-4">
@@ -42,14 +42,13 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div className="w-full mb-4">
+      <div className="w-full p-4">
         <FotoHome />
       </div>
       <Testimonials />
     </div>
   );
 };
-
 
 
 

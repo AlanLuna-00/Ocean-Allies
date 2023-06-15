@@ -24,7 +24,7 @@ const Footer = () => {
     };
 
     return (
-        <footer className="bottom-0 left-0 w-full bg-gray-800 text-gray-300">
+        <footer className="bottom-0 left-0 w-full bg-gray-900 text-gray-300">
             <div className="px-4 pt-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
                 <div className="grid gap-10 row-gap-6 mb-8 sm:grid-cols-2 lg:grid-cols-4">
                     <div className="sm:col-span-2">
@@ -49,7 +49,7 @@ const Footer = () => {
                                 <rect x="14" y="1" width="7" height="6" />
                                 <rect x="14" y="11" width="7" height="12" />
                             </svg>
-                            <span className="ml-2 text-xl font-bold tracking-wide text-gray-900 uppercase">
+                            <span className="ml-2 text-xl font-bold tracking-wide text-gray-500 uppercase">
                                 Ocean Allies
                             </span>
                         </a>
@@ -65,7 +65,7 @@ const Footer = () => {
                         </div>
                     </div>
                     <div className="space-y-2 text-sm">
-                        <p className="text-base font-bold tracking-wide text-gray-900">
+                        <p className="text-base font-bold tracking-wide text-gray-500">
                             Contacts
                         </p>
                         <div className="flex">
@@ -105,7 +105,7 @@ const Footer = () => {
                         </div>
                     </div>
                     <div>
-                        <span className="text-base font-bold tracking-wide text-gray-900">
+                        <span className="text-base font-bold tracking-wide text-gray-500">
                             Social
                         </span>
                         <div className="flex items-center mt-1 space-x-3">
