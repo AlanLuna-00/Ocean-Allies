@@ -12,7 +12,12 @@ const createUserService = async (name, email, password, role) => {
 
 const getAllUsersService = async () => {
     try {
-        const users = await User.findAll();
+        const users = await User.findAll({
+            include: {
+                model: Purchase,
+                attributes: ['id', 'productId', 'userId'],
+            },
+        });
         return users;
     } catch (error) {
         throw new Error('Error al obtener los usuarios');
