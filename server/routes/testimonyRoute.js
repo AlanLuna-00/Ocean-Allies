@@ -4,15 +4,16 @@ const {
     getTestimonyById,
     createTestimony,
     deleteTestimony,
-    updateTestimony
+    updateTestimony,
 } = require('../controllers/testimony.controller');
+const verifyJWT = require('../middlewares/verifyJwt');
 
 const testimonyRoute = Router();
 
 testimonyRoute.get('/', getAllTestimonies);
 testimonyRoute.get('/:id', getTestimonyById);
-testimonyRoute.post('/', createTestimony);
-testimonyRoute.delete('/:id', deleteTestimony);
-testimonyRoute.put('/:id', updateTestimony);
+testimonyRoute.post('/', verifyJWT, createTestimony);
+testimonyRoute.delete('/:id', verifyJWT, deleteTestimony);
+testimonyRoute.put('/:id', verifyJWT, updateTestimony);
 
 module.exports = testimonyRoute;
