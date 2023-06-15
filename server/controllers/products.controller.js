@@ -3,7 +3,6 @@ const {
     getProductsById,
     deleteProduct,
     createProduct,
-    updateProduct,
 } = require('../services/product.services');
 
 const getAllProductsController = async (req, res) => {
@@ -97,6 +96,7 @@ const productSchema = Joi.object({
     category: Joi.string().required(),
     stock: Joi.number().integer().min(0).required(),
     size: Joi.string().required(),
+    color: Joi.string().required(),
     image: Joi.string().required(),
 });
 
@@ -162,27 +162,9 @@ const createProductController = async (req, res) => {
     }
 };
 
-const updateProductController = async (req, res) => {
-    const { id } = req.params;
-    const updatedProductData = req.body;
-
-    try {
-        const updatedProduct = await updateProduct(id, updatedProductData);
-
-        if (updatedProduct) {
-            res.status(200).json({ message: 'Product updated successfully' });
-        } else {
-            res.status(404).json({ message: 'Product not found' });
-        }
-    } catch (error) {
-        res.status(500).json({ message: 'Error updating the product' });
-    }
-};
-
 module.exports = {
     getAllProductsController,
     getProductByIdController,
     deleteProductController,
     createProductController,
-    updateProductController,
 };
