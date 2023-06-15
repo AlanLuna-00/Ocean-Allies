@@ -1,8 +1,9 @@
+require('dotenv').config();
 const jwt = require('jsonwebtoken');
 
-const generateJwt = (uid) => {
+const generateJwt = (uid, role) => {
     return new Promise((resolve, reject) => {
-        const payload = { uid };
+        const payload = { uid, role };
 
         jwt.sign(
             payload,
@@ -22,4 +23,4 @@ const generateJwt = (uid) => {
     });
 };
 
-module.exports = { generateJwt };
+module.exports = generateJwt;

@@ -1,6 +1,6 @@
 const { User } = require('../../db');
 const bcryptjs = require('bcryptjs');
-const { generateJwt } = require('../../utils/generateJwt');
+const generateJwt = require('../../utils/generateJwt');
 const { serialize } = require('cookie');
 
 const login = async (req, res) => {

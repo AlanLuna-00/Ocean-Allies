@@ -34,6 +34,16 @@ const Product = (sequelize) => {
                 type: DataTypes.ENUM('XS', 'S', 'M', 'L', 'XL', 'XXL'),
                 allowNull: false,
             },
+            color: {
+                type: DataTypes.ENUM(
+                    'Black',
+                    'Blue',
+                    'Light Blue',
+                    'Green',
+                    'White'
+                ),
+                allowNull: false,
+            },
             image: {
                 type: DataTypes.STRING,
                 allowNull: false,

@@ -6,10 +6,14 @@ const {
     deleteTestimonyService,
 } = require('../services/testimony.services');
 
+const verifyIsAdmin = require('../utils/verifyIsAdmin');
+
 const createTestimony = async (req, res) => {
     const { name, comment } = req.body;
-
+    const { uid } = req.user;
     try {
+        const result = await verifyIsAdmin(uid);
+        result ? res.status(401).json({ error: 'No autorizado' }) : null;
         const testimony = await createTestimonyService(name, comment);
         res.json(testimony);
     } catch (error) {
@@ -43,6 +47,7 @@ const getTestimonyById = async (req, res) => {
 const updateTestimony = async (req, res) => {
     const testimonyId = req.params.id;
     const { name, comment } = req.body;
+    const { uid } = req.user;
 
     try {
         const testimony = await getTestimonyByIdService(testimonyId);
@@ -50,7 +55,9 @@ const updateTestimony = async (req, res) => {
             return res.status(404).json({ error: 'Testimonio no encontrado' });
         }
 
-        // Actualizar el usuario
+        const result = await verifyIsAdmin(uid);
+        result ? res.status(401).json({ error: 'No autorizado' }) : null;
+
         const updatedTestimony = await updateTestimonyService(
             testimonyId,
             name,
@@ -64,12 +71,15 @@ const updateTestimony = async (req, res) => {
 
 const deleteTestimony = async (req, res) => {
     const testimonyId = req.params.id;
-
+    const { uid } = req.user;
     try {
         const testimony = await getTestimonyByIdService(testimonyId);
         if (!testimony) {
             return res.status(404).json({ error: 'Testimonio no encontrado' });
         }
+
+        const result = await verifyIsAdmin(uid);
+        result ? res.status(401).json({ error: 'No autorizado' }) : null;
 
         await deleteTestimonyService(testimonyId);
         res.sendStatus(204);
@@ -77,7 +87,6 @@ const deleteTestimony = async (req, res) => {
         res.status(500).json({ error: error.message });
     }
 };
-
 module.exports = {
     createTestimony,
     getAllTestimonies,

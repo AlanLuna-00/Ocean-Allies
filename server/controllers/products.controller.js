@@ -14,15 +14,31 @@ const getAllProductsController = async (req, res) => {
         const price = req.query.price || null;
         const size = req.query.size || null;
         const name = req.query.name || '';
+        const sort = req.query.sort || null;
+        const color = req.query.color || null;
 
-        const result = await getAllProducts(
+        let result = await getAllProducts(
             page,
             pageSize,
             category,
             price,
             size,
-            name
+            name,
+            sort,
+            color
         );
+
+        if (!result) {
+            result = await getAllProducts(
+                page,
+                pageSize,
+                category,
+                price,
+                size,
+                name,
+                sort
+            );
+        }
 
         if (!result.products || result.products.length === 0) {
             res.status(404).json({ message: 'No products found' });

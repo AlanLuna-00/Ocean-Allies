@@ -4,13 +4,24 @@ const { Op } = require('sequelize');
 
 const saveProductsToDatabase = async () => {
     try {
+        // Lógica para guardar los productos en la base de datos
         await Product.bulkCreate(products);
     } catch (error) {
         console.log(error);
+        throw error;
     }
 };
 
-const getAllProducts = async (page, pageSize, category, price, size, name) => {
+const getAllProducts = async (
+    page,
+    pageSize,
+    category,
+    price,
+    size,
+    name,
+    sort,
+    color
+) => {
     try {
         const offset = (page - 1) * pageSize;
         const limit = pageSize;
@@ -30,6 +41,10 @@ const getAllProducts = async (page, pageSize, category, price, size, name) => {
             };
         }
 
+        if (color) {
+            whereCondition.color = color;
+        }
+
         let order = [];
 
         if (price === 'asc') {
@@ -38,11 +53,18 @@ const getAllProducts = async (page, pageSize, category, price, size, name) => {
             order.push(['price', 'DESC']);
         }
 
+        if (sort === 'asc') {
+            order.push(['name', 'ASC']);
+        } else if (sort === 'desc') {
+            order.push(['name', 'DESC']);
+        }
+
         const savedProducts = await Product.findAndCountAll({
             where: whereCondition,
             offset,
             limit,
             order,
+            distinct: true,
             include: {
                 model: Purchase,
                 attributes: ['id', 'productId', 'userId'],
