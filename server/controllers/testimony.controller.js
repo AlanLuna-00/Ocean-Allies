@@ -5,17 +5,15 @@ const {
     updateTestimonyService,
     deleteTestimonyService,
 } = require('../services/testimony.services');
-const { User } = require('../db');
 
-const verifyJWT = require('../middlewares/verifyJwt');
+const verifyIsAdmin = require('../utils/verifyIsAdmin');
 
 const createTestimony = async (req, res) => {
     const { name, comment } = req.body;
     const { uid } = req.user;
-    const user = await User.findOne({ where: { id: uid } });
     try {
-        if (user.role !== 'admin') {
-            return res.status(401).json({ error: 'Acceso no autorizado' });
+        if (verifyIsAdmin(uid)) {
+            return res.status(401).json({ error: 'No autorizado' });
         }
         const testimony = await createTestimonyService(name, comment);
         res.json(testimony);
@@ -50,7 +48,7 @@ const getTestimonyById = async (req, res) => {
 const updateTestimony = async (req, res) => {
     const testimonyId = req.params.id;
     const { name, comment } = req.body;
-    const { role } = req.user;
+    const { uid } = req.user;
 
     try {
         const testimony = await getTestimonyByIdService(testimonyId);
@@ -58,13 +56,10 @@ const updateTestimony = async (req, res) => {
             return res.status(404).json({ error: 'Testimonio no encontrado' });
         }
 
-        console.log('role', role);
-        // Verificar si el usuario tiene el rol de administrador
-        if (role !== 'admin') {
-            return res.status(401).json({ error: 'Acceso no autorizado GIL' });
+        if (verifyIsAdmin(uid)) {
+            return res.status(401).json({ error: 'No autorizado' });
         }
 
-        // Actualizar el testimonio
         const updatedTestimony = await updateTestimonyService(
             testimonyId,
             name,
@@ -78,7 +73,7 @@ const updateTestimony = async (req, res) => {
 
 const deleteTestimony = async (req, res) => {
     const testimonyId = req.params.id;
-    const { role } = req.user;
+    const { uid } = req.user;
 
     try {
         const testimony = await getTestimonyByIdService(testimonyId);
@@ -86,12 +81,10 @@ const deleteTestimony = async (req, res) => {
             return res.status(404).json({ error: 'Testimonio no encontrado' });
         }
 
-        // Verificar si el usuario tiene el rol de administrador
-        if (role !== 'admin') {
-            return res.status(403).json({ error: 'Acceso no autorizado' });
+        if (verifyIsAdmin(uid)) {
+            return res.status(401).json({ error: 'No autorizado' });
         }
 
-        // Eliminar el testimonio
         await deleteTestimonyService(testimonyId);
         res.sendStatus(204);
     } catch (error) {
