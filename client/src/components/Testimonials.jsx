@@ -1,135 +1,122 @@
-
+"use client"
+import React from 'react';
+import Image from 'next/image';
+import Carousel from 'react-multi-carousel';
+import 'react-multi-carousel/lib/styles.css';
 
 const Testimonials = () => {
+    const testimonials = [
+        {
+            id: 1,
+            name: 'Alan Luna',
+            role: 'Photographer',
+            avatar: '/img/Alan.jpg',
+            quote:
+                'Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus et deleniti nesciunt sint eligendi reprehenderit reiciendis, quibusdam illo, beatae quia fugit consequatur laudantium velit magnam error. Consectetur distinctio fugit doloremque.',
+            rating: 5,
+        },
+        {
+            id: 2,
+            name: 'Sebastian Aguzzi',
+            role: 'TFT Expert',
+            avatar: '',
+            quote: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus et deleniti nesciunt sint eligendi reprehenderit reiciendis.',
+            rating: 5,
+        },
+        {
+            id: 3,
+            name: 'Pablo Pissoni',
+            role: 'UX Designer',
+            avatar: '',
+            quote:
+                'Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus et deleniti nesciunt sint eligendi reprehenderit reiciendis, quibusdam illo, beatae quia fugit consequatur laudantium velit magnam error. Consectetur distinctio fugit doloremque.',
+            rating: 5,
+        },
+    ];
+
+    const responsive = {
+        desktop: {
+            breakpoint: { max: 3000, min: 1024 },
+            items: 3,
+        },
+        tablet: {
+            breakpoint: { max: 1024, min: 464 },
+            items: 2,
+        },
+        mobile: {
+            breakpoint: { max: 464, min: 0 },
+            items: 1,
+        },
+    };
+
+    const getMaxQuoteLength = () => {
+        let maxLength = 0;
+        testimonials.forEach((testimonial) => {
+            if (testimonial.quote.length > maxLength) {
+                maxLength = testimonial.quote.length;
+            }
+        });
+        return maxLength;
+    };
+
+    const maxQuoteLength = getMaxQuoteLength();
+
     return (
-        <div className="min-w-screen min-h-screen bg-gray-50 flex items-center justify-center py-5">
-            <div className="w-full bg-white border-t border-b border-gray-200 px-5 py-16 md:py-24 text-gray-800">
-                <div className="w-full max-w-6xl mx-auto">
-                    <div className="text-center max-w-xl mx-auto">
-                        <h1 className="text-6xl md:text-7xl font-bold mb-5 text-gray-600">What people <br />are saying.</h1>
-                        <h3 className="text-xl mb-5 font-light">Lorem ipsum dolor sit amet consectetur adipisicing elit.</h3>
-                        <div className="text-center mb-10">
-                            <span className="inline-block w-1 h-1 rounded-full bg-indigo-500 ml-1"></span>
-                            <span className="inline-block w-3 h-1 rounded-full bg-indigo-500 ml-1"></span>
-                            <span className="inline-block w-40 h-1 rounded-full bg-indigo-500"></span>
-                            <span className="inline-block w-3 h-1 rounded-full bg-indigo-500 ml-1"></span>
-                            <span className="inline-block w-1 h-1 rounded-full bg-indigo-500 ml-1"></span>
+        <div className="py-10">
+            <h1 className="text-2xl font-bold text-center mb-8">Testimonials</h1>
+            <Carousel
+                responsive={responsive}
+                infinite
+                containerClass="carousel-container"
+                itemClass="carousel-item"
+            >
+                {testimonials.map((testimonial) => (
+                    <div key={testimonial.id} className="p-5 bg-white carousel-item">
+                        <div className="text-center">
+                            <Image
+                                src={testimonial.avatar}
+                                alt="avatar"
+                                width={150}
+                                height={150}
+                                className="rounded-full shadow-1-strong mb-4"
+                            />
+                            <h5 className="text-lg font-bold mb-3">{testimonial.name}</h5>
+                            <p>{testimonial.role}</p>
                         </div>
+                        <p className="text-gray-500 my-4">
+                            <i className="fas fa-quote-left pe-2"></i>
+                            {testimonial.quote}
+                        </p>
+                        <ul className="flex justify-center text-yellow-500 mb-0">
+                            {[...Array(testimonial.rating)].map((_, index) => (
+                                <li key={index}>
+                                    <i className="fas fa-star fa-sm"></i>
+                                </li>
+                            ))}
+                            {[...Array(5 - testimonial.rating)].map((_, index) => (
+                                <li key={index}>
+                                    <i className="far fa-star fa-sm"></i>
+                                </li>
+                            ))}
+                        </ul>
                     </div>
-                    <div className="-mx-3 md:flex items-start">
-                        <div className="px-3 md:w-1/3">
-                            <div className="w-full mx-auto rounded-lg bg-white border border-gray-200 p-5 text-gray-800 font-light mb-6">
-                                <div className="w-full flex mb-4 items-center">
-                                    <div className="overflow-hidden rounded-full w-10 h-10 bg-gray-50 border border-gray-200">
-                                        <img src="https://i.pravatar.cc/100?img=1" alt="" />
-                                    </div>
-                                    <div className="flex-grow pl-3">
-                                        <h6 className="font-bold text-sm uppercase text-gray-600">Valentina Gonsaga</h6>
-                                    </div>
-                                </div>
-                                <div className="w-full">
-                                    <p className="text-sm leading-tight">
-                                        <span className="text-lg leading-none italic font-bold text-gray-400 mr-1">"</span>
-                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos sunt ratione dolor exercitationem minima quas itaque saepe quasi architecto vel! Accusantium, vero sint recusandae cum tempora nemo commodi soluta deleniti.
-                                        <span className="text-lg leading-none italic font-bold text-gray-400 ml-1">"</span>
-                                    </p>
-                                </div>
-                            </div>
-                            <div className="w-full mx-auto rounded-lg bg-white border border-gray-200 p-5 text-gray-800 font-light mb-6">
-                                <div className="w-full flex mb-4 items-center">
-                                    <div className="overflow-hidden rounded-full w-10 h-10 bg-gray-50 border border-gray-200">
-                                        <img src="https://i.pravatar.cc/100?img=2" alt="" />
-                                    </div>
-                                    <div className="flex-grow pl-3">
-                                        <h6 className="font-bold text-sm uppercase text-gray-600">Ezequiel Martinez</h6>
-                                    </div>
-                                </div>
-                                <div className="w-full">
-                                    <p className="text-sm leading-tight">
-                                        <span className="text-lg leading-none italic font-bold text-gray-400 mr-1">"</span>
-                                        Lorem ipsum, dolor sit amet, consectetur adipisicing elit. Dolore quod necessitatibus, labore sapiente, est, dignissimos ullam error ipsam sint quam tempora vel.
-                                        <span className="text-lg leading-none italic font-bold text-gray-400 ml-1">"</span>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="px-3 md:w-1/3">
-                            <div className="w-full mx-auto rounded-lg bg-white border border-gray-200 p-5 text-gray-800 font-light mb-6">
-                                <div className="w-full flex mb-4 items-center">
-                                    <div className="overflow-hidden rounded-full w-10 h-10 bg-gray-50 border border-gray-200">
-                                        <img src="https://i.pravatar.cc/100?img=3" alt="" />
-                                    </div>
-                                    <div className="flex-grow pl-3">
-                                        <h6 className="font-bold text-sm uppercase text-gray-600">Martin Echeverria</h6>
-                                    </div>
-                                </div>
-                                <div className="w-full">
-                                    <p className="text-sm leading-tight">
-                                        <span className="text-lg leading-none italic font-bold text-gray-400 mr-1">"</span>
-                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vitae, obcaecati ullam excepturi dicta error deleniti sequi.
-                                        <span className="text-lg leading-none italic font-bold text-gray-400 ml-1">"</span>
-                                    </p>
-                                </div>
-                            </div>
-                            <div className="w-full mx-auto rounded-lg bg-white border border-gray-200 p-5 text-gray-800 font-light mb-6">
-                                <div className="w-full flex mb-4 items-center">
-                                    <div className="overflow-hidden rounded-full w-10 h-10 bg-gray-50 border border-gray-200">
-                                        <img src="https://i.pravatar.cc/100?img=4" alt="" />
-                                    </div>
-                                    <div className="flex-grow pl-3">
-                                        <h6 className="font-bold text-sm uppercase text-gray-600">Carlos Gomez</h6>
-                                    </div>
-                                </div>
-                                <div className="w-full">
-                                    <p className="text-sm leading-tight">
-                                        <span className="text-lg leading-none italic font-bold text-gray-400 mr-1">"</span>
-                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto inventore voluptatum nostrum atque, corrupti, vitae esse id accusamus dignissimos neque reprehenderit natus, hic sequi itaque dicta nisi voluptatem! Culpa, iusto.
-                                        <span className="text-lg leading-none italic font-bold text-gray-400 ml-1">"</span>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="px-3 md:w-1/3">
-                            <div className="w-full mx-auto rounded-lg bg-white border border-gray-200 p-5 text-gray-800 font-light mb-6">
-                                <div className="w-full flex mb-4 items-center">
-                                    <div className="overflow-hidden rounded-full w-10 h-10 bg-gray-50 border border-gray-200">
-                                        <img src="https://i.pravatar.cc/100?img=5" alt="" />
-                                    </div>
-                                    <div className="flex-grow pl-3">
-                                        <h6 className="font-bold text-sm uppercase text-gray-600">Maria alberria</h6>
-                                    </div>
-                                </div>
-                                <div className="w-full">
-                                    <p className="text-sm leading-tight">
-                                        <span className="text-lg leading-none italic font-bold text-gray-400 mr-1">"</span>
-                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, voluptatem porro obcaecati dicta, quibusdam sunt ipsum, laboriosam nostrum facere exercitationem pariatur deserunt tempora molestiae assumenda nesciunt alias eius? Illo, autem!
-                                        <span className="text-lg leading-none italic font-bold text-gray-400 ml-1">"</span>
-                                    </p>
-                                </div>
-                            </div>
-                            <div className="w-full mx-auto rounded-lg bg-white border border-gray-200 p-5 text-gray-800 font-light mb-6">
-                                <div className="w-full flex mb-4 items-center">
-                                    <div className="overflow-hidden rounded-full w-10 h-10 bg-gray-50 border border-gray-200">
-                                        <img src="https://i.pravatar.cc/100?img=6" alt="" />
-                                    </div>
-                                    <div className="flex-grow pl-3">
-                                        <h6 className="font-bold text-sm uppercase text-gray-600">Julian Perruti</h6>
-                                    </div>
-                                </div>
-                                <div className="w-full">
-                                    <p className="text-sm leading-tight">
-                                        <span className="text-lg leading-none italic font-bold text-gray-400 mr-1">"</span>
-                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem iusto, explicabo, cupiditate quas totam!
-                                        <span className="text-lg leading-none italic font-bold text-gray-400 ml-1">"</span>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                ))}
+            </Carousel>
+
+            <style jsx>{`
+                .carousel-container {
+                    max-width: 960px;
+                    margin: 0 auto;
+                }
+
+                .carousel-item {
+                    height: ${maxQuoteLength * 1.5}px;
+                    weight: 200px;
+                    
+                }
+            `}</style>
         </div>
     );
-}
+};
 
 export default Testimonials;
