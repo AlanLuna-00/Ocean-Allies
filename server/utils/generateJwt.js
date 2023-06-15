@@ -5,6 +5,8 @@ const generateJwt = (uid) => {
     return new Promise((resolve, reject) => {
         const payload = { uid };
 
+        console.log(process.env.SECRETORPRIVATEKEY);
+
         jwt.sign(
             payload,
             process.env.SECRETORPRIVATEKEY,
