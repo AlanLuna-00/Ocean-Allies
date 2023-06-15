@@ -1,4 +1,4 @@
-const { User } = require('../db');
+const { User, Purchase } = require('../db');
 
 const createUserService = async (name, email, password, role) => {
     try {
