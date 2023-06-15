@@ -12,10 +12,10 @@ export default function Home() {
         <div className="col-span-1 ">
           {/* Contenido de la primera columna */}
           <div
-            className="h-64 bg-cover bg-center rounded-md "
+            className="h-64 bg-cover bg-center flex flex-col items-center justify-center "
             style={{ backgroundImage: "url(/img/delfin.jpg) " }}
           >
-            <h1 className="text-white text-2xl p-4 ">
+            <h1 className="text-4xl md:text-3xl font-bold mb-10 text-gray-100 mt-0 text-center uppercase">
               ONG dedicada a la protección y conservación del mundo marino.
             </h1>
           </div>
@@ -23,10 +23,10 @@ export default function Home() {
         <div className="col-span-1">
           {/* Contenido de la segunda columna */}
           <div
-            className="h-64 bg-cover bg-center rounded-md"
+            className="h-64 bg-cover bg-center flex flex-col items-center justify-center"
             style={{ backgroundImage: "url(/img/foca.jpg)" }}
           >
-            <h1 className="text-white text-2xl p-4">
+            <h1 className="text-4xl md:text-3xl font-bold mb-10 text-gray-100 mt-0 text-center uppercase">
               Nuestra ONG se dedica a la investigación y monitoreo de especies marinas.
             </h1>
           </div>
@@ -34,10 +34,10 @@ export default function Home() {
         <div className="col-span-1">
           {/* Contenido de la tercera columna */}
           <div
-            className="h-64 bg-cover bg-center rounded-md"
+            className="h-64 bg-cover bg-center flex flex-col items-center justify-center"
             style={{ backgroundImage: "url(/img/corales.jpg)" }}
           >
-            <h1 className="text-white text-2xl p-4">
+            <h1 className="text-4xl md:text-3xl font-bold mb-10 text-gray-100 mt-0 text-center uppercase">
               Campañas de concienciación y programas educativos.
             </h1>
           </div>
