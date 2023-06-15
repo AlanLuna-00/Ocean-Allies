@@ -10,7 +10,6 @@ const {
 const productRoute = Router();
 
 productRoute.get('/', getAllProductsController);
-productRoute.get('/search', getAllProductsController);
 productRoute.get('/:id', getProductByIdController);
 productRoute.post('/', createProductController);
 productRoute.delete('/:id', deleteProductController);
