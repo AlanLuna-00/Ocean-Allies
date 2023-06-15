@@ -1,5 +1,6 @@
 const { Product } = require('../db');
 const products = require('../data.json');
+const { Op } = require('sequelize');
 
 const saveProductsToDatabase = async () => {
     try {
@@ -57,6 +58,23 @@ const getAllProducts = async (page, pageSize, category, price, size) => {
     }
 };
 
+const getProductsByName = async (name) => {
+    try {
+        const products = await Product.findAll({
+            where: {
+                name: {
+                    [Op.like]: `%${name}%`,
+                },
+            },
+        });
+
+        return products;
+    } catch (error) {
+        console.log(error);
+        throw error;
+    }
+};
+
 const getProductsById = async (id) => {
     try {
         const product = Product.findByPk(id);
@@ -108,6 +126,7 @@ const updateProduct = async (id, updatedProductData) => {
 module.exports = {
     saveProductsToDatabase,
     getAllProducts,
+    getProductsByName,
     getProductsById,
     deleteProduct,
     createProduct,
