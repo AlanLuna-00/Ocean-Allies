@@ -4,9 +4,11 @@ const { Op } = require('sequelize');
 
 const saveProductsToDatabase = async () => {
     try {
+        // Lógica para guardar los productos en la base de datos
         await Product.bulkCreate(products);
     } catch (error) {
         console.log(error);
+        throw error;
     }
 };
 
@@ -43,6 +45,7 @@ const getAllProducts = async (page, pageSize, category, price, size, name) => {
             offset,
             limit,
             order,
+            distinct: true, // Agregar esta opción para obtener solo productos únicos
             include: {
                 model: Purchase,
                 attributes: ['id', 'productId', 'userId'],

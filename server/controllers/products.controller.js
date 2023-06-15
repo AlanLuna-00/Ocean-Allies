@@ -15,7 +15,7 @@ const getAllProductsController = async (req, res) => {
         const size = req.query.size || null;
         const name = req.query.name || '';
 
-        const result = await getAllProducts(
+        let result = await getAllProducts(
             page,
             pageSize,
             category,
@@ -23,6 +23,17 @@ const getAllProductsController = async (req, res) => {
             size,
             name
         );
+
+        if (!result) {
+            result = await getAllProducts(
+                page,
+                pageSize,
+                category,
+                price,
+                size,
+                name
+            );
+        }
 
         if (!result.products || result.products.length === 0) {
             res.status(404).json({ message: 'No products found' });
