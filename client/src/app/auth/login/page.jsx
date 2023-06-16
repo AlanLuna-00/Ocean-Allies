@@ -14,6 +14,7 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log(credentials);
   };
 
   return (
