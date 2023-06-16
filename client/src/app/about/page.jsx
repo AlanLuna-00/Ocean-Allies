@@ -16,11 +16,11 @@ export default function About() {
   const [isHovered, setIsHovered] = useState(false); //! Pendiente para usar en imagenes hover
 
   return (
-    <div className="bg-gray-100 py-12 px-6 bg-cover" style={{ backgroundImage: "url(/img/marProfundo.jpg)" }}>
-      <h1 className="mb-2 mt-0 text-5xl font-bold leading-tight  text-center">About</h1>
+    <div className="bg-gray-100 py-12 px-6 bg-cover" style={{ backgroundImage: "url(/img/gafas-mesa-sala-reuniones-negocios.jpg)" }}>
+      <h1 className="text-6xl md:text-7xl font-bold mb-5 text-gray-600 text-center">About</h1>
 
       <div className="max-w-4xl mx-auto ">
-        <p className="bg-opacity-60 shadow-xl text-2xl font-medium mb-6 text-center text-black grid  gap-8 block rounded-lg bg-white p-6">
+        <p className="bg-opacity-60 shadow-xl  text-2xl font-medium mb-6 text-center text-black grid  gap-8 block rounded-lg bg-white p-6">
           Ocean Allies es una plataforma dedicada a la conservación y protección de los animales marinos. 
           Nuestra misión es salvaguardar la vida en los océanos y preservar los hábitats marinos para las 
           generaciones futuras. Estamos comprometidos en crear conciencia sobre los desafíos que enfrentan 
@@ -28,7 +28,7 @@ export default function About() {
         </p>
         <h2 className="bg-white rounded-lg bg-opacity-60 text-2xl font-bold mb-6 text-center text-black">Equipo de desarrolladores</h2>
         
-        <div className="grid grid-cols-4 gap-8 block rounded-lg bg-gray-500 p-6 bg-opacity-60 shadow-xl">
+        <div className="grid grid-cols-4 gap-8  rounded-lg bg-gray-100 p-6 bg-opacity-60 shadow-xl">
           {developers.map((developer) => (
             <div key={developer.name} className="flex flex-col items-center pb-2">
 
@@ -47,13 +47,13 @@ export default function About() {
                 />
               </div>
 
-              <div className='bg-neutral-200 relative w-40 pb-2 rounded-b-2xl'>
+              <div className='bg-neutral-100  shadow-xl relative w-40 pb-2 rounded-b-2xl'>
               <h5 className="text-xl font-semibold mt-4 text-gray text-center">{developer.name}</h5>
               <p className="text-neutral-500 dark:text-neutral-600 text-center">{developer.text}</p>
 
                 <ul className="mx-auto flex list-inside justify-center">
                 {/*<!-- GitHub -->*/}
-                  <a href={developer.gitHub} className="px-2">
+                  <a href={developer.gitHub} target="_blank" className="px-2">
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" 
                     className="h-6 w-6 text-primary dark:text-primary-400 transition-all duration-300  hover:scale-125">
                     <path fill="currentColor"
@@ -62,7 +62,7 @@ export default function About() {
                 </a>
 
                 {/*<!-- LinkedIn -->*/}
-                <a href={developer.linkedIn} className="px-2">
+                <a href={developer.linkedIn} target="_blank" className="px-2">
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="h-6 w-6 text-primary dark:text-primary-400 transition-all duration-300  hover:scale-125" >
                     <path fillRule="evenodd" d="M20.45175,20.45025 L16.89225,20.45025 L16.89225,14.88075 C16.89225,13.5525 16.86975,11.844 15.04275,11.844 C13.191,11.844 12.90825,13.2915 12.90825,14.7855 L12.90825,20.45025 L9.3525,20.45025 L9.3525,8.997 L12.765,8.997 L12.765,10.563 L12.81375,10.563 C13.2885,9.66225 14.4495,8.71275 16.18125,8.71275 C19.78575,8.71275 20.45175,11.08425 20.45175,14.169 L20.45175,20.45025 Z M5.33925,7.4325 C4.1955,7.4325 3.27375,6.50775 3.27375,5.36775 C3.27375,4.2285 4.1955,3.30375 5.33925,3.30375 C6.47775,3.30375 7.4025,4.2285 7.4025,5.36775 C7.4025,6.50775 6.47775,7.4325 5.33925,7.4325 L5.33925,7.4325 Z M7.11975,20.45025 L3.5565,20.45025 L3.5565,8.997 L7.11975,8.997 L7.11975,20.45025 Z M23.00025,0 L1.0005,0 C0.44775,0 0,0.44775 0,0.99975 L0,22.9995 C0,23.55225 0.44775,24 1.0005,24 L23.00025,24 C23.55225,24 24,23.55225 24,22.9995 L24,0.99975 C24,0.44775 23.55225,0 23.00025,0 L23.00025,0 Z">
                     </path>
