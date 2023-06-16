@@ -48,18 +48,18 @@
         "name": "EProduct 5",
         "description": "Description of Product 5",
         "price": 25,
-        "category": "Jacket",
+        "category": "Home",
         "stock": 120,
         "size": "M",
         "image": "https://www.dexter.com.ar/on/demandware.static/-/Sites-365-dabra-catalog/default/dwdcc72ec5/products/LONIFW230005/LONIFW230005-1.JPG",
-        "color": "Green"
+        "color": "White"
     },
     {
         "id": "f94efabe-3650-4a2e-a422-7e49fb00d084",
         "name": "FProduct 6",
         "description": "Description of Product 6",
         "price": 18,
-        "category": "Jacket",
+        "category": "Tech",
         "stock": 70,
         "size": "S",
         "image": "https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/b78d4071f98f4a0d99c5afb70005578f_9366/Buzo_Boca_Juniors_Essentials_Trifolio_con_Cuello_Redondo_Azul_IC5061_01_laydown.jpg",
@@ -70,7 +70,7 @@
         "name": "GProduct 7",
         "description": "Description of Product 7",
         "price": 12,
-        "category": "Jacket",
+        "category": "Clothing",
         "stock": 90,
         "size": "L",
         "image": "https://http2.mlstatic.com/D_NQ_NP_929585-MLA54818524461_042023-O.webp",
@@ -81,7 +81,7 @@
         "name": "HProduct 8",
         "description": "Description of Product 8",
         "price": 22,
-        "category": "Jacket",
+        "category": "Home",
         "stock": 40,
         "size": "M",
         "image": "https://www.digitalsport.com.ar/files/products/6112a7ca63293-564270-500x500.jpg",
@@ -92,7 +92,7 @@
         "name": "IProduct 9",
         "description": "Description of Product 9",
         "price": 28,
-        "category": "Tech",
+        "category": "Pants",
         "stock": 60,
         "size": "L",
         "image": "https://d3ugyf2ht6aenh.cloudfront.net/stores/903/627/products/cargo-thorn1-10bef3610d1e937af116564434212455-640-0.webp",
@@ -103,7 +103,7 @@
         "name": "JProduct 10",
         "description": "Description of Product 10",
         "price": 14,
-        "category": "Clothing",
+        "category": "Pants",
         "stock": 80,
         "size": "S",
         "image": "https://www.chefuniforms.com/dw/image/v2/BGPS_PRD/on/demandware.static/-/Sites-UAMasterCatalog/default/dw516d9911/115231/115231_BLACK_1_S.jpg?sw=600&sh=890&sm=fit",
@@ -114,7 +114,7 @@
         "name": "LProduct 11",
         "description": "Description of Product 11",
         "price": 32,
-        "category": "Clothing",
+        "category": "Pants",
         "stock": 55,
         "size": "M",
         "image": "https://www.uniformadvantage.com/dw/image/v2/BGPS_PRD/on/demandware.static/-/Sites-UAMasterCatalog/default/dw6c47c721/11501/11501_BLACK_1_S.jpg?sw=600&sh=890&sm=fit",
@@ -125,7 +125,7 @@
         "name": "MProduct 12",
         "description": "Description of Product 12",
         "price": 24,
-        "category": "Other",
+        "category": "Pants",
         "stock": 85,
         "size": "L",
         "image": "https://cdn.fashiola.es/L604066493/under-armour-pantalon-pennant-woven-cargo-para-nino-downpour-gravel-gravel-g.jpg",
@@ -139,7 +139,7 @@
         "category": "Home",
         "stock": 95,
         "size": "S",
-        "image": "https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/c4a031dff9844b31bfddac8900b9c0df_9366/Mochila_Classic_Adicolor_UNISEX_Azul_GQ4178_01_standard.jpg",
+        "image": "./Images/13.png",
         "color": "White"
     },
     {
@@ -150,7 +150,7 @@
         "category": "Tech",
         "stock": 65,
         "size": "XL",
-        "image": "https://http2.mlstatic.com/D_NQ_NP_662674-MLA54428128429_032023-O.webp",
+        "image": "./Images/14.png",
         "color": "Green"
     },
     {
@@ -161,7 +161,7 @@
         "category": "Clothing",
         "stock": 105,
         "size": "M",
-        "image": "https://http2.mlstatic.com/D_NQ_NP_926019-MLA54428106465_032023-O.webp",
+        "image": "./Images/15.png",
         "color": "White"
     },
     {
@@ -172,7 +172,7 @@
         "category": "Other",
         "stock": 45,
         "size": "L",
-        "image": "https://http2.mlstatic.com/D_NQ_NP_629618-MLA54427881383_032023-O.webp",
+        "image": "./Images/16.png",
         "color": "Black"
     },
     {
@@ -180,10 +180,10 @@
         "name": "RProduct 17",
         "description": "Description of Product 17",
         "price": 26,
-        "category": "BagsEco",
+        "category": "Home",
         "stock": 115,
         "size": "S",
-        "image": "https://cdn.shopify.com/s/files/1/0378/9747/0091/products/deckcopy_800x800.webp?v=1682240430",
+        "image": "./Images/17.png",
         "color": "Blue"
     },
     {
@@ -191,32 +191,32 @@
         "name": "SProduct 18",
         "description": "Description of Product 18",
         "price": 19,
-        "category": "BagsEco",
+        "category": "Tech",
         "stock": 50,
         "size": "XL",
-        "image": "https://cdn.shopify.com/s/files/1/0378/9747/0091/products/DSC02473copy_800x800.webp?v=1682080766",
-        "color": "White"
+        "image": "./Images/18.png",
+        "color": "Light Blue"
     },
     {
         "id": "42a06f54-32a7-4e0d-9be7-3eaee4fe04fe",
         "name": "TProduct 19",
         "description": "Description of Product 19",
         "price": 31,
-        "category": "BagsEco",
+        "category": "Clothing",
         "stock": 60,
         "size": "M",
-        "image": "https://cdn.shopify.com/s/files/1/0378/9747/0091/products/96251298_227238675232304_1194681613359775744_ncopy_800x800.webp?v=1682080742",
-        "color": "Black"
+        "image": "./Images/19.png",
+        "color": "Green"
     },
     {
         "id": "7ef66d1c-c6fb-4809-aedf-72a6bfb277d0",
         "name": "UProduct 20",
         "description": "Description of Product 20",
         "price": 23,
-        "category": "BagsEco",
+        "category": "Other",
         "stock": 80,
         "size": "L",
-        "image": "https://cdn.shopify.com/s/files/1/0378/9747/0091/products/COP_totebag_trashcopy_800x800.webp?v=1682080722",
+        "image": "./Images/20.png",
         "color": "White"
     }
 ]
