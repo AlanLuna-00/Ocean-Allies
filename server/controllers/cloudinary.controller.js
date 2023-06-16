@@ -6,10 +6,9 @@ cloudinary.config({
     api_secret: 'IYC4Whyf9oHsrb4FKtgeS6yOXSA',
 });
 
-// Subir una imagen a Cloudinary
 const uploadImage = async (file) => {
     try {
-        const result = await cloudinary.upload_large(file, {
+        const result = await cloudinary.uploader.upload_large(file, {
             upload_preset: 'ocean_alisse',
         });
         return result;
@@ -23,7 +22,6 @@ const uploadVideo = async (file) => {
         const result = await cloudinary.uploader.upload_large(file, {
             upload_preset: 'ocean_alisse',
             resource_type: 'video',
-            //chunk_size: 6000000,
         });
         return result;
     } catch (error) {
@@ -31,4 +29,24 @@ const uploadVideo = async (file) => {
     }
 };
 
-module.exports = { uploadImage, uploadVideo };
+const deleteImage = async (publicId) => {
+    try {
+        const result = await cloudinary.uploader.destroy(publicId);
+        return result;
+    } catch (error) {
+        throw new Error('Error al borrar la imagen');
+    }
+};
+
+const deleteVideo = async (publicId) => {
+    try {
+        const result = await cloudinary.uploader.destroy(publicId, {
+            resource_type: 'video',
+        });
+        return result;
+    } catch (error) {
+        throw new Error('Error al borrar el video');
+    }
+};
+
+module.exports = { uploadImage, uploadVideo, deleteImage, deleteVideo };
