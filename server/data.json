@@ -48,18 +48,18 @@
         "name": "EProduct 5",
         "description": "Description of Product 5",
         "price": 25,
-        "category": "Home",
+        "category": "Jacket",
         "stock": 120,
         "size": "M",
         "image": "https://www.dexter.com.ar/on/demandware.static/-/Sites-365-dabra-catalog/default/dwdcc72ec5/products/LONIFW230005/LONIFW230005-1.JPG",
-        "color": "White"
+        "color": "Green"
     },
     {
         "id": "f94efabe-3650-4a2e-a422-7e49fb00d084",
         "name": "FProduct 6",
         "description": "Description of Product 6",
         "price": 18,
-        "category": "Tech",
+        "category": "Jacket",
         "stock": 70,
         "size": "S",
         "image": "https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/b78d4071f98f4a0d99c5afb70005578f_9366/Buzo_Boca_Juniors_Essentials_Trifolio_con_Cuello_Redondo_Azul_IC5061_01_laydown.jpg",
@@ -70,7 +70,7 @@
         "name": "GProduct 7",
         "description": "Description of Product 7",
         "price": 12,
-        "category": "Clothing",
+        "category": "Jacket",
         "stock": 90,
         "size": "L",
         "image": "https://http2.mlstatic.com/D_NQ_NP_929585-MLA54818524461_042023-O.webp",
@@ -81,7 +81,7 @@
         "name": "HProduct 8",
         "description": "Description of Product 8",
         "price": 22,
-        "category": "Home",
+        "category": "Jacket",
         "stock": 40,
         "size": "M",
         "image": "https://www.digitalsport.com.ar/files/products/6112a7ca63293-564270-500x500.jpg",
@@ -96,7 +96,7 @@
         "stock": 60,
         "size": "L",
         "image": "https://d3ugyf2ht6aenh.cloudfront.net/stores/903/627/products/cargo-thorn1-10bef3610d1e937af116564434212455-640-0.webp",
-        "color": "Light Blue"
+        "color": "Black"
     },
     {
         "id": "d83d0c3a-10e4-416d-874d-5c3ac2faff57",
@@ -107,7 +107,7 @@
         "stock": 80,
         "size": "S",
         "image": "https://www.chefuniforms.com/dw/image/v2/BGPS_PRD/on/demandware.static/-/Sites-UAMasterCatalog/default/dw516d9911/115231/115231_BLACK_1_S.jpg?sw=600&sh=890&sm=fit",
-        "color": "Blue"
+        "color": "Black"
     },
     {
         "id": "1f2ff149-8a24-4be3-a1f6-c51ef58ad100",
@@ -118,7 +118,7 @@
         "stock": 55,
         "size": "M",
         "image": "https://www.uniformadvantage.com/dw/image/v2/BGPS_PRD/on/demandware.static/-/Sites-UAMasterCatalog/default/dw6c47c721/11501/11501_BLACK_1_S.jpg?sw=600&sh=890&sm=fit",
-        "color": "Black"
+        "color": "Gray"
     },
     {
         "id": "7f7e0710-bd4a-4080-9964-ccbb0a1a9a3f",
@@ -129,50 +129,50 @@
         "stock": 85,
         "size": "L",
         "image": "https://cdn.fashiola.es/L604066493/under-armour-pantalon-pennant-woven-cargo-para-nino-downpour-gravel-gravel-g.jpg",
-        "color": "White"
+        "color": "Blue"
     },
     {
         "id": "6e60e88e-7485-4961-a898-8e858aad9571",
         "name": "NProduct 13",
         "description": "Description of Product 13",
         "price": 17,
-        "category": "Home",
+        "category": "BackPack",
         "stock": 95,
         "size": "S",
-        "image": "./Images/13.png",
-        "color": "White"
+        "image": "https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/c4a031dff9844b31bfddac8900b9c0df_9366/Mochila_Classic_Adicolor_UNISEX_Azul_GQ4178_01_standard.jpg",
+        "color": "Blue"
     },
     {
         "id": "1fb536b3-8df0-45b3-9d2c-25d19825eece",
         "name": "OProduct 14",
         "description": "Description of Product 14",
         "price": 29,
-        "category": "Tech",
+        "category": "BackPack",
         "stock": 65,
         "size": "XL",
-        "image": "./Images/14.png",
-        "color": "Green"
+        "image": "https://http2.mlstatic.com/D_NQ_NP_662674-MLA54428128429_032023-O.webp",
+        "color": "Gray"
     },
     {
         "id": "7ae4bbbf-2532-42f2-9810-38cc28f6992c",
         "name": "PProduct 15",
         "description": "Description of Product 15",
         "price": 21,
-        "category": "Clothing",
+        "category": "BackPack",
         "stock": 105,
         "size": "M",
-        "image": "./Images/15.png",
-        "color": "White"
+        "image": "https://http2.mlstatic.com/D_NQ_NP_926019-MLA54428106465_032023-O.webp",
+        "color": "Blue"
     },
     {
         "id": "b5dd204c-1423-42a7-a98e-753dd5a5b3ef",
         "name": "QProduct 16",
         "description": "Description of Product 16",
         "price": 13,
-        "category": "Other",
+        "category": "BackPack",
         "stock": 45,
         "size": "L",
-        "image": "./Images/16.png",
+        "image": "https://http2.mlstatic.com/D_NQ_NP_629618-MLA54427881383_032023-O.webp",
         "color": "Black"
     },
     {
@@ -180,10 +180,10 @@
         "name": "RProduct 17",
         "description": "Description of Product 17",
         "price": 26,
-        "category": "Home",
+        "category": "BagsEco",
         "stock": 115,
         "size": "S",
-        "image": "./Images/17.png",
+        "image": "https://cdn.shopify.com/s/files/1/0378/9747/0091/products/deckcopy_800x800.webp?v=1682240430",
         "color": "Blue"
     },
     {
@@ -191,32 +191,32 @@
         "name": "SProduct 18",
         "description": "Description of Product 18",
         "price": 19,
-        "category": "Tech",
+        "category": "BagsEco",
         "stock": 50,
         "size": "XL",
-        "image": "./Images/18.png",
-        "color": "Light Blue"
+        "image": "https://cdn.shopify.com/s/files/1/0378/9747/0091/products/DSC02473copy_800x800.webp?v=1682080766",
+        "color": "White"
     },
     {
         "id": "42a06f54-32a7-4e0d-9be7-3eaee4fe04fe",
         "name": "TProduct 19",
         "description": "Description of Product 19",
         "price": 31,
-        "category": "Clothing",
+        "category": "BagsEco",
         "stock": 60,
         "size": "M",
-        "image": "./Images/19.png",
-        "color": "Green"
+        "image": "https://cdn.shopify.com/s/files/1/0378/9747/0091/products/96251298_227238675232304_1194681613359775744_ncopy_800x800.webp?v=1682080742",
+        "color": "Black"
     },
     {
         "id": "7ef66d1c-c6fb-4809-aedf-72a6bfb277d0",
         "name": "UProduct 20",
         "description": "Description of Product 20",
         "price": 23,
-        "category": "Other",
+        "category": "BagsEco",
         "stock": 80,
         "size": "L",
-        "image": "./Images/20.png",
+        "image": "https://cdn.shopify.com/s/files/1/0378/9747/0091/products/COP_totebag_trashcopy_800x800.webp?v=1682080722",
         "color": "White"
     }
 ]
