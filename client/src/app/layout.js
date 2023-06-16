@@ -18,7 +18,7 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
-      className="bg-gradient-to-r from-slate-100 via-sky-50 to-slate-100"
+      className="bg-gradient-to-r from-slate-100 via-sky-50 to-slate-100 "
     >
       <Providers>
         <head>
