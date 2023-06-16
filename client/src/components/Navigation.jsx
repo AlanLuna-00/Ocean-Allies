@@ -1,12 +1,13 @@
-"use client"
+"use client";
 import Link from "next/link";
 import { useState } from "react";
 
 function Navigation() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false); // Estado de inicio de sesión, se inicializa como falso
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isAdmin, setIsAdmin] = useState(true); // Cambiar a false para probar usuario no administrador
+  const [isMenuOpen, setMenuOpen] = useState(false);
 
   const handleLogout = () => {
-    // Lógica para cerrar sesión
     setIsLoggedIn(false);
   };
 
@@ -19,50 +20,63 @@ function Navigation() {
           </div>
           <div className="hidden md:block">
             <div className="ml-auto flex items-baseline space-x-4">
-              <Link
-                href="/home"
-                className="text-gray-300 hover:bg-gray-500 hover:text-white px-3 py-2 rounded-md text-lg font-medium"
-              >
+              <Link href="/home" className="text-gray-300 hover:bg-gray-500 hover:text-white px-3 py-2 rounded-md text-lg font-medium">
                 Home
               </Link>
-              <Link
-                href="/about"
-                className="text-gray-300 hover:bg-gray-500 hover:text-white px-3 py-2 rounded-md text-lg font-medium"
-              >
+              <Link href="/about" className="text-gray-300 hover:bg-gray-500 hover:text-white px-3 py-2 rounded-md text-lg font-medium">
                 About Us
               </Link>
-              <Link
-                href="/shop"
-                className="text-gray-300 hover:bg-gray-500 hover:text-white px-3 py-2 rounded-md text-lg font-medium"
-              >
+              <Link href="/shop" className="text-gray-300 hover:bg-gray-500 hover:text-white px-3 py-2 rounded-md text-lg font-medium">
                 Shop
               </Link>
-              <Link
-                href="/contact"
-                className="text-gray-300 hover:bg-gray-500 hover:text-white px-3 py-2 rounded-md text-lg font-medium"
-              >
+              <Link href="/contact" className="text-gray-300 hover:bg-gray-500 hover:text-white px-3 py-2 rounded-md text-lg font-medium">
                 Contact
               </Link>
-              {/* Verificar si el usuario ha iniciado sesión */}
               {isLoggedIn ? (
-                <>
-                  <img
-                    src="/img/Alan.jpeg" // Ruta de la foto de perfil del usuario
-                    alt="User Photo"
-                    className="w-8 h-8 rounded-full"
-                  />
+                <div className="relative">
                   <button
-                    className="text-gray-300 hover:bg-gray-500 hover:text-white px-3 py-2 rounded-md text-lg font-medium"
-                    onClick={handleLogout}
+                    type="button"
+                    className="flex items-center justify-center mr-3 text-sm bg-gray-800 rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
+                    id="user-menu-button"
+                    aria-expanded={isMenuOpen}
+                    onClick={() => setMenuOpen(!isMenuOpen)}
                   >
-                    Logout
+                    <span className="sr-only">Open user menu</span>
+                    <svg
+                      className="w-6 h-6 text-gray-300 hover:text-white"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth="1.5"
+                      stroke="currentColor"
+                    >
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 5.25l-7.5 7.5-7.5-7.5m15 6l-7.5 7.5-7.5-7.5" />
+                    </svg>
                   </button>
-                </>
+                  {isMenuOpen && (
+                    <div className="z-50 absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg">
+                      <ul className="py-2">
+                        {isAdmin && (
+                          <li>
+                            <Link href="/dashboard" className="block px-4 py-2 text-gray-800 hover:bg-gray-200">
+                              Dashboard
+                            </Link>
+                          </li>
+                        )}
+                        <li>
+                          <button
+                            type="button"
+                            className="w-full text-left px-4 py-2 text-gray-800 hover:bg-gray-200"
+                            onClick={handleLogout}
+                          >
+                            Logout
+                          </button>
+                        </li>
+                      </ul>
+                    </div>
+                  )}
+                </div>
               ) : (
-                <Link
-                  href="/login"
-                  className="text-gray-300 hover:bg-gray-500 hover:text-white px-3 py-2 rounded-md text-lg font-medium"
-                >
+                <Link href="/login" className="text-gray-300 hover:bg-gray-500 hover:text-white px-3 py-2 rounded-md text-lg font-medium">
                   Login
                 </Link>
               )}
