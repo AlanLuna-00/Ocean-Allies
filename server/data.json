@@ -180,10 +180,10 @@
         "name": "RProduct 17",
         "description": "Description of Product 17",
         "price": 26,
-        "category": "Home",
+        "category": "BagsEco",
         "stock": 115,
         "size": "S",
-        "image": "./Images/17.png",
+        "image": "https://cdn.shopify.com/s/files/1/0378/9747/0091/products/deckcopy_800x800.webp?v=1682240430",
         "color": "Blue"
     },
     {
@@ -191,32 +191,32 @@
         "name": "SProduct 18",
         "description": "Description of Product 18",
         "price": 19,
-        "category": "Tech",
+        "category": "BagsEco",
         "stock": 50,
         "size": "XL",
-        "image": "./Images/18.png",
-        "color": "Light Blue"
+        "image": "https://cdn.shopify.com/s/files/1/0378/9747/0091/products/DSC02473copy_800x800.webp?v=1682080766",
+        "color": "White"
     },
     {
         "id": "42a06f54-32a7-4e0d-9be7-3eaee4fe04fe",
         "name": "TProduct 19",
         "description": "Description of Product 19",
         "price": 31,
-        "category": "Clothing",
+        "category": "BagsEco",
         "stock": 60,
         "size": "M",
-        "image": "./Images/19.png",
-        "color": "Green"
+        "image": "https://cdn.shopify.com/s/files/1/0378/9747/0091/products/96251298_227238675232304_1194681613359775744_ncopy_800x800.webp?v=1682080742",
+        "color": "Black"
     },
     {
         "id": "7ef66d1c-c6fb-4809-aedf-72a6bfb277d0",
         "name": "UProduct 20",
         "description": "Description of Product 20",
         "price": 23,
-        "category": "Other",
+        "category": "BagsEco",
         "stock": 80,
         "size": "L",
-        "image": "./Images/20.png",
+        "image": "https://cdn.shopify.com/s/files/1/0378/9747/0091/products/COP_totebag_trashcopy_800x800.webp?v=1682080722",
         "color": "White"
     }
 ]
