@@ -23,9 +23,10 @@ const Shop = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("https://reqres.in/api/users?page=1");
-        const data = response.data.data;
+        const response = await axios.get("http://localhost:8080/api/products");
+        const data = response.data.products;
         dispatch(setMerchList(data));
+        console.log(merchData);
       } catch (error) {
         console.error(error);
       }
@@ -331,14 +332,14 @@ const Shop = () => {
                       {merchData.map((item) => (
                         <div key={item.id} className="bg-gray-200 p-4 rounded">
                           <img
-                            src={item.avatar}
-                            alt={item.first_name}
+                            src={item.image}
+                            alt={item.name}
                             className="w-full h-auto mb-2"
                           />
                           <p className="text-gray-800 font-semibold">
-                            {item.first_name} {item.last_name}
+                            {item.name}
                           </p>
-                          <p className="text-gray-600">{item.email}</p>
+                          <p className="text-gray-600">{item.price}</p>
                         </div>
                       ))}
                     </div>
