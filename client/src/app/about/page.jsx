@@ -20,7 +20,7 @@ export default function About() {
       <h1 className="text-6xl md:text-7xl font-bold mb-5 text-gray-600 text-center">About</h1>
 
       <div className="max-w-4xl mx-auto ">
-        <p className="bg-opacity-60 shadow-xl  text-2xl font-medium mb-6 text-center text-black grid  gap-8 block rounded-lg bg-white p-6">
+        <p className="bg-opacity-60 shadow-xl  text-2xl font-medium mb-6 text-center text-black grid  gap-8 rounded-lg bg-white p-6">
           Ocean Allies es una plataforma dedicada a la conservación y protección de los animales marinos. 
           Nuestra misión es salvaguardar la vida en los océanos y preservar los hábitats marinos para las 
           generaciones futuras. Estamos comprometidos en crear conciencia sobre los desafíos que enfrentan 
