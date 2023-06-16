@@ -4,22 +4,22 @@
         "name": "AProduct 1",
         "description": "Description of Product 1",
         "price": 10,
-        "category": "Home",
+        "category": "Clothing",
         "stock": 100,
         "size": "M",
-        "image": "./Images/1.png",
-        "color": "Black"
+        "image": "https://d2r9epyceweg5n.cloudfront.net/stores/001/205/102/products/remera-lisa-vi-rj1-122009f0e7fe0bfa3715906956218434-480-0.jpg",
+        "color": "Green"
     },
     {
         "id": "843fd317-6c95-4f81-81b6-93b123d52d7a",
         "name": "BProduct 2",
         "description": "Description of Product 2",
         "price": 20,
-        "category": "Tech",
+        "category": "Clothing",
         "stock": 50,
         "size": "L",
-        "image": "./Images/2.png",
-        "color": "Blue"
+        "image": "https://d3ugyf2ht6aenh.cloudfront.net/stores/943/997/products/boy-marron1-17a822d3e01ce50ccc16676887357891-1024-1024.webp",
+        "color": "Brown"
     },
     {
         "id": "e6cc582d-6b06-4a62-8d1c-61b31e05b597",
@@ -29,19 +29,19 @@
         "category": "Clothing",
         "stock": 80,
         "size": "S",
-        "image": "./Images/3.png",
-        "color": "Light Blue"
+        "image": "https://www.cottonclub.com.ar/pub/media/catalog/product/cache/65e2670acbf1788249a95924f3789a80/7/0/705_negro_8_1_1_10.jpg",
+        "color": "Black"
     },
     {
         "id": "dcd50ad4-21a7-442f-9a4d-d301f7c350ae",
         "name": "DProduct 4",
         "description": "Description of Product 4",
         "price": 30,
-        "category": "Other",
+        "category": "Clothing",
         "stock": 60,
         "size": "XL",
-        "image": "./Images/4.png",
-        "color": "Green"
+        "image": "https://d2r9epyceweg5n.cloudfront.net/stores/001/205/102/products/remera-lisa-ro-rj-311-70b94603ae0bc70ca315911959189071-1024-1024.jpg",
+        "color": "Red"
     },
     {
         "id": "156cd77b-66a5-4be7-b97d-5c4af4ac86d6",
