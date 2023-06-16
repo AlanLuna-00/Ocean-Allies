@@ -3,8 +3,8 @@ import Link from "next/link";
 import { useState } from "react";
 
 function Navigation() {
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
-  const [isAdmin, setIsAdmin] = useState(true); // Cambiar a false para probar usuario no administrador
+  const [isLoggedIn, setIsLoggedIn] = useState(false);// Cambiar a true para probar login o no
+  const [isAdmin, setIsAdmin] = useState(false); // Cambiar a false para probar usuario no administrador
   const [isMenuOpen, setMenuOpen] = useState(false);
 
   const handleLogout = () => {
