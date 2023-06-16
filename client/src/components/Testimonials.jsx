@@ -9,27 +9,27 @@ const Testimonials = () => {
         {
             id: 1,
             name: 'Alan Luna',
-            role: 'Photographer',
-            avatar: 'http://localhost:3000/img/Alan.jpg',
+            role: 'CEO Facebook',
+            image: '/img/Alan.jpeg',
             quote:
-                'Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus et deleniti nesciunt sint eligendi reprehenderit reiciendis, quibusdam illo, beatae quia fugit consequatur laudantium velit magnam error. Consectetur distinctio fugit doloremque.',
+                'Solo se programar, vivo para programar y programar, y dejar esperando a pablo cuando tiene una duda.',
             rating: 5,
         },
         {
             id: 2,
             name: 'Sebastian Aguzzi',
             role: 'TFT Expert',
-            avatar: '',
-            quote: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus et deleniti nesciunt sint eligendi reprehenderit reiciendis.',
+            image: '/img/Seba.jpg',
+            quote: 'La vida es una incertidumbre... como el nuevo set de tft.',
             rating: 5,
         },
         {
             id: 3,
             name: 'Pablo Pissoni',
-            role: 'UX Designer',
-            avatar: '',
+            role: 'Tailwind Expert',
+            image: '/img/Pablo.jpg',
             quote:
-                'Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus et deleniti nesciunt sint eligendi reprehenderit reiciendis, quibusdam illo, beatae quia fugit consequatur laudantium velit magnam error. Consectetur distinctio fugit doloremque.',
+                'Solo se que hay que poner muchos divs, ver si alguno se mueve, si se mueve se usa si no se borra, uso gpt porque preguntarle a Alan es al pedo literal.          Ojala algun dia me conteste en el momento                               ',
             rating: 5,
         },
     ];
@@ -74,7 +74,7 @@ const Testimonials = () => {
                     <div key={testimonial.id} className="p-5 bg-white carousel-item">
                         <div className=" text-center">
                             <Image
-                                src={"/img/Alan.jpeg"}
+                                src={testimonial.image}
                                 alt="avatar"
                                 width={150}
                                 height={150}
