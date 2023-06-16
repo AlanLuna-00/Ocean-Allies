@@ -77,7 +77,7 @@ function Navigation() {
                   )}
                 </div>
               ) : (
-                <Link href="/login" className="text-gray-300 hover:bg-gray-500 hover:text-white px-3 py-2 rounded-md text-lg font-medium">
+                <Link href="/auth/login" className="text-gray-300 hover:bg-gray-500 hover:text-white px-3 py-2 rounded-md text-lg font-medium">
                   Login
                 </Link>
               )}
