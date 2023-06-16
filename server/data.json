@@ -95,7 +95,7 @@
         "category": "Tech",
         "stock": 60,
         "size": "L",
-        "image": "./Images/9.png",
+        "image": "https://d3ugyf2ht6aenh.cloudfront.net/stores/903/627/products/cargo-thorn1-10bef3610d1e937af116564434212455-640-0.webp",
         "color": "Light Blue"
     },
     {
@@ -106,7 +106,7 @@
         "category": "Clothing",
         "stock": 80,
         "size": "S",
-        "image": "./Images/10.png",
+        "image": "https://www.chefuniforms.com/dw/image/v2/BGPS_PRD/on/demandware.static/-/Sites-UAMasterCatalog/default/dw516d9911/115231/115231_BLACK_1_S.jpg?sw=600&sh=890&sm=fit",
         "color": "Blue"
     },
     {
@@ -117,7 +117,7 @@
         "category": "Clothing",
         "stock": 55,
         "size": "M",
-        "image": "./Images/11.png",
+        "image": "https://www.uniformadvantage.com/dw/image/v2/BGPS_PRD/on/demandware.static/-/Sites-UAMasterCatalog/default/dw6c47c721/11501/11501_BLACK_1_S.jpg?sw=600&sh=890&sm=fit",
         "color": "Black"
     },
     {
@@ -128,7 +128,7 @@
         "category": "Other",
         "stock": 85,
         "size": "L",
-        "image": "./Images/12.png",
+        "image": "https://cdn.fashiola.es/L604066493/under-armour-pantalon-pennant-woven-cargo-para-nino-downpour-gravel-gravel-g.jpg",
         "color": "White"
     },
     {
