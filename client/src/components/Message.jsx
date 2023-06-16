@@ -2,7 +2,7 @@ import React from "react";
 
 export default function Message() {
   return (
-    <div className="max-w-md mx-auto bg-white rounded-lg bg-slate-200 shadow-xl p-6">
+    <div className="max-w-md mx-auto rounded-lg bg-slate-200 shadow-xl p-6">
       <form>
         <div className="mb-6">
           <label className="block mb-1 font-bold text-gray-700" htmlFor="name">
