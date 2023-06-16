@@ -14,6 +14,6 @@ productRoute.get('/', getAllProductsController);
 productRoute.get('/:id', getProductByIdController);
 productRoute.post('/', verifyJWT, createProductController);
 productRoute.delete('/:id', verifyJWT, deleteProductController);
-//productRoute.put('/:id', updateProductController);
+productRoute.put('/:id', verifyJWT, updateProductController);
 
 module.exports = productRoute;

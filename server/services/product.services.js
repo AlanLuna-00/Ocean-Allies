@@ -122,10 +122,28 @@ const createProduct = async (productData) => {
     }
 };
 
+const updateProduct = async (productId, updatedData) => {
+    try {
+        const product = await Product.findByPk(productId);
+
+        if (!product) {
+            throw new Error('Product not found');
+        }
+
+        // Actualizar los campos del producto con los datos actualizados
+        await product.update(updatedData);
+
+        return product;
+    } catch (error) {
+        throw new Error('Error updating product');
+    }
+};
+
 module.exports = {
     saveProductsToDatabase,
     getAllProducts,
     getProductsById,
     deleteProduct,
     createProduct,
+    updateProduct,
 };
