@@ -23,7 +23,13 @@ const Product = (sequelize) => {
                 allowNull: false,
             },
             category: {
-                type: DataTypes.ENUM('Home', 'Tech', 'Clothing', 'Other'),
+                type: DataTypes.ENUM(
+                    'Clothing',
+                    'Jacket',
+                    'Pants',
+                    'BackPack',
+                    'BagsEco'
+                ),
                 allowNull: false,
             },
             stock: {
@@ -38,9 +44,11 @@ const Product = (sequelize) => {
                 type: DataTypes.ENUM(
                     'Black',
                     'Blue',
-                    'Light Blue',
                     'Green',
-                    'White'
+                    'White',
+                    'Brown',
+                    'Red',
+                    'Gray'
                 ),
                 allowNull: false,
             },
