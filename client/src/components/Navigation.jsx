@@ -1,6 +1,15 @@
+"use client"
 import Link from "next/link";
+import { useState } from "react";
 
 function Navigation() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false); // Estado de inicio de sesión, se inicializa como falso
+
+  const handleLogout = () => {
+    // Lógica para cerrar sesión
+    setIsLoggedIn(false);
+  };
+
   return (
     <nav className="bg-gray-800">
       <div className="max-w-9xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -34,6 +43,29 @@ function Navigation() {
               >
                 Contact
               </Link>
+              {/* Verificar si el usuario ha iniciado sesión */}
+              {isLoggedIn ? (
+                <>
+                  <img
+                    src="/img/Alan.jpeg" // Ruta de la foto de perfil del usuario
+                    alt="User Photo"
+                    className="w-8 h-8 rounded-full"
+                  />
+                  <button
+                    className="text-gray-300 hover:bg-gray-500 hover:text-white px-3 py-2 rounded-md text-lg font-medium"
+                    onClick={handleLogout}
+                  >
+                    Logout
+                  </button>
+                </>
+              ) : (
+                <Link
+                  href="/login"
+                  className="text-gray-300 hover:bg-gray-500 hover:text-white px-3 py-2 rounded-md text-lg font-medium"
+                >
+                  Login
+                </Link>
+              )}
             </div>
           </div>
         </div>
