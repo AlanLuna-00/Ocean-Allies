@@ -3,9 +3,11 @@ import axios from "axios";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setMerchList } from "@/store/Slices/Merch";
+import Link from "next/link";
 import Pagination from "@/components/Pagination";
 import ShoppingCart from "@/components/shoppingCarts";
 import Sort from "@/components/storeComponents/Sort";
+import SearchBar from "@/components/storeComponents/SearchBar";
 import { Fragment, useState } from "react";
 import { Dialog, Disclosure, Menu, Transition } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
@@ -81,6 +83,12 @@ const Shop = () => {
   function classNames(...classes) {
     return classes.filter(Boolean).join(" ");
   }
+
+  const handleSearch = async () => {
+    dispatch(getByName(search));
+    setSearch("");
+    history.push("/home");
+  };
 
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
 
@@ -218,10 +226,8 @@ const Shop = () => {
               shop
             </h1>
             <div className="">
-              <input
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-auto pl-10 p-2.5  "
-                placeholder="Search"
-              />
+              {/* SEARCHBAR */}
+              <SearchBar />
             </div>
 
             <div className="flex items-center">
@@ -330,17 +336,22 @@ const Shop = () => {
                   <div className="container mx-auto">
                     <div className="grid grid-cols-3 gap-4">
                       {merchData.map((item) => (
-                        <div key={item.id} className="bg-gray-200 p-4 rounded">
-                          <img
-                            src={item.image}
-                            alt={item.name}
-                            className="w-full h-auto mb-2"
-                          />
-                          <p className="text-gray-800 font-semibold">
-                            {item.name}
-                          </p>
-                          <p className="text-gray-600">{item.price}</p>
-                        </div>
+                        <Link href={`/detail/${item.id}`}>
+                          <div
+                            key={item.id}
+                            className="bg-gray-200 p-4 rounded"
+                          >
+                            <img
+                              src={item.image}
+                              alt={item.name}
+                              className="w-full h-auto mb-2"
+                            />
+                            <p className="text-gray-800 font-semibold">
+                              {item.name}
+                            </p>
+                            <p className="text-gray-600">{item.price}</p>
+                          </div>
+                        </Link>
                       ))}
                     </div>
                   </div>
