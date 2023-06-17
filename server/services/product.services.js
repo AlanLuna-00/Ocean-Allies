@@ -37,7 +37,7 @@ const getAllProducts = async (
 
         if (name) {
             whereCondition.name = {
-                [Op.like]: `%${name}%`,
+                [Op.iLike]: `%${name}%`,
             };
         }
 
