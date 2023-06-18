@@ -1,11 +1,26 @@
 const { Review } = require('../db');
+const { Product, User } = require('../db');
 
-const createReviewService = async (rating, comment) => {
+const createReviewService = async (rating, comment, productId, userId) => {
     try {
-        const review = await Review.create({ rating, comment });
+        const product = await Product.findByPk(productId);
+        const user = await User.findByPk(userId);
+
+        if (!product || !user) {
+            throw new Error('El producto o el usuario no existen');
+        }
+
+        const review = await Review.create({
+            rating,
+            comment,
+        });
+
+        await review.setUser(user);
+        await review.setProduct(product);
+
         return review;
     } catch (error) {
-        throw new error('Error al crear la review');
+        throw new Error('Error al crear la review');
     }
 };
 

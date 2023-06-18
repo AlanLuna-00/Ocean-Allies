@@ -1,4 +1,4 @@
-const { Product, Purchase } = require('../db');
+const { Product, Purchase, Review } = require('../db');
 const products = require('../data.json');
 const { Op } = require('sequelize');
 
@@ -65,10 +65,22 @@ const getAllProducts = async (
             limit,
             order,
             distinct: true,
-            include: {
-                model: Purchase,
-                attributes: ['id', 'productId', 'userId'],
-            },
+            include: [
+                {
+                    model: Purchase,
+                    attributes: ['id', 'productId', 'userId'],
+                },
+                {
+                    model: Review,
+                    attributes: [
+                        'id',
+                        'rating',
+                        'comment',
+                        'productId',
+                        'userId',
+                    ],
+                },
+            ],
         });
 
         const totalItems = savedProducts.count;

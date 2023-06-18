@@ -7,17 +7,22 @@ const {
 } = require('../services/review.services');
 
 const createReview = async (req, res) => {
-    const { rating, comment } = req.body;
+    const { rating, comment, productId, userId } = req.body;
 
     try {
-        const review = await createReviewService(rating, comment);
+        const review = await createReviewService(
+            rating,
+            comment,
+            productId,
+            userId
+        );
         res.json(review);
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
 };
 
-const getAllReview = async (reqm, res) => {
+const getAllReview = async (req, res) => {
     try {
         const reviews = await getAllReviewService();
         res.json(reviews);
