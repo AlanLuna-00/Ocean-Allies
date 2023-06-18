@@ -22,6 +22,7 @@ const Shop = () => {
   const dispatch = useDispatch();
   const merchData = useSelector((state) => state.merch.list);
   const [ search , setSearch] = useState("");
+  const [selectedColors, setSelectedColors] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -89,8 +90,9 @@ const Shop = () => {
   function classNames(...classes) {
     return classes.filter(Boolean).join(" ");
   }
- //*--------------------------------------
- const fetchDataSearch = async (name) => {
+
+ //*----------------- BUSQUEDA POR NOMBRE ---------------------
+ const fetchDataSearch = async (name = "") => {
    try {
      const response = await axios.get(`http://localhost:8080/api/products?name=${name}`);
      const data = response.data.products;
@@ -102,11 +104,52 @@ const Shop = () => {
   };
   const handleSearch = async (search) => {
     fetchDataSearch(search)
-    // dispatch(getByName(search));
     setSearch("");
-    // history.push("/home");
   };
-  //*--------------------------------------
+  //*^^^^^^^^^^^^^^^ BUSQUEDA POR NOMBRE ^^^^^^^^^^^^^^^^^^^^^^^
+
+  //* ---------------- BUSQUEDA POR CATEGORIA --------------------
+  const fetchDataCategory = async (category = "") => {
+    try {
+      const response = await axios.get(`http://localhost:8080/api/products?category=${category}`);
+      const data = response.data.products;
+      dispatch(setMerchList(data));
+      console.log(merchData);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+  //* ---------------- BUSQUEDA POR CATEGORIA --------------------
+  
+  
+  //* ---------------- BUSQUEDA POR COLOR --------------------
+  const fetchDataFilter = async (colors = []) => {
+    try {
+      const colorQuery = colors.map(color => `color=${color}`).join('&');
+      const response = await axios.get(`http://localhost:8080/api/products?${colorQuery}`);
+      const data = response.data.products;
+      dispatch(setMerchList(data));
+      console.log(merchData);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  
+  const handleColorFilter = (color) => {
+    const updatedColors = [...selectedColors];
+    const colorIndex = updatedColors.indexOf(color);
+  
+    if (colorIndex > -1) {
+      updatedColors.splice(colorIndex, 1);
+    } else {
+      updatedColors.push(color);
+    }
+  
+    setSelectedColors(updatedColors);
+    fetchDataFilter(updatedColors);
+  };
+  //* ---------------- BUSQUEDA POR COLOR --------------------
+
 
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
 
@@ -166,7 +209,8 @@ const Shop = () => {
                     >
                       {subCategories.map((category) => (
                         <li key={category.name}>
-                          <a href={category.href} className="block px-2 py-3">
+                          <a href={category.href}
+                             className="block px-2 py-3">
                             {category.name}
                           </a>
                         </li>
@@ -213,7 +257,8 @@ const Shop = () => {
                                       name={`${section.id}[]`}
                                       defaultValue={option.value}
                                       type="checkbox"
-                                      defaultChecked={option.checked}
+                                      checked={selectedColors.includes(option.value)}
+                                      onClick={() => handleColorFilter(option.value)}
                                       className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
                                     />
                                     <label
@@ -284,7 +329,11 @@ const Shop = () => {
                 >
                   {subCategories.map((category) => (
                     <li key={category.name}>
-                      <a href={category.href}>{category.name}</a>
+                      <a onClick={() => fetchDataCategory(category.name)}
+                         className=" cursor-pointer block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:text-gray-800 hover:border-gray-200"
+                      >
+                        {category.name}
+                      </a>
                     </li>
                   ))}
                 </ul>
@@ -329,7 +378,8 @@ const Shop = () => {
                                   name={`${section.id}[]`}
                                   defaultValue={option.value}
                                   type="checkbox"
-                                  defaultChecked={option.checked}
+                                  checked={selectedColors.includes(option.value)}
+                                  onClick={() => handleColorFilter(option.value)}
                                   className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
                                 />
                                 <label
@@ -384,4 +434,4 @@ const Shop = () => {
   );
 };
 
-export default Shop;
+export default Shop; 
