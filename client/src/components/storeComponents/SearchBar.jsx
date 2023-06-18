@@ -1,28 +1,27 @@
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
-export default function SearchBar() {
-  //* Simplemente me lleva a la ruta /detail/id y en esa ruta se hace la peticion por el id de la URL
+
+export default function SearchBar({ handleSearch, search, setSearch }) {
   const router = useRouter();
 
-  const [id, setId] = useState("");
-
   const handleChange = (event) => {
-    setId(event.target.value);
+    setSearch(event.target.value);
   };
 
   return (
-    <div>
+    <div className="flex items-center">
       <input
-        placeholder="ID del personaje"
+        className="px-4 py-2 border border-gray-300 rounded-l-md focus:outline-none focus:border-blue-500"
+        placeholder="producto..."
         type="search"
-        value={id}
+        value={search}
         onChange={handleChange}
       />
       <button
+        className="px-4 py-2 bg-gray-800 text-white rounded-r-md hover:bg-blue-700 focus:outline-none focus:ring focus:border-blue-500"
         onClick={() => {
-          router.push(`/detail/${id}`);
-          setId("");
+          handleSearch(search);
         }}
       >
         Buscar

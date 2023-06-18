@@ -21,6 +21,7 @@ import {
 const Shop = () => {
   const dispatch = useDispatch();
   const merchData = useSelector((state) => state.merch.list);
+  const [ search , setSearch] = useState("");
 
   useEffect(() => {
     const fetchData = async () => {
@@ -37,35 +38,39 @@ const Shop = () => {
     fetchData();
   }, [dispatch]);
 
+  //* ------------- FILTROS --------------
   const subCategories = [
-    { name: "T-shirt", href: "#" },
-    { name: "Trousers", href: "#" },
+    { name: "Clothing", href: "#" },
     { name: "Jacket", href: "#" },
-    { name: "Backpack", href: "#" },
+    { name: "Pants", href: "#" },
+    { name: "BackPack", href: "#" },
   ];
+  
   const filters = [
     {
       id: "color",
       name: "Color",
       options: [
-        { value: "Black", label: "White", checked: false },
-        { value: "White", label: "Beige", checked: false },
-        { value: "Blue", label: "Blue", checked: false },
-        { value: "Sky blue", label: "Brown", checked: false },
         { value: "Green", label: "Green", checked: false },
+        { value: "Brown", label: "Brown", checked: false },
+        { value: "Black", label: "Black", checked: false },
+        { value: "Red", label: "Red", checked: false },
+        { value: "Gray", label: "Gray", checked: false },
+        { value: "Blue", label: "Blue", checked: false },
+        { value: "White", label: "White", checked: false },
       ],
     },
-    {
-      id: "category",
-      name: "Category",
-      options: [
-        { value: "new-arrivals", label: "New Arrivals", checked: false },
-        { value: "sale", label: "Sale", checked: false },
-        { value: "travel", label: "Travel", checked: false },
-        { value: "organization", label: "Organization", checked: false },
-        { value: "accessories", label: "Accessories", checked: false },
-      ],
-    },
+    // {
+    //   id: "category",
+    //   name: "Category",
+    //   options: [
+    //     { value: "new-arrivals", label: "New Arrivals", checked: false },
+    //     { value: "sale", label: "Sale", checked: false },
+    //     { value: "travel", label: "Travel", checked: false },
+    //     { value: "organization", label: "Organization", checked: false },
+    //     { value: "accessories", label: "Accessories", checked: false },
+    //   ],
+    // },
     {
       id: "size",
       name: "Size",
@@ -79,16 +84,29 @@ const Shop = () => {
       ],
     },
   ];
+  //* ^^^^^^^^^^^^ FILTROS ^^^^^^^^^^^^^^^
 
   function classNames(...classes) {
     return classes.filter(Boolean).join(" ");
   }
-
-  const handleSearch = async () => {
-    dispatch(getByName(search));
-    setSearch("");
-    history.push("/home");
+ //*--------------------------------------
+ const fetchDataSearch = async (name) => {
+   try {
+     const response = await axios.get(`http://localhost:8080/api/products?name=${name}`);
+     const data = response.data.products;
+     dispatch(setMerchList(data));
+     console.log(merchData);
+    } catch (error) {
+      console.error(error);
+    }
   };
+  const handleSearch = async (search) => {
+    fetchDataSearch(search)
+    // dispatch(getByName(search));
+    setSearch("");
+    // history.push("/home");
+  };
+  //*--------------------------------------
 
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
 
@@ -227,7 +245,7 @@ const Shop = () => {
             </h1>
             <div className="">
               {/* SEARCHBAR */}
-              <SearchBar />
+              <SearchBar handleSearch={handleSearch} search={search} setSearch={setSearch}/>
             </div>
 
             <div className="flex items-center">
