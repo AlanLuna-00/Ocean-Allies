@@ -19,6 +19,7 @@ import {
 } from "@heroicons/react/20/solid";
 const Shop = () => {
   const dispatch = useDispatch();
+  const [error, setError] = useState();
   const [paginationData, setPaginationData] = useState({
     totalItems: null,
     totalPages: null,
@@ -45,6 +46,15 @@ const Shop = () => {
       const response = await axios.get("http://localhost:8080/api/products", {
         params: filters,
       });
+      if (response.status == 204) {
+        setError(
+          `No results found for the specified filters ${Object.keys(filters)
+            .filter((key) => filters[key] !== null)
+            .join(", ")}`
+        );
+      } else {
+        setError(null);
+      }
       const { products, info } = response.data;
       const { totalItems, totalPages, currentPage, nextPage, previousPage } =
         info;
@@ -290,7 +300,7 @@ const Shop = () => {
               <SearchBar
                 searchValue={filters.name}
                 onInputChange={(e) => {
-                  handleFilterChange(e.target.name, e.target.value);
+                  handleFilterChange(e.target.name, e.target.value.trim());
                 }}
               />
             </div>
@@ -438,32 +448,42 @@ const Shop = () => {
                 <div className="grid  ">
                   {" "}
                   <div className="grid grid-cols-1 sm:grid-cols-2  lg:grid-cols-4 gap-6">
-                    {merchList.map((product) => (
-                      <div>
-                        <div
-                          key={product.id}
-                          className="bg-white rounded-lg p-4"
-                        >
-                          <Link href={`/detail/${product.id}`}>
-                            <div>
-                              <img
-                                src={product.image}
-                                alt={product.name}
-                                className="w-full h-auto mb-2"
-                              />
-                              <h3 className="text-gray-800 font-semibold">
-                                {product.name}
-                              </h3>
-                              <p className="text-gray-600">${product.price}</p>
-                            </div>
-                          </Link>
-                          <button className="bg-gray-800 text-white flex items-center justify-center w-full rounded-lg py-2 mt-4">
-                            <ShoppingCartIcon className="h-5 w-5 mr-2" />
-                            Add to Cart
-                          </button>
-                        </div>
+                    {error ? (
+                      <div className="text-center flex justify-center">
+                        <h2 className="text-2xl font-semibold text-gray-800">
+                          {error}
+                        </h2>
                       </div>
-                    ))}
+                    ) : (
+                      merchList.map((product) => (
+                        <div>
+                          <div
+                            key={product.id}
+                            className="bg-white rounded-lg p-4"
+                          >
+                            <Link href={`/detail/${product.id}`}>
+                              <div>
+                                <img
+                                  src={product.image}
+                                  alt={product.name}
+                                  className="w-full h-auto mb-2"
+                                />
+                                <h3 className="text-gray-800 font-semibold">
+                                  {product.name}
+                                </h3>
+                                <p className="text-gray-600">
+                                  ${product.price}
+                                </p>
+                              </div>
+                            </Link>
+                            <button className="bg-gray-800 text-white flex items-center justify-center w-full rounded-lg py-2 mt-4">
+                              <ShoppingCartIcon className="h-5 w-5 mr-2" />
+                              Add to Cart
+                            </button>
+                          </div>
+                        </div>
+                      ))
+                    )}
                   </div>
                 </div>
               </div>

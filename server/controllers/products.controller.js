@@ -36,7 +36,7 @@ const getAllProductsController = async (req, res) => {
                 message += ` for the specified filters`;
             }
 
-            res.status(404).json({
+            res.status(204).json({
                 message,
             });
             return;
@@ -46,7 +46,7 @@ const getAllProductsController = async (req, res) => {
 
         // Verificar si la página solicitada está fuera de rango
         if (page > totalPages) {
-            res.status(404).json({
+            res.status(204).json({
                 message: `Page ${page} does not exist`,
             });
             return;
