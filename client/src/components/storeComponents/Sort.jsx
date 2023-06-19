@@ -2,6 +2,30 @@ import { Menu, Transition } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
 import { Fragment } from "react";
 
+{
+  /* <div className="mb-2">
+<label
+  htmlFor="price"
+  className="block font-medium mb-1"
+>
+  Price
+</label>
+<select
+  id="price"
+  name="price"
+  className="w-full border border-gray-300 rounded-lg p-2"
+  value={filters.price || ""}
+  onChange={(e) =>
+    handleFilterChange(e.target.name, e.target.value)
+  }
+>
+  <option defaultValue={null}>All</option>
+  <option value="desc">Highest</option>
+  <option value="asc">Lowest</option>
+</select>
+</div> */
+}
+
 const sortOptions = [
   { name: "Default", href: "#", current: true },
   { name: "Alphabetic: A to Z", href: "#", current: false },

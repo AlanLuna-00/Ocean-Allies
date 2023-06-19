@@ -299,16 +299,13 @@ const Shop = () => {
                 value={filters.sort}
                 onChange={(value) => handleFilterChange("sort", value)}
               />
-              <button
-                type="button"
-                className="-m-2 ml-5 p-2 text-gray-400 hover:text-gray-500 sm:ml-7"
-              >
+              <div className="-m-2 ml-5 p-2 text-gray-400 hover:text-gray-500 sm:ml-7">
                 <span className="sr-only">Shopping Cart</span>
                 <ShoppingCart open={open} setOpen={setOpen} />
                 <button onClick={() => setOpen(true)}>
                   <ShoppingCartIcon className="h-6 w-6" aria-hidden="true" />
                 </button>
-              </button>
+              </div>
               <button
                 type="button"
                 className="-m-2 ml-4 p-2 text-gray-400 hover:text-gray-500 sm:ml-6 lg:hidden"
@@ -360,28 +357,7 @@ const Shop = () => {
                           <option value="BagsEco">BagsEco's</option>
                         </select>
                       </div>
-                      {/* Price filter */}
-                      <div className="mb-2">
-                        <label
-                          htmlFor="price"
-                          className="block font-medium mb-1"
-                        >
-                          Price
-                        </label>
-                        <select
-                          id="price"
-                          name="price"
-                          className="w-full border border-gray-300 rounded-lg p-2"
-                          value={filters.price || ""}
-                          onChange={(e) =>
-                            handleFilterChange(e.target.name, e.target.value)
-                          }
-                        >
-                          <option defaultValue={null}>All</option>
-                          <option value="desc">Highest</option>
-                          <option value="asc">Lowest</option>
-                        </select>
-                      </div>
+
                       {/* Size filter */}
                       <div className="mb-2">
                         <label

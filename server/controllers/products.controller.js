@@ -17,7 +17,7 @@ const getAllProductsController = async (req, res) => {
         const sort = req.query.sort || null;
         const color = req.query.color || null;
 
-        let result = await getAllProducts(
+        const result = await getAllProducts(
             page,
             pageSize,
             category,
@@ -29,26 +29,29 @@ const getAllProductsController = async (req, res) => {
         );
 
         if (!result) {
-            result = await getAllProducts(
-                page,
-                pageSize,
-                category,
-                price,
-                size,
-                name,
-                sort
-            );
-        }
+            let message = `No results found`;
 
-        if (result.products.length === 0) {
-            res.status(500).json({
-                error: true,
-                message: `No results found for the search '${name}'`,
+            // Verificar si los filtros, excepto name y page, están vacíos
+            if (category || price || size || sort || color) {
+                message += ` for the specified filters`;
+            }
+
+            res.status(404).json({
+                message,
             });
             return;
         }
 
         const { products, totalItems, totalPages, currentPage } = result;
+
+        // Verificar si la página solicitada está fuera de rango
+        if (page > totalPages) {
+            res.status(404).json({
+                message: `Page ${page} does not exist`,
+            });
+            return;
+        }
+
         const nextPage = currentPage < totalPages ? currentPage + 1 : null;
         const previousPage = currentPage > 1 ? currentPage - 1 : null;
 
@@ -63,7 +66,6 @@ const getAllProductsController = async (req, res) => {
             },
         });
     } catch (error) {
-        console.log(error);
         res.status(500).json({ error: error.message });
     }
 };
