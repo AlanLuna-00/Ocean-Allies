@@ -1,4 +1,17 @@
+import { useSelector } from "react-redux";
+
 const Pagination = () => {
+  const merchListData = useSelector((state) => state.merch.list);
+  // const totalPages = merchListData.info.totalPages;
+
+  const handleNextPage = () => {
+    console.log("next page");
+  };
+
+  const handlePreviousPage = () => {
+    console.log("previous page");
+  };
+
   return (
     <nav aria-label="Page navigation example">
       <ul className="inline-flex items-center -space-x-px sm:flex sm:justify-center mb-8">
