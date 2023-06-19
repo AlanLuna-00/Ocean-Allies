@@ -3,7 +3,7 @@ import Link from "next/link";
 import { useState } from "react";
 
 function Navigation() {
-  const [isLoggedIn, setIsLoggedIn] = useState(true);// Cambiar a true para probar login o no
+  const [isLoggedIn, setIsLoggedIn] = useState(true); // Cambiar a true para probar login o no
   const [isAdmin, setIsAdmin] = useState(true); // Cambiar a false para probar usuario no administrador
   const [isMenuOpen, setMenuOpen] = useState(false);
 
@@ -21,16 +21,28 @@ function Navigation() {
           </div>
           <div className="hidden md:block">
             <div className="ml-auto flex items-baseline space-x-4">
-              <Link href="/home" className="text-gray-300 hover:bg-gray-500 hover:text-white px-3 py-2 rounded-md text-lg font-medium">
+              <Link
+                href="/home"
+                className="text-gray-300 hover:bg-gray-500 hover:text-white px-3 py-2 rounded-md text-lg font-medium"
+              >
                 Home
               </Link>
-              <Link href="/about" className="text-gray-300 hover:bg-gray-500 hover:text-white px-3 py-2 rounded-md text-lg font-medium">
+              <Link
+                href="/about"
+                className="text-gray-300 hover:bg-gray-500 hover:text-white px-3 py-2 rounded-md text-lg font-medium"
+              >
                 About Us
               </Link>
-              <Link href="/shop" className="text-gray-300 hover:bg-gray-500 hover:text-white px-3 py-2 rounded-md text-lg font-medium">
+              <Link
+                href="/shop"
+                className="text-gray-300 hover:bg-gray-500 hover:text-white px-3 py-2 rounded-md text-lg font-medium"
+              >
                 Shop
               </Link>
-              <Link href="/contact" className="text-gray-300 hover:bg-gray-500 hover:text-white px-3 py-2 rounded-md text-lg font-medium">
+              <Link
+                href="/contact"
+                className="text-gray-300 hover:bg-gray-500 hover:text-white px-3 py-2 rounded-md text-lg font-medium"
+              >
                 Contact
               </Link>
               {isLoggedIn ? (
@@ -50,7 +62,11 @@ function Navigation() {
                       strokeWidth="1.5"
                       stroke="currentColor"
                     >
-                      <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 5.25l-7.5 7.5-7.5-7.5m15 6l-7.5 7.5-7.5-7.5" />
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M19.5 5.25l-7.5 7.5-7.5-7.5m15 6l-7.5 7.5-7.5-7.5"
+                      />
                     </svg>
                   </button>
                   {isMenuOpen && (
@@ -58,7 +74,10 @@ function Navigation() {
                       <ul className="py-2">
                         {isAdmin && (
                           <li>
-                            <Link href="/dashboard" className="block px-4 py-2 text-gray-800 hover:bg-gray-200">
+                            <Link
+                              href="/dashboard"
+                              className="block px-4 py-2 text-gray-800 hover:bg-gray-200"
+                            >
                               Dashboard
                             </Link>
                           </li>
@@ -77,7 +96,10 @@ function Navigation() {
                   )}
                 </div>
               ) : (
-                <Link href="/auth/login" className="text-gray-300 hover:bg-gray-500 hover:text-white px-3 py-2 rounded-md text-lg font-medium">
+                <Link
+                  href="/auth/login"
+                  className="text-gray-300 hover:bg-gray-500 hover:text-white px-3 py-2 rounded-md text-lg font-medium"
+                >
                   Login
                 </Link>
               )}

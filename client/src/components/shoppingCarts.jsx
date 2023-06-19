@@ -1,8 +1,8 @@
-import { Fragment, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 
-const ShoppingCart = () => {
+const ShoppingCart = ({ open, setOpen }) => {
   const products = [
     {
       id: 1,
@@ -30,8 +30,6 @@ const ShoppingCart = () => {
     },
     // More products...
   ];
-
-  const [open, setOpen] = useState(false);
 
   return (
     <Transition.Root show={open} as={Fragment}>

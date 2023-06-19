@@ -17,7 +17,7 @@ const getAllProductsController = async (req, res) => {
         const sort = req.query.sort || null;
         const color = req.query.color || null;
 
-        let result = await getAllProducts(
+        const result = await getAllProducts(
             page,
             pageSize,
             category,
@@ -29,37 +29,44 @@ const getAllProductsController = async (req, res) => {
         );
 
         if (!result) {
-            result = await getAllProducts(
-                page,
-                pageSize,
-                category,
-                price,
-                size,
-                name,
-                sort
-            );
-        }
+            let message = `No results found`;
 
-        if (!result.products || result.products.length === 0) {
-            res.status(404).json({ message: 'No products found' });
+            // Verificar si los filtros, excepto name y page, están vacíos
+            if (category || price || size || sort || color) {
+                message += ` for the specified filters`;
+            }
+
+            res.status(204).json({
+                message,
+            });
             return;
         }
 
         const { products, totalItems, totalPages, currentPage } = result;
+
+        // Verificar si la página solicitada está fuera de rango
+        if (page > totalPages) {
+            res.status(204).json({
+                message: `Page ${page} does not exist`,
+            });
+            return;
+        }
+
         const nextPage = currentPage < totalPages ? currentPage + 1 : null;
         const previousPage = currentPage > 1 ? currentPage - 1 : null;
 
         res.status(200).json({
             products,
-            totalItems,
-            totalPages,
-            currentPage,
-            nextPage,
-            previousPage,
+            info: {
+                totalItems,
+                totalPages,
+                currentPage,
+                nextPage,
+                previousPage,
+            },
         });
     } catch (error) {
-        console.log(error);
-        res.status(500).json({ message: 'Error getting products' });
+        res.status(500).json({ error: error.message });
     }
 };
 
