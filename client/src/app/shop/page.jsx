@@ -254,7 +254,8 @@ const Shop = () => {
                           <div className="mb-2">
                             <button
                               className="w-full bg-gray-800 text-white rounded-lg py-2"
-                              onClick={() =>
+                              onClick={(e) =>
+                                e.preventDefault() &
                                 setFilters({
                                   ...filters,
                                   category: null,
@@ -433,7 +434,8 @@ const Shop = () => {
                       <div className="mb-2">
                         <button
                           className="w-full bg-gray-800 text-white rounded-lg py-2"
-                          onClick={() =>
+                          onClick={(e) =>
+                            e.preventDefault() &
                             setFilters({
                               ...filters,
                               category: null,
