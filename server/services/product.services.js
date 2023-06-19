@@ -4,8 +4,12 @@ const { Op } = require('sequelize');
 
 const saveProductsToDatabase = async () => {
     try {
-        // Lógica para guardar los productos en la base de datos
-        await Product.bulkCreate(products);
+        for (const product of products) {
+            await Product.findOrCreate({
+                where: { id: product.id }, // Verificar si el producto ya existe por su ID
+                defaults: product, // Insertar el producto si no existe
+            });
+        }
     } catch (error) {
         console.log(error);
         throw error;
