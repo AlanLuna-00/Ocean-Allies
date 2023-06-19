@@ -2,6 +2,9 @@ import React from 'react';
 import Message from '@/components/Message';
 
 const ContactForm = () => {
+
+  
+
   return (
     <div className=" py-8 bg-slate-300 bg-cover" style={{ backgroundImage: "url(/img/gente-limpiando-basura-naturaleza.jpg)" }}>
       <section className="max-w-4xl mx-auto px-4 ">
