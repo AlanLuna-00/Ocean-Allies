@@ -23,6 +23,7 @@ const Shop = () => {
   const merchData = useSelector((state) => state.merch.list);
   const [ search , setSearch] = useState("");
   const [selectedColors, setSelectedColors] = useState([]);
+ 
 
   useEffect(() => {
     const fetchData = async () => {
@@ -123,15 +124,32 @@ const Shop = () => {
   
   
   //* ---------------- BUSQUEDA POR COLOR --------------------
+  // const [ page, serPage ] = useState(1);
+  const [currentPage, setCurrentPage] = useState(1);
+
   const fetchDataFilter = async (colors = []) => {
     try {
-      const colorQuery = colors.map(color => `color=${color}`).join('&');
-      const response = await axios.get(`http://localhost:8080/api/products?${colorQuery}`);
+      const colorQuery = colors.map((color) => `color=${color}`).join('&');
+      const response = await axios.get(`http://localhost:8080/api/products?${colorQuery}&page=${currentPage}`);
       const data = response.data.products;
       dispatch(setMerchList(data));
       console.log(merchData);
     } catch (error) {
       console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchDataFilter(); // Llamar a fetchDataFilter cuando cambie el valor de currentPage
+  }, [currentPage]);
+
+  const goToNextPage = () => {
+    setCurrentPage((prevPage) => prevPage + 1);
+  };
+  
+  const goToPreviousPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage((prevPage) => prevPage - 1);
     }
   };
   
@@ -421,6 +439,8 @@ const Shop = () => {
                           </div>
                         </Link>
                       ))}
+                      <button onClick={goToPreviousPage}>Anterior</button>
+                      <button onClick={goToNextPage}>Siguiente</button>
                     </div>
                   </div>
                 </div>
