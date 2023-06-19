@@ -36,6 +36,8 @@ const Shop = () => {
     color: null,
   });
 
+  const [open, setOpen] = useState(false);
+
   const merchList = useSelector((state) => state.merch.list);
 
   const fetchMerchList = async () => {
@@ -59,8 +61,6 @@ const Shop = () => {
       console.log(error);
     }
   };
-
-  console.log(paginationData);
 
   const handleFilterChange = (name, value) => {
     setFilters((prevFilters) => ({ ...prevFilters, [name]: value, page: 1 }));
@@ -304,8 +304,10 @@ const Shop = () => {
                 className="-m-2 ml-5 p-2 text-gray-400 hover:text-gray-500 sm:ml-7"
               >
                 <span className="sr-only">Shopping Cart</span>
-                <ShoppingCart />
-                <ShoppingCartIcon className="h-5 w-5" aria-hidden="true" />
+                <ShoppingCart open={open} setOpen={setOpen} />
+                <button onClick={() => setOpen(true)}>
+                  <ShoppingCartIcon className="h-6 w-6" aria-hidden="true" />
+                </button>
               </button>
               <button
                 type="button"
