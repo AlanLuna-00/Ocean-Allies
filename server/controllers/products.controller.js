@@ -40,8 +40,11 @@ const getAllProductsController = async (req, res) => {
             );
         }
 
-        if (!result.products || result.products.length === 0) {
-            res.status(404).json({ message: 'No products found' });
+        if (result.products.length === 0) {
+            res.status(500).json({
+                error: true,
+                message: `No results found for the search '${name}'`,
+            });
             return;
         }
 
@@ -61,7 +64,7 @@ const getAllProductsController = async (req, res) => {
         });
     } catch (error) {
         console.log(error);
-        res.status(500).json({ message: 'Error getting products' });
+        res.status(500).json({ error: error.message });
     }
 };
 
