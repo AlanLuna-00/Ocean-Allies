@@ -51,11 +51,13 @@ const getAllProductsController = async (req, res) => {
 
         res.status(200).json({
             products,
-            totalItems,
-            totalPages,
-            currentPage,
-            nextPage,
-            previousPage,
+            info: {
+                totalItems,
+                totalPages,
+                currentPage,
+                nextPage,
+                previousPage,
+            },
         });
     } catch (error) {
         console.log(error);
