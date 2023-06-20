@@ -6,7 +6,7 @@ export default function About() {
   const developers = [
     { name: 'Alan', image: '/img/Alan.jpeg', text: 'Full Stack', linkedIn: '', gitHub: 'https://github.com/AlanLuna-00' },
     { name: 'Fran', image: '/img/Fran.jpg', text: 'Frontend Developer', linkedIn: 'https://www.linkedin.com/in/francisco-puy-02406b269', gitHub: 'https://github.com/franciscopuy'},
-    { name: 'Kevin', image: '/img/Kevin.jpg', text: 'Backend Developer', linkedIn: '', gitHub: 'https://github.com/MotionSoft05'},
+    { name: 'Kevin', image: '/img/Kevin.jpg', text: 'Backend Developer', linkedIn: 'https://www.linkedin.com/in/kevin-barrios-developer/', gitHub: 'https://github.com/MotionSoft05'},
     { name: 'Manu', image: '/img/Manu.jpg', text: 'Backend Developer', linkedIn: 'https://www.linkedin.com/in/emanuel-alessi-developer', gitHub: 'https://github.com/manuga23000'},
     { name: 'Mauri', image: '/img/Mauri.jpg', text: 'Frontend Developer', linkedIn: '', gitHub: 'https://github.com/jmauriciom'},
     { name: 'Pablo', image: '/img/Pablo.jpg', text: 'Frontend Developer', linkedIn: '', gitHub: 'https://github.com/pablopissoni' },
