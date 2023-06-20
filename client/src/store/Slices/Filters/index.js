@@ -3,7 +3,15 @@ import { createSlice } from "@reduxjs/toolkit";
 export const filterSlice = createSlice({
   name: "filter",
   initialState: {
-    filters: [],
+    list: {
+      page: 1,
+      category: null,
+      price: null,
+      sort: null,
+      size: null,
+      name: "",
+      color: null,
+    },
   },
   reducers: {
     setFilterList: (state, action) => {
