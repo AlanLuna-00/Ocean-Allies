@@ -16,10 +16,10 @@ export default function About() {
   const [isHovered, setIsHovered] = useState(false); //! Pendiente para usar en imagenes hover
 
   return (
-    <div className="bg-gray-100 py-12 px-6 bg-cover" style={{ backgroundImage: "url(/img/gafas-mesa-sala-reuniones-negocios.jpg)" }}>
+    <div className="bg-gray-100 py-12 px-6 bg-cover " style={{ backgroundImage: "url(/img/gafas-mesa-sala-reuniones-negocios.jpg)" }}>
       <h1 className="text-6xl md:text-7xl font-bold mb-5 text-gray-600 text-center">About</h1>
 
-      <div className="max-w-4xl mx-auto ">
+      <div className="max-w-4xl mx-auto flex flex-col">
         <p className="bg-opacity-60 shadow-xl  text-2xl font-medium mb-6 text-center text-black grid  gap-8 rounded-lg bg-white p-6">
           Ocean Allies es una plataforma dedicada a la conservación y protección de los animales marinos. 
           Nuestra misión es salvaguardar la vida en los océanos y preservar los hábitats marinos para las 
