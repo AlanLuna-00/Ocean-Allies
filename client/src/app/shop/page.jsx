@@ -8,7 +8,6 @@ import Pagination from "@/components/Pagination";
 import ShoppingCart from "@/components/shoppingCarts";
 import Sort from "@/components/storeComponents/Sort";
 import SearchBar from "@/components/storeComponents/SearchBar";
-
 import { Dialog, Disclosure, Menu, Transition } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import {
@@ -17,6 +16,8 @@ import {
   PlusIcon,
   ShoppingCartIcon,
 } from "@heroicons/react/20/solid";
+import { setFilterList } from "@/store/Slices/Filters";
+
 const Shop = () => {
   const dispatch = useDispatch();
   const [error, setError] = useState();
@@ -27,15 +28,8 @@ const Shop = () => {
     nextPage: null,
     previousPage: null,
   });
-  const [filters, setFilters] = useState({
-    page: 1,
-    category: null,
-    price: null,
-    size: null,
-    name: "",
-    sort: null,
-    color: null,
-  });
+
+  const filters = useSelector((state) => state.filters.list);
 
   const [open, setOpen] = useState(false);
 
@@ -66,32 +60,40 @@ const Shop = () => {
         previousPage,
       });
       dispatch(setMerchList(products));
-      setFilters((prevFilters) => ({ ...prevFilters, page: currentPage }));
     } catch (error) {
       console.log(error);
     }
   };
 
   const handleFilterChange = (name, value) => {
-    setFilters((prevFilters) => ({ ...prevFilters, [name]: value, page: 1 }));
+    const updatedFilters = { ...filters, [name]: value, page: 1 };
+    dispatch(setFilterList(updatedFilters));
   };
 
   useEffect(() => {
     fetchMerchList();
-    console.log(filters);
-  }, [
-    filters.page,
-    filters.category,
-    filters.price,
-    filters.size,
-    filters.name,
-    filters.sort,
-    filters.color,
-  ]);
+    dispatch(setFilterList(filters));
+  }, [filters]);
+
+  const handleCleanFilters = (e) => {
+    e.preventDefault();
+    const initialFilters = {
+      page: 1,
+      category: null,
+      price: null,
+      sort: null,
+      size: null,
+      name: "",
+      color: null,
+    };
+    dispatch(setFilterList(initialFilters));
+  };
+
+  const handlePageChange = (page) => {
+    const updatedFilters = { ...filters, page };
+    dispatch(setFilterList(updatedFilters));
+  };
   //*----------------- Mobile ---------------------
-  function classNames(...classes) {
-    return classes.filter(Boolean).join(" ");
-  }
 
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
   return (
@@ -264,18 +266,7 @@ const Shop = () => {
                           <div className="mb-2">
                             <button
                               className="w-full bg-gray-800 text-white rounded-lg py-2"
-                              onClick={(e) =>
-                                e.preventDefault() &
-                                setFilters({
-                                  ...filters,
-                                  category: null,
-                                  price: null,
-                                  size: null,
-                                  name: "",
-                                  sort: null,
-                                  color: null,
-                                })
-                              }
+                              onClick={handleCleanFilters}
                             >
                               Clean Filters
                             </button>
@@ -306,8 +297,10 @@ const Shop = () => {
             </div>
             <div className="flex items-center">
               <Sort
-                value={filters.sort}
-                onChange={(value) => handleFilterChange("sort", value)}
+                filters={filters}
+                onChange={(e) =>
+                  handleFilterChange(e.target.name, e.target.value)
+                }
               />
               <div className="-m-2 ml-5 p-2 text-gray-400 hover:text-gray-500 sm:ml-7">
                 <span className="sr-only">Shopping Cart</span>
@@ -422,18 +415,7 @@ const Shop = () => {
                       <div className="mb-2">
                         <button
                           className="w-full bg-gray-800 text-white rounded-lg py-2"
-                          onClick={(e) =>
-                            e.preventDefault() &
-                            setFilters({
-                              ...filters,
-                              category: null,
-                              price: null,
-                              size: null,
-                              name: "",
-                              sort: null,
-                              color: null,
-                            })
-                          }
+                          onClick={handleCleanFilters}
                         >
                           Clean Filters
                         </button>
@@ -494,12 +476,7 @@ const Shop = () => {
             totalPages={paginationData.totalPages}
             nextPage={paginationData.nextPage}
             previousPage={paginationData.previousPage}
-            onPageChange={(pageNumber) => {
-              setFilters((prevFilters) => ({
-                ...prevFilters,
-                page: pageNumber,
-              }));
-            }}
+            onPageChange={handlePageChange}
           />
         </main>
       </div>

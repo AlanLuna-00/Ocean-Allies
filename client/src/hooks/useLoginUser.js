@@ -2,7 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { useDispatch } from "react-redux";
-import { setUserData } from "@/store/Slices/Users/Index";
+import { setUserData } from "@/store/Slices/User/Index";
 
 // Hook para inicio de sesión
 const useLogin = () => {
