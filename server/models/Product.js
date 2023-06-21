@@ -32,34 +32,22 @@ const Product = (sequelize) => {
                 ),
                 allowNull: false,
             },
-            stock: {
-                type: DataTypes.INTEGER,
-                allowNull: false,
-            },
-            size: {
-                type: DataTypes.ENUM('XS', 'S', 'M', 'L', 'XL', 'XXL'),
+            image: {
+                type: DataTypes.STRING,
                 allowNull: false,
             },
             color: {
-                type: DataTypes.ENUM(
-                    'Black',
-                    'Blue',
-                    'Green',
-                    'White',
-                    'Brown',
-                    'Red',
-                    'Gray'
-                ),
+                type: DataTypes.STRING,
                 allowNull: false,
             },
-            image: {
-                type: DataTypes.STRING,
+            size: {
+                type: DataTypes.JSONB,
                 allowNull: false,
             },
             active: {
                 type: DataTypes.BOOLEAN,
                 defaultValue: true,
-            }
+            },
         },
         {
             timestamps: false,
