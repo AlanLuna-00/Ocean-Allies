@@ -56,7 +56,7 @@ const deleteUserService = async (userId) => {
         if (!user) {
             throw new Error('Usuario no encontrado');
         }
-        await user.destroy();
+        await user.update({ active: false });
     } catch (error) {
         throw new Error('Error al eliminar el usuario');
     }

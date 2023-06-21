@@ -26,6 +26,10 @@ const userModel = (sequelize) => {
                 type: DataTypes.ENUM('admin', 'user'),
                 defaultValue: 'user',
             },
+            active: {
+                type: DataTypes.BOOLEAN,
+                defaultValue: true,
+            }
         },
         {
             timestamps: false,
