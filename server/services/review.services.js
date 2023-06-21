@@ -1,5 +1,4 @@
-const { Review } = require('../db');
-const { Product, User } = require('../db');
+const { Product, User, Review, Purchase } = require('../db');
 
 const createReviewService = async (rating, comment, productId, userId) => {
     try {
@@ -8,6 +7,32 @@ const createReviewService = async (rating, comment, productId, userId) => {
 
         if (!product || !user) {
             throw new Error('El producto o el usuario no existen');
+        }
+
+        const existingReview = await Review.findOne({
+            where: {
+                productId,
+                userId,
+            },
+        });
+
+        if (existingReview) {
+            throw new Error(
+                'El usuario solo puede enviar una única review por producto'
+            );
+        }
+
+        const purchase = await Purchase.findOne({
+            where: {
+                productId,
+                userId,
+            },
+        });
+
+        if (!purchase) {
+            throw new Error(
+                'El usuario debe comprar el producto antes de realizar una review'
+            );
         }
 
         const review = await Review.create({
@@ -20,7 +45,7 @@ const createReviewService = async (rating, comment, productId, userId) => {
 
         return review;
     } catch (error) {
-        throw new Error('Error al crear la review');
+        throw error;
     }
 };
 
