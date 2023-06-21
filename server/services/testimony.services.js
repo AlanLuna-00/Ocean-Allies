@@ -49,7 +49,7 @@ const deleteTestimonyService = async (testimonyId) => {
         if (!testimony) {
             throw new Error('Testimonio no encontrado');
         }
-        await testimony.destroy();
+        await testimony.update({ active: false });
     } catch (error) {
         throw new Error('Error al eliminar el testimonio');
     }

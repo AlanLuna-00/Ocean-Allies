@@ -7,6 +7,18 @@ const register = async (req, res) => {
         const salt = await bcryptjs.genSalt(10);
         const hashedPassword = await bcryptjs.hash(password, salt);
 
+        const userExists = await User.findOne({
+            where: {
+                email,
+            },
+        });
+
+        if (userExists) {
+            return res.status(400).json({
+                msg: 'El email ya está registrado',
+            });
+        }
+
         const user = await User.create({
             name,
             email,
