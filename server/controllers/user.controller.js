@@ -49,14 +49,6 @@ const updateUser = async (req, res) => {
         if (!user) {
             return res.status(404).json({ error: 'Usuario no encontrado' });
         }
-
-        // Verificar si el usuario tiene el rol de administrador
-        if (user.role !== 'admin') {
-            return res.status(403).json({
-                error: 'Acceso denegado. Solo los administradores pueden editar usuarios',
-            });
-        }
-
         // Actualizar el usuario
         const updatedUser = await updateUserService(
             userId,
@@ -79,14 +71,6 @@ const deleteUser = async (req, res) => {
         if (!user) {
             return res.status(404).json({ error: 'Usuario no encontrado' });
         }
-
-        // Verificar si el usuario tiene el rol de administrador
-        if (user.role !== 'admin') {
-            return res.status(403).json({
-                error: 'Acceso denegado. Solo los administradores pueden eliminar usuarios',
-            });
-        }
-
         // Eliminar el usuario
         await deleteUserService(userId);
         res.sendStatus(204);
