@@ -15,9 +15,9 @@ function Navigation() {
     <nav className="bg-gray-800">
       <div className="max-w-9xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          <div className="flex-shrink-0 flex items-center">
+          <div className="flex-shrink-0 flex items-center ">
             <img src="/img/ocean.svg" alt="Logo" className="w-8 h-8 mr-2" />
-            <h1 className="text-white text-xl font-bold">Ocean Allies</h1>
+            <h1 className="bg-gradient-to-tr from-cyan-100 to-blue-600 bg-clip-text text-transparent text-xl font-bold ">Ocean Allies</h1>
           </div>
           <div className="hidden md:block">
             <div className="ml-auto flex items-baseline space-x-4">
