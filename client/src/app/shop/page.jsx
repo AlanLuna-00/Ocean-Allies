@@ -448,7 +448,7 @@ const Shop = () => {
                                 <img
                                   src={product.image}
                                   alt={product.name}
-                                  className="w-full h-auto mb-2"
+                                  className=" max-w-max h-52 mb-2"
                                 />
                                 <h3 className="text-gray-800 font-semibold">
                                   {product.name}
