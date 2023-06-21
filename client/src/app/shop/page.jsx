@@ -428,7 +428,6 @@ const Shop = () => {
 
               <div className="row-span-3">
                 <div className="grid  ">
-                  {" "}
                   <div className="grid grid-cols-1 sm:grid-cols-2  lg:grid-cols-4 gap-6">
                     {error ? (
                       <div className="text-center flex justify-center">
