@@ -1,4 +1,4 @@
-import Test from "@/components/storeComponents/Test";
+import Detail from "@/components/storeComponents/Detail";
 import React from "react";
 import axios from "axios";
 import Image from "next/image";
@@ -20,12 +20,12 @@ async function getDetail(id) {
 
 export default async function page({ params }) {
   const product = await getDetail(params.id);
-  console.log("/Detail---------Producto---------", product);
+  // console.log("/Detail---------Producto---------", product);
   // console.log('---------Params---------',params)
 
   return (
     <div>
-      <Test product={product} />
+      <Detail product={product} />
       <div className="flex justify-center m-4">
         <Link
           href="/shop"

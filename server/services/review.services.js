@@ -88,7 +88,7 @@ const deleteReviewService = async (reviewId) => {
         if (!review) {
             throw new Error('Review no encontrada');
         }
-        await review.destroy();
+        await review.update({ active: false });
     } catch (error) {
         throw new Error('Error al eliminar la review');
     }

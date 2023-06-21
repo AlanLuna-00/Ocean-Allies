@@ -122,7 +122,8 @@ const getProductsById = async (id) => {
 
 const deleteProduct = async (id) => {
     try {
-        const product = await Product.destroy({ where: { id } });
+        const product = await Product.findByPk(id);
+        await product.update({ active: false })
         return product;
     } catch (error) {
         console.log(error);

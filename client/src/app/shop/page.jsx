@@ -428,7 +428,6 @@ const Shop = () => {
 
               <div className="row-span-3">
                 <div className="grid  ">
-                  {" "}
                   <div className="grid grid-cols-1 sm:grid-cols-2  lg:grid-cols-4 gap-6">
                     {error ? (
                       <div className="text-center flex justify-center">
@@ -448,7 +447,7 @@ const Shop = () => {
                                 <img
                                   src={product.image}
                                   alt={product.name}
-                                  className="w-full h-auto mb-2"
+                                  className=" max-w-max h-52 mb-2"
                                 />
                                 <h3 className="text-gray-800 font-semibold">
                                   {product.name}

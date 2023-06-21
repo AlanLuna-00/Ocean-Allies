@@ -1,9 +1,5 @@
-const { serialize } = require('cookie');
-
 const logout = async (req, res) => {
     try {
-        res.clearCookie('token'); // Elimina la cookie 'token'
-
         return res.status(200).json({
             msg: 'Logged out successfully',
             authToken: null,
@@ -15,7 +11,5 @@ const logout = async (req, res) => {
         });
     }
 };
-
-module.exports = logout;
 
 module.exports = logout;
