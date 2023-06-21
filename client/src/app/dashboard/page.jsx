@@ -22,7 +22,7 @@ const Dashboard = () => {
                     </a>
                     <hr className="my-2 border-slate-700" />
                     <Slidebar />
-                    <p className="text-sm text-center text-gray-600">v2.0.0.3 | &copy; 2023 Ocean Allies</p>
+                    <p className="text-sm text-center text-gray-600">v1.0.0.0 | &copy; 2023 Ocean Allies</p>
                 </div>
                 <div id="content" className="bg-white/10 col-span-9 rounded-lg p-6">
                     <Statistics />
