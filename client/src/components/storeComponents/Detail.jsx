@@ -1,21 +1,21 @@
 import React from "react";
 import Image from "next/image";
 
-export default function Detail({ product }) {
+export default function Test({ product }) {
   return (
     <div className=" ">
       <div className="pt-6">
         {/* Image gallery */}
-        <div className="mx-auto mt-6 max-w-2xl sm:px-6 bg-white ">
+        <div className="lg:flex lg:flex-row md:flex md:flex-row  mx-auto mt-6 max-w-2xl sm:px-6 bg-white ">
           <div className="aspect-h-5 aspect-w-4 ">
             <img
               src={product.image}
               alt={product.image}
-              className="h-full w-full object-cover object-center"
+              className="max-w-max h-52  w-full object-cover object-center"
             />
           </div>
           {/* Product info */}
-          <div className="mx-auto max-w-2xl px-4 pb-16 pt-10 sm:px-6 ">
+          <div className=" max-w-2xl px-4 pb-16 pt-10 sm:px-6 ">
             <div className="border-b border-gray-200 pb-6">
               <p className="text-sm leading-none text-gray-600">
                 {product.category}
