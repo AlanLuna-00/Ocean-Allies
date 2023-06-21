@@ -1,15 +1,11 @@
 import { useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
-import { useDispatch } from "react-redux";
-import { setUserData } from "@/store/Slices/User/Index";
 
-// Hook para inicio de sesión
 const useLogin = () => {
   const router = useRouter();
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
-  const dispatch = useDispatch();
 
   const login = async (credentials) => {
     setIsLoading(true);
@@ -27,8 +23,8 @@ const useLogin = () => {
 
       // Guardar datos del usuario en el store
       console.log(response.data);
-      dispatch(setUserData(response.data));
       localStorage.setItem("token", JSON.stringify(response.data.token));
+      localStorage.setItem("user", JSON.stringify(response.data.user));
       setIsLoading(false);
       router.push("/home"); // Redireccionar al home después del inicio de sesión
     } catch (error) {
