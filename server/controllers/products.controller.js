@@ -96,14 +96,31 @@ const deleteProductController = async (req, res) => {
 
 const Joi = require('joi');
 
-// Define el esquema de validación para un producto
+const allowedSizes = ['XS', 'S', 'M', 'L', 'XL', 'XXL'];
+
 const productSchema = Joi.object({
     name: Joi.string().required(),
     description: Joi.string().required(),
     price: Joi.number().positive().required(),
     category: Joi.string().required(),
-    stock: Joi.number().integer().min(0).required(),
-    size: Joi.string().required(),
+    size: Joi.object()
+        .pattern(
+            /^[a-zA-Z]+$/,
+            Joi.object({
+                stock: Joi.number().integer().min(0).required(),
+            })
+        )
+        .required()
+        .custom((value, helpers) => {
+            const sizes = Object.keys(value);
+            const invalidSizes = sizes.filter(
+                (size) => !allowedSizes.includes(size)
+            );
+            if (invalidSizes.length > 0) {
+                return helpers.error('any.invalid');
+            }
+            return value;
+        }),
     color: Joi.string().required(),
     image: Joi.string().required(),
 });
@@ -116,54 +133,55 @@ const createProductController = async (req, res) => {
 
     try {
         const createdProducts = [];
-        const duplicateProducts = [];
+        const invalidProducts = [];
 
         for (const product of products) {
             // Validar el producto utilizando el esquema definido
             const { error } = productSchema.validate(product);
 
             if (error) {
-                return res
-                    .status(400)
-                    .json({ message: 'Invalid product data', error });
-            }
-
-            try {
-                const createdProduct = await createProduct(product);
-                createdProducts.push(createdProduct);
-            } catch (error) {
-                // Si se produce un error de llave duplicada, omitir el producto y continuar con los demás
-                if (error.message === 'Duplicate product') {
-                    console.log(`Skipping duplicate product: ${product.name}`);
-                    duplicateProducts.push(product);
-                    continue;
+                invalidProducts.push({
+                    product,
+                    error: error.details[0].message,
+                });
+            } else {
+                try {
+                    const createdProduct = await createProduct(product);
+                    createdProducts.push(createdProduct);
+                } catch (error) {
+                    if (error.message === 'Duplicate product') {
+                        console.log(
+                            `Skipping duplicate product: ${product.name}`
+                        );
+                        invalidProducts.push({
+                            product,
+                            error: 'Duplicate product',
+                        });
+                    } else {
+                        throw error;
+                    }
                 }
-                throw error; // Relanzar el error para que se maneje en el bloque catch externo
             }
         }
 
         if (createdProducts.length > 0) {
-            if (duplicateProducts.length > 0) {
+            if (invalidProducts.length > 0) {
                 res.status(201).json({
                     message: 'Products created successfully',
-                    products: createdProducts,
-                    duplicateProducts: duplicateProducts,
+                    createdProducts,
+                    invalidProducts,
                 });
             } else {
                 res.status(201).json({
                     message: 'Products created successfully',
-                    products: createdProducts,
+                    createdProducts,
                 });
             }
         } else {
-            if (duplicateProducts.length > 0) {
-                res.status(400).json({
-                    message: 'Duplicate product',
-                    duplicateProducts: duplicateProducts,
-                });
-            } else {
-                res.status(400).json({ message: 'No products were created' });
-            }
+            res.status(400).json({
+                message: 'Invalid products',
+                invalidProducts,
+            });
         }
     } catch (error) {
         res.status(500).json({ message: 'Error creating the products' });
