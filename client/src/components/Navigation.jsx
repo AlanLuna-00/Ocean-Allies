@@ -1,23 +1,52 @@
 "use client";
+import useLogoutUser from "@/hooks/useLogoutUser";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function Navigation() {
-  const [isLoggedIn, setIsLoggedIn] = useState(true); // Cambiar a true para probar login o no
-  const [isAdmin, setIsAdmin] = useState(true); // Cambiar a false para probar usuario no administrador
+  const [isLoggedIn, setIsLoggedIn] = useState(false); // Cambiar a true para probar login o no
+  const [isAdmin, setIsAdmin] = useState(false); // Cambiar a false para probar usuario no administrador
   const [isMenuOpen, setMenuOpen] = useState(false);
+
+  const { logout } = useLogoutUser();
 
   const handleLogout = () => {
     setIsLoggedIn(false);
+    logout();
   };
+  useEffect(() => {
+    // Función para manejar el evento de cambio en el localStorage
+    const handleStorageChange = () => {
+      const user = localStorage.getItem("user");
+      const loggedIn = !!user;
+      setIsLoggedIn(loggedIn);
 
+      if (loggedIn) {
+        const { role } = JSON.parse(user);
+        setIsAdmin(role === "admin");
+      }
+    };
+
+    // Registrar el evento de cambio en el localStorage
+    window.addEventListener("storage", handleStorageChange);
+
+    // Verificar el estado de inicio de sesión al cargar el componente
+    handleStorageChange();
+
+    // Limpiar el evento al desmontar el componente
+    return () => {
+      window.removeEventListener("storage", handleStorageChange);
+    };
+  }, []);
   return (
     <nav className="bg-gray-800">
       <div className="max-w-9xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex-shrink-0 flex items-center ">
             <img src="/img/ocean.svg" alt="Logo" className="w-8 h-8 mr-2" />
-            <h1 className="bg-gradient-to-tr from-cyan-100 to-blue-600 bg-clip-text text-transparent text-xl font-bold ">Ocean Allies</h1>
+            <h1 className="bg-gradient-to-tr from-cyan-100 to-blue-600 bg-clip-text text-transparent text-xl font-bold ">
+              Ocean Allies
+            </h1>
           </div>
           <div className="hidden md:block">
             <div className="ml-auto flex items-baseline space-x-4">
