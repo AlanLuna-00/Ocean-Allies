@@ -5,7 +5,7 @@
         "description": "Description of Product 1",
         "price": 10,
         "category": "Clothing",
-        "stock": 100,
+        "stock": 5,
         "size": "M",
         "image": "https://d2r9epyceweg5n.cloudfront.net/stores/001/205/102/products/remera-lisa-vi-rj1-122009f0e7fe0bfa3715906956218434-480-0.jpg",
         "color": "Green"

@@ -7,8 +7,7 @@ const createPurchaseController = async (req, res) => {
         const purchase = await createPurchase(productId, userId);
         res.status(201).json({ msg: 'Compra realizada con éxito', purchase });
     } catch (error) {
-        console.log(error);
-        res.status(500).json({ msg: 'Error al crear la compra NASHE' });
+        res.status(500).json({ msg: error.message });
     }
 };
 
