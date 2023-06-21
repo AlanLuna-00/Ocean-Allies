@@ -36,7 +36,11 @@ const getAllProducts = async (
         }
 
         if (size) {
-            whereCondition.size = size;
+            whereCondition['size.' + size] = {
+                stock: {
+                    [Op.gt]: 0,
+                },
+            };
         }
 
         if (name) {

@@ -1,14 +1,15 @@
 [
     {
-        "id": "f0a0b708-564e-47ef-a650-41308f142049",
+        "id": "7f7e0710-bd4a-4080-9964-ccbb0a1a9a3f",
         "name": "AProduct 1",
         "description": "Description of Product 1",
-        "price": 10,
-        "category": "Clothing",
-        "stock": 5,
-        "size": "M",
-        "image": "https://d2r9epyceweg5n.cloudfront.net/stores/001/205/102/products/remera-lisa-vi-rj1-122009f0e7fe0bfa3715906956218434-480-0.jpg",
-        "color": "Green"
+        "price": 24,
+        "category": "Pants",
+        "size": {
+            "XS": { "stock": 4 }
+        },
+        "image": "https://cdn.fashiola.es/L604066493/under-armour-pantalon-pennant-woven-cargo-para-nino-downpour-gravel-gravel-g.jpg",
+        "color": "Blue"
     },
     {
         "id": "843fd317-6c95-4f81-81b6-93b123d52d7a",
@@ -16,8 +17,14 @@
         "description": "Description of Product 2",
         "price": 20,
         "category": "Clothing",
-        "stock": 50,
-        "size": "L",
+        "size": {
+            "XS": { "stock": 4 },
+            "S": { "stock": 9 },
+            "M": { "stock": 67 },
+            "L": { "stock": 33 },
+            "XL": { "stock": 35 },
+            "XXL": { "stock": 54 }
+        },
         "image": "https://d3ugyf2ht6aenh.cloudfront.net/stores/943/997/products/boy-marron1-17a822d3e01ce50ccc16676887357891-1024-1024.webp",
         "color": "Brown"
     },
@@ -27,8 +34,14 @@
         "description": "Description of Product 3",
         "price": 15,
         "category": "Clothing",
-        "stock": 80,
-        "size": "S",
+        "size": {
+            "XS": { "stock": 4 },
+            "S": { "stock": 9 },
+            "M": { "stock": 67 },
+            "L": { "stock": 33 },
+            "XL": { "stock": 35 },
+            "XXL": { "stock": 54 }
+        },
         "image": "https://www.cottonclub.com.ar/pub/media/catalog/product/cache/65e2670acbf1788249a95924f3789a80/7/0/705_negro_8_1_1_10.jpg",
         "color": "Black"
     },
@@ -38,8 +51,14 @@
         "description": "Description of Product 4",
         "price": 30,
         "category": "Clothing",
-        "stock": 60,
-        "size": "XL",
+        "size": {
+            "XS": { "stock": 4 },
+            "S": { "stock": 9 },
+            "M": { "stock": 67 },
+            "L": { "stock": 33 },
+            "XL": { "stock": 35 },
+            "XXL": { "stock": 54 }
+        },
         "image": "https://d2r9epyceweg5n.cloudfront.net/stores/001/205/102/products/remera-lisa-ro-rj-311-70b94603ae0bc70ca315911959189071-1024-1024.jpg",
         "color": "Red"
     },
@@ -49,8 +68,14 @@
         "description": "Description of Product 5",
         "price": 25,
         "category": "Jacket",
-        "stock": 120,
-        "size": "M",
+        "size": {
+            "XS": { "stock": 4 },
+            "S": { "stock": 9 },
+            "M": { "stock": 67 },
+            "L": { "stock": 33 },
+            "XL": { "stock": 35 },
+            "XXL": { "stock": 54 }
+        },
         "image": "https://www.dexter.com.ar/on/demandware.static/-/Sites-365-dabra-catalog/default/dwdcc72ec5/products/LONIFW230005/LONIFW230005-1.JPG",
         "color": "Green"
     },
@@ -60,8 +85,14 @@
         "description": "Description of Product 6",
         "price": 18,
         "category": "Jacket",
-        "stock": 70,
-        "size": "S",
+        "size": {
+            "XS": { "stock": 4 },
+            "S": { "stock": 9 },
+            "M": { "stock": 67 },
+            "L": { "stock": 33 },
+            "XL": { "stock": 35 },
+            "XXL": { "stock": 54 }
+        },
         "image": "https://www.dexter.com.ar/on/demandware.static/-/Sites-365-dabra-catalog/default/dwc2eafee5/products/LONIFW23920/LONIFW23920-1.JPG",
         "color": "Black"
     },
@@ -71,8 +102,14 @@
         "description": "Description of Product 7",
         "price": 12,
         "category": "Jacket",
-        "stock": 90,
-        "size": "L",
+        "size": {
+            "XS": { "stock": 4 },
+            "S": { "stock": 9 },
+            "M": { "stock": 67 },
+            "L": { "stock": 33 },
+            "XL": { "stock": 35 },
+            "XXL": { "stock": 54 }
+        },
         "image": "https://http2.mlstatic.com/D_NQ_NP_929585-MLA54818524461_042023-O.webp",
         "color": "Blue"
     },
@@ -82,8 +119,14 @@
         "description": "Description of Product 8",
         "price": 22,
         "category": "Jacket",
-        "stock": 40,
-        "size": "M",
+        "size": {
+            "XS": { "stock": 4 },
+            "S": { "stock": 9 },
+            "M": { "stock": 67 },
+            "L": { "stock": 33 },
+            "XL": { "stock": 35 },
+            "XXL": { "stock": 54 }
+        },
         "image": "https://www.digitalsport.com.ar/files/products/6112a7ca63293-564270-500x500.jpg",
         "color": "Black"
     },
@@ -93,8 +136,14 @@
         "description": "Description of Product 9",
         "price": 28,
         "category": "Pants",
-        "stock": 60,
-        "size": "L",
+        "size": {
+            "XS": { "stock": 4 },
+            "S": { "stock": 9 },
+            "M": { "stock": 67 },
+            "L": { "stock": 33 },
+            "XL": { "stock": 35 },
+            "XXL": { "stock": 54 }
+        },
         "image": "https://d3ugyf2ht6aenh.cloudfront.net/stores/903/627/products/cargo-thorn1-10bef3610d1e937af116564434212455-640-0.webp",
         "color": "Black"
     },
@@ -104,8 +153,14 @@
         "description": "Description of Product 10",
         "price": 14,
         "category": "Pants",
-        "stock": 80,
-        "size": "S",
+        "size": {
+            "XS": { "stock": 4 },
+            "S": { "stock": 9 },
+            "M": { "stock": 67 },
+            "L": { "stock": 33 },
+            "XL": { "stock": 35 },
+            "XXL": { "stock": 54 }
+        },
         "image": "https://www.chefuniforms.com/dw/image/v2/BGPS_PRD/on/demandware.static/-/Sites-UAMasterCatalog/default/dw516d9911/115231/115231_BLACK_1_S.jpg?sw=600&sh=890&sm=fit",
         "color": "Black"
     },
@@ -115,19 +170,31 @@
         "description": "Description of Product 11",
         "price": 32,
         "category": "Pants",
-        "stock": 55,
-        "size": "M",
+        "size": {
+            "XS": { "stock": 4 },
+            "S": { "stock": 9 },
+            "M": { "stock": 67 },
+            "L": { "stock": 33 },
+            "XL": { "stock": 35 },
+            "XXL": { "stock": 54 }
+        },
         "image": "https://www.uniformadvantage.com/dw/image/v2/BGPS_PRD/on/demandware.static/-/Sites-UAMasterCatalog/default/dw6c47c721/11501/11501_BLACK_1_S.jpg?sw=600&sh=890&sm=fit",
         "color": "Gray"
     },
     {
-        "id": "7f7e0710-bd4a-4080-9964-ccbb0a1a9a3f",
+        "id": "7f7e0710-bd4a-4080-9964-ccbb0a1a9ae5",
         "name": "MProduct 12",
         "description": "Description of Product 12",
         "price": 24,
         "category": "Pants",
-        "stock": 85,
-        "size": "L",
+        "size": {
+            "XS": { "stock": 4 },
+            "S": { "stock": 9 },
+            "M": { "stock": 67 },
+            "L": { "stock": 33 },
+            "XL": { "stock": 35 },
+            "XXL": { "stock": 54 }
+        },
         "image": "https://cdn.fashiola.es/L604066493/under-armour-pantalon-pennant-woven-cargo-para-nino-downpour-gravel-gravel-g.jpg",
         "color": "Blue"
     },
@@ -137,8 +204,14 @@
         "description": "Description of Product 13",
         "price": 17,
         "category": "BackPack",
-        "stock": 95,
-        "size": "S",
+        "size": {
+            "XS": { "stock": 4 },
+            "S": { "stock": 9 },
+            "M": { "stock": 67 },
+            "L": { "stock": 33 },
+            "XL": { "stock": 35 },
+            "XXL": { "stock": 54 }
+        },
         "image": "https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/c4a031dff9844b31bfddac8900b9c0df_9366/Mochila_Classic_Adicolor_UNISEX_Azul_GQ4178_01_standard.jpg",
         "color": "Blue"
     },
@@ -148,8 +221,14 @@
         "description": "Description of Product 14",
         "price": 29,
         "category": "BackPack",
-        "stock": 65,
-        "size": "XL",
+        "size": {
+            "XS": { "stock": 4 },
+            "S": { "stock": 9 },
+            "M": { "stock": 67 },
+            "L": { "stock": 33 },
+            "XL": { "stock": 35 },
+            "XXL": { "stock": 54 }
+        },
         "image": "https://http2.mlstatic.com/D_NQ_NP_662674-MLA54428128429_032023-O.webp",
         "color": "Gray"
     },
@@ -159,8 +238,14 @@
         "description": "Description of Product 15",
         "price": 21,
         "category": "BackPack",
-        "stock": 105,
-        "size": "M",
+        "size": {
+            "XS": { "stock": 4 },
+            "S": { "stock": 9 },
+            "M": { "stock": 67 },
+            "L": { "stock": 33 },
+            "XL": { "stock": 35 },
+            "XXL": { "stock": 54 }
+        },
         "image": "https://http2.mlstatic.com/D_NQ_NP_926019-MLA54428106465_032023-O.webp",
         "color": "Blue"
     },
@@ -170,8 +255,14 @@
         "description": "Description of Product 16",
         "price": 13,
         "category": "BackPack",
-        "stock": 45,
-        "size": "L",
+        "size": {
+            "XS": { "stock": 4 },
+            "S": { "stock": 9 },
+            "M": { "stock": 67 },
+            "L": { "stock": 33 },
+            "XL": { "stock": 35 },
+            "XXL": { "stock": 54 }
+        },
         "image": "https://http2.mlstatic.com/D_NQ_NP_629618-MLA54427881383_032023-O.webp",
         "color": "Black"
     },
@@ -181,8 +272,14 @@
         "description": "Description of Product 17",
         "price": 26,
         "category": "BagsEco",
-        "stock": 115,
-        "size": "S",
+        "size": {
+            "XS": { "stock": 4 },
+            "S": { "stock": 9 },
+            "M": { "stock": 67 },
+            "L": { "stock": 33 },
+            "XL": { "stock": 35 },
+            "XXL": { "stock": 54 }
+        },
         "image": "https://cdn.shopify.com/s/files/1/0378/9747/0091/products/deckcopy_800x800.webp?v=1682240430",
         "color": "Blue"
     },
@@ -192,8 +289,14 @@
         "description": "Description of Product 18",
         "price": 19,
         "category": "BagsEco",
-        "stock": 50,
-        "size": "XL",
+        "size": {
+            "XS": { "stock": 4 },
+            "S": { "stock": 9 },
+            "M": { "stock": 67 },
+            "L": { "stock": 33 },
+            "XL": { "stock": 35 },
+            "XXL": { "stock": 54 }
+        },
         "image": "https://cdn.shopify.com/s/files/1/0378/9747/0091/products/DSC02473copy_800x800.webp?v=1682080766",
         "color": "White"
     },
@@ -203,8 +306,10 @@
         "description": "Description of Product 19",
         "price": 31,
         "category": "BagsEco",
-        "stock": 60,
-        "size": "M",
+        "size": {
+            "XL": { "stock": 35 },
+            "XXL": { "stock": 54 }
+        },
         "image": "https://cdn.shopify.com/s/files/1/0378/9747/0091/products/96251298_227238675232304_1194681613359775744_ncopy_800x800.webp?v=1682080742",
         "color": "Blue"
     },
@@ -214,8 +319,9 @@
         "description": "Description of Product 20",
         "price": 23,
         "category": "BagsEco",
-        "stock": 80,
-        "size": "L",
+        "size": {
+            "XS": { "stock": 4 }
+        },
         "image": "https://cdn.shopify.com/s/files/1/0378/9747/0091/products/COP_totebag_trashcopy_800x800.webp?v=1682080722",
         "color": "White"
     }
