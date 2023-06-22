@@ -33,20 +33,25 @@ const getUserByIdService = async (userId) => {
     }
 };
 
-const updateUserService = async (userId, name, email, active) => {
-    try {
-        const user = await User.findByPk(userId);
-        if (!user) {
-            throw new Error('Usuario no encontrado');
-        }
-        user.name = name;
-        user.email = email;
-        user.active = active;
-        await user.save();
-        return user;
-    } catch (error) {
-        throw new Error('Error al actualizar el usuario');
+const updateUserService = async (userId, updates) => {
+  try {
+    const user = await User.findByPk(userId);
+    if (!user) {
+      throw new Error('Usuario no encontrado');
     }
+
+    // Actualizar los campos proporcionados en el objeto `updates`
+    Object.keys(updates).forEach((key) => {
+      user[key] = updates[key];
+    });
+
+    // Guardar los cambios en la base de datos
+    await user.save();
+
+    return user;
+  } catch (error) {
+    throw new Error('Error al actualizar el usuario');
+  }
 };
 
 const deleteUserService = async (userId) => {
