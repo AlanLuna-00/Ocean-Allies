@@ -1,11 +1,13 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
+import AuthContext from "../context/AuthContext";
 
 const useLogin = () => {
   const router = useRouter();
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const { handleLogin } = useContext(AuthContext);
 
   const login = async (credentials) => {
     setIsLoading(true);
@@ -26,6 +28,7 @@ const useLogin = () => {
       localStorage.setItem("token", JSON.stringify(response.data.token));
       localStorage.setItem("user", JSON.stringify(response.data.user));
       setIsLoading(false);
+      handleLogin(response.data.user);
       router.push("/home"); // Redireccionar al home después del inicio de sesión
     } catch (error) {
       setIsLoading(false);

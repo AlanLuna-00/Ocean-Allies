@@ -3,6 +3,7 @@ import { Akshar } from "next/font/google";
 import Navigation from "../components/Navigation";
 import Footer from "@/components/Footer";
 import Providers from "../store/provider";
+import { AuthProvider } from "../context/AuthContext";
 
 const akshar = Akshar({
   subsets: ["latin"],
@@ -21,17 +22,19 @@ export default function RootLayout({ children }) {
       className="bg-gradient-to-r from-slate-100 via-sky-50 to-slate-100 "
     >
       <Providers>
-        <head>
-          <link
-            href="https://fonts.googleapis.com/css2?family=Akshar:wght@400;700&display=swap"
-            rel="stylesheet"
-          />
-        </head>
-        <body className={akshar.className}>
-          <Navigation />
-          {children}
-          <Footer />
-        </body>
+        <AuthProvider>
+          <head>
+            <link
+              href="https://fonts.googleapis.com/css2?family=Akshar:wght@400;700&display=swap"
+              rel="stylesheet"
+            />
+          </head>
+          <body className={akshar.className}>
+            <Navigation />
+            <main>{children}</main>
+            <Footer />
+          </body>
+        </AuthProvider>
       </Providers>
     </html>
   );

@@ -1,43 +1,12 @@
 "use client";
-import useLogoutUser from "@/hooks/useLogoutUser";
+import { useContext, useState } from "react";
+import AuthContext from "../context/AuthContext"; // Corregir la ruta de importación
 import Link from "next/link";
-import { useEffect, useState } from "react";
 
 function Navigation() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false); // Cambiar a true para probar login o no
-  const [isAdmin, setIsAdmin] = useState(false); // Cambiar a false para probar usuario no administrador
   const [isMenuOpen, setMenuOpen] = useState(false);
+  const { isLoggedIn, isAdmin, handleLogout } = useContext(AuthContext);
 
-  const { logout } = useLogoutUser();
-
-  const handleLogout = () => {
-    setIsLoggedIn(false);
-    logout();
-  };
-  useEffect(() => {
-    // Función para manejar el evento de cambio en el localStorage
-    const handleStorageChange = () => {
-      const user = localStorage.getItem("user");
-      const loggedIn = !!user;
-      setIsLoggedIn(loggedIn);
-
-      if (loggedIn) {
-        const { role } = JSON.parse(user);
-        setIsAdmin(role === "admin");
-      }
-    };
-
-    // Registrar el evento de cambio en el localStorage
-    window.addEventListener("storage", handleStorageChange);
-
-    // Verificar el estado de inicio de sesión al cargar el componente
-    handleStorageChange();
-
-    // Limpiar el evento al desmontar el componente
-    return () => {
-      window.removeEventListener("storage", handleStorageChange);
-    };
-  }, []);
   return (
     <nav className="bg-gray-800">
       <div className="max-w-9xl mx-auto px-4 sm:px-6 lg:px-8">
