@@ -441,31 +441,27 @@ const Shop = () => {
                       </div>
                     ) : (
                       merchList.map((product) => (
-                        <div>
-                          <div
-                            key={product.id}
-                            className="bg-white rounded-lg p-4"
-                          >
-                            <Link href={`/detail/${product.id}`}>
-                              <div>
-                                <img
-                                  src={product.image}
-                                  alt={product.name}
-                                  className=" max-w-max h-52 mb-2"
-                                />
-                                <h3 className="text-gray-800 font-semibold">
-                                  {product.name}
-                                </h3>
-                                <p className="text-gray-600">
-                                  ${product.price}
-                                </p>
-                              </div>
-                            </Link>
-                            <button className="bg-gray-800 text-white flex items-center justify-center w-full rounded-lg py-2 mt-4">
-                              <ShoppingCartIcon className="h-5 w-5 mr-2" />
-                              Add to Cart
-                            </button>
-                          </div>
+                        <div
+                          key={product.id}
+                          className="bg-white rounded-lg p-4"
+                        >
+                          <Link href={`/detail/${product.id}`}>
+                            <div>
+                              <img
+                                src={product.image}
+                                alt={product.name}
+                                className=" max-w-max h-52 mb-2"
+                              />
+                              <h3 className="text-gray-800 font-semibold">
+                                {product.name}
+                              </h3>
+                              <p className="text-gray-600">${product.price}</p>
+                            </div>
+                          </Link>
+                          <button className="bg-gray-800 text-white flex items-center justify-center w-full rounded-lg py-2 mt-4">
+                            <ShoppingCartIcon className="h-5 w-5 mr-2" />
+                            Add to Cart
+                          </button>
                         </div>
                       ))
                     )}

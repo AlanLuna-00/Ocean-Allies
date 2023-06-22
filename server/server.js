@@ -42,9 +42,10 @@ class Server {
                     'X-Requested-With',
                     'Content-Type',
                     'Accept',
+                    'Authorization',
                 ],
                 credentials: true,
-                origin: ['http://localhost:3000'],
+                origin: ['http://localhost:3000', '*'],
                 methods: ['GET', 'POST', 'PUT', 'DELETE'],
             })
         );
