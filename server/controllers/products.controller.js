@@ -16,6 +16,7 @@ const getAllProductsController = async (req, res) => {
         const name = req.query.name || '';
         const sort = req.query.sort || null;
         const color = req.query.color || null;
+        const gender = req.query.gender || null;
 
         const result = await getAllProducts(
             page,
@@ -25,7 +26,8 @@ const getAllProductsController = async (req, res) => {
             size,
             name,
             sort,
-            color
+            color,
+            gender
         );
 
         if (!result) {
@@ -123,6 +125,7 @@ const productSchema = Joi.object({
         }),
     color: Joi.string().required(),
     image: Joi.string().required(),
+    gender: Joi.string().valid('Man', 'Woman', 'Unisex').required(), // Agregar la validación del campo "gender"
 });
 
 const createProductController = async (req, res) => {
