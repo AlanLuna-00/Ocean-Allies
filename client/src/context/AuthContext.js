@@ -9,6 +9,7 @@ export const AuthProvider = ({ children }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
   const { logout } = useLogoutUser();
+  const [cart, setCart] = useState([]);
 
   const handleLogin = (user) => {
     setIsLoggedIn(true);
@@ -21,6 +22,20 @@ export const AuthProvider = ({ children }) => {
     logout();
   };
 
+  const addToCart = (product) => {
+    setCart((prevCartItems) => [...prevCartItems, product]);
+  };
+
+  const removeFromCart = (productId) => {
+    setCart((prevCartItems) =>
+      prevCartItems.filter((item) => item.id !== productId)
+    );
+  };
+
+  const clearCart = () => {
+    setCart([]);
+  };
+
   return (
     <AuthContext.Provider
       value={{
@@ -28,6 +43,9 @@ export const AuthProvider = ({ children }) => {
         isAdmin,
         handleLogin,
         handleLogout,
+        cart,
+        addToCart,
+        removeFromCart,
       }}
     >
       {children}

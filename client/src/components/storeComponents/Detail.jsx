@@ -1,6 +1,47 @@
+"use client";
 import React from "react";
+import { useContext, useState } from "react";
+import AuthContext from "@/context/AuthContext";
 
 export default function Test({ product }) {
+  const { addToCart, cart } = useContext(AuthContext);
+  const [selectedSizes, setSelectedSizes] = useState({});
+  const [selectedQuantity, setSelectedQuantity] = useState(1);
+
+  const handleAddToCart = () => {
+    const sizesToAdd = {};
+    Object.entries(selectedSizes).forEach(([size, quantity]) => {
+      if (quantity > 0) {
+        sizesToAdd[size] = quantity;
+      }
+    });
+
+    const productToAdd = {
+      id: product.id,
+      sizes: sizesToAdd,
+      name: product.name,
+      description: product.description,
+      color: product.color,
+      price: product.price,
+      image: product.image,
+    };
+
+    addToCart(productToAdd);
+    console.log(cart);
+  };
+
+  const handleSizeChange = (size, e) => {
+    const quantity = Number(e.target.value);
+    setSelectedSizes((prevSelectedSizes) => ({
+      ...prevSelectedSizes,
+      [size]: quantity,
+    }));
+  };
+
+  const handleQuantityChange = (e) => {
+    setSelectedQuantity(Number(e.target.value));
+  };
+
   return (
     <div className="bg-white">
       <div className="pt-6">
@@ -39,14 +80,38 @@ export default function Test({ product }) {
             <div className="py-4 border-b border-gray-200">
               <p className="text-base leading-4 text-gray-800">Sizes</p>
               <br />
-              <div className="flex items-center justify-center space-x-4">
+              <div className="flex items-center justify-center">
                 {Object.entries(product.size).map(([size, stock]) => (
-                  <button
-                    key={size}
-                    className="text-sm leading-none text-gray-600 border border-gray-300 rounded-md px-3 py-1"
-                  >
-                    {size}: {stock.stock}
-                  </button>
+                  <div key={size} className="flex items-center">
+                    <button
+                      className={`text-sm leading-none text-gray-600 border ${
+                        selectedSizes[size]
+                          ? "border-indigo-500"
+                          : "border-gray-300"
+                      } rounded-md px-3 py-1 mr-2`}
+                      onClick={() =>
+                        setSelectedSizes((prevSelectedSizes) => ({
+                          ...prevSelectedSizes,
+                          [size]: selectedSizes[size] ? 0 : selectedQuantity,
+                        }))
+                      }
+                    >
+                      {size}: {stock.stock}
+                    </button>
+                    {selectedSizes[size] && (
+                      <select
+                        className="text-sm leading-none text-gray-600 border border-gray-300 rounded-md px-3 py-1"
+                        value={selectedSizes[size]}
+                        onChange={(e) => handleSizeChange(size, e)}
+                      >
+                        {[...Array(stock.stock)].map((_, i) => (
+                          <option key={i + 1} value={i + 1}>
+                            {i + 1}
+                          </option>
+                        ))}
+                      </select>
+                    )}
+                  </div>
                 ))}
               </div>
             </div>
@@ -73,6 +138,7 @@ export default function Test({ product }) {
             <button
               type="submit"
               className="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+              onClick={handleAddToCart}
             >
               Add to bag
             </button>

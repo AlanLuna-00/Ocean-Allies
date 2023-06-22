@@ -17,8 +17,11 @@ import {
   ShoppingCartIcon,
 } from "@heroicons/react/20/solid";
 import { setFilterList } from "@/store/Slices/Filters";
+import { useContext } from "react";
+import AuthContext from "@/context/AuthContext";
 
 const Shop = () => {
+  const { cart } = useContext(AuthContext);
   const dispatch = useDispatch();
   const [error, setError] = useState();
   const [paginationData, setPaginationData] = useState({
@@ -28,6 +31,8 @@ const Shop = () => {
     nextPage: null,
     previousPage: null,
   });
+
+  console.log(cart);
 
   const filters = useSelector((state) => state.filters.list);
 
@@ -458,10 +463,13 @@ const Shop = () => {
                               <p className="text-gray-600">${product.price}</p>
                             </div>
                           </Link>
-                          <button className="bg-gray-800 text-white flex items-center justify-center w-full rounded-lg py-2 mt-4">
-                            <ShoppingCartIcon className="h-5 w-5 mr-2" />
-                            Add to Cart
-                          </button>
+                          <Link
+                            className="bg-gray-800 text-white flex items-center justify-center w-full rounded-lg py-2 mt-4"
+                            href={`/detail/${product.id}`}
+                          >
+                            {/* <ShoppingCartIcon className="h-5 w-5 mr-2" /> */}
+                            Go to Detail
+                          </Link>
                         </div>
                       ))
                     )}
