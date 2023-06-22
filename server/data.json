@@ -5,6 +5,7 @@
         "description": "Description of Product 1",
         "price": 24,
         "category": "T-shirts",
+        "gender": "Woman",
         "size": {
             "XS": { "stock": 4 }
         },
@@ -17,6 +18,7 @@
         "description": "Description of Product 2",
         "price": 20,
         "category": "T-shirts",
+        "gender": "Woman",
         "size": {
             "XS": { "stock": 4 },
             "S": { "stock": 9 },
@@ -34,6 +36,7 @@
         "description": "Description of Product 3",
         "price": 15,
         "category": "T-shirts",
+        "gender": "Man",
         "size": {
             "XS": { "stock": 4 },
             "S": { "stock": 9 },
@@ -51,6 +54,7 @@
         "description": "Description of Product 4",
         "price": 30,
         "category": "T-shirts",
+        "gender": "Man",
         "size": {
             "XS": { "stock": 4 },
             "S": { "stock": 9 },
@@ -68,6 +72,7 @@
         "description": "Description of Product 5",
         "price": 25,
         "category": "Jacket",
+        "gender": "Man",
         "size": {
             "XS": { "stock": 4 },
             "S": { "stock": 9 },
@@ -85,6 +90,7 @@
         "description": "Description of Product 6",
         "price": 18,
         "category": "Jacket",
+        "gender": "Man",
         "size": {
             "XS": { "stock": 4 },
             "S": { "stock": 9 },
@@ -102,6 +108,7 @@
         "description": "Description of Product 7",
         "price": 12,
         "category": "Jacket",
+        "gender": "Man",
         "size": {
             "XS": { "stock": 4 },
             "S": { "stock": 9 },
@@ -119,6 +126,7 @@
         "description": "Description of Product 8",
         "price": 22,
         "category": "Jacket",
+        "gender": "Man",
         "size": {
             "XS": { "stock": 4 },
             "S": { "stock": 9 },
@@ -136,6 +144,7 @@
         "description": "Description of Product 9",
         "price": 28,
         "category": "Tank tops",
+        "gender": "Man",
         "size": {
             "XS": { "stock": 4 },
             "S": { "stock": 9 },
@@ -153,6 +162,7 @@
         "description": "Description of Product 10",
         "price": 14,
         "category": "Tank tops",
+        "gender": "Man",
         "size": {
             "XS": { "stock": 4 },
             "S": { "stock": 9 },
@@ -170,6 +180,7 @@
         "description": "Description of Product 11",
         "price": 32,
         "category": "Tank tops",
+        "gender": "Man",
         "size": {
             "XS": { "stock": 4 },
             "S": { "stock": 9 },
@@ -187,6 +198,7 @@
         "description": "Description of Product 12",
         "price": 24,
         "category": "Tank tops",
+        "gender": "Man",
         "size": {
             "XS": { "stock": 4 },
             "S": { "stock": 9 },
@@ -204,6 +216,7 @@
         "description": "Description of Product 13",
         "price": 17,
         "category": "Leggings",
+        "gender": "Woman",
         "size": {
             "XS": { "stock": 4 },
             "S": { "stock": 9 },
@@ -221,6 +234,7 @@
         "description": "Description of Product 14",
         "price": 29,
         "category": "Leggings",
+        "gender": "Woman",
         "size": {
             "XS": { "stock": 4 },
             "S": { "stock": 9 },
@@ -238,6 +252,7 @@
         "description": "Description of Product 15",
         "price": 21,
         "category": "Leggings",
+        "gender": "Woman",
         "size": {
             "XS": { "stock": 4 },
             "S": { "stock": 9 },
@@ -255,6 +270,7 @@
         "description": "Description of Product 16",
         "price": 13,
         "category": "Leggings",
+        "gender": "Woman",
         "size": {
             "XS": { "stock": 4 },
             "S": { "stock": 9 },
@@ -272,6 +288,7 @@
         "description": "Description of Product 17",
         "price": 26,
         "category": "Dresses",
+        "gender": "Woman",
         "size": {
             "XS": { "stock": 4 },
             "S": { "stock": 9 },
@@ -289,6 +306,7 @@
         "description": "Description of Product 18",
         "price": 19,
         "category": "Dresses",
+        "gender": "Woman",
         "size": {
             "XS": { "stock": 4 },
             "S": { "stock": 9 },
@@ -306,6 +324,7 @@
         "description": "Description of Product 19",
         "price": 31,
         "category": "Dresses",
+        "gender": "Woman",
         "size": {
             "XL": { "stock": 35 },
             "XXL": { "stock": 54 }
@@ -319,6 +338,7 @@
         "description": "Description of Product 20",
         "price": 23,
         "category": "Dresses",
+        "gender": "Woman",
         "size": {
             "XS": { "stock": 4 }
         },

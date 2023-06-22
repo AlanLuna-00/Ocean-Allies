@@ -32,6 +32,10 @@ const Product = (sequelize) => {
                 ),
                 allowNull: false,
             },
+            gender: {
+                type: DataTypes.ENUM('Man', 'Woman', 'Unisex'),
+                allowNull: false,
+            },
             image: {
                 type: DataTypes.STRING,
                 allowNull: false,
