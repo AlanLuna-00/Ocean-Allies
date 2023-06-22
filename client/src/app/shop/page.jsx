@@ -259,7 +259,7 @@ const Shop = () => {
                               <option value="Red">Red</option>
                               <option value="Blue">Blue</option>
                               <option value="Green">Green</option>
-                              <option value="Brown">Brown</option>
+                              <option value="Yellow">Yellow</option>
                               <option value="White">White</option>
                               <option value="Black">Black</option>
                               <option value="Gray">Gray</option>
@@ -410,7 +410,7 @@ const Shop = () => {
                           <option value="Red">Red</option>
                           <option value="Blue">Blue</option>
                           <option value="Green">Green</option>
-                          <option value="Brown">Brown</option>
+                          <option value="Yellow">Yellow</option>
                           <option value="White">White</option>
                           <option value="Black">Black</option>
                           <option value="Gray">Gray</option>
