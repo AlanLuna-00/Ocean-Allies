@@ -33,7 +33,7 @@ const getUserByIdService = async (userId) => {
     }
 };
 
-const updateUserService = async (userId, name, email, password, role) => {
+const updateUserService = async (userId, name, email, active) => {
     try {
         const user = await User.findByPk(userId);
         if (!user) {
@@ -41,8 +41,7 @@ const updateUserService = async (userId, name, email, password, role) => {
         }
         user.name = name;
         user.email = email;
-        user.password = password;
-        user.role = role;
+        user.active = active;
         await user.save();
         return user;
     } catch (error) {
