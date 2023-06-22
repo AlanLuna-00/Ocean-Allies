@@ -72,6 +72,7 @@ const Shop = () => {
 
   useEffect(() => {
     fetchMerchList();
+    console.log(filters);
     dispatch(setFilterList(filters));
   }, [filters]);
 
@@ -173,7 +174,7 @@ const Shop = () => {
                                 )
                               }
                             >
-                              <option defaultValue={null}>All</option>
+                              <option value="">All</option>
                               <option value="Clothing">Clothing</option>
                               <option value="Jacket">Jacket's</option>
                               <option value="Pants">Pant's</option>
@@ -201,7 +202,7 @@ const Shop = () => {
                                 )
                               }
                             >
-                              <option defaultValue={null}>All</option>
+                              <option value="">All</option>
                               <option value="desc">Highest</option>
                               <option value="asc">Lowest</option>
                             </select>
@@ -227,10 +228,12 @@ const Shop = () => {
                               }
                             >
                               <option defaultValue={null}>All</option>
+                              <option value="XS">XS</option>
                               <option value="S">S</option>
                               <option value="M">M</option>
                               <option value="L">L</option>
                               <option value="XL">XL</option>
+                              <option value="XXL">XXL</option>
                             </select>
                           </div>
                           {/* Color filter */}
@@ -352,7 +355,7 @@ const Shop = () => {
                             handleFilterChange(e.target.name, e.target.value)
                           }
                         >
-                          <option defaultValue={null}>All</option>
+                          <option value="">All</option>
                           <option value="Clothing">Clothing</option>
                           <option value="Jacket">Jacket's</option>
                           <option value="Pants">Pant's</option>
@@ -378,11 +381,13 @@ const Shop = () => {
                             handleFilterChange(e.target.name, e.target.value)
                           }
                         >
-                          <option defaultValue={null}>All</option>
+                          <option value="">All</option>
+                          <option value="XS">XS</option>
                           <option value="S">S</option>
                           <option value="M">M</option>
                           <option value="L">L</option>
                           <option value="XL">XL</option>
+                          <option value="XXL">XXL</option>
                         </select>
                       </div>
                       {/* Color filter */}
