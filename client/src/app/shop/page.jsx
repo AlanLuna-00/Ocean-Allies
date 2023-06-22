@@ -72,7 +72,6 @@ const Shop = () => {
 
   useEffect(() => {
     fetchMerchList();
-    console.log(filters);
     dispatch(setFilterList(filters));
   }, [filters]);
 
