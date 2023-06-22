@@ -12,7 +12,7 @@ const productRoute = Router();
 
 productRoute.get('/', getAllProductsController);
 productRoute.get('/:id', getProductByIdController);
-productRoute.post('/', createProductController);
+productRoute.post('/', verifyJWT, createProductController);
 productRoute.delete('/:id', verifyJWT, deleteProductController);
 productRoute.put('/:id', verifyJWT, updateProductController);
 
