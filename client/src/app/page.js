@@ -1,7 +1,9 @@
+"use client";
 import Header from "@/components/Header";
 import { useDispatch } from "react-redux";
-import { setMerchList } from "@/store/merchSlice";
+import { setMerchList } from "@/store/Slices/Merch";
 import axios from "axios";
+import { useEffect } from "react";
 
 function Page() {
   const dispatch = useDispatch();
