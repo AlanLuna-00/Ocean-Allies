@@ -24,11 +24,11 @@ const Product = (sequelize) => {
             },
             category: {
                 type: DataTypes.ENUM(
-                    'Clothing',
+                    'T-shirts',
                     'Jacket',
-                    'Pants',
-                    'BackPack',
-                    'BagsEco'
+                    'Tank tops',
+                    'Leggings',
+                    'Dresses'
                 ),
                 allowNull: false,
             },
