@@ -10,7 +10,8 @@ function Page() {
   const fetchMerchList = async () => {
     try {
       const response = await axios.get("http://localhost:8080/api/products");
-      dispatch(setMerchList(products));
+      dispatch(setMerchList(response.data.products));
+      console.log(response.data.products);
     } catch (error) {
       console.log(error);
     }
