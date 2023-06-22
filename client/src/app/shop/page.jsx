@@ -174,11 +174,11 @@ const Shop = () => {
                               }
                             >
                               <option value="">All</option>
-                              <option value="Clothing">Clothing</option>
+                              <option value="T-shirts">T-shirts</option>
                               <option value="Jacket">Jacket's</option>
-                              <option value="Pants">Pant's</option>
-                              <option value="BackPack">BackPack's</option>
-                              <option value="BagsEco">BagsEco's</option>
+                              <option value="Tank tops">Tank tops</option>
+                              <option value="Leggings">Leggings</option>
+                              <option value="Dresses">Dresses</option>
                             </select>
                           </div>
                           {/* Price filter */}
@@ -355,11 +355,11 @@ const Shop = () => {
                           }
                         >
                           <option value="">All</option>
-                          <option value="Clothing">Clothing</option>
+                          <option value="T-shirts">T-shirts</option>
                           <option value="Jacket">Jacket's</option>
-                          <option value="Pants">Pant's</option>
-                          <option value="BackPack">BackPack's</option>
-                          <option value="BagsEco">BagsEco's</option>
+                          <option value="Tank tops">Tank tops</option>
+                          <option value="Leggings">Leggings</option>
+                          <option value="Dresses">Dresses</option>
                         </select>
                       </div>
 
