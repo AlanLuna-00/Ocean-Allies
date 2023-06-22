@@ -271,6 +271,30 @@ const Shop = () => {
                             </select>
                           </div>
                           <div className="mb-2">
+                            <label
+                              htmlFor="color"
+                              className="block font-medium mb-1"
+                            >
+                              Gender
+                            </label>
+                            <select
+                              id="gender"
+                              name="gender"
+                              className="w-full border border-gray-300 rounded-lg p-2"
+                              value={filters.gender || ""}
+                              onChange={(e) =>
+                                handleFilterChange(
+                                  e.target.name,
+                                  e.target.value
+                                )
+                              }
+                            >
+                              <option value="">All</option>
+                              <option value="Man">Man</option>
+                              <option value="Woman">Woman</option>
+                            </select>
+                          </div>
+                          <div className="mb-2">
                             <button
                               className="w-full bg-gray-800 text-white rounded-lg py-2"
                               onClick={handleCleanFilters}
@@ -419,6 +443,27 @@ const Shop = () => {
                           <option value="White">White</option>
                           <option value="Black">Black</option>
                           <option value="Gray">Gray</option>
+                        </select>
+                      </div>
+                      <div className="mb-2">
+                        <label
+                          htmlFor="color"
+                          className="block font-medium mb-1"
+                        >
+                          Gender
+                        </label>
+                        <select
+                          id="gender"
+                          name="gender"
+                          className="w-full border border-gray-300 rounded-lg p-2"
+                          value={filters.gender || ""}
+                          onChange={(e) =>
+                            handleFilterChange(e.target.name, e.target.value)
+                          }
+                        >
+                          <option value="">All</option>
+                          <option value="Man">Man</option>
+                          <option value="Woman">Woman</option>
                         </select>
                       </div>
                       <div className="mb-2">
