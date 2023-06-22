@@ -1,21 +1,20 @@
 import React from "react";
-import Image from "next/image";
 
 export default function Test({ product }) {
   return (
-    <div className=" ">
+    <div className="bg-white">
       <div className="pt-6">
         {/* Image gallery */}
-        <div className="lg:flex lg:flex-row md:flex md:flex-row  mx-auto mt-6 max-w-2xl sm:px-6 bg-white ">
-          <div className="aspect-h-5 aspect-w-4 ">
+        <div className="lg:flex lg:flex-row md:flex md:flex-row mx-auto mt-6 max-w-2xl sm:px-6 bg-white">
+          <div className="aspect-h-5 aspect-w-4">
             <img
               src={product.image}
               alt={product.image}
-              className="max-w-max h-52  w-full object-cover object-center"
+              className="max-w-max h-52 w-full object-cover object-center"
             />
           </div>
           {/* Product info */}
-          <div className=" max-w-2xl px-4 pb-16 pt-10 sm:px-6 ">
+          <div className="max-w-2xl px-4 pb-16 pt-10 sm:px-6">
             <div className="border-b border-gray-200 pb-6">
               <p className="text-sm leading-none text-gray-600">
                 {product.category}
@@ -37,19 +36,24 @@ export default function Test({ product }) {
                 </p>
               </div>
             </div>
-            <div className="py-4 border-b border-gray-200 flex items-center justify-between">
-              <p className="text-base leading-4 text-gray-800">Size</p>
-              <div className="flex items-center justify-center">
-                <p className="text-sm leading-none text-gray-600 mr-3">
-                  {product.size}
-                </p>
+            <div className="py-4 border-b border-gray-200">
+              <p className="text-base leading-4 text-gray-800">Sizes</p>
+              <br />
+              <div className="flex items-center justify-center space-x-4">
+                {Object.entries(product.size).map(([size, stock]) => (
+                  <button
+                    key={size}
+                    className="text-sm leading-none text-gray-600 border border-gray-300 rounded-md px-3 py-1"
+                  >
+                    {size}: {stock.stock}
+                  </button>
+                ))}
               </div>
             </div>
-            <div className="mx-auto max-w-2xl px-4 pb-16 pt-10 sm:px-6 lg:grid  ">
+            <div className="mx-auto max-w-2xl px-4 pb-16 pt-10 sm:px-6 lg:grid">
               {/* Description and details */}
               <div>
                 <h3 className="sr-only">Description</h3>
-
                 <div className="space-y-6">
                   <p className="text-base text-gray-900">
                     {product.description}

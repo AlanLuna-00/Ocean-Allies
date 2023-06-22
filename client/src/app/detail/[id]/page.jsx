@@ -10,7 +10,6 @@ async function getDetail(id) {
       `http://localhost:8080/api/products/${id}`
     );
     const data = response.data;
-    console.log("/Detail---------DATA----------", data);
     return data;
   } catch (error) {
     console.error(error);
@@ -20,8 +19,8 @@ async function getDetail(id) {
 
 export default async function page({ params }) {
   const product = await getDetail(params.id);
-  // console.log("/Detail---------Producto---------", product);
-  // console.log('---------Params---------',params)
+
+  console.log(product);
 
   return (
     <div>
