@@ -7,14 +7,25 @@ export default function Test({ product }) {
   const { addToCart, userCart, loadUserCart } = useContext(AuthContext);
 
   useEffect(() => {
-    const id = JSON.parse(localStorage.getItem("user")).id;
-    loadUserCart(id); // Cargar el carrito del usuario al montar el componente
+    if (localStorage.getItem("user")) {
+      const id = JSON.parse(localStorage.getItem("user")).id;
+      loadUserCart(id); // Cargar el carrito del usuario al montar el componente
+    }
   }, []);
 
   const [selectedSizes, setSelectedSizes] = useState({});
   const [selectedQuantity, setSelectedQuantity] = useState(1);
 
   const handleAddToCart = () => {
+    if (!localStorage.getItem("user")) {
+      return alert("Debes iniciar sesión para agregar productos al carrito");
+    }
+    if (
+      Object.values(selectedSizes).every((size) => size === 0) ||
+      selectedQuantity === 0
+    ) {
+      return alert("Debes seleccionar al menos una talla y una cantidad");
+    }
     // Crear el objeto del producto a agregar al carrito
     const productToAdd = {
       id: product.id,

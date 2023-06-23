@@ -9,6 +9,7 @@ export const AuthProvider = ({ children }) => {
   const [isAdmin, setIsAdmin] = useState(false);
   const { logout } = useLogoutUser();
   const [userCart, setUserCart] = useState([]);
+  const [price, setPrice] = useState(0);
 
   const handleLogin = (user) => {
     setIsLoggedIn(true);
@@ -52,6 +53,17 @@ export const AuthProvider = ({ children }) => {
     updateUserCart(userId, []);
   };
 
+  // calculate total price of cart
+  useEffect(() => {
+    let total = 0;
+    userCart.forEach((item) => {
+      const sizes = Object.values(item.sizes);
+      const quantity = sizes.reduce((acc, curr) => acc + curr, 0);
+      total += item.price * quantity;
+    });
+    setPrice(total);
+  }, [userCart]);
+
   useEffect(() => {
     const loggedInUser = JSON.parse(localStorage.getItem("user"));
     if (loggedInUser) {
@@ -69,6 +81,7 @@ export const AuthProvider = ({ children }) => {
     removeFromCart,
     clearUserCart,
     loadUserCart,
+    price,
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
