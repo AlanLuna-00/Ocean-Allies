@@ -1,6 +1,9 @@
 import axios from "axios";
+import AuthContext from "@/context/AuthContext";
+import { useContext } from "react";
 
 const CheckoutButton = ({ price }) => {
+  const { clearUserCart } = useContext(AuthContext);
   const handleClick = async () => {
     try {
       const response = await axios.post(
@@ -9,6 +12,7 @@ const CheckoutButton = ({ price }) => {
           price: price,
         }
       );
+      clearUserCart(localStorage.getItem("user").id);
       const data = response.data;
       window.location.href = data.init_point;
     } catch (error) {
