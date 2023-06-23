@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 const Header = () => {
   return (
@@ -17,22 +18,39 @@ const Header = () => {
         >
           <div className="flex h-full items-center justify-center">
             <div className="px-6 text-center text-white md:px-12">
-              <div className="flex-shrink-0 flex justify-center ">
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 1, duration: 0.8 }}
+                className="flex-shrink-0 flex justify-center"
+              >
                 <img src="/img/ocean.svg" alt="Logo" className="w-8 h-8 mr-2" />
-                <h1 className=" mb-8 bg-gradient-to-tr from-cyan-100 to-blue-600 bg-clip-text text-transparent text-3xl font-bold ">
+                <h1 className="mb-8 bg-gradient-to-tr from-cyan-100 to-blue-600 bg-clip-text text-transparent text-3xl font-bold">
                   Ocean Allies
                 </h1>
-              </div>
+              </motion.div>
 
-              <h3 className="mb-8 text-3xl font-bold">
-                Where life and the aquatic world come together.
-              </h3>
-              <Link
-                href="/home"
-                className="inline-block rounded border-2 border-neutral-50 px-6 pb-[6px] pt-2 text-xs font-medium uppercase leading-normal text-neutral-50 transition duration-150 ease-in-out hover:border-neutral-100 hover:bg-neutral-500 hover:bg-opacity-10 hover:text-neutral-100 focus:border-neutral-100 focus:text-neutral-100 focus:outline-none focus:ring-0 active:border-neutral-200 active:text-neutral-200 dark:hover:bg-neutral-100 dark:hover:bg-opacity-10"
+              <motion.h3
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 1.9, duration: 0.8 }}
+                className="mb-8 text-3xl font-bold"
               >
-                Home
-              </Link>
+                Where life and the aquatic world come together.
+              </motion.h3>
+
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 3, duration: 0.8 }}
+              >
+                <Link
+                  href="/home"
+                  className="inline-block rounded border-2 border-neutral-50 px-6 pb-[6px] pt-2 text-xs font-medium uppercase leading-normal text-neutral-50 transition duration-150 ease-in-out hover:border-neutral-100 hover:bg-neutral-500 hover:bg-opacity-10 hover:text-neutral-100 focus:border-neutral-100 focus:text-neutral-100 focus:outline-none focus:ring-0 active:border-neutral-200 active:text-neutral-200 dark:hover:bg-neutral-100 dark:hover:bg-opacity-10"
+                >
+                  Home
+                </Link>
+              </motion.div>
             </div>
           </div>
         </div>
