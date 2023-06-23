@@ -3,6 +3,7 @@ import { Dialog, Transition } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import { useContext } from "react";
 import AuthContext from "@/context/AuthContext";
+import CheckoutButton from "./Checkoutbutton/CheckoutButton";
 
 const ShoppingCart = ({ open, setOpen }) => {
   const { cart, addToCart } = useContext(AuthContext);
@@ -115,7 +116,7 @@ const ShoppingCart = ({ open, setOpen }) => {
                           href="#"
                           className="flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
                         >
-                          Checkout
+                          <CheckoutButton />
                         </a>
                       </div>
                       <div className="mt-6 flex justify-center text-center text-sm text-gray-500">
