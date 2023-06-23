@@ -6,7 +6,11 @@ import AuthContext from "@/context/AuthContext";
 import CheckoutButton from "./Checkoutbutton/CheckoutButton";
 
 const ShoppingCart = ({ open, setOpen }) => {
-  const { cart, addToCart } = useContext(AuthContext);
+  const { userCart, removeFromCart } = useContext(AuthContext);
+
+  const id = JSON.parse(localStorage.getItem("user")).id;
+
+  console.log(userCart);
 
   return (
     <Transition.Root show={open} as={Fragment}>
@@ -60,40 +64,60 @@ const ShoppingCart = ({ open, setOpen }) => {
                             role="list"
                             className="-my-6 divide-y divide-gray-200"
                           >
-                            {cart.length === 0 ? (
-                              <p>Your cart is empty.</p>
+                            {userCart.length === 0 ? (
+                              <p className="text-sm text-gray-500">
+                                Your cart is empty.
+                              </p>
                             ) : (
-                              <ul role="list" className="space-y-4">
-                                {cart.map((product) => (
-                                  <li
-                                    key={product.id}
-                                    className="flex items-center space-x-4"
-                                  >
-                                    <img
-                                      src={product.image}
-                                      alt={product.name}
-                                      className="flex-none w-16 h-16 object-cover rounded-md"
-                                    />
-                                    <div className="flex-auto">
-                                      <h4 className="font-medium text-gray-900">
-                                        {product.name}
-                                      </h4>
-                                      <p className="text-gray-500">
-                                        {product.description}
-                                      </p>
-                                      <p className="text-gray-500">
-                                        {product.color}
-                                      </p>
-                                      <p className="text-gray-500">
-                                        ${product.price}
-                                      </p>
+                              <ul className="divide-y divide-gray-200">
+                                {userCart.map((item) => (
+                                  <li key={item.id} className="py-4 flex">
+                                    <div className="flex-shrink-0">
+                                      <img
+                                        className="h-10 w-10 rounded-md"
+                                        src={item.image}
+                                        alt={item.name}
+                                      />
                                     </div>
-                                    <button
-                                      onClick={() => removeFromCart(product.id)}
-                                      className="text-red-500"
-                                    >
-                                      Remove
-                                    </button>
+                                    <div className="ml-3 flex-1 space-y-1">
+                                      <p className="text-sm font-medium text-gray-900">
+                                        {item.name}
+                                      </p>
+                                      <p className="text-sm text-gray-500">
+                                        {item.description}
+                                      </p>
+                                      <p className="text-sm text-gray-500">
+                                        {item.color}
+                                      </p>
+                                      <p className="text-sm text-gray-500">
+                                        ${item.price}
+                                      </p>
+                                      <p className="text-sm text-gray-500">
+                                        {Object.entries(item.sizes).length >
+                                          0 &&
+                                          Object.entries(item.sizes).map(
+                                            (size) => {
+                                              return (
+                                                <p
+                                                  key={size[0]}
+                                                  className="text-sm text-gray-500"
+                                                >
+                                                  {size[0]}: {size[1]}
+                                                </p>
+                                              );
+                                            }
+                                          )}
+                                      </p>
+
+                                      <button
+                                        onClick={() =>
+                                          removeFromCart(item.id, id)
+                                        }
+                                        className="text-red-500 text-sm"
+                                      >
+                                        Remove
+                                      </button>
+                                    </div>
                                   </li>
                                 ))}
                               </ul>
@@ -112,10 +136,7 @@ const ShoppingCart = ({ open, setOpen }) => {
                         Shipping and taxes calculated at checkout.
                       </p>
                       <div className="mt-6">
-                        <span
-
-                          className="flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
-                        >
+                        <span className="flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700">
                           <CheckoutButton />
                         </span>
                       </div>

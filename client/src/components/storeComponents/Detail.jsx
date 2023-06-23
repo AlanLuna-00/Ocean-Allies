@@ -1,33 +1,42 @@
 "use client";
 import React from "react";
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import AuthContext from "@/context/AuthContext";
 
 export default function Test({ product }) {
-  const { addToCart, cart } = useContext(AuthContext);
+  const { addToCart, userCart, loadUserCart } = useContext(AuthContext);
+
+  useEffect(() => {
+    const id = JSON.parse(localStorage.getItem("user")).id;
+    loadUserCart(id); // Cargar el carrito del usuario al montar el componente
+  }, []);
+
   const [selectedSizes, setSelectedSizes] = useState({});
   const [selectedQuantity, setSelectedQuantity] = useState(1);
 
   const handleAddToCart = () => {
-    const sizesToAdd = {};
-    Object.entries(selectedSizes).forEach(([size, quantity]) => {
-      if (quantity > 0) {
-        sizesToAdd[size] = quantity;
-      }
-    });
-
+    // Crear el objeto del producto a agregar al carrito
     const productToAdd = {
       id: product.id,
-      sizes: sizesToAdd,
       name: product.name,
       description: product.description,
       color: product.color,
       price: product.price,
       image: product.image,
+      sizes: {},
     };
 
-    addToCart(productToAdd);
-    console.log(cart);
+    // Agregar las tallas seleccionadas al objeto del producto
+    Object.entries(selectedSizes).forEach(([size, quantity]) => {
+      if (quantity > 0) {
+        productToAdd.sizes[size] = quantity;
+      }
+    });
+
+    // Agregar el producto al carrito
+    const userId = JSON.parse(localStorage.getItem("user")).id;
+    addToCart(productToAdd, userId);
+    console.log(userCart);
   };
 
   const handleSizeChange = (size, e) => {
@@ -36,10 +45,6 @@ export default function Test({ product }) {
       ...prevSelectedSizes,
       [size]: quantity,
     }));
-  };
-
-  const handleQuantityChange = (e) => {
-    setSelectedQuantity(Number(e.target.value));
   };
 
   return (
