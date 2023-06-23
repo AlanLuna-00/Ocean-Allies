@@ -21,7 +21,6 @@ import { useContext } from "react";
 import AuthContext from "@/context/AuthContext";
 
 const Shop = () => {
-  const { cart } = useContext(AuthContext);
   const dispatch = useDispatch();
   const [error, setError] = useState();
   const [paginationData, setPaginationData] = useState({
@@ -31,8 +30,6 @@ const Shop = () => {
     nextPage: null,
     previousPage: null,
   });
-
-  console.log(cart);
 
   const filters = useSelector((state) => state.filters.list);
 

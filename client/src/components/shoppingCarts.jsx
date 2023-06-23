@@ -142,7 +142,7 @@ const ShoppingCart = ({ open, setOpen }) => {
                       </p>
                       <div className="mt-6">
                         <span className="flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700">
-                          <CheckoutButton />
+                          <CheckoutButton price={price} />
                         </span>
                       </div>
                       <div className="mt-6 flex justify-center text-center text-sm text-gray-500">
