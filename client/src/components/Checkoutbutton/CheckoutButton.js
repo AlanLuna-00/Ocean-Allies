@@ -12,7 +12,7 @@ const CheckoutButton = ({ price }) => {
           price: price,
         }
       );
-      clearUserCart(localStorage.getItem("user").id);
+      clearUserCart();
       const data = response.data;
       window.location.href = data.init_point;
     } catch (error) {
