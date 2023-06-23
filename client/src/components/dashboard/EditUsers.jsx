@@ -3,14 +3,12 @@ import { useEffect, useState } from "react";
 function ExampleModal({ user, updateUser }) {
   const [isOpen, setIsOpen] = useState(false);
 
-  const [formData, setFormData] = useState(
-      {
-          id: user.id,
-          name: user.name,
-          email: user.email,
-          role: user.role,
-        }
- );
+  const [formData, setFormData] = useState({
+    id: user.id,
+    name: user.name,
+    email: user.email,
+    role: user.role,
+  });
 
   const openModal = () => {
     setIsOpen(true);
@@ -28,26 +26,30 @@ function ExampleModal({ user, updateUser }) {
     }));
   };
 
+  const [checked, setChecked] = useState(formData.role === "admin");
+
   const handleSwitchChange = () => {
+    setChecked(!checked);
     setFormData((prevData) => ({
       ...prevData,
-      isActive: !prevData.isActive,
+      role: checked ? "user" : "admin",
     }));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     // Lógica para guardar los datos del formulario
-    updateUser(formData.id, formData.name, formData.email, formData.role)
+    updateUser(formData.id, formData.name, formData.email, formData.role);
 
     closeModal();
   };
 
   return (
     <div>
-        <button className="hover:text-blue-500 cursor-pointer"
-            onClick={openModal}
-        >
+      <button
+        className="hover:text-blue-500 cursor-pointer"
+        onClick={openModal}
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -62,7 +64,7 @@ function ExampleModal({ user, updateUser }) {
             d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10"
           />
         </svg>
-       </button>
+      </button>
 
       {isOpen && (
         <div className="fixed inset-0 flex items-center justify-center z-50">
@@ -105,14 +107,14 @@ function ExampleModal({ user, updateUser }) {
               </div>
 
               <div className="mb-4 flex items-center">
-                {/* <input
+                <input
                   className="mr-2 leading-tight"
                   type="checkbox"
                   id="isActive"
                   name="isActive"
-                  checked={formData.isActive}
+                  checked={checked}
                   onChange={handleSwitchChange}
-                /> */}
+                />
                 <label className="text-gray-700 font-bold" htmlFor="isActive">
                   Hacer Administrador
                 </label>
