@@ -48,7 +48,8 @@ export const AuthProvider = ({ children }) => {
     );
   };
 
-  const clearUserCart = (userId) => {
+  const clearUserCart = () => {
+    const userId = JSON.parse(localStorage.getItem("user")).id;
     setUserCart([]);
     updateUserCart(userId, []);
   };

@@ -186,38 +186,50 @@ export default function Test({ product }) {
 
             <h2 className="mt-8 text-base text-gray-900">Sizes</h2>
             <div className="flex items-center justify-center">
-              {Object.entries(product.size).map(([size, stock]) => (
-                <div key={size} className="flex items-center">
-                  <button
-                    className={`border text-sm leading-none text-gray-600 ${
-                      selectedSizes[size]
-                        ? "border-indigo-500"
-                        : "border-gray-300"
-                    } mr-2 rounded-md px-3 py-1`}
-                    onClick={() =>
-                      setSelectedSizes((prevSelectedSizes) => ({
-                        ...prevSelectedSizes,
-                        [size]: selectedSizes[size] ? 0 : selectedQuantity,
-                      }))
-                    }
-                  >
-                    {size}: {stock.stock}
-                  </button>
-                  {selectedSizes[size] && (
-                    <select
-                      className="rounded-md border border-gray-300 px-3 py-1 text-sm leading-none text-gray-600"
-                      value={selectedSizes[size]}
-                      onChange={(e) => handleSizeChange(size, e)}
+              {Object.entries(product.size)
+                .sort((a, b) => {
+                  const sizeOrder = {
+                    XS: 1,
+                    S: 2,
+                    M: 3,
+                    L: 4,
+                    XL: 5,
+                    XXL: 6,
+                  };
+                  return sizeOrder[a[0]] - sizeOrder[b[0]];
+                })
+                .map(([size, stock]) => (
+                  <div key={size} className="flex items-center">
+                    <button
+                      className={`border text-sm leading-none text-gray-600 ${
+                        selectedSizes[size]
+                          ? "border-indigo-500"
+                          : "border-gray-300"
+                      } mr-2 rounded-md px-3 py-1`}
+                      onClick={() =>
+                        setSelectedSizes((prevSelectedSizes) => ({
+                          ...prevSelectedSizes,
+                          [size]: selectedSizes[size] ? 0 : selectedQuantity,
+                        }))
+                      }
                     >
-                      {[...Array(stock.stock)].map((_, i) => (
-                        <option key={i + 1} value={i + 1}>
-                          {i + 1}
-                        </option>
-                      ))}
-                    </select>
-                  )}
-                </div>
-              ))}
+                      {size}: {stock.stock}
+                    </button>
+                    {selectedSizes[size] && (
+                      <select
+                        className="rounded-md border border-gray-300 px-3 py-1 text-sm leading-none text-gray-600"
+                        value={selectedSizes[size]}
+                        onChange={(e) => handleSizeChange(size, e)}
+                      >
+                        {[...Array(stock.stock)].map((_, i) => (
+                          <option key={i + 1} value={i + 1}>
+                            {i + 1}
+                          </option>
+                        ))}
+                      </select>
+                    )}
+                  </div>
+                ))}
             </div>
 
             <div className="mt-10 flex flex-col items-center justify-between space-y-4 border-b border-t py-4 sm:flex-row sm:space-y-0">
