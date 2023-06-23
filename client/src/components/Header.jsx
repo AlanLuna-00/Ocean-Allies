@@ -25,7 +25,7 @@ const Header = () => {
                 className="flex-shrink-0 flex justify-center"
               >
                 <img src="/img/ocean.svg" alt="Logo" className="w-8 h-8 mr-2" />
-                <h1 className="mb-8 bg-gradient-to-tr from-cyan-100 to-blue-600 bg-clip-text text-transparent text-3xl font-bold">
+                <h1 className="mb-8 bg-gradient-to-tr from-cyan-100 to-blue-600 bg-clip-text text-transparent text-5xl font-bold">
                   Ocean Allies
                 </h1>
               </motion.div>
@@ -46,7 +46,7 @@ const Header = () => {
               >
                 <Link
                   href="/home"
-                  className="inline-block rounded border-2 border-neutral-50 px-6 pb-[6px] pt-2 text-xs font-medium uppercase leading-normal text-neutral-50 transition duration-150 ease-in-out hover:border-neutral-100 hover:bg-neutral-500 hover:bg-opacity-10 hover:text-neutral-100 focus:border-neutral-100 focus:text-neutral-100 focus:outline-none focus:ring-0 active:border-neutral-200 active:text-neutral-200 dark:hover:bg-neutral-100 dark:hover:bg-opacity-10"
+                  className="inline-block rounded border-2 border-neutral-50 px-6 pb-[6px] pt-2 text-lg font-medium uppercase leading-normal text-neutral-50 transition duration-150 ease-in-out hover:border-neutral-100 hover:bg-neutral-500 hover:bg-opacity-10 hover:text-neutral-100 focus:border-neutral-100 focus:text-neutral-100 focus:outline-none focus:ring-0 active:border-neutral-200 active:text-neutral-200 dark:hover:bg-neutral-100 dark:hover:bg-opacity-10"
                 >
                   Home
                 </Link>
