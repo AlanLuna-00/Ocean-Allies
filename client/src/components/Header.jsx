@@ -17,7 +17,13 @@ const Header = () => {
         >
           <div className="flex h-full items-center justify-center">
             <div className="px-6 text-center text-white md:px-12">
-              <h1 className="mb-6 text-5xl font-bold">Ocean Allies</h1>
+              <div className="flex-shrink-0 flex justify-center ">
+                <img src="/img/ocean.svg" alt="Logo" className="w-8 h-8 mr-2" />
+                <h1 className=" mb-8 bg-gradient-to-tr from-cyan-100 to-blue-600 bg-clip-text text-transparent text-3xl font-bold ">
+                  Ocean Allies
+                </h1>
+              </div>
+
               <h3 className="mb-8 text-3xl font-bold">
                 Where life and the aquatic world come together.
               </h3>
