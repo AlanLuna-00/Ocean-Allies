@@ -1,12 +1,12 @@
+import axios from 'axios';
 import { useState } from 'react';
+
 
 const CheckoutButton = () => {
     const handleClick = async () => {
-        const response = await fetch("/api/create-order", {
-            method: "POST",
-        });
-        const data = await response.json();
-        window.location.href = data.preference.init_point;
+        const response = await axios.post("http://localhost:8080/api/payment/create-order")
+        const data = response.data;
+        window.location.href = data.init_point;
     };
 
     return (

@@ -3,45 +3,49 @@ const mercadopago = require('mercadopago');
 const createOrder = async (req, res) => {
     mercadopago.configure({
         access_token:
-            'TEST-6619587556601191-062220-c2d4ba69bb09fd7b7e6f3d555a38011d-1405925790',
+            'TEST-2813884876235311-062302-f4bf34cc3eabf346794efec484b6be97-1405925646',
     });
-
-    const result = await mercadopago.preferences.create({
-        items: [
-            {
-                title: 'Mi producto',
-                unit_price: 100,
-                currency_id: 'ARS',
-                quantity: 1,
+    try {
+        const result = await mercadopago.preferences.create({
+            items: [
+                {
+                    title: 'Mi producto',
+                    unit_price: 100,
+                    currency_id: 'ARS',
+                    quantity: 1,
+                },
+            ],
+            back_urls: {
+                success: 'http://localhost:3000',
+                // failure: 'http://localhost:8080/failure',
+                // pending: 'http://localhost:8080/pending',
             },
-        ],
+            notification_url: 'https://10ba-186-158-240-67.ngrok-free.app/webhook',
+        });
 
-        back_urls: {
-            success: 'http://localhost:8080/success',
-            failure: 'http://localhost:8080/failure',
-            pending: 'http://localhost:8080/pending',
-        },
-        notification_url: 'https://ed23-181-9-174-108.sa.ngrok.io/webhook',
-    });
+        // console.log("este es result", result);
 
-    console.log(result);
-
-    res.send(result.body);
+        res.send(result.body);
+    } catch (error) {
+        return res.status(500).json({ message: "Something goes wrong" });
+    }
 };
 
 const receiveWebhook = async (req, res) => {
-    const payment = req.query;
+
     try {
-        if (payment.type === 'payment') {
-            const data = await mercadopago.payment.findById(payment['data.id']);
+        const payment = req.body;
+        console.log("ESTE ES PAYMENT", payment);
+        if (payment.type === "payment") {
+            const data = await mercadopago.payment.findById(payment["data.id"]);
             console.log(data);
         }
 
         res.sendStatus(204);
     } catch (error) {
         console.log(error);
-        return res.sendStatus(500).json({ error: error.message });
-    }
-};
+        return res.status(500).json({ message: "Something goes wrong" });
+    };
+}
 
 module.exports = { createOrder, receiveWebhook };
