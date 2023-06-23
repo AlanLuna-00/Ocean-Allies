@@ -34,6 +34,7 @@ function Slidebar() {
           </div>
         </div>
       </Link>
+
       <Link
         href="#"
         className="hover:bg-white/10 transition duration-150 ease-linear rounded-lg py-3 px-2 group"
@@ -68,6 +69,7 @@ function Slidebar() {
           </div>
         </div>
       </Link>
+
       <Link
         href="/dashboard/users"
         className="hover:bg-white/10 transition duration-150 ease-linear rounded-lg py-3 px-2 group"
@@ -95,6 +97,38 @@ function Slidebar() {
             </p>
             <p className="text-slate-400 text-sm hidden md:block">
               Manage users
+            </p>
+          </div>
+        </div>
+      </Link>
+
+      <Link
+        href="/dashboard/products"
+        className="hover:bg-white/10 transition duration-150 ease-linear rounded-lg py-3 px-2 group"
+      >
+        <div className="flex flex-col space-y-2 md:flex-row md:space-y-0 space-x-2 items-center">
+          <div>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              className="w-6 h-6"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M7 20a1 1 0 01-1-1V8a1 1 0 011-1h10a1 1 0 011 1v11a1 1 0 01-1 1H7zm6-18a2 2 0 00-2 2v1a2 2 0 002 2h3l-1 5h-4l1-5H7a2 2 0 00-2 2v1a2 2 0 002 2h3l-1 5-2 1-2-1-1-5h2l-1 5h6l-1-5h2l-1 5h2l-1-5h3a2 2 0 002-2V6a2 2 0 00-2-2h-4z"
+              />
+            </svg>
+          </div>
+          <div>
+            <p className="font-bold text-base lg:text-lg text-slate-200 leading-4 group-hover:text-indigo-400">
+              Products
+            </p>
+            <p className="text-slate-400 text-sm hidden md:block">
+              Products users
             </p>
           </div>
         </div>

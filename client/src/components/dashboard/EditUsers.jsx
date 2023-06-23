@@ -1,4 +1,7 @@
 import { useEffect, useState } from "react";
+// useEffect(()=>{
+//   return (()=> { accion que quiero ejecutar}
+//   },[])
 
 function ExampleModal({ user, updateUser }) {
   const [isOpen, setIsOpen] = useState(false);
