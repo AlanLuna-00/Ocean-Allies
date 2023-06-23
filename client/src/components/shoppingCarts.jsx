@@ -8,7 +8,9 @@ import CheckoutButton from "./Checkoutbutton/CheckoutButton";
 const ShoppingCart = ({ open, setOpen }) => {
   const { userCart, removeFromCart } = useContext(AuthContext);
 
-  const id = JSON.parse(localStorage.getItem("user")).id;
+  if (localStorage.getItem("user")) {
+    const id = JSON.parse(localStorage.getItem("user")).id;
+  }
 
   console.log(userCart);
 
