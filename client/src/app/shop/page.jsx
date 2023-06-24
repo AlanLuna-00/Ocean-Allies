@@ -39,7 +39,7 @@ const Shop = () => {
 
   const fetchMerchList = async () => {
     try {
-      const response = await axios.get("http://localhost:8080/api/products", {
+      const response = await axios.get("http://localhost:8080/api/products?active=true", {
         params: filters,
       });
       if (response.status == 204) {

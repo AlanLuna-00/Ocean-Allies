@@ -88,6 +88,13 @@ export default function page() {
         );
         fetchMerchList();
       };
+      //-----CLICK BLOCK----
+      const [active, setActive] = useState(false);
+      const blockUser = (id) => {
+        setActive(!active);
+        updateProducts(id, active,
+        )
+      }
     //-------------- EDIT PRODUCTS ----------------
     
     return (
@@ -142,7 +149,7 @@ export default function page() {
                           title="Suspend product"
                           className="hover:text-white "
                           onClick={() => {
-                            deleteproduct(product.id);
+                            blockUser(product.id);
                           }}
                           >
                             <svg
@@ -166,7 +173,7 @@ export default function page() {
                           title="Suspend product"
                           className="hover:text-white"
                           onClick={() => {
-                              activateproduct(product.id);
+                                blockUser(product.id);
                             }}
                           >
                             <svg
