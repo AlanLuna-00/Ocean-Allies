@@ -25,7 +25,8 @@ const getAllProducts = async (
     name,
     sort,
     color,
-    gender // Agrega el parámetro "gender"
+    gender,
+    active
 ) => {
     try {
         const offset = (page - 1) * pageSize;
@@ -55,8 +56,11 @@ const getAllProducts = async (
         }
 
         if (gender) {
-            // Agrega la condición de filtrado por género
             whereCondition.gender = gender;
+        }
+
+        if (active !== null) {
+            whereCondition.active = active; // Add active filter condition
         }
 
         let order = [];

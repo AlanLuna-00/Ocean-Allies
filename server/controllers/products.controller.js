@@ -17,6 +17,7 @@ const getAllProductsController = async (req, res) => {
         const sort = req.query.sort || null;
         const color = req.query.color || null;
         const gender = req.query.gender || null;
+        const active = req.query.active || null;
 
         const result = await getAllProducts(
             page,
@@ -27,14 +28,15 @@ const getAllProductsController = async (req, res) => {
             name,
             sort,
             color,
-            gender
+            gender,
+            active
         );
 
         if (!result) {
             let message = `No results found`;
 
             // Verificar si los filtros, excepto name y page, están vacíos
-            if (category || price || size || sort || color) {
+            if (category || price || size || sort || color || active) {
                 message += ` for the specified filters`;
             }
 
