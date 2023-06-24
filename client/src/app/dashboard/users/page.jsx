@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
-import useDashboard from "@/hooks/useDashboard";
+import useDashboard from "@/hooks/useEditUser";
 import axios from "axios";
 import Link from "next/link";
 import EditUsers from "@/components/dashboard/EditUsers";
