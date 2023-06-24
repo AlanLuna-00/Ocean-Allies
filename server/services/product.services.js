@@ -122,7 +122,24 @@ const getAllProducts = async (
 
 const getProductsById = async (id) => {
     try {
-        const product = Product.findByPk(id);
+        const product = await Product.findByPk(id, {
+            include: [
+                {
+                    model: Purchase,
+                    attributes: ['id', 'productId', 'userId'],
+                },
+                {
+                    model: Review,
+                    attributes: [
+                        'id',
+                        'rating',
+                        'comment',
+                        'productId',
+                        'userId',
+                    ],
+                },
+            ],
+        });
         return product;
     } catch (error) {
         console.log(error);
