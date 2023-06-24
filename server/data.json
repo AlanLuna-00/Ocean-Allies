@@ -7,7 +7,12 @@
         "category": "T-shirts",
         "gender": "Woman",
         "size": {
-            "XS": { "stock": 4 }
+            "XS": { "stock": 0 },
+            "S": { "stock": 0 },
+            "M": { "stock": 0 },
+            "L": { "stock": 33 },
+            "XL": { "stock": 35 },
+            "XXL": { "stock": 54 }
         },
         "image": "https://ih1.redbubble.net/image.3482344322.8350/ssrco,classic_tee,womens,ffcf6e:da6eb664a1,front_alt,square_product,600x600.u2.jpg",
         "color": "Yellow"
@@ -40,9 +45,9 @@
         "size": {
             "XS": { "stock": 4 },
             "S": { "stock": 9 },
-            "M": { "stock": 67 },
-            "L": { "stock": 33 },
-            "XL": { "stock": 35 },
+            "M": { "stock": 0 },
+            "L": { "stock": 0 },
+            "XL": { "stock": 0 },
             "XXL": { "stock": 54 }
         },
         "image": "https://ih1.redbubble.net/image.5062525240.8418/ssrco,classic_tee,mens,fafafa:ca443f4786,front_alt,square_product,600x600.jpg",
@@ -166,10 +171,10 @@
         "size": {
             "XS": { "stock": 4 },
             "S": { "stock": 9 },
-            "M": { "stock": 67 },
-            "L": { "stock": 33 },
-            "XL": { "stock": 35 },
-            "XXL": { "stock": 54 }
+            "M": { "stock": 0 },
+            "L": { "stock": 0 },
+            "XL": { "stock": 0 },
+            "XXL": { "stock": 0 }
         },
         "image": "https://ih1.redbubble.net/image.4747744091.3737/ra,tank,x1860,fafafa:ca443f4786,front-c,288,321,600,600-bg,f8f8f8.jpg",
         "color": "White"
@@ -221,7 +226,7 @@
             "XS": { "stock": 4 },
             "S": { "stock": 9 },
             "M": { "stock": 67 },
-            "L": { "stock": 33 },
+            "L": { "stock": 0 },
             "XL": { "stock": 35 },
             "XXL": { "stock": 54 }
         },
@@ -326,6 +331,10 @@
         "category": "Dresses",
         "gender": "Woman",
         "size": {
+            "XS": { "stock": 4 },
+            "S": { "stock": 0 },
+            "M": { "stock": 67 },
+            "L": { "stock": 33 },
             "XL": { "stock": 35 },
             "XXL": { "stock": 54 }
         },
@@ -340,7 +349,12 @@
         "category": "Dresses",
         "gender": "Woman",
         "size": {
-            "XS": { "stock": 4 }
+            "XS": { "stock": 4 },
+            "S": { "stock": 0 },
+            "M": { "stock": 67 },
+            "L": { "stock": 33 },
+            "XL": { "stock": 0 },
+            "XXL": { "stock": 54 }
         },
         "image": "https://ih1.redbubble.net/image.245776842.2888/aldr,x1440,front-c,168,326,600,600-bg,f8f8f8.u5.jpg",
         "color": "Black"

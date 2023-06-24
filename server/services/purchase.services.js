@@ -25,6 +25,7 @@ const createPurchase = async (productId, userId, size) => {
 
         const updatedStock = product.size[size].stock - 1;
 
+        // Update the stock for the specific size
         await Product.update(
             {
                 size: {
@@ -33,6 +34,7 @@ const createPurchase = async (productId, userId, size) => {
                         stock: updatedStock,
                     },
                 },
+                active: hasAvailableSizes(product, size), // Update 'active' field
             },
             {
                 where: { id: productId },
@@ -41,9 +43,20 @@ const createPurchase = async (productId, userId, size) => {
 
         return purchase;
     } catch (error) {
-        throw error; // Lanzar el error original en lugar de crear uno nuevo
+        throw error;
     }
 };
+
+const hasAvailableSizes = (product, excludedSize) => {
+    const sizes = Object.keys(product.size);
+    for (const size of sizes) {
+        if (size !== excludedSize && product.size[size].stock > 0) {
+            return true;
+        }
+    }
+    return false;
+};
+
 module.exports = {
     createPurchase,
 };
