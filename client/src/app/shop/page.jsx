@@ -289,6 +289,7 @@ const Shop = () => {
                               <option value="">All</option>
                               <option value="Man">Man</option>
                               <option value="Woman">Woman</option>
+                              <option value="Unisex">Unisex</option>
                             </select>
                           </div>
                           <div className="mb-2">
@@ -461,6 +462,7 @@ const Shop = () => {
                           <option value="">All</option>
                           <option value="Man">Man</option>
                           <option value="Woman">Woman</option>
+                          <option value="Unisex">Unisex</option>
                         </select>
                       </div>
                       <div className="mb-2">

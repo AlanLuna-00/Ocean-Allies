@@ -206,7 +206,7 @@ export default function EditProducts({ product, updateProducts }) {
                     Gender
                   </label>
                   <select
-                    value={formData.category}
+                    value={formData.gender}
                     name="gender"
                     onChange={handleInputChange}
                     className="appearance-none rounded-lg border py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-blue-500"

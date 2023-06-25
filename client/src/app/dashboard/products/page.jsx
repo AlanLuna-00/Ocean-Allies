@@ -108,6 +108,8 @@ export default function page() {
                   <th className="text-left py-3 px-2 rounded-l-lg">Name</th>
                   <th className="text-left py-3 px-2">Price</th>
                   <th className="text-left py-3 px-2">Category</th>
+                  <th className="text-left py-3 px-2">Color</th>
+                  <th className="text-left py-3 px-2">Gender</th>
                   <th className="text-left py-3 px-2">Status</th>
                   <th className="text-left py-3 px-2 rounded-r-lg">Actions</th>
                 </tr>
@@ -131,6 +133,10 @@ export default function page() {
                     <td className="py-3 px-2">{product.price}</td>
     
                     <td className="py-3 px-2">{product.category}</td>
+
+                    <td className="py-3 px-2">{product.color}</td>
+                    
+                    <td className="py-3 px-2">{product.gender}</td>
     
                     <td className="py-3 px-2">
                       {product.active ? "Active" : "Inactive"}
@@ -143,7 +149,7 @@ export default function page() {
                         <EditProducts product={product} updateProducts={updateProducts}/>
 
                         {/* -----------------------BORRAR ---------------------- */}
-                        {product.active ? (
+                        {/* {product.active ? (
                           <Link
                           href=""
                           title="Suspend product"
@@ -191,7 +197,7 @@ export default function page() {
                                 />
                             </svg>
                           </Link>
-                        )}
+                        )} */}
                         {/* ^^^^^^^^^^^^^^^^^^^^^^^^ BORRAR ^^^^^^^^^^^^^^^^^^^^^^^^ */}
     
                       </div>
