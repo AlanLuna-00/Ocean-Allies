@@ -14,26 +14,7 @@ export default function EditProducts({ product, updateProducts }) {
     gender: product.gender,
     image: product.image,
     color: product.color,
-    size: {
-      L: {
-        stock: product.size.hasOwnProperty("L") ? product.size.L.stock : 0,
-      },
-      M: {
-        stock: product.size.hasOwnProperty("M") ? product.size.M.stock : 0,
-      },
-      S: {
-        stock: product.size.hasOwnProperty("S") ? product.size.S.stock : 0,
-      },
-      XL: {
-        stock: product.size.hasOwnProperty("XL") ? product.size.XL.stock : 0,
-      },
-      XS: {
-        stock: product.size.hasOwnProperty("XS") ? product.size.XS.stock : 0,
-      },
-      XXL: {
-        stock: product.size.hasOwnProperty("XXL") ? product.size.XXL.stock : 0,
-      },
-    },
+    size: product.size,
     active: product.active,
   });
 
@@ -50,9 +31,23 @@ export default function EditProducts({ product, updateProducts }) {
       setFormData((prevData) => ({
         ...prevData,
         [name]: value,
+        
       }));
     };
   //-------------------------------------------------
+  const handleSizeChange = (e, size) => {
+    const { value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      size: {
+        ...prevData.size,
+        [size]: {
+          ...prevData.size[size],
+          stock: parseInt(value)
+        }
+      }
+    }));
+  };
 
   const handleSwitchChange = () => {
     setChecked(!checked);
@@ -225,21 +220,23 @@ export default function EditProducts({ product, updateProducts }) {
               </div>
 
               <div className="grid grid-cols-6 gap-4">
-                {Object.keys(formData.size).map((size) => (
-                  <div className="mb-4" key={size}>
+                {Object.keys(formData.size).map((talle) => (
+                  <div className="mb-4" key={talle}>
                     <label
                       className="block text-gray-700 font-bold mb-2"
-                      htmlFor={size}
+                      htmlFor={talle}
                     >
-                      {size}
+                      {talle}
                     </label>
                     <input
                       className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-blue-500"
                       type="number"
-                      id={size}
-                      name={`size.${size}.stock`}
-                      value={formData.size[size].stock}
-                      onChange={handleInputChange}
+                      id={talle}
+                      name={talle}
+                      value={formData.size[talle].stock}
+                      // name={`size.${talle}.stock`}
+                      // value={formData.size[talle].stock}
+                      onChange={(e) => handleSizeChange(e, talle)}
                     />
                   </div>
                 ))}
