@@ -29,7 +29,7 @@ const userModel = (sequelize) => {
             active: {
                 type: DataTypes.BOOLEAN,
                 defaultValue: true,
-            }
+            },
         },
         {
             timestamps: false,

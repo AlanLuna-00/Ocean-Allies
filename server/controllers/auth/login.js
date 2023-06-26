@@ -1,17 +1,21 @@
 const { User } = require('../../db');
 const bcryptjs = require('bcryptjs');
 const generateJwt = require('../../utils/generateJwt');
-const { serialize } = require('cookie');
+const admin = require('firebase-admin');
 
 const login = async (req, res) => {
     const { email, password } = req.body;
     console.log(req.body);
     try {
-        const user = await User.findOne({ where: { email } });
+        // Verificar credenciales con Firebase Authentication
+        const userRecord = await admin.auth().getUserByEmail(email);
+        console.log(userRecord);
 
-        if (!user) {
+        const user = await User.findOne({ email }); // Obtener el usuario de tu base de datos
+
+        if (!user || !user.password) {
             return res.status(400).json({
-                msg: 'Email o contraseña incorrectos - email',
+                msg: 'No se encontró el hash de la contraseña en el usuario',
             });
         }
 
@@ -19,27 +23,31 @@ const login = async (req, res) => {
 
         if (!validPassword) {
             return res.status(400).json({
-                msg: 'Email o contraseña incorrectos - password',
+                msg: 'Email o contraseña incorrectos',
             });
         }
 
-        // Generar el token
-        const token = await generateJwt(user.id);
+        // Generar el token JWT
+        const token = await generateJwt(userRecord.uid);
 
-        // Configurar la cookie
-        const cookieOptions = {
-            maxAge: 4 * 60 * 60 * 1000,
+        // Establecer la cookie con el token JWT
+        res.cookie('token', token, {
+            maxAge: 4 * 60 * 60 * 1000, // 4 horas en milisegundos
             httpOnly: true,
             secure: true,
             sameSite: 'none',
-        };
-
-        // Establecer la cookie
-        res.cookie('token', token, cookieOptions);
+        });
 
         // Enviar la respuesta
         res.json({
-            user,
+            user: {
+                id: userRecord.uid,
+                email: userRecord.email,
+                name: userRecord.displayName,
+                id: user.id,
+                role: user.role,
+                photoUrl: userRecord.photoURL,
+            },
             token,
         });
     } catch (error) {

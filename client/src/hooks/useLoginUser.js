@@ -2,6 +2,12 @@ import { useState, useContext } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import AuthContext from "../context/AuthContext";
+import {
+  getAuth,
+  signInWithEmailAndPassword,
+  GoogleAuthProvider,
+  signInWithPopup,
+} from "firebase/auth";
 
 const useLogin = () => {
   const router = useRouter();
@@ -14,9 +20,54 @@ const useLogin = () => {
     setError(null);
 
     try {
+      // Iniciar sesión con Firebase Authentication
+      const auth = getAuth();
+      console.log(credentials);
+
+      // Hacer la petición al backend para iniciar sesión
       const response = await axios.post(
         "http://localhost:8080/api/auth/login",
-        credentials
+        {
+          email: credentials.email,
+          password: credentials.password,
+        }
+      );
+
+      if (response.status !== 200) {
+        throw new Error(response.data.message || "Login failed");
+      }
+
+      // Guardar datos del usuario en el store
+      console.log("yes login", response.data);
+      localStorage.setItem("token", JSON.stringify(response.data.token));
+      localStorage.setItem("user", JSON.stringify(response.data.user));
+      setIsLoading(false);
+      handleLogin(response.data.user);
+      router.push("/home"); // Redireccionar al home después del inicio de sesión
+    } catch (error) {
+      console.log("no login", error);
+      setIsLoading(false);
+      setError(error.message);
+    }
+  };
+
+  const loginWithGoogle = async () => {
+    setIsLoading(true);
+    setError(null);
+
+    try {
+      // Iniciar sesión con Google utilizando Firebase Authentication
+      const auth = getAuth();
+      const provider = new GoogleAuthProvider();
+      await signInWithPopup(auth, provider);
+
+      // Hacer la petición al backend para obtener el token JWT
+      const response = await axios.post(
+        "http://localhost:8080/api/auth/login",
+        {
+          email: auth.currentUser.email,
+          password: "", // No se necesita contraseña cuando se utiliza el inicio de sesión de Google
+        }
       );
 
       if (response.status !== 200) {
@@ -36,7 +87,7 @@ const useLogin = () => {
     }
   };
 
-  return { login, error, isLoading };
+  return { login, loginWithGoogle, error, isLoading };
 };
 
 export default useLogin;

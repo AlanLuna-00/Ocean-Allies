@@ -2,6 +2,8 @@ const express = require('express');
 const cors = require('cors');
 const { conn } = require('./db');
 const cookieParser = require('cookie-parser');
+const admin = require('firebase-admin');
+const serviceAccount = require('./credentialFirebase.json');
 
 class Server {
     constructor() {
@@ -16,6 +18,8 @@ class Server {
         this.paymentPath = '/api/payment';
         // Conectar a base de datos
         this.conectarDB();
+        // Inicializar Firebase Admin
+        this.inicializarFirebaseAdmin();
         // Middlewares
         this.middlewares();
         // Rutas de mi aplicación
@@ -26,6 +30,15 @@ class Server {
         conn.sync({ force: false }).then(() => {
             console.log('Base de datos conectada');
         });
+    }
+
+    inicializarFirebaseAdmin() {
+        admin.initializeApp({
+            credential: admin.credential.cert(serviceAccount),
+            // Otras opciones de configuración, si las necesitas
+        });
+
+        console.log('Firebase Admin inicializado');
     }
 
     middlewares() {
