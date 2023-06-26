@@ -5,7 +5,7 @@ import { useState } from "react";
 
 const Login = () => {
   const [credentials, setCredentials] = useState({});
-  const { login, error, isLoading } = useLogin(); // Usa el hook useLogin
+  const { login, loginWithGoogle, error, isLoading } = useLogin(); // Usa el hook useLogin
 
   const handleChange = (e) => {
     setCredentials({
@@ -28,7 +28,10 @@ const Login = () => {
               Login to your account
             </h3>
             <div className="mt-12 flex flex-wrap sm:grid gap-6 grid-cols-2">
-              <button className="w-full h-11 rounded-full border border-gray-300/75 bg-white px-6 transition active:bg-gray-50 dark:bg-gray-700 dark:border-gray-600 dark:hover:bg-gray-800 dark:hover:border-gray-700">
+              <button
+                onClick={loginWithGoogle}
+                className="w-full h-11 rounded-full border border-gray-300/75 bg-white px-6 transition active:bg-gray-50 dark:bg-gray-700 dark:border-gray-600 dark:hover:bg-gray-800 dark:hover:border-gray-700"
+              >
                 <div className="w-max mx-auto flex items-center justify-center space-x-4">
                   <img src="images/google.svg" className="w-5" alt="" />
                   <span className="block w-max text-sm font-semibold tracking-wide text-cyan-700 dark:text-white">
@@ -107,11 +110,6 @@ const Login = () => {
                     </Link>
                   </p>
                 </div>
-                {/* <button href="#" type="reset" className="-ml-3 w-max p-3">
-                  <span className="text-sm tracking-wide text-sky-600 dark:text-sky-400">
-                    Create new account
-                  </span>
-                </button> */}
               </div>
             </form>
           </div>

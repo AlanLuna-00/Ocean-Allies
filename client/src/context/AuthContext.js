@@ -1,6 +1,8 @@
 "use client";
 import useLogoutUser from "@/hooks/useLogoutUser";
-import React, { createContext, useEffect, useState } from "react";
+import React, { createContext, useEffect, useState, useContext } from "react";
+import { FirebaseContext } from "./FirebaseContext";
+import { useRouter } from "next/navigation";
 
 const AuthContext = createContext();
 
@@ -10,6 +12,8 @@ export const AuthProvider = ({ children }) => {
   const { logout } = useLogoutUser();
   const [userCart, setUserCart] = useState([]);
   const [price, setPrice] = useState(0);
+  const router = useRouter();
+  const { auth } = useContext(FirebaseContext);
 
   const handleLogin = (user) => {
     setIsLoggedIn(true);
@@ -22,6 +26,7 @@ export const AuthProvider = ({ children }) => {
     setIsAdmin(false);
     logout();
     clearUserCart();
+    router.push("/auth/login");
   };
 
   const loadUserCart = (userId) => {
@@ -54,6 +59,14 @@ export const AuthProvider = ({ children }) => {
     updateUserCart(userId, []);
   };
 
+  const getPurchaseData = () => {
+    // obtengo el id de TODOS los productos del carrito del usuario y el id del usuario
+    const userId = JSON.parse(localStorage.getItem("user")).id;
+    const productId = userCart.map((item) => item.id);
+    const purchaseData = { productId, userId };
+    return purchaseData;
+  };
+
   // calculate total price of cart
   useEffect(() => {
     let total = 0;
@@ -83,6 +96,7 @@ export const AuthProvider = ({ children }) => {
     clearUserCart,
     loadUserCart,
     price,
+    getPurchaseData,
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
