@@ -49,8 +49,8 @@ export default function About() {
     {
       name: "Seba",
       image: "/img/Seba.jpg",
-      text: "Backend Developer",
-      linkedIn: "",
+      text: "Full Stack Developer",
+      linkedIn: "https://www.linkedin.com/in/sebastian-aguzzi-757341277/",
       gitHub: "https://github.com/SebAguzzi",
     },
   ];
