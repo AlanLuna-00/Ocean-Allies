@@ -8,7 +8,7 @@ export default function About() {
       name: "Alan",
       image: "/img/Alan.jpeg",
       text: "Full Stack",
-      linkedIn: "",
+      linkedIn: "https://www.linkedin.com/in/alan-luna-304655214/",
       gitHub: "https://github.com/AlanLuna-00",
     },
     {
@@ -20,14 +20,14 @@ export default function About() {
     },
     {
       name: "Kevin",
-      image: "/img/Kevin.jpg",
+      image: "/img/Kevin.png",
       text: "Frontend Developer",
       linkedIn: "https://www.linkedin.com/in/kevin-barrios-developer/",
       gitHub: "https://github.com/MotionSoft05",
     },
     {
       name: "Manu",
-      image: "/img/Manu.jpg",
+      image: "/img/Manu.png",
       text: "Backend Developer",
       linkedIn: "https://www.linkedin.com/in/emanuel-alessi-developer",
       gitHub: "https://github.com/manuga23000",
@@ -58,8 +58,15 @@ export default function About() {
   const [isHovered, setIsHovered] = useState(false); //! Pendiente para usar en imagenes hover
 
   return (
-    <div className="bg-gray-100 py-12 px-6 bg-cover " style={{ backgroundImage: "url(/img/gafas-mesa-sala-reuniones-negocios.jpg)" }}>
-      <h1 className="text-6xl md:text-7xl font-bold mb-5 text-gray-600 text-center">About</h1>
+    <div
+      className="bg-gray-100 py-12 px-6 bg-cover "
+      style={{
+        backgroundImage: "url(/img/gafas-mesa-sala-reuniones-negocios.jpg)",
+      }}
+    >
+      <h1 className="text-6xl md:text-7xl font-bold mb-5 text-gray-600 text-center">
+        About
+      </h1>
 
       <div className="max-w-4xl mx-auto flex flex-col">
         <p className="bg-opacity-60 shadow-xl  text-2xl font-medium mb-6 text-center text-black grid  gap-8 rounded-lg bg-white p-6">
