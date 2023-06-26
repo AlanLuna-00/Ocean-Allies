@@ -29,6 +29,9 @@ const userModel = (sequelize) => {
             active: {
                 type: DataTypes.BOOLEAN,
                 defaultValue: true,
+            },
+            image: {
+                type: DataTypes.TEXT,
             }
         },
         {
