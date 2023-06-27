@@ -1,10 +1,12 @@
 "use client";
 import axios from "axios";
+import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
 const Profile = () => {
   const [buy, setBuy] = useState([]);
-  const [id, setId] = useState(null);
+  const [user, setUser] = useState({});
+  const [products, setProducts] = useState([]);
 
   //Accedo a la informacion del usuario
   useEffect(() => {
@@ -21,45 +23,27 @@ const Profile = () => {
             },
           });
 
-          setBuy(res.data);
+          setUser(res.data);
+          setBuy(res.data.purchases);
+
+          const productIds = res.data.purchases.map((item) => item.productId);
+          const productRequests = productIds.map((id) =>
+            axios(`http://localhost:8080/api/products/${id}`)
+          );
+          const responses = await Promise.all(productRequests);
+          const products = responses.map((response) => response.data);
+          setProducts(products);
           //* --------------- OBTENER USARIOS ---------------
         } catch (error) {
           console.log(error);
         }
       }
-      
+
       fetchData();
     }
   }, []);
-  console.log("user", buy);
-  
-  // const compras = [
+  console.log("user", products);
 
-  //   {
-  //     fecha: '10/06/2023',
-  //     producto: 'Camiseta Nike',
-  //     precio: '$50.00',
-  //   },
-  //   {
-  //     fecha: '05/06/2023',
-  //     producto: 'Zapatos Adidas',
-  //     precio: '$80.00',
-  //   },
-  //   {
-  //     fecha: '01/06/2023',
-  //     producto: 'Pantalones Levi\'s',
-  //     precio: '$60.00',
-  //   },
-  // ];
-
-  //  const compras = async () => {
-  //   const res = await axios.get(`http://localhost:8080/api/users/${id}`)
-  //   const compra = res.data.purchase;
-  //   setBuy(compra);
-  //   console.log(buy)
-  // }
-
-  // La img de perfil tiene que ser subida con cloudinary.
   // El historial de compra debe mostrar que productos ha comprado el usuario.
   // Pop-UP para cambiar contraseña (modal).
 
@@ -70,11 +54,11 @@ const Profile = () => {
           <div className="md:w-1/3">
             <div className="md:sticky md:top-8 bg-white rounded-lg p-4 mb-4">
               <div className="flex items-center justify-center">
-                <label htmlFor="">Aca iria la imagen de perfil</label>
+                <label htmlFor="">{user.image} awaiting for cloudinary</label>
               </div>
               <div className="text-center mt-4">
                 <h2 className="text-2xl font-bold text-gray-800">
-                  Nombre de usuario
+                  {user.name}
                 </h2>
                 <p className="text-sm font-medium text-gray-500">Ocupación</p>
                 <p className="text-sm font-medium text-gray-500">Ubicación</p>
@@ -92,16 +76,35 @@ const Profile = () => {
               <h3 className="text-lg font-bold text-gray-800 mb-4">
                 Historial de compra
               </h3>
-              <h2>historial</h2>
-              {/* {buy.map((compra, index) => (
-                <div key={index} className="flex justify-between py-2 border-b border-gray-300">
-                  <div>
-                    <p className="text-sm font-medium text-gray-600">{compra.fecha}</p>
-                    <p className="text-lg font-bold text-gray-800">{compra.userId}</p>
+              {products.map((product, index) => (
+                <div
+                  key={index}
+                  className="flex justify-between py-4 border-b border-gray-300"
+                >
+                  <div className="flex items-center">
+                    <Link
+                      href={`/detail/${product.id}`}
+                      className="text-blue-500 hover:text-blue-700"
+                    >
+                      <div className="relative w-24 h-24 overflow-hidden rounded-md mr-4 hover:scale-110">
+                        <img
+                          src={product.image}
+                          alt={product.name}
+                          className="w-full h-full object-cover transition duration-300 ease-in-out transform"
+                        />
+                      </div>
+                    </Link>
+                    <div>
+                      <p className="text-gray-600 font-medium">
+                        {product.name}
+                      </p>
+                      <p className="text-gray-800 font-semibold">
+                        ${product.price}
+                      </p>
+                    </div>
                   </div>
-                  <p className="text-lg font-bold text-gray-800">{compra.productId}</p>
                 </div>
-              ))} */}
+              ))}
             </div>
           </div>
         </div>
