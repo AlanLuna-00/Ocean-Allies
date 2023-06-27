@@ -50,6 +50,7 @@ const useRegister = () => {
 
       const { user } = result;
 
+      console.log("me ejec hook");
       // Hacer la petición al backend para registrar el usuario en la base de datos
       const response = await axios.post(
         "http://localhost:8080/api/auth/register",
@@ -58,6 +59,7 @@ const useRegister = () => {
           email: user.email,
           password: user.uid,
           role: "user",
+          google: true,
         }
       );
 

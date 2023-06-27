@@ -6,14 +6,16 @@ const CheckoutButton = ({ price }) => {
   const { clearUserCart, getPurchaseData } = useContext(AuthContext);
   const handleClick = async () => {
     try {
-      const response = await axios
-        .post("http://localhost:8080/api/payment/create-order", {
+      const response = await axios.post(
+        "http://localhost:8080/api/payment/create-order",
+        {
           price: price,
-        })
-        .then((response) => {
-          const purchaseData = getPurchaseData();
-          axios.post("http://localhost:8080/api/purchase", purchaseData);
-        });
+        }
+      );
+      const purchaseData = getPurchaseData();
+      console.log(purchaseData);
+      await axios.post("http://localhost:8080/api/purchase", purchaseData); // Esperar a que la compra se resuelva
+
       clearUserCart();
       const data = response.data;
       window.location.href = data.init_point;

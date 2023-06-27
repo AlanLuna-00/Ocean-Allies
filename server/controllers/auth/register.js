@@ -5,8 +5,8 @@ const admin = require('firebase-admin');
 
 const register = async (req, res) => {
     try {
-        const { name, email, password, role } = req.body;
-        console.log(req.body);
+        const { name, email, password, role, google } = req.body;
+        console.log('me ejec', req.body);
 
         // Verificar si el correo electrónico ya está en uso en Firebase Authentication
         const emailExists = await admin
@@ -38,12 +38,14 @@ const register = async (req, res) => {
             role,
         });
         // Crear usuario en Firebase Authentication
-        const userRecord = await admin.auth().createUser({
-            email,
-            password: hashedPassword,
-            displayName: name,
-            uid: user.id.toString(), // Usar el ID del usuario de la base de datos como UID en Firebase
-        });
+        if (!google) {
+            const userRecord = await admin.auth().createUser({
+                email,
+                password: hashedPassword,
+                displayName: name,
+                uid: user.id.toString(), // Usar el ID del usuario de la base de datos como UID en Firebase
+            });
+        }
 
         // Generar el token JWT
         const token = await generateJwt(user.id);
