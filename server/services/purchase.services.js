@@ -1,57 +1,70 @@
 const { Product, User, Purchase } = require('../db');
 
 // Función para crear una compra
-const createPurchase = async (productId, userId, sizes) => {
+const createPurchase = async (purchases) => {
     try {
-        // Verificar si el producto y el usuario existen
-        const product = await Product.findByPk(productId);
-        const user = await User.findByPk(userId);
+        const results = [];
 
-        if (!product || !user) {
-            throw new Error('El producto o el usuario no existen');
-        }
+        for (const { productId, userId, sizes } of purchases) {
+            // Verificar si el producto y el usuario existen
+            const product = await Product.findByPk(productId);
+            const user = await User.findByPk(userId);
 
-        const updatedStocks = {};
-
-        for (const { size, quantity } of sizes) {
-            if (!product.size[size] || product.size[size].stock <= 0) {
-                throw new Error(
-                    `No hay suficiente stock disponible para el tamaño ${size}`
-                );
+            if (!product || !user) {
+                results.push({
+                    productId,
+                    error: 'El producto o el usuario no existen',
+                });
+                continue;
             }
 
-            if (quantity > product.size[size].stock) {
-                throw new Error(
-                    `La cantidad solicitada para el tamaño ${size} excede el stock disponible`
-                );
+            let hasSufficientStock = true;
+            const updatedSizes = { ...product.size };
+
+            for (const { size, quantity } of sizes) {
+                if (
+                    !updatedSizes[size] ||
+                    updatedSizes[size].stock < quantity
+                ) {
+                    hasSufficientStock = false;
+                    results.push({
+                        productId,
+                        size,
+                        error: `No hay suficiente stock disponible para el tamaño ${size}`,
+                    });
+                    break;
+                }
+
+                updatedSizes[size].stock -= quantity;
             }
 
-            updatedStocks[size] = product.size[size].stock - quantity;
-        }
-
-        const purchase = await Purchase.create({ productId, userId, sizes });
-
-        await purchase.setUser(user);
-        await purchase.setProduct(product);
-
-        // Actualizar el stock para los tamaños especificados
-        const updatedSizes = { ...product.size };
-
-        for (const { size, quantity } of sizes) {
-            updatedSizes[size].stock -= quantity;
-        }
-
-        await Product.update(
-            {
-                size: updatedSizes,
-                active: hasAvailableSizes(updatedSizes), // Actualizar el campo 'active'
-            },
-            {
-                where: { id: productId },
+            if (!hasSufficientStock) {
+                continue;
             }
-        );
 
-        return purchase;
+            const purchase = await Purchase.create({
+                productId,
+                userId,
+                sizes,
+            });
+
+            await purchase.setUser(user);
+            await purchase.setProduct(product);
+
+            await Product.update(
+                {
+                    size: updatedSizes,
+                    active: hasAvailableSizes(updatedSizes), // Actualizar el campo 'active'
+                },
+                {
+                    where: { id: productId },
+                }
+            );
+
+            results.push({ productId, purchase });
+        }
+
+        return results;
     } catch (error) {
         throw error;
     }
