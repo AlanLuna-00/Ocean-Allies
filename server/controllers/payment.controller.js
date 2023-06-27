@@ -17,7 +17,7 @@ const createOrder = async (req, res) => {
                 },
             ],
             back_urls: {
-                success: 'http://localhost:3000',
+                success: 'http://localhost:3000/shop',
                 // failure: 'http://localhost:8080/failure',
                 // pending: 'http://localhost:8080/pending',
             },
