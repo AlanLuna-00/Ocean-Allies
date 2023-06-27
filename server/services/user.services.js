@@ -26,7 +26,12 @@ const getAllUsersService = async () => {
 
 const getUserByIdService = async (userId) => {
     try {
-        const user = await User.findByPk(userId);
+        const user = await User.findByPk(userId, {
+            include: {
+                model: Purchase,
+                attributes: ['id', 'productId', 'userId'],
+            },
+        });
         return user;
     } catch (error) {
         throw new Error('Error al obtener el usuario');
