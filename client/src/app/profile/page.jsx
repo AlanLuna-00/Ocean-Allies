@@ -76,35 +76,30 @@ const Profile = () => {
               <h3 className="text-lg font-bold text-gray-800 mb-4">
                 Historial de compra
               </h3>
-              {products.map((product, index) => (
-                <div
-                  key={index}
-                  className="flex justify-between py-4 border-b border-gray-300"
-                >
-                  <div className="flex items-center">
-                    <Link
-                      href={`/detail/${product.id}`}
-                      className="text-blue-500 hover:text-blue-700"
-                    >
-                      <div className="relative w-24 h-24 overflow-hidden rounded-md mr-4 hover:scale-110">
-                        <img
-                          src={product.image}
-                          alt={product.name}
-                          className="w-full h-full object-cover transition duration-300 ease-in-out transform"
-                        />
-                      </div>
-                    </Link>
-                    <div>
-                      <p className="text-gray-600 font-medium">
-                        {product.name}
-                      </p>
-                      <p className="text-gray-800 font-semibold">
-                        ${product.price}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              ))}
+              {products.length > 0 ? (
+  products.map((product, index) => (
+    <div key={index} className="flex justify-between py-4 border-b border-gray-300">
+      <div className="flex items-center">
+        <Link href={`/detail/${product.id}`} className="text-blue-500 hover:text-blue-700">
+          <div className="relative w-24 h-24 overflow-hidden rounded-md mr-4 hover:scale-110">
+            <img src={product.image} alt={product.name} className="w-full h-full object-cover transition duration-300 ease-in-out transform" />
+          </div>
+        </Link>
+        <div>
+          <p className="text-gray-600 font-medium">{product.name}</p>
+          <p className="text-gray-800 font-semibold">${product.price}</p>
+        </div>
+      </div>
+    </div>
+  ))
+) : (
+  <div className="flex flex-col items-center justify-center py-8">
+    <p className="text-lg font-medium mb-2">No se encontraron productos.</p>
+    <Link href="/shop" className="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-md">
+      Ir a la tienda
+    </Link>
+  </div>
+)}
             </div>
           </div>
         </div>
