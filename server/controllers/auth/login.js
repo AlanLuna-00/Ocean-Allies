@@ -9,9 +9,15 @@ const login = async (req, res) => {
     try {
         // Verificar credenciales con Firebase Authentication
         const userRecord = await admin.auth().getUserByEmail(email);
-        console.log(userRecord);
 
-        const user = await User.findOne({ email }); // Obtener el usuario de tu base de datos
+        const userId = userRecord.uid;
+
+        // Buscar usuario en la base de datos
+        const user = await User.findOne({
+            where: {
+                id: userId,
+            },
+        });
 
         if (!user || !user.password) {
             return res.status(400).json({
@@ -30,14 +36,6 @@ const login = async (req, res) => {
 
         // Generar el token JWT
         const token = await generateJwt(userRecord.uid);
-
-        // Establecer la cookie con el token JWT
-        res.cookie('token', token, {
-            maxAge: 4 * 60 * 60 * 1000, // 4 horas en milisegundos
-            httpOnly: true,
-            secure: true,
-            sameSite: 'none',
-        });
 
         // Enviar la respuesta
         res.json({
