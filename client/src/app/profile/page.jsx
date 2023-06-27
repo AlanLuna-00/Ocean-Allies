@@ -73,7 +73,7 @@ const Profile = () => {
           </div>
           <div className="md:w-2/3">
             <div className="bg-white rounded-lg p-4 mb-4">
-              <h3 className="text-lg font-bold text-gray-800 mb-4">
+              <h3 className="text-lg font-bold flex justify-center text-gray-800 mb-4">
                 Historial de compra
               </h3>
               {products.length > 0 ? (
