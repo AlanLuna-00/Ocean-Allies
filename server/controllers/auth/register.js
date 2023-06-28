@@ -20,7 +20,9 @@ const register = async (req, res) => {
                 throw error;
             });
 
-        if (emailExists) {
+        console.log('emailExists', emailExists);
+
+        if (!emailExists) {
             return res.status(400).json({
                 msg: 'El correo electrónico ya está registrado',
             });
