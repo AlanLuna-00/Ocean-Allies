@@ -79,6 +79,7 @@ function Navigation() {
                             <Link
                               href="/dashboard"
                               className="block px-4 py-2 text-gray-800 hover:bg-gray-200"
+                              onClick={(isMenuOpen) => setMenuOpen(!isMenuOpen)}
                             >
                               Dashboard
                             </Link>
@@ -88,6 +89,7 @@ function Navigation() {
                           <Link
                             href="/profile"
                             className="block px-4 py-2 text-gray-800 hover:bg-gray-200"
+                            onClick={(isMenuOpen) => setMenuOpen(!isMenuOpen)}
                           >
                             Profile
                           </Link>
