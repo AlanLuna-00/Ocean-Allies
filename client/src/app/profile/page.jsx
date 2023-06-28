@@ -3,6 +3,7 @@ import AuthContext from "@/context/AuthContext";
 import axios from "axios";
 import Link from "next/link";
 import React, { useContext, useEffect, useState } from "react";
+import Modal from "react-modal";
 
 const Profile = () => {
   const { isLoggedIn } = useContext(AuthContext);
@@ -28,14 +29,13 @@ const Profile = () => {
           setUser(res.data);
           setBuy(res.data.purchases);
 
-          const productIds = res.data.purchases.map((item) => item.productId); // item.id
+          const productIds = res.data.purchases.map((item) => item.productId);
           const productRequests = productIds.map((id) =>
             axios(`http://localhost:8080/api/products/${id}`)
           );
           const responses = await Promise.all(productRequests);
           const products = responses.map((response) => response.data);
           setProducts(products);
-          //* --------------- OBTENER USARIOS ---------------
         } catch (error) {
           console.log(error);
         }
@@ -45,6 +45,7 @@ const Profile = () => {
     }
   }, []);
   console.log("user", user);
+  console.log("buy", buy);
 
   // Pop-UP para cambiar contraseña (modal).
 
@@ -71,8 +72,6 @@ const Profile = () => {
                   <h2 className="text-2xl font-bold text-gray-800">
                     {user.name}
                   </h2>
-                  <p className="text-sm font-medium text-gray-500">Ocupación</p>
-                  <p className="text-sm font-medium text-gray-500">Ubicación</p>
                 </div>
                 <hr className="my-4" />
                 <div className="text-center">
@@ -111,7 +110,14 @@ const Profile = () => {
                             {product.name}
                           </p>
                           <p className="text-gray-800 font-semibold">
-                            ${product.price}
+                            {buy[index].sizes.map((size, i) => (
+                              <p key={i} className="text-gray-600 font-medium">
+                                {size.size}: {size.quantity}
+                              </p>
+                            ))}
+                            <p className="text-gray-600 font-medium">
+                              Total: ${buy[index].total}
+                            </p>
                           </p>
                         </div>
                       </div>
