@@ -1,4 +1,4 @@
-const { createPurchase } = require('../services/purchase.services');
+const { createPurchase, getPurchase } = require('../services/purchase.services');
 
 // Controlador para crear una compra
 const createPurchaseController = async (req, res) => {
@@ -21,6 +21,21 @@ const createPurchaseController = async (req, res) => {
     }
 };
 
+const getPurchaseController = async (req, res) => {
+    const { id } = req.params;
+
+    try {
+        const purchase = await getPurchase(id);
+        if (!purchase) {
+            return res.status(404).json({ error: 'Purchase not found' });
+        }
+        res.json(purchase);
+    } catch (error) {
+        res.status(500).json({ error: error.message })
+    }
+}
+
 module.exports = {
     createPurchaseController,
+    getPurchaseController
 };
