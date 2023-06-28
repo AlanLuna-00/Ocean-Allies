@@ -65,8 +65,10 @@ const useLogin = () => {
       const response = await axios.post(
         "http://localhost:8080/api/auth/login",
         {
+          id: auth.currentUser.uid,
           email: auth.currentUser.email,
           password: "", // No se necesita contraseña cuando se utiliza el inicio de sesión de Google
+          google: true,
         }
       );
 
