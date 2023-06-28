@@ -28,7 +28,7 @@ const Profile = () => {
           setUser(res.data);
           setBuy(res.data.purchases);
 
-          const productIds = res.data.purchases.map((item) => item.productId);
+          const productIds = res.data.purchases.map((item) => item.productId); // item.id
           const productRequests = productIds.map((id) =>
             axios(`http://localhost:8080/api/products/${id}`)
           );
@@ -44,7 +44,7 @@ const Profile = () => {
       fetchData();
     }
   }, []);
-  console.log("user", products);
+  console.log("user", user);
 
   // Pop-UP para cambiar contraseña (modal).
 
@@ -56,7 +56,16 @@ const Profile = () => {
             <div className="md:w-1/3">
               <div className="md:sticky md:top-8 bg-white rounded-lg p-4 mb-4">
                 <div className="flex items-center justify-center">
-                  <label htmlFor="">{user.image} awaiting for cloudinary</label>
+                  {user.image ? (
+                    <img src={user.image} alt="Imagen de perfil" />
+                  ) : (
+                    <img
+                      src="/img/user.png"
+                      alt="Imagen por defecto"
+                      width={96}
+                      height={96}
+                    />
+                  )}
                 </div>
                 <div className="text-center mt-4">
                   <h2 className="text-2xl font-bold text-gray-800">

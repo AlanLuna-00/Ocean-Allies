@@ -1,5 +1,6 @@
 const { DataTypes } = require('sequelize');
 
+
 const userModel = (sequelize) => {
     sequelize.define(
         'user',
@@ -32,6 +33,7 @@ const userModel = (sequelize) => {
             },
             image: {
                 type: DataTypes.TEXT,
+                
             }
         },
         {
