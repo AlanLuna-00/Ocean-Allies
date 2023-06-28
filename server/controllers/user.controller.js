@@ -4,6 +4,7 @@ const {
     getUserByIdService,
     updateUserService,
     deleteUserService,
+    updateUserPasswordService,
 } = require('../services/user.services.js');
 
 const createUser = async (req, res) => {
@@ -81,10 +82,24 @@ const deleteUser = async (req, res) => {
     }
 };
 
+const updateUserPassword = async (req, res) => {
+    const { id } = req.params;
+    const { oldPassword, newPassword } = req.body;
+  
+    try {
+      const result = await updateUserPasswordService(id, oldPassword, newPassword);
+      res.json(result);
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: 'Ha ocurrido un error inesperado' });
+    }
+  };
+
 module.exports = {
     createUser,
     getAllUsers,
     getUserById,
     updateUser,
-    deleteUser
+    deleteUser,
+    updateUserPassword,
 };

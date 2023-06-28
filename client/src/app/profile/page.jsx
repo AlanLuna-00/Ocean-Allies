@@ -1,9 +1,10 @@
 "use client";
+import ChangePassword from "@/components/ChangePassword";
 import AuthContext from "@/context/AuthContext";
 import axios from "axios";
 import Link from "next/link";
 import React, { useContext, useEffect, useState } from "react";
-import Modal from "react-modal";
+
 
 const Profile = () => {
   const { isLoggedIn } = useContext(AuthContext);
@@ -47,6 +48,7 @@ const Profile = () => {
   console.log("user", user);
   console.log("buy", buy);
 
+  
   // Pop-UP para cambiar contraseña (modal).
 
   return (
@@ -74,11 +76,9 @@ const Profile = () => {
                   </h2>
                 </div>
                 <hr className="my-4" />
-                <div className="text-center">
-                  <a href="#" className="text-indigo-600 hover:underline">
-                    Cambiar contraseña
-                  </a>
-                </div>
+
+                <ChangePassword user={user} />
+
               </div>
             </div>
             <div className="md:w-2/3">
