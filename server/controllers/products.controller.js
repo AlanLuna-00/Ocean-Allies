@@ -128,6 +128,7 @@ const productSchema = Joi.object({
     color: Joi.string().required(),
     image: Joi.string().required(),
     gender: Joi.string().valid('Man', 'Woman', 'Unisex').required(), // Agregar la validación del campo "gender"
+    active: Joi.boolean().optional(),
 });
 
 const createProductController = async (req, res) => {
