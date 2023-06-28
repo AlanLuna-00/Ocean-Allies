@@ -3,7 +3,7 @@ import AuthContext from "@/context/AuthContext";
 import { useContext } from "react";
 
 const CheckoutButton = ({ price }) => {
-  const { clearUserCart, getPurchaseData } = useContext(AuthContext);
+  const { getPurchaseData } = useContext(AuthContext);
   const handleClick = async () => {
     try {
       const response = await axios.post(
@@ -12,11 +12,9 @@ const CheckoutButton = ({ price }) => {
           price: price,
         }
       );
-      const purchaseData = getPurchaseData();
-      console.log(purchaseData);
-      await axios.post("http://localhost:8080/api/purchase", purchaseData); // Esperar a que la compra se resuelva
 
-      clearUserCart();
+      await getPurchaseData();
+
       const data = response.data;
       window.location.href = data.init_point;
     } catch (error) {

@@ -5,24 +5,20 @@ const {
 
 // Controlador para crear una compra
 const createPurchaseController = async (req, res) => {
-    const { purchases } = req.body;
+    const { userId, productId, sizes } = req.body;
     try {
-        const results = await createPurchase(purchases);
+        const results = await createPurchase([{ productId, userId, sizes }]);
         const successfulPurchases = results.filter((result) => result.purchase);
         if (successfulPurchases.length === 0) {
             res.status(400).json({
-                msg: 'No se pudo realizar ninguna compra debido a la falta de stock',
+                msg: 'No se pudo realizar la compra debido a la falta de stock',
             });
         } else {
             res.status(201).json({
-                msg: 'Compras realizadas con éxito',
-                results: successfulPurchases.map((purchase) => ({
-                    purchase: {
-                        userId: purchase.purchase.userId,
-                        productId: purchase.purchase.productId,
-                        sizes: purchase.purchase.sizes,
-                    },
-                })),
+                msg: 'Compra realizada con éxito',
+                result: {
+                    purchase: successfulPurchases[0].purchase,
+                },
             });
         }
     } catch (error) {

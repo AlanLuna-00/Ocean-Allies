@@ -20,6 +20,7 @@ const createPurchase = async (purchases) => {
 
             let hasSufficientStock = true;
             const updatedSizes = { ...product.size };
+            let total = 0;
 
             for (const { size, quantity } of sizes) {
                 if (
@@ -36,6 +37,7 @@ const createPurchase = async (purchases) => {
                 }
 
                 updatedSizes[size].stock -= quantity;
+                total += product.price * quantity;
             }
 
             if (!hasSufficientStock) {
@@ -46,6 +48,8 @@ const createPurchase = async (purchases) => {
                 productId,
                 userId,
                 sizes,
+                quantity: sizes.reduce((acc, curr) => acc + curr.quantity, 0),
+                total,
             });
 
             await purchase.setUser(user);
@@ -54,22 +58,23 @@ const createPurchase = async (purchases) => {
             await Product.update(
                 {
                     size: updatedSizes,
-                    active: hasAvailableSizes(updatedSizes), // Actualizar el campo 'active'
+                    active: hasAvailableSizes(updatedSizes),
                 },
                 {
                     where: { id: productId },
                 }
             );
 
-            // Add sizes and quantities to the purchase object
             const purchaseWithSizes = {
                 purchase: {
                     userId,
                     productId,
-                    sizes: sizes.map(({ size, quantity }) => ({
-                        size,
-                        quantity,
-                    })),
+                    sizes,
+                    quantity: sizes.reduce(
+                        (acc, curr) => acc + curr.quantity,
+                        0
+                    ),
+                    total,
                 },
             };
 

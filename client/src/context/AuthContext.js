@@ -3,6 +3,7 @@ import useLogoutUser from "@/hooks/useLogoutUser";
 import React, { createContext, useEffect, useState, useContext } from "react";
 import { FirebaseContext } from "./FirebaseContext";
 import { useRouter } from "next/navigation";
+import axios from "axios";
 
 const AuthContext = createContext();
 
@@ -59,12 +60,41 @@ export const AuthProvider = ({ children }) => {
     updateUserCart(userId, []);
   };
 
-  const getPurchaseData = () => {
-    // obtengo el id de TODOS los productos del carrito del usuario y el id del usuario
+  const getPurchaseData = async () => {
     const userId = JSON.parse(localStorage.getItem("user")).id;
-    const productId = userCart.map((item) => item.id);
-    const purchaseData = { productId, userId };
-    return purchaseData;
+
+    for (const item of userCart) {
+      const productId = item.id;
+      let sizes = [];
+
+      if (typeof item.sizes === "object") {
+        sizes = Object.entries(item.sizes).map(([size, quantity]) => ({
+          size,
+          quantity,
+        }));
+      }
+
+      console.log({
+        userId,
+        productId,
+        sizes,
+      });
+
+      try {
+        const response = await axios.post(
+          "http://localhost:8080/api/purchase",
+          {
+            userId,
+            productId,
+            sizes,
+          }
+        );
+        console.log(response.data);
+        clearUserCart();
+      } catch (error) {
+        console.log(error);
+      }
+    }
   };
 
   // calculate total price of cart
