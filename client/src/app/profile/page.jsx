@@ -3,7 +3,6 @@ import AuthContext from "@/context/AuthContext";
 import axios from "axios";
 import Link from "next/link";
 import React, { useContext, useEffect, useState } from "react";
-import Modal from "react-modal";
 
 const Profile = () => {
   const { isLoggedIn } = useContext(AuthContext);
