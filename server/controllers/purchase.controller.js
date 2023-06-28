@@ -1,4 +1,7 @@
-const { createPurchase, getPurchase } = require('../services/purchase.services');
+const {
+    createPurchase,
+    getPurchase,
+} = require('../services/purchase.services');
 
 // Controlador para crear una compra
 const createPurchaseController = async (req, res) => {
@@ -13,7 +16,13 @@ const createPurchaseController = async (req, res) => {
         } else {
             res.status(201).json({
                 msg: 'Compras realizadas con éxito',
-                results,
+                results: successfulPurchases.map((purchase) => ({
+                    purchase: {
+                        userId: purchase.purchase.userId,
+                        productId: purchase.purchase.productId,
+                        sizes: purchase.purchase.sizes,
+                    },
+                })),
             });
         }
     } catch (error) {
@@ -31,11 +40,11 @@ const getPurchaseController = async (req, res) => {
         }
         res.json(purchase);
     } catch (error) {
-        res.status(500).json({ error: error.message })
+        res.status(500).json({ error: error.message });
     }
-}
+};
 
 module.exports = {
     createPurchaseController,
-    getPurchaseController
+    getPurchaseController,
 };
