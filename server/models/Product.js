@@ -25,7 +25,7 @@ const Product = (sequelize) => {
             category: {
                 type: DataTypes.ENUM(
                     'T-shirts',
-                    'Jacket',
+                    'Sweatshirts',
                     'Tank tops',
                     'Leggings',
                     'Dresses'
