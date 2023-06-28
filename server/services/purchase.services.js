@@ -61,7 +61,17 @@ const createPurchase = async (purchases) => {
                 }
             );
 
-            results.push({ productId, purchase });
+            // Add sizes and quantities to the purchase object
+            const purchaseWithSizes = {
+                productId,
+                purchase,
+                sizes: sizes.map(({ size, quantity }) => ({
+                    size,
+                    quantity,
+                })),
+            };
+
+            results.push(purchaseWithSizes);
         }
 
         return results;
