@@ -20,10 +20,14 @@ const register = async (req, res) => {
                 throw error;
             });
 
-        if (emailExists) {
-            return res.status(400).json({
-                msg: 'El correo electrónico ya está registrado',
-            });
+        console.log('emailExists', emailExists);
+
+        if (google) {
+            if (!emailExists) {
+                return res.status(400).json({
+                    msg: 'El correo electrónico ya está registrado',
+                });
+            }
         }
 
         // Generar el hash de la contraseña
