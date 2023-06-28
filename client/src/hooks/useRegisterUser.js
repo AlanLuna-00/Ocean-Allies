@@ -60,6 +60,7 @@ const useRegister = () => {
           password: user.uid,
           role: "user",
           google: true,
+          image: user.photoURL,
         }
       );
 

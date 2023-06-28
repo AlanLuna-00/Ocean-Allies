@@ -42,6 +42,7 @@ const register = async (req, res) => {
             role,
             image,
         });
+        console.log('user reg', user);
         // Crear usuario en Firebase Authentication
         if (!google) {
             const userRecord = await admin.auth().createUser({
