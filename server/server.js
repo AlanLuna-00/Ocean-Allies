@@ -4,6 +4,7 @@ const { conn } = require('./db');
 const cookieParser = require('cookie-parser');
 const admin = require('firebase-admin');
 const serviceAccount = require('./credentialFirebase.json');
+const cloudinary = require('cloudinary').v2;
 
 class Server {
     constructor() {
@@ -24,6 +25,11 @@ class Server {
         this.middlewares();
         // Rutas de mi aplicación
         this.routes();
+        cloudinary.config({
+            cloud_name: 'di8ocqpu1',
+            api_key: '888444416473822',
+            api_secret: 'i5CycR7GJHkEREdvb4O65jmxByM',
+        });
     }
 
     conectarDB() {

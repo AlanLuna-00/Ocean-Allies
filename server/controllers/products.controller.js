@@ -99,6 +99,7 @@ const deleteProductController = async (req, res) => {
 };
 
 const Joi = require('joi');
+const cloudinary = require('cloudinary').v2;
 
 const allowedSizes = ['XS', 'S', 'M', 'L', 'XL', 'XXL'];
 
@@ -127,14 +128,13 @@ const productSchema = Joi.object({
         }),
     color: Joi.string().required(),
     image: Joi.string().required(),
-    gender: Joi.string().valid('Man', 'Woman', 'Unisex').required(), // Agregar la validación del campo "gender"
+    gender: Joi.string().valid('Man', 'Woman', 'Unisex').required(),
     active: Joi.boolean().optional(),
 });
 
 const createProductController = async (req, res) => {
     const productData = req.body;
 
-    // Verificar si se envió un objeto de producto o una matriz de productos
     const products = Array.isArray(productData) ? productData : [productData];
 
     try {
@@ -142,7 +142,6 @@ const createProductController = async (req, res) => {
         const invalidProducts = [];
 
         for (const product of products) {
-            // Validar el producto utilizando el esquema definido
             const { error } = productSchema.validate(product);
 
             if (error) {
@@ -152,7 +151,15 @@ const createProductController = async (req, res) => {
                 });
             } else {
                 try {
-                    const createdProduct = await createProduct(product);
+                    const uploadedImage = await cloudinary.uploader.upload(
+                        product.image
+                    );
+                    const imageUrl = uploadedImage.secure_url;
+
+                    const createdProduct = await createProduct({
+                        ...product,
+                        image: imageUrl,
+                    });
                     createdProducts.push(createdProduct);
                 } catch (error) {
                     if (error.message === 'Duplicate product') {
