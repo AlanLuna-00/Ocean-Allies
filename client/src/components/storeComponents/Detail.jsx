@@ -15,6 +15,8 @@ export default function Test({ product }) {
 
   const [selectedSizes, setSelectedSizes] = useState({});
   const [selectedQuantity, setSelectedQuantity] = useState(1);
+  const [showDescriptions, setShowDescriptions] = useState(true);
+  const [showReviews, setShowReviews] = useState(false);
 
   const handleAddToCart = () => {
     if (!localStorage.getItem("user")) {
@@ -286,43 +288,99 @@ export default function Test({ product }) {
           <div className="lg:col-span-3">
             <div className="border-b border-gray-300">
               <nav className="flex gap-4">
-                <a
-                  href="#"
-                  title=""
-                  className="border-b-2 border-gray-900 py-4 text-sm font-medium text-gray-900 hover:border-gray-400 hover:text-gray-800"
+                <button
+                  className={`${
+                    showDescriptions
+                      ? "border-b-2 border-gray-900 py-4 text-sm font-medium text-gray-900 hover:border-gray-400 hover:text-gray-800"
+                      : " border-gray-900 py-4 text-sm font-medium text-gray-900 hover:border-gray-400 hover:text-gray-800"
+                  } px-4 py-2 rounded-md`}
+                  onClick={() => {
+                    setShowDescriptions(true);
+                    setShowReviews(false);
+                  }}
                 >
-                  Description
-                </a>
-
-                <a
-                  href="#"
-                  title=""
-                  className="inline-flex items-center border-b-2 border-transparent py-4 text-sm font-medium text-gray-600"
+                  Descriptions
+                </button>
+                <button
+                  className={`${
+                    showReviews
+                      ? "border-b-2 border-gray-900 py-4 text-sm font-medium text-gray-900 hover:border-gray-400 hover:text-gray-800"
+                      : "border-gray-900 py-4 text-sm font-medium text-gray-900 hover:border-gray-400 hover:text-gray-800"
+                  } px-4 py-2 rounded-md`}
+                  onClick={() => {
+                    setShowDescriptions(false);
+                    setShowReviews(true);
+                  }}
                 >
                   Reviews
-                  <span className="ml-2 block rounded-full bg-gray-500 px-2 py-px text-xs font-bold text-gray-100">
-                    1,209
-                  </span>
-                </a>
+                </button>
               </nav>
             </div>
 
             <div className="mt-8 flow-root sm:mt-12">
-              <h1 className="text-3xl font-bold">{product.description}</h1>
-              <p className="mt-4">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia
-                accusantium nesciunt fuga.
-              </p>
-              <h1 className="mt-8 text-3xl font-bold">{product.description}</h1>
-              <p className="mt-4">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio
-                numquam enim facere.
-              </p>
-              <p className="mt-4">
-                Amet consectetur adipisicing elit. Optio numquam enim facere.
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolore
-                rerum nostrum eius facere, ad neque.
-              </p>
+              {showDescriptions && (
+                <div>
+                  <h1 className="text-3xl font-bold">{product.description}</h1>
+                  <p className="mt-4">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Quia accusantium nesciunt fuga.
+                  </p>
+                  <h1 className="mt-8 text-3xl font-bold">
+                    {product.description}
+                  </h1>
+                  <p className="mt-4">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Optio numquam enim facere.
+                  </p>
+                  <p className="mt-4">
+                    Amet consectetur adipisicing elit. Optio numquam enim
+                    facere. Lorem ipsum dolor sit amet consectetur, adipisicing
+                    elit. Dolore rerum nostrum eius facere, ad neque.
+                  </p>
+                </div>
+              )}
+              {showReviews && (
+                <div>
+                  <div className="">
+                    {product.reviews.length > 0 ? (
+                      <article>
+                        <div class="flex items-center mb-5 space-x-4">
+                          <img class="w-10 h-10 rounded-full" src="" alt="" />
+                          <div class=" text-zinc-950 space-y-1 font-medium ">
+                            <p> {product.reviews[0].userId}</p>
+                          </div>
+                        </div>
+                        <div class="flex items-center mb-1">
+                          {Array.from(
+                            { length: parseInt(product.reviews[0].rating) },
+                            (_, index) => (
+                              <svg
+                                key={index}
+                                className="block h-4 w-4 align-middle text-yellow-500"
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 20 20"
+                                fill="currentColor"
+                              >
+                                <path
+                                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                                  className=""
+                                ></path>
+                              </svg>
+                            )
+                          )}
+                        </div>
+                        <p class="mb-2 text-gray-500 dark:text-gray-400">
+                          {product.reviews[0].comment}
+                        </p>
+                      </article>
+                    ) : (
+                      <p className="mt-8 text-3xl font-bold">
+                        No hay comentarios
+                      </p>
+                    )}
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         </div>
