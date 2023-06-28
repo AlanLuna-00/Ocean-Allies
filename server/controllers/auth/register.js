@@ -5,7 +5,7 @@ const admin = require('firebase-admin');
 
 const register = async (req, res) => {
     try {
-        const { name, email, password, role, google } = req.body;
+        const { name, email, password, role, google, image } = req.body;
         console.log('me ejec', req.body);
 
         // Verificar si el correo electrónico ya está en uso en Firebase Authentication
@@ -40,6 +40,7 @@ const register = async (req, res) => {
             email,
             password: hashedPassword,
             role,
+            image,
         });
         // Crear usuario en Firebase Authentication
         if (!google) {

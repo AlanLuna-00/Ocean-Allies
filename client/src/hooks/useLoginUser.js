@@ -69,6 +69,7 @@ const useLogin = () => {
           email: auth.currentUser.email,
           password: "", // No se necesita contraseña cuando se utiliza el inicio de sesión de Google
           google: true,
+          image: auth.currentUser.photoURL,
         }
       );
 
