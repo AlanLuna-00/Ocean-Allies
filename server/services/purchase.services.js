@@ -70,6 +70,15 @@ const createPurchase = async (purchases) => {
     }
 };
 
+const getPurchase = async (id) => {
+    try {
+        const purchase = await Purchase.findByPk(id);
+        return purchase;
+    } catch (error) {
+        throw new Error('Fail to get purchase');
+    }
+};
+
 const hasAvailableSizes = (sizes) => {
     const sizesArray = Object.values(sizes);
     for (const size of sizesArray) {
@@ -82,4 +91,5 @@ const hasAvailableSizes = (sizes) => {
 
 module.exports = {
     createPurchase,
+    getPurchase,
 };
