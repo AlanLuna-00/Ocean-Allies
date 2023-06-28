@@ -29,7 +29,14 @@ const getUserByIdService = async (userId) => {
         const user = await User.findByPk(userId, {
             include: {
                 model: Purchase,
-                attributes: ['id', 'productId', 'userId', 'quantity', 'total'],
+                attributes: [
+                    'id',
+                    'productId',
+                    'userId',
+                    'quantity',
+                    'total',
+                    'sizes',
+                ],
             },
         });
         return user;
