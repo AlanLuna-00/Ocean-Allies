@@ -100,6 +100,7 @@ const deleteProductController = async (req, res) => {
 
 const Joi = require('joi');
 const cloudinary = require('cloudinary').v2;
+const Product = require('../models/Product');
 
 const allowedSizes = ['XS', 'S', 'M', 'L', 'XL', 'XXL'];
 
@@ -127,13 +128,21 @@ const productSchema = Joi.object({
             return value;
         }),
     color: Joi.string().required(),
-    image: Joi.string().required(),
+    image: Joi.required(),
     gender: Joi.string().valid('Man', 'Woman', 'Unisex').required(),
     active: Joi.boolean().optional(),
 });
 
 const createProductController = async (req, res) => {
     const productData = req.body;
+    const file = req.file; // Obtener el archivo subido con Multer
+    console.log(file);
+
+    if (!file) {
+        return res.status(400).json({
+            message: 'No file uploaded',
+        });
+    }
 
     const products = Array.isArray(productData) ? productData : [productData];
 
@@ -151,14 +160,13 @@ const createProductController = async (req, res) => {
                 });
             } else {
                 try {
-                    const uploadedImage = await cloudinary.uploader.upload(
-                        product.image
-                    );
-                    const imageUrl = uploadedImage.secure_url;
+                    // Obtener la URL de la imagen cargada en Cloudinary
+                    const result = await cloudinary.uploader.upload(file.path);
+                    productData.image = result.secure_url; // Agregar la URL de la imagen a los datos del producto
 
                     const createdProduct = await createProduct({
                         ...product,
-                        image: imageUrl,
+                        image: result.secure_url,
                     });
                     createdProducts.push(createdProduct);
                 } catch (error) {
@@ -197,7 +205,10 @@ const createProductController = async (req, res) => {
             });
         }
     } catch (error) {
-        res.status(500).json({ message: 'Error creating the products' });
+        console.error(error); // Cambiado a console.error para asegurar la salida del log
+        res.status(500).json({
+            message: 'Internal server error',
+        });
     }
 };
 

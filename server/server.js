@@ -4,7 +4,6 @@ const { conn } = require('./db');
 const cookieParser = require('cookie-parser');
 const admin = require('firebase-admin');
 const serviceAccount = require('./credentialFirebase.json');
-const cloudinary = require('cloudinary').v2;
 
 class Server {
     constructor() {
@@ -17,19 +16,14 @@ class Server {
         this.authPath = '/api/auth';
         this.purchasePath = '/api/purchase';
         this.paymentPath = '/api/payment';
-        // Conectar a base de datos
+        // Conectar a la base de datos
         this.conectarDB();
         // Inicializar Firebase Admin
         this.inicializarFirebaseAdmin();
         // Middlewares
         this.middlewares();
-        // Rutas de mi aplicación
+        // Rutas de la aplicación
         this.routes();
-        cloudinary.config({
-            cloud_name: 'di8ocqpu1',
-            api_key: '888444416473822',
-            api_secret: 'i5CycR7GJHkEREdvb4O65jmxByM',
-        });
     }
 
     conectarDB() {
@@ -54,7 +48,7 @@ class Server {
         this.app.use(express.static('public'));
         // Cookie parser
         this.app.use(cookieParser());
-        // CORs
+        // CORS
         this.app.use(
             cors({
                 allowedHeaders: [
@@ -83,7 +77,7 @@ class Server {
 
     listen() {
         this.app.listen(this.port, () => {
-            console.log(`Servidor corriendo en puerto ${this.port}`);
+            console.log(`Servidor corriendo en el puerto ${this.port}`);
         });
     }
 }
