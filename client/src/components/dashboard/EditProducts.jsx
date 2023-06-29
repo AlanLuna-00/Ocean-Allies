@@ -6,7 +6,7 @@ export default function EditProducts({ product, updateProducts, newProducts, isN
   //*----USESTATE--------
   const [isOpen, setIsOpen] = useState(false);
   const [checked, setChecked] = useState(false);
-  
+
   const [formErrors, setFormErrors] = useState({
     name: false,
     price: false,
@@ -17,7 +17,7 @@ export default function EditProducts({ product, updateProducts, newProducts, isN
     description: false,
     image: false,
   });
-  
+
   const [formData, setFormData] = useState({
     id: product.id,
     name: product.name,
@@ -31,7 +31,7 @@ export default function EditProducts({ product, updateProducts, newProducts, isN
     active: product.active,
   });
   //*----USESTATES--------
-  
+
   const openModal = () => {
     setIsOpen(true);
   };
@@ -39,21 +39,21 @@ export default function EditProducts({ product, updateProducts, newProducts, isN
   const closeModal = () => {
     setIsOpen(false);
   };
-  
-//* ------------------ HANDLES -------------------------------
-const handleInputChange = (e) => {
-  const { name, value } = e.target;
-  setFormData((prevData) => ({
-    ...prevData,
-    [name]: value,
-  }));
-};
-//-----------------------
-const handleSizeChange = (e, size) => {
-  const { value } = e.target;
-  setFormData((prevData) => ({
-    ...prevData,
-    size: {
+
+  //* ------------------ HANDLES -------------------------------
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+  //-----------------------
+  const handleSizeChange = (e, size) => {
+    const { value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      size: {
         ...prevData.size,
         [size]: {
           ...prevData.size[size],
@@ -62,7 +62,7 @@ const handleSizeChange = (e, size) => {
       },
     }));
   };
-  
+
   const handleSwitchChange = () => {
     setChecked(!checked);
     setFormData((prevData) => ({
@@ -71,13 +71,13 @@ const handleSizeChange = (e, size) => {
     }));
   };
   //* ------------------ HANDLES -------------------------------
-  
+
   //*------------ SUBMIT ------------
   const handleSubmit = (e) => {
     e.preventDefault();
-    
+
     // validacion(formData, setFormErrors);
-    
+
     const errors = {
       name: !formData.name,
       price: !formData.price,
@@ -89,7 +89,7 @@ const handleSizeChange = (e, size) => {
       image: !formData.image,
     };
     setFormErrors(errors);
-    
+
     const hasErrors = Object.values(errors).every((error) => error === false);
     if (hasErrors) {
       if (formData.id) {
@@ -116,15 +116,15 @@ const handleSizeChange = (e, size) => {
           formData.color,
           formData.size,
           formData.active
-          );
-        }
-        closeModal();
+        );
       }
+      closeModal();
+    }
     return;
   };
   //*------------ SUBMIT------------
-  
-  
+
+
   console.log("FORM-ERROR", formErrors);
 
   return (
@@ -279,10 +279,10 @@ const handleSizeChange = (e, size) => {
                 {!Object.values(formErrors).every(
                   (error) => error === false
                 ) && (
-                  <span className="text-red-500">
-                    * Complete los campos obligatorios
-                  </span>
-                )}
+                    <span className="text-red-500">
+                      * Complete los campos obligatorios
+                    </span>
+                  )}
               </div>
 
               <hr className="border border-gray-300 my-4" />
@@ -324,9 +324,8 @@ const handleSizeChange = (e, size) => {
               <hr className="border border-gray-300 my-4" />
 
               <div
-                className={`mb-4 ${
-                  formErrors.description ? "border-red-500" : ""
-                }`}
+                className={`mb-4 ${formErrors.description ? "border-red-500" : ""
+                  }`}
               >
                 <label
                   className="block text-gray-700 font-bold mb-2"
@@ -335,10 +334,9 @@ const handleSizeChange = (e, size) => {
                   Descripcion <span className="text-red-500">*</span>
                 </label>
                 <textarea
-                  className={`mb-4 ${
-                    formErrors.description ? "border-red-500" : ""
-                  }
-                   appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-blue-500`}
+                  className={`mb-4 ${formErrors.description ? "border-red-500" : ""
+                    }
+                  appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-blue-500`}
                   type="text"
                   id="description"
                   name="description"

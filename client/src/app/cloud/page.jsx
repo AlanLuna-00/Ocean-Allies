@@ -10,7 +10,7 @@ function Page() {
             const formData = new FormData();
             formData.append('image', selectedImage);
 
-            const response = await axios.post('http://localhost:8080/api/upload-image', formData);
+            const response = await axios.post('http://localhost:8080/api/products', formData);
             console.log('Image uploaded successfully:', response.data);
         } catch (error) {
             console.error('Error uploading image:', error);
