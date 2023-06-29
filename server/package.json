@@ -26,6 +26,7 @@
         "jsonwebtoken": "^9.0.0",
         "mercadopago": "^1.5.16",
         "multer": "^1.4.5-lts.1",
+        "multer-storage-cloudinary": "^4.0.0",
         "pg": "^8.11.0",
         "pg-hstore": "^2.3.4",
         "react-modal": "^3.16.1",
