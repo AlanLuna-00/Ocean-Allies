@@ -16,7 +16,7 @@ const Pagination = ({
   };
 
   return (
-    <nav aria-label="Page navigation example">
+    <nav aria-label="Page navigation example" className="flex  justify-center">
       <ul className="inline-flex items-center -space-x-px sm:flex sm:justify-center mb-8">
         <li>
           <button
