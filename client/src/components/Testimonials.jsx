@@ -67,8 +67,8 @@ const Testimonials = () => {
             <Carousel
                 responsive={responsive}
                 infinite
-                containerClass="carousel-container"
-                itemClass="carousel-item"
+                containerclassName="carousel-container"
+                item className="carousel-item"
             >
                 {testimonials.map((testimonial) => (
                     <div key={testimonial.id} className="p-5 bg-white carousel-item">

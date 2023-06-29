@@ -12,17 +12,17 @@ export default function Home() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.2, duration: 0.5 }}
-          class="text-center max-w-xl mx-auto">
-          <h1 class="text-6xl md:text-7xl font-bold mb-5 text-gray-600">
+          className="text-center max-w-xl mx-auto">
+          <h1 className="text-6xl md:text-7xl font-bold mb-5 text-gray-600">
             The ocean is also <br />
             our land.
           </h1>
-          <div class="text-center mb-10">
-            <span class="inline-block w-1 h-1 rounded-full bg-blue-600 ml-1"></span>
-            <span class="inline-block w-3 h-1 rounded-full bg-blue-600 ml-1"></span>
-            <span class="inline-block w-40 h-1 rounded-full bg-blue-600 ml-1"></span>
-            <span class="inline-block w-3 h-1 rounded-full bg-blue-600 ml-1"></span>
-            <span class="inline-block w-1 h-1 rounded-full bg-blue-600 ml-1"></span>
+          <div className="text-center mb-10">
+            <span className="inline-block w-1 h-1 rounded-full bg-blue-600 ml-1"></span>
+            <span className="inline-block w-3 h-1 rounded-full bg-blue-600 ml-1"></span>
+            <span className="inline-block w-40 h-1 rounded-full bg-blue-600 ml-1"></span>
+            <span className="inline-block w-3 h-1 rounded-full bg-blue-600 ml-1"></span>
+            <span className="inline-block w-1 h-1 rounded-full bg-blue-600 ml-1"></span>
           </div>
         </motion.div>
 
@@ -84,27 +84,27 @@ export default function Home() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 4, duration: 1 }}
-        class="text-center max-w-xl mx-auto p-20 mt-10  ">
-        <div class="text-center mb-10">
-          <span class="inline-block w-1 h-1 rounded-full bg-blue-600 ml-1"></span>
-          <span class="inline-block w-3 h-1 rounded-full bg-blue-600 ml-1"></span>
-          <span class="inline-block w-40 h-1 rounded-full bg-blue-600 ml-1"></span>
-          <span class="inline-block w-3 h-1 rounded-full bg-blue-600 ml-1"></span>
-          <span class="inline-block w-1 h-1 rounded-full bg-blue-600 ml-1"></span>
+        className="text-center max-w-xl mx-auto p-20 mt-10  ">
+        <div className="text-center mb-10">
+          <span className="inline-block w-1 h-1 rounded-full bg-blue-600 ml-1"></span>
+          <span className="inline-block w-3 h-1 rounded-full bg-blue-600 ml-1"></span>
+          <span className="inline-block w-40 h-1 rounded-full bg-blue-600 ml-1"></span>
+          <span className="inline-block w-3 h-1 rounded-full bg-blue-600 ml-1"></span>
+          <span className="inline-block w-1 h-1 rounded-full bg-blue-600 ml-1"></span>
         </div>
-        <h1 class="text-6xl md:text-6xl font-bold mb-5 text-gray-600 ">
+        <h1 className="text-6xl md:text-6xl font-bold mb-5 text-gray-600 ">
           IT’S TIME TO TAKE ACTION!
         </h1>
-        <h3 class="text-6xl md:text-3xl font-bold mb-5 text-gray-600">
+        <h3 className="text-6xl md:text-3xl font-bold mb-5 text-gray-600">
           We are all part of the problem and the solution. Get involved and help
           us keep the ocean clean.
         </h3>
-        <div class="text-center mb-10">
-          <span class="inline-block w-1 h-1 rounded-full bg-blue-600 ml-1"></span>
-          <span class="inline-block w-3 h-1 rounded-full bg-blue-600 ml-1"></span>
-          <span class="inline-block w-40 h-1 rounded-full bg-blue-600 ml-1"></span>
-          <span class="inline-block w-3 h-1 rounded-full bg-blue-600 ml-1"></span>
-          <span class="inline-block w-1 h-1 rounded-full bg-blue-600 ml-1"></span>
+        <div className="text-center mb-10">
+          <span className="inline-block w-1 h-1 rounded-full bg-blue-600 ml-1"></span>
+          <span className="inline-block w-3 h-1 rounded-full bg-blue-600 ml-1"></span>
+          <span className="inline-block w-40 h-1 rounded-full bg-blue-600 ml-1"></span>
+          <span className="inline-block w-3 h-1 rounded-full bg-blue-600 ml-1"></span>
+          <span className="inline-block w-1 h-1 rounded-full bg-blue-600 ml-1"></span>
         </div>
       </motion.div>
       {/*  */}

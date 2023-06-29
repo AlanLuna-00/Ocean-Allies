@@ -496,14 +496,14 @@ const Shop = () => {
                         >
                           <Link href={`/detail/${product.id}`}>
                             <div>
-                              <a class="relative  overflow-hidden">
+                              <a className="relative  overflow-hidden">
                                 <img
                                   src={product.image}
                                   alt={product.name}
                                   className=" peer  right-0 top-0 h-full w-full object-cover"
                                 />
-                                <div class="absolute -right-16 bottom-0 mb-4 mr-2 space-y-2 transition-all duration-300 group-hover:right-0">
-                                  <button class="flex h-10 w-10 items-center justify-center bg-gray-900 text-white transition hover:bg-gray-700">
+                                <div className="absolute -right-16 bottom-0 mb-4 mr-2 space-y-2 transition-all duration-300 group-hover:right-0">
+                                  <button className="flex h-10 w-10 items-center justify-center bg-gray-900 text-white transition hover:bg-gray-700">
                                     <ShoppingCartIcon
                                       className="h-6 w-6"
                                       aria-hidden="true"
@@ -517,7 +517,7 @@ const Shop = () => {
                                   {product.name}
                                 </h5>
                                 <div className="mb-5 flex justify-center">
-                                  <span class="text-base font-bold text-gray-900">
+                                  <span className="text-base font-bold text-gray-900">
                                     ${product.price}
                                   </span>
                                 </div>

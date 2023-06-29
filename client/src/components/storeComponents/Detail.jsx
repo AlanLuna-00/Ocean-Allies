@@ -203,11 +203,10 @@ export default function Test({ product }) {
                 .map(([size, stock]) => (
                   <div key={size} className="flex items-center">
                     <button
-                      className={`border text-sm leading-none text-gray-600 ${
-                        selectedSizes[size]
+                      className={`border text-sm leading-none text-gray-600 ${selectedSizes[size]
                           ? "border-indigo-500"
                           : "border-gray-300"
-                      } mr-2 rounded-md px-3 py-1`}
+                        } mr-2 rounded-md px-3 py-1`}
                       onClick={() =>
                         setSelectedSizes((prevSelectedSizes) => ({
                           ...prevSelectedSizes,
@@ -289,11 +288,10 @@ export default function Test({ product }) {
             <div className="border-b border-gray-300">
               <nav className="flex gap-4">
                 <button
-                  className={`${
-                    showDescriptions
+                  className={`${showDescriptions
                       ? "border-b-2 border-gray-900 py-4 text-sm font-medium text-gray-900 hover:border-gray-400 hover:text-gray-800"
                       : " border-gray-900 py-4 text-sm font-medium text-gray-900 hover:border-gray-400 hover:text-gray-800"
-                  } px-4 py-2 rounded-md`}
+                    } px-4 py-2 rounded-md`}
                   onClick={() => {
                     setShowDescriptions(true);
                     setShowReviews(false);
@@ -302,11 +300,10 @@ export default function Test({ product }) {
                   Descriptions
                 </button>
                 <button
-                  className={`${
-                    showReviews
+                  className={`${showReviews
                       ? "border-b-2 border-gray-900 py-4 text-sm font-medium text-gray-900 hover:border-gray-400 hover:text-gray-800"
                       : "border-gray-900 py-4 text-sm font-medium text-gray-900 hover:border-gray-400 hover:text-gray-800"
-                  } px-4 py-2 rounded-md`}
+                    } px-4 py-2 rounded-md`}
                   onClick={() => {
                     setShowDescriptions(false);
                     setShowReviews(true);
@@ -344,13 +341,13 @@ export default function Test({ product }) {
                   <div className="">
                     {product.reviews.length > 0 ? (
                       <article>
-                        <div class="flex items-center mb-5 space-x-4">
-                          <img class="w-10 h-10 rounded-full" src="" alt="" />
-                          <div class=" text-zinc-950 space-y-1 font-medium ">
+                        <div className="flex items-center mb-5 space-x-4">
+                          <img className="w-10 h-10 rounded-full" src="" alt="" />
+                          <div className=" text-zinc-950 space-y-1 font-medium ">
                             <p> {product.reviews[0].userId}</p>
                           </div>
                         </div>
-                        <div class="flex items-center mb-1">
+                        <div className="flex items-center mb-1">
                           {Array.from(
                             { length: parseInt(product.reviews[0].rating) },
                             (_, index) => (
@@ -369,7 +366,7 @@ export default function Test({ product }) {
                             )
                           )}
                         </div>
-                        <p class="mb-2 text-gray-500 dark:text-gray-400">
+                        <p className="mb-2 text-gray-500 dark:text-gray-400">
                           {product.reviews[0].comment}
                         </p>
                       </article>
