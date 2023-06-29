@@ -65,13 +65,7 @@ function ChangePassword({ user }) {
      
       <div className="text-center">
         <button 
-        onClick={() => {
-          if (!localStorage.getItem('user').password) {
-            alert('Messi')
-            return;
-          }
-          openModal();
-        }} className="text-indigo-600 hover:underline">
+        onClick={openModal} className="text-indigo-600 hover:underline">
           Cambiar contraseña
         </button>
       </div>
