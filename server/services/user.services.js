@@ -81,7 +81,7 @@ const deleteUserService = async (userId) => {
 
 const updateUserPasswordService = async (id, oldPassword, newPassword) => {
     // Buscar al usuario en la base de datos
-    const user = await User.findById(id);
+    const user = await User.findByPk(id);
   
     if (!user) {
       throw new Error('El usuario no existe');

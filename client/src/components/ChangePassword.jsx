@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 function ChangePassword({ user }) {
+  
   const [isOpen, setIsOpen] = useState(false);
 
   const [formData, setFormData] = useState({
@@ -30,6 +31,7 @@ function ChangePassword({ user }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const { id } = user;
+    
     try {
       // Verificar que las contraseñas nuevas coincidan
       if (formData.newPassword !== formData.confirmPassword) {
@@ -48,7 +50,7 @@ function ChangePassword({ user }) {
 
   async function updateUserPasswordHandler(id, oldPassword, newPassword) {
     try {
-      const response = await axios.put(`/api/users/password/${id}`, {
+      const response = await axios.put(`http://localhost:8080/api/users/password/${id}`, {
         oldPassword,
         newPassword,
       });
@@ -63,7 +65,13 @@ function ChangePassword({ user }) {
      
       <div className="text-center">
         <button 
-        onClick={openModal} className="text-indigo-600 hover:underline">
+        onClick={() => {
+          if (!localStorage.getItem('user').password) {
+            alert('Messi')
+            return;
+          }
+          openModal();
+        }} className="text-indigo-600 hover:underline">
           Cambiar contraseña
         </button>
       </div>
