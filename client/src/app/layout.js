@@ -35,7 +35,7 @@ export default function RootLayout({ children }) {
             <Navigation />
             <main>
               {/* Envuelve tu componente con CloudinaryContext */}
-              <CloudinaryContext cloudName="tu_cloud_name">
+              <CloudinaryContext cloudName="di8ocqpu1">
                 {children}
               </CloudinaryContext>
             </main>
