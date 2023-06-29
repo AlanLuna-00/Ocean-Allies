@@ -123,69 +123,6 @@ export default function Test({ product }) {
               </h1>
             </div>
 
-            <div className="mt-5 flex items-center">
-              <div className="flex items-center">
-                <svg
-                  className="block h-4 w-4 align-middle text-yellow-500"
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
-                >
-                  <path
-                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
-                    className=""
-                  ></path>
-                </svg>
-                <svg
-                  className="block h-4 w-4 align-middle text-yellow-500"
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
-                >
-                  <path
-                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
-                    className=""
-                  ></path>
-                </svg>
-                <svg
-                  className="block h-4 w-4 align-middle text-yellow-500"
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
-                >
-                  <path
-                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
-                    className=""
-                  ></path>
-                </svg>
-                <svg
-                  className="block h-4 w-4 align-middle text-yellow-500"
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
-                >
-                  <path
-                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
-                    className=""
-                  ></path>
-                </svg>
-                <svg
-                  className="block h-4 w-4 align-middle text-yellow-500"
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
-                >
-                  <path
-                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
-                    className=""
-                  ></path>
-                </svg>
-              </div>
-              <p className="ml-2 text-sm font-medium text-gray-500">
-                1,209 Reviews
-              </p>
-            </div>
-
             <h2 className="mt-8 text-base text-gray-900">Sizes</h2>
             <div className="flex items-center justify-center">
               {Object.entries(product.size)
@@ -203,10 +140,11 @@ export default function Test({ product }) {
                 .map(([size, stock]) => (
                   <div key={size} className="flex items-center">
                     <button
-                      className={`border text-sm leading-none text-gray-600 ${selectedSizes[size]
+                      className={`border text-sm leading-none text-gray-600 ${
+                        selectedSizes[size]
                           ? "border-indigo-500"
                           : "border-gray-300"
-                        } mr-2 rounded-md px-3 py-1`}
+                      } mr-2 rounded-md px-3 py-1`}
                       onClick={() =>
                         setSelectedSizes((prevSelectedSizes) => ({
                           ...prevSelectedSizes,
@@ -288,10 +226,11 @@ export default function Test({ product }) {
             <div className="border-b border-gray-300">
               <nav className="flex gap-4">
                 <button
-                  className={`${showDescriptions
+                  className={`${
+                    showDescriptions
                       ? "border-b-2 border-gray-900 py-4 text-sm font-medium text-gray-900 hover:border-gray-400 hover:text-gray-800"
                       : " border-gray-900 py-4 text-sm font-medium text-gray-900 hover:border-gray-400 hover:text-gray-800"
-                    } px-4 py-2 rounded-md`}
+                  } px-4 py-2 rounded-md`}
                   onClick={() => {
                     setShowDescriptions(true);
                     setShowReviews(false);
@@ -300,10 +239,11 @@ export default function Test({ product }) {
                   Descriptions
                 </button>
                 <button
-                  className={`${showReviews
+                  className={`${
+                    showReviews
                       ? "border-b-2 border-gray-900 py-4 text-sm font-medium text-gray-900 hover:border-gray-400 hover:text-gray-800"
                       : "border-gray-900 py-4 text-sm font-medium text-gray-900 hover:border-gray-400 hover:text-gray-800"
-                    } px-4 py-2 rounded-md`}
+                  } px-4 py-2 rounded-md`}
                   onClick={() => {
                     setShowDescriptions(false);
                     setShowReviews(true);
@@ -317,59 +257,55 @@ export default function Test({ product }) {
             <div className="mt-8 flow-root sm:mt-12">
               {showDescriptions && (
                 <div>
-                  <h1 className="text-3xl font-bold">{product.description}</h1>
-                  <p className="mt-4">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Quia accusantium nesciunt fuga.
-                  </p>
-                  <h1 className="mt-8 text-3xl font-bold">
-                    {product.description}
-                  </h1>
-                  <p className="mt-4">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Optio numquam enim facere.
-                  </p>
-                  <p className="mt-4">
-                    Amet consectetur adipisicing elit. Optio numquam enim
-                    facere. Lorem ipsum dolor sit amet consectetur, adipisicing
-                    elit. Dolore rerum nostrum eius facere, ad neque.
-                  </p>
+                  <h1 className="mt-8 text-3xl font-bold">{product.name}</h1>
+                  <p className="mt-4">{product.description}</p>
                 </div>
               )}
               {showReviews && (
                 <div>
                   <div className="">
                     {product.reviews.length > 0 ? (
-                      <article>
-                        <div className="flex items-center mb-5 space-x-4">
-                          <img className="w-10 h-10 rounded-full" src="" alt="" />
-                          <div className=" text-zinc-950 space-y-1 font-medium ">
-                            <p> {product.reviews[0].userId}</p>
-                          </div>
-                        </div>
-                        <div className="flex items-center mb-1">
-                          {Array.from(
-                            { length: parseInt(product.reviews[0].rating) },
-                            (_, index) => (
-                              <svg
-                                key={index}
-                                className="block h-4 w-4 align-middle text-yellow-500"
-                                xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 20 20"
-                                fill="currentColor"
-                              >
-                                <path
-                                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
-                                  className=""
-                                ></path>
-                              </svg>
-                            )
-                          )}
-                        </div>
-                        <p className="mb-2 text-gray-500 dark:text-gray-400">
-                          {product.reviews[0].comment}
-                        </p>
-                      </article>
+                      <div className="border-b-2">
+                        {product.reviews.map((review, index) => (
+                          <article
+                            key={index}
+                            className=" border-b border-gray-300"
+                          >
+                            <div className="flex items-center mb-5 space-x-4">
+                              <img
+                                className="w-10 h-10 rounded-full"
+                                src=""
+                                alt=""
+                              />
+                              <div className="text-zinc-950 space-y-1 font-medium">
+                                <p>{review.userId}</p>
+                              </div>
+                            </div>
+                            <div className="flex items-center mb-1">
+                              {Array.from(
+                                { length: parseInt(review.rating) },
+                                (_, index) => (
+                                  <svg
+                                    key={index}
+                                    className="block h-4 w-4 align-middle text-yellow-500"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 20 20"
+                                    fill="currentColor"
+                                  >
+                                    <path
+                                      d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                                      className=""
+                                    ></path>
+                                  </svg>
+                                )
+                              )}
+                            </div>
+                            <p className="mb-2 text-gray-500 dark:text-gray-400">
+                              {review.comment}
+                            </p>
+                          </article>
+                        ))}
+                      </div>
                     ) : (
                       <p className="mt-8 text-3xl font-bold">
                         No hay comentarios

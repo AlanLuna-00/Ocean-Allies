@@ -39,9 +39,12 @@ const Shop = () => {
 
   const fetchMerchList = async () => {
     try {
-      const response = await axios.get("http://localhost:8080/api/products?active=true", {
-        params: filters,
-      });
+      const response = await axios.get(
+        "http://localhost:8080/api/products?active=true",
+        {
+          params: filters,
+        }
+      );
       if (response.status == 204) {
         setError(
           `No results found for the specified filters ${Object.keys(filters)
@@ -313,9 +316,7 @@ const Shop = () => {
         {/* Pagina base no Mobile */}
         <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex items-baseline justify-between border-b border-gray-200 pb-6 pt-6">
-            <h1 className="text-4xl font-bold tracking-tight text-gray-900">
-              shop
-            </h1>
+            <h1 className=" text-4xl font-bold tracking-tight text-gray-900"></h1>
             <div className="">
               <SearchBar
                 searchValue={filters.name}
@@ -348,6 +349,7 @@ const Shop = () => {
               </button>
             </div>
           </div>
+
           <section aria-labelledby="products-heading" className="pb-24 pt-6">
             <h2 id="products-heading" className="sr-only">
               Products
@@ -480,7 +482,7 @@ const Shop = () => {
               {/* Tabla de productos */}
 
               <div className="row-span-3">
-                <div className="grid  ">
+                <div className="flex flex-row justify-center  ">
                   <div className="grid grid-cols-1 gap-6  sm:grid-cols-2 lg:grid-cols-4">
                     {error ? (
                       <div className="flex justify-center text-center">
@@ -532,6 +534,7 @@ const Shop = () => {
               </div>
             </div>
           </section>
+
           <Pagination
             currentPage={filters.page}
             totalPages={paginationData.totalPages}
