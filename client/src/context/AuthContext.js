@@ -90,7 +90,6 @@ export const AuthProvider = ({ children }) => {
           }
         );
         console.log(response.data);
-        clearUserCart();
       } catch (error) {
         console.log(error);
       }

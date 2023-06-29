@@ -13,7 +13,17 @@ const CheckoutButton = ({ price }) => {
         }
       );
 
-      await getPurchaseData();
+      console.log(response.status);
+
+      if (response.status === 200) {
+        await getPurchaseData();
+
+        const data = response.data;
+        window.location.href = data.init_point;
+      } else {
+        // Manejar el caso de error
+        console.error("Error al crear la orden de pago");
+      }
 
       const data = response.data;
       window.location.href = data.init_point;
