@@ -93,7 +93,7 @@ const Profile = () => {
                           href={`/detail/${product.id}`}
                           className="text-blue-500 hover:text-blue-700"
                         >
-                          <div className="relative w-24 h-24 overflow-hidden rounded-md mr-4 hover:scale-110">
+                          <div className="relative w-24 h-24 overflow-hidden rounded-md mr-4 hover:scale-110 z-10" >
                             <img
                               src={product.image}
                               alt={product.name}
