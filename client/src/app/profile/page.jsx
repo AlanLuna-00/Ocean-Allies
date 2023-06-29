@@ -1,4 +1,5 @@
 "use client";
+import ChangePassword from "@/components/ChangePassword";
 import AuthContext from "@/context/AuthContext";
 import axios from "axios";
 import Link from "next/link";
@@ -73,11 +74,7 @@ const Profile = () => {
                   </h2>
                 </div>
                 <hr className="my-4" />
-                <div className="text-center">
-                  <a href="#" className="text-indigo-600 hover:underline">
-                    Cambiar contraseña
-                  </a>
-                </div>
+                <ChangePassword user={user} />
               </div>
             </div>
             <div className="md:w-2/3">
