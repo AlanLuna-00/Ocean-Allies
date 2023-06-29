@@ -70,8 +70,9 @@ function ChangePassword({ user }) {
         </button>
       </div>
 
+      
       {isOpen && (
-        <div className="fixed inset-0 flex items-center justify-center z-50">
+        <div className="fixed inset-0 flex items-center justify-center z-50 ">
           <div className="bg-white w-1/2 rounded-lg p-8">
             <h2 className="text-lg font-bold mb-4">Edit password</h2>
 
@@ -145,7 +146,7 @@ function ChangePassword({ user }) {
           </div>
         </div>
       )}
-    </div>
+      </div>
   );
 }
 
