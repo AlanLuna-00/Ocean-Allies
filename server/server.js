@@ -4,11 +4,12 @@ const { conn } = require('./db');
 const cookieParser = require('cookie-parser');
 const admin = require('firebase-admin');
 const serviceAccount = require('./credentialFirebase.json');
+require('dotenv').config();
 
 class Server {
     constructor() {
         this.app = express();
-        this.port = 8080;
+        this.port = process.env.PORT || 8080;
         this.productsPath = '/api/products';
         this.usersPath = '/api/users';
         this.reviewsPath = '/api/reviews';
