@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-function Slidebar() {
+function Slidebar({ showUsers, setShowUsers, showProducts, setShowProducts }) {
   return (
     <div id="menu" className="flex flex-col space-y-2 my-5">
       <Link
@@ -70,9 +70,13 @@ function Slidebar() {
         </div>
       </Link>
 
-      <Link
-        href="/dashboard/users"
+      <button
+        // href="/dashboard/users"
         className="hover:bg-white/10 transition duration-150 ease-linear rounded-lg py-3 px-2 group"
+        onClick={() => {
+          setShowProducts(false);
+          setShowUsers(true);
+        }}
       >
         <div className="flex flex-col space-y-2 md:flex-row md:space-y-0 space-x-2 items-center">
           <div>
@@ -100,11 +104,15 @@ function Slidebar() {
             </p>
           </div>
         </div>
-      </Link>
+      </button>
 
-      <Link
-        href="/dashboard/products"
+      <button
+        // href="/dashboard/products"
         className="hover:bg-white/10 transition duration-150 ease-linear rounded-lg py-3 px-2 group"
+        onClick={() => {
+          setShowProducts(true);
+          setShowUsers(false);
+        }}
       >
         <div className="flex flex-col space-y-2 md:flex-row md:space-y-0 space-x-2 items-center">
           <div>
@@ -132,7 +140,7 @@ function Slidebar() {
             </p>
           </div>
         </div>
-      </Link>
+      </button>
     </div>
   );
 }

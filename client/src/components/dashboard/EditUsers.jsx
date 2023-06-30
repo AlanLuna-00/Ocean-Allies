@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 //   return (()=> { accion que quiero ejecutar}
 //   },[])
 
-function ExampleModal({ user, updateUser }) {
+function EditUsers({ user, updateUser }) {
   const [isOpen, setIsOpen] = useState(false);
 
   const [formData, setFormData] = useState({
@@ -145,4 +145,4 @@ function ExampleModal({ user, updateUser }) {
   );
 }
 
-export default ExampleModal;
+export default EditUsers;
