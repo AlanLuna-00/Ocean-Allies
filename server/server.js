@@ -16,6 +16,7 @@ class Server {
         this.authPath = '/api/auth';
         this.purchasePath = '/api/purchase';
         this.paymentPath = '/api/payment';
+        this.cartPath = '/api/cart';
         // Conectar a la base de datos
         this.conectarDB();
         // Inicializar Firebase Admin
@@ -73,6 +74,7 @@ class Server {
         this.app.use(this.reviewsPath, require('./routes/reviewRoute'));
         this.app.use(this.purchasePath, require('./routes/purchaseRoute'));
         this.app.use(this.paymentPath, require('./routes/paymentRoute'));
+        this.app.use(this.cartPath, require('./routes/cartRoute'));
     }
 
     listen() {

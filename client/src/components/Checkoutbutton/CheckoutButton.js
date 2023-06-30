@@ -1,9 +1,16 @@
+"use client";
 import axios from "axios";
 import AuthContext from "@/context/AuthContext";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 
 const CheckoutButton = ({ price }) => {
   const { getPurchaseData } = useContext(AuthContext);
+  const [id, setId] = useState();
+  useEffect(() => {
+    if (localStorage.getItem("user")) {
+      setId(JSON.parse(localStorage.getItem("user")).id);
+    }
+  }, []);
   const handleClick = async () => {
     try {
       const response = await axios.post(
@@ -16,6 +23,7 @@ const CheckoutButton = ({ price }) => {
       console.log(response.status);
 
       if (response.status === 200) {
+        await axios.delete(`http://localhost:8080/api/cart/all/${id}`);
         await getPurchaseData();
 
         const data = response.data;

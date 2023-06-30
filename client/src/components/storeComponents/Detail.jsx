@@ -32,7 +32,8 @@ export default function Test({ product }) {
     const productToAdd = {
       id: product.id,
       name: product.name,
-      description: product.description,
+      // max length of description is 255 characters
+      description: product.description.slice(0, 255),
       color: product.color,
       price: product.price,
       image: product.image,
@@ -48,6 +49,7 @@ export default function Test({ product }) {
 
     // Agregar el producto al carrito
     const userId = JSON.parse(localStorage.getItem("user")).id;
+    console.log(productToAdd, userId);
     addToCart(productToAdd, userId);
     console.log(userCart);
   };

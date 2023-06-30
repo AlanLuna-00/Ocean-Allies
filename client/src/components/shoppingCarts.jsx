@@ -69,7 +69,11 @@ const ShoppingCart = ({ open, setOpen }) => {
                             role="list"
                             className="-my-6 divide-y divide-gray-200"
                           >
-                            {userCart.length === 0 ? (
+                            {userCart === undefined ? (
+                              <p className="text-sm text-gray-500">
+                                Your cart is empty.
+                              </p>
+                            ) : userCart.length === 0 ? (
                               <p className="text-sm text-gray-500">
                                 Your cart is empty.
                               </p>

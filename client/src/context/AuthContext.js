@@ -1,9 +1,9 @@
 "use client";
-import useLogoutUser from "@/hooks/useLogoutUser";
 import React, { createContext, useEffect, useState, useContext } from "react";
 import { FirebaseContext } from "./FirebaseContext";
-import { useRouter } from "next/navigation";
 import axios from "axios";
+import useLogoutUser from "@/hooks/useLogoutUser";
+import { useRouter } from "next/navigation";
 
 const AuthContext = createContext();
 
@@ -15,6 +15,7 @@ export const AuthProvider = ({ children }) => {
   const [price, setPrice] = useState(0);
   const router = useRouter();
   const { auth } = useContext(FirebaseContext);
+  const [change, setChange] = useState(false);
 
   const handleLogin = (user) => {
     setIsLoggedIn(true);
@@ -30,41 +31,67 @@ export const AuthProvider = ({ children }) => {
     router.push("/auth/login");
   };
 
-  const loadUserCart = (userId) => {
-    const cartItems = JSON.parse(localStorage.getItem(`cart_${userId}`));
-    if (cartItems) {
-      setUserCart(cartItems);
+  const loadUserCart = async (userId) => {
+    try {
+      const response = await axios.get(
+        `http://localhost:8080/api/cart/${userId}`
+      );
+      setUserCart(response.data.cart.cartItems);
+      setPrice(response.data.total);
+      console.log("me ejecuto");
+    } catch (error) {
+      console.error(error);
     }
   };
 
-  const updateUserCart = (userId, cart) => {
-    localStorage.setItem(`cart_${userId}`, JSON.stringify(cart));
+  const addToCart = async (product, userId) => {
+    try {
+      const add = await axios.post(`http://localhost:8080/api/cart/${userId}`, {
+        ...product,
+      });
+      setPrice(add.data.total);
+      const response = await axios.get(
+        `http://localhost:8080/api/cart/${userId}`
+      );
+      setUserCart(response.data.cartItems);
+      setChange(!change);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
-  const addToCart = (product, userId) => {
-    setUserCart((prevCart) => [...prevCart, product]);
-    updateUserCart(userId, [...userCart, product]);
+  const removeFromCart = async (itemId, userId) => {
+    try {
+      await axios.delete(`http://localhost:8080/api/cart/${itemId}`);
+      const response = await axios.get(
+        `http://localhost:8080/api/cart/${userId}`
+      );
+      setUserCart(response.data.cartItems);
+      setPrice(response.data.total);
+      setChange(!change);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
-  const removeFromCart = (productId, userId) => {
-    setUserCart((prevCart) => prevCart.filter((item) => item.id !== productId));
-    updateUserCart(
-      userId,
-      userCart.filter((item) => item.id !== productId)
-    );
-  };
-
-  const clearUserCart = () => {
-    const userId = JSON.parse(localStorage.getItem("user")).id;
-    setUserCart([]);
-    updateUserCart(userId, []);
+  const clearUserCart = async () => {
+    try {
+      await axios.delete(
+        `http://localhost:8080/api/cart/${auth.currentUser.uid}`
+      );
+      setUserCart([]);
+      setPrice(0);
+      setChange(!change);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   const getPurchaseData = async () => {
     const userId = JSON.parse(localStorage.getItem("user")).id;
 
     for (const item of userCart) {
-      const productId = item.id;
+      const productId = item.productId;
       let sizes = [];
 
       if (typeof item.sizes === "object") {
@@ -96,16 +123,12 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  // calculate total price of cart
   useEffect(() => {
-    let total = 0;
-    userCart.forEach((item) => {
-      const sizes = Object.values(item.sizes);
-      const quantity = sizes.reduce((acc, curr) => acc + curr, 0);
-      total += item.price * quantity;
-    });
-    setPrice(total);
-  }, [userCart]);
+    const loggedInUser = JSON.parse(localStorage.getItem("user"));
+    if (loggedInUser) {
+      loadUserCart(loggedInUser.id);
+    }
+  }, [change]);
 
   useEffect(() => {
     const loggedInUser = JSON.parse(localStorage.getItem("user"));
