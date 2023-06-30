@@ -37,7 +37,8 @@ sequelize.models = Object.fromEntries(capsEntries);
 
 // Relaciones
 
-const { Product, User, Testimony, Review, Purchase } = sequelize.models;
+const { Product, User, Testimony, Review, Purchase, Cart, CartItem } =
+    sequelize.models;
 
 // Relación User - Review
 User.hasMany(Review);
@@ -58,6 +59,14 @@ Purchase.belongsTo(User);
 // Relación Product - Purchase
 Product.hasMany(Purchase);
 Purchase.belongsTo(Product);
+
+// Relación User - Cart
+User.hasOne(Cart);
+Cart.belongsTo(User);
+
+// Relación Cart - CartItem
+Cart.hasMany(CartItem);
+CartItem.belongsTo(Cart);
 
 module.exports = {
     ...sequelize.models,

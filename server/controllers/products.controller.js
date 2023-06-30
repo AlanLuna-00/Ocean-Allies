@@ -16,6 +16,8 @@ const getAllProductsController = async (req, res) => {
         const name = req.query.name || '';
         const sort = req.query.sort || null;
         const color = req.query.color || null;
+        const gender = req.query.gender || null;
+        const active = req.query.active || null;
 
         const result = await getAllProducts(
             page,
@@ -25,14 +27,16 @@ const getAllProductsController = async (req, res) => {
             size,
             name,
             sort,
-            color
+            color,
+            gender,
+            active
         );
 
         if (!result) {
             let message = `No results found`;
 
             // Verificar si los filtros, excepto name y page, están vacíos
-            if (category || price || size || sort || color) {
+            if (category || price || size || sort || color || active) {
                 message += ` for the specified filters`;
             }
 
@@ -94,41 +98,12 @@ const deleteProductController = async (req, res) => {
     }
 };
 
-const Joi = require('joi');
-
-const allowedSizes = ['XS', 'S', 'M', 'L', 'XL', 'XXL'];
-
-const productSchema = Joi.object({
-    name: Joi.string().required(),
-    description: Joi.string().required(),
-    price: Joi.number().positive().required(),
-    category: Joi.string().required(),
-    size: Joi.object()
-        .pattern(
-            /^[a-zA-Z]+$/,
-            Joi.object({
-                stock: Joi.number().integer().min(0).required(),
-            })
-        )
-        .required()
-        .custom((value, helpers) => {
-            const sizes = Object.keys(value);
-            const invalidSizes = sizes.filter(
-                (size) => !allowedSizes.includes(size)
-            );
-            if (invalidSizes.length > 0) {
-                return helpers.error('any.invalid');
-            }
-            return value;
-        }),
-    color: Joi.string().required(),
-    image: Joi.string().required(),
-});
+const cloudinary = require('../middleware/cloudinary');
+const fs = require('fs');
 
 const createProductController = async (req, res) => {
     const productData = req.body;
 
-    // Verificar si se envió un objeto de producto o una matriz de productos
     const products = Array.isArray(productData) ? productData : [productData];
 
     try {
@@ -136,8 +111,7 @@ const createProductController = async (req, res) => {
         const invalidProducts = [];
 
         for (const product of products) {
-            // Validar el producto utilizando el esquema definido
-            const { error } = productSchema.validate(product);
+            const { error } = validateProduct(product);
 
             if (error) {
                 invalidProducts.push({
@@ -146,7 +120,21 @@ const createProductController = async (req, res) => {
                 });
             } else {
                 try {
-                    const createdProduct = await createProduct(product);
+                    let imageUrl;
+
+                    if (product.image) {
+                        // Si se proporciona una URL de imagen
+                        imageUrl = await uploadUrlToCloudinary(product.image);
+                    } else if (req.file) {
+                        // Si se carga un archivo a través de Multer
+                        const result = await uploadFileToCloudinary(req.file);
+                        imageUrl = result.secure_url;
+                    }
+
+                    const createdProduct = await createProduct({
+                        ...product,
+                        image: imageUrl,
+                    });
                     createdProducts.push(createdProduct);
                 } catch (error) {
                     if (error.message === 'Duplicate product') {
@@ -186,6 +174,50 @@ const createProductController = async (req, res) => {
     } catch (error) {
         res.status(500).json({ message: 'Error creating the products' });
     }
+};
+
+// Función para validar el producto (sin utilizar Joi)
+const validateProduct = (product) => {
+    // Realiza las validaciones deseadas para el producto
+    // Retorna un objeto { error } en caso de error, o un objeto vacío en caso contrario
+    // Por ejemplo:
+    if (!product.name) {
+        return { error: 'Product name is required' };
+    }
+
+    if (!product.price) {
+        return { error: 'Product price is required' };
+    }
+
+    // Agrega las validaciones adicionales según tus necesidades
+
+    return {}; // Retorna un objeto vacío si no hay errores
+};
+
+// Función para subir un archivo a Cloudinary
+const uploadFileToCloudinary = (file) => {
+    return new Promise((resolve, reject) => {
+        cloudinary.uploader.upload(file.path, (error, result) => {
+            if (error) {
+                reject(error);
+            } else {
+                resolve(result);
+            }
+        });
+    });
+};
+
+// Función para subir una imagen por URL a Cloudinary
+const uploadUrlToCloudinary = (imageUrl) => {
+    return new Promise((resolve, reject) => {
+        cloudinary.uploader.upload(imageUrl, (error, result) => {
+            if (error) {
+                reject(error);
+            } else {
+                resolve(result.secure_url);
+            }
+        });
+    });
 };
 
 const updateProductController = async (req, res) => {

@@ -17,6 +17,18 @@ const purchaseModel = (sequelize) => {
                 type: DataTypes.UUID,
                 allowNull: false,
             },
+            quantity: {
+                type: DataTypes.INTEGER,
+                allowNull: false,
+            },
+            total: {
+                type: DataTypes.FLOAT,
+                allowNull: false,
+            },
+            sizes: {
+                type: DataTypes.JSONB,
+                allowNull: false,
+            },
         },
         {
             timestamps: false,

@@ -8,6 +8,7 @@ const {
 
 const createReview = async (req, res) => {
     const { rating, comment, productId, userId } = req.body;
+    console.log(req.body)
 
     try {
         const review = await createReviewService(

@@ -38,6 +38,8 @@ const createReviewService = async (rating, comment, productId, userId) => {
         const review = await Review.create({
             rating,
             comment,
+            name: user.name,
+            image: user.image,
         });
 
         await review.setUser(user);
@@ -45,7 +47,7 @@ const createReviewService = async (rating, comment, productId, userId) => {
 
         return review;
     } catch (error) {
-        throw error;
+        console.log(error);
     }
 };
 

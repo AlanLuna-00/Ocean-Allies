@@ -2,6 +2,8 @@ const express = require('express');
 const cors = require('cors');
 const { conn } = require('./db');
 const cookieParser = require('cookie-parser');
+const admin = require('firebase-admin');
+const serviceAccount = require('./credentialFirebase.json');
 
 class Server {
     constructor() {
@@ -13,8 +15,13 @@ class Server {
         this.testimonyPath = '/api/testimony';
         this.authPath = '/api/auth';
         this.purchasePath = '/api/purchase';
+        this.paymentPath = '/api/payment';
+        this.cartPath = '/api/cart';
+        // Conectar a la base de datos
         // Conectar a base de datos
         this.conectarDB();
+        // Inicializar Firebase Admin
+        this.inicializarFirebaseAdmin();
         // Middlewares
         this.middlewares();
         // Rutas de mi aplicación
@@ -25,6 +32,15 @@ class Server {
         conn.sync({ force: false }).then(() => {
             console.log('Base de datos conectada');
         });
+    }
+
+    inicializarFirebaseAdmin() {
+        admin.initializeApp({
+            credential: admin.credential.cert(serviceAccount),
+            // Otras opciones de configuración, si las necesitas
+        });
+
+        console.log('Firebase Admin inicializado');
     }
 
     middlewares() {
@@ -42,9 +58,10 @@ class Server {
                     'X-Requested-With',
                     'Content-Type',
                     'Accept',
+                    'Authorization',
                 ],
                 credentials: true,
-                origin: ['http://localhost:3000'],
+                origin: ['http://localhost:3000', '*'],
                 methods: ['GET', 'POST', 'PUT', 'DELETE'],
             })
         );
@@ -57,6 +74,8 @@ class Server {
         this.app.use(this.authPath, require('./routes/authRoute'));
         this.app.use(this.reviewsPath, require('./routes/reviewRoute'));
         this.app.use(this.purchasePath, require('./routes/purchaseRoute'));
+        this.app.use(this.paymentPath, require('./routes/paymentRoute'));
+        this.app.use(this.cartPath, require('./routes/cartRoute'));
     }
 
     listen() {

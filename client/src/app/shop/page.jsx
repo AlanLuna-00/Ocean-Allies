@@ -17,6 +17,8 @@ import {
   ShoppingCartIcon,
 } from "@heroicons/react/20/solid";
 import { setFilterList } from "@/store/Slices/Filters";
+import { useContext } from "react";
+import AuthContext from "@/context/AuthContext";
 
 const Shop = () => {
   const dispatch = useDispatch();
@@ -37,9 +39,12 @@ const Shop = () => {
 
   const fetchMerchList = async () => {
     try {
-      const response = await axios.get("http://localhost:8080/api/products", {
-        params: filters,
-      });
+      const response = await axios.get(
+        "http://localhost:8080/api/products?active=true",
+        {
+          params: filters,
+        }
+      );
       if (response.status == 204) {
         setError(
           `No results found for the specified filters ${Object.keys(filters)
@@ -128,7 +133,7 @@ const Shop = () => {
                 leaveFrom="translate-x-0"
                 leaveTo="translate-x-full"
               >
-                <Dialog.Panel className="relative ml-auto flex h-full w-full max-w-xs flex-col overflow-y-auto  py-4 pb-12 shadow-xl bg-white">
+                <Dialog.Panel className="relative ml-auto flex h-full w-full max-w-xs flex-col overflow-y-auto  bg-white py-4 pb-12 shadow-xl">
                   <div className="flex items-center justify-between px-4">
                     <h2 className="text-lg font-medium text-gray-900">
                       Filters
@@ -152,19 +157,19 @@ const Shop = () => {
                       <div className="col-span-12 lg:col-span-3">
                         {/* Filters */}
                         <div className="mb-4">
-                          <h2 className="text-xl font-medium mb-2">Filters</h2>
+                          <h2 className="mb-2 text-xl font-medium">Filters</h2>
                           {/* Category filter */}
                           <div className="mb-2">
                             <label
                               htmlFor="category"
-                              className="block font-medium mb-1"
+                              className="mb-1 block font-medium"
                             >
                               Category
                             </label>
                             <select
                               id="category"
                               name="category"
-                              className="w-full border border-gray-300 rounded-lg p-2"
+                              className="w-full rounded-lg border border-gray-300 p-2"
                               value={filters.category || ""}
                               onChange={(e) =>
                                 handleFilterChange(
@@ -174,25 +179,25 @@ const Shop = () => {
                               }
                             >
                               <option value="">All</option>
-                              <option value="Clothing">Clothing</option>
+                              <option value="T-shirts">T-shirts</option>
                               <option value="Jacket">Jacket's</option>
-                              <option value="Pants">Pant's</option>
-                              <option value="BackPack">BackPack's</option>
-                              <option value="BagsEco">BagsEco's</option>
+                              <option value="Tank tops">Tank tops</option>
+                              <option value="Leggings">Leggings</option>
+                              <option value="Dresses">Dresses</option>
                             </select>
                           </div>
                           {/* Price filter */}
                           <div className="mb-2">
                             <label
                               htmlFor="price"
-                              className="block font-medium mb-1"
+                              className="mb-1 block font-medium"
                             >
                               Price
                             </label>
                             <select
                               id="price"
                               name="price"
-                              className="w-full border border-gray-300 rounded-lg p-2"
+                              className="w-full rounded-lg border border-gray-300 p-2"
                               value={filters.price || ""}
                               onChange={(e) =>
                                 handleFilterChange(
@@ -210,14 +215,14 @@ const Shop = () => {
                           <div className="mb-2">
                             <label
                               htmlFor="size"
-                              className="block font-medium mb-1"
+                              className="mb-1 block font-medium"
                             >
                               Size
                             </label>
                             <select
                               id="size"
                               name="size"
-                              className="w-full border border-gray-300 rounded-lg p-2"
+                              className="w-full rounded-lg border border-gray-300 p-2"
                               value={filters.size || ""}
                               onChange={(e) =>
                                 handleFilterChange(
@@ -239,14 +244,14 @@ const Shop = () => {
                           <div className="mb-2">
                             <label
                               htmlFor="color"
-                              className="block font-medium mb-1"
+                              className="mb-1 block font-medium"
                             >
                               Color
                             </label>
                             <select
                               id="color"
                               name="color"
-                              className="w-full border border-gray-300 rounded-lg p-2"
+                              className="w-full rounded-lg border border-gray-300 p-2"
                               value={filters.color || ""}
                               onChange={(e) =>
                                 handleFilterChange(
@@ -259,15 +264,40 @@ const Shop = () => {
                               <option value="Red">Red</option>
                               <option value="Blue">Blue</option>
                               <option value="Green">Green</option>
-                              <option value="Brown">Brown</option>
+                              <option value="Yellow">Yellow</option>
                               <option value="White">White</option>
                               <option value="Black">Black</option>
                               <option value="Gray">Gray</option>
                             </select>
                           </div>
                           <div className="mb-2">
+                            <label
+                              htmlFor="color"
+                              className="mb-1 block font-medium"
+                            >
+                              Gender
+                            </label>
+                            <select
+                              id="gender"
+                              name="gender"
+                              className="w-full rounded-lg border border-gray-300 p-2"
+                              value={filters.gender || ""}
+                              onChange={(e) =>
+                                handleFilterChange(
+                                  e.target.name,
+                                  e.target.value
+                                )
+                              }
+                            >
+                              <option value="">All</option>
+                              <option value="Man">Man</option>
+                              <option value="Woman">Woman</option>
+                              <option value="Unisex">Unisex</option>
+                            </select>
+                          </div>
+                          <div className="mb-2">
                             <button
-                              className="w-full bg-gray-800 text-white rounded-lg py-2"
+                              className="w-full rounded-lg bg-gray-800 py-2 text-white"
                               onClick={handleCleanFilters}
                             >
                               Clean Filters
@@ -286,9 +316,7 @@ const Shop = () => {
         {/* Pagina base no Mobile */}
         <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex items-baseline justify-between border-b border-gray-200 pb-6 pt-6">
-            <h1 className="text-4xl font-bold tracking-tight text-gray-900">
-              shop
-            </h1>
+            <h1 className=" text-4xl font-bold tracking-tight text-gray-900"></h1>
             <div className="">
               <SearchBar
                 searchValue={filters.name}
@@ -321,13 +349,14 @@ const Shop = () => {
               </button>
             </div>
           </div>
+
           <section aria-labelledby="products-heading" className="pb-24 pt-6">
             <h2 id="products-heading" className="sr-only">
               Products
             </h2>
-            <div className=" grid grid-rows-3 grid-flow-col gap-10">
+            <div className=" grid grid-flow-col grid-rows-3 gap-10">
               {/* Filters */}
-              <form className="row-span-3 w-48 hidden lg:block">
+              <form className="row-span-3 hidden w-48 lg:block">
                 <h3 className="sr-only">Categories</h3>
                 <ul
                   role="list"
@@ -336,30 +365,30 @@ const Shop = () => {
                   <div className="col-span-12 lg:col-span-3">
                     {/* Filters */}
                     <div className="mb-4">
-                      <h2 className="text-xl font-medium mb-2">Filters</h2>
+                      <h2 className="mb-2 text-xl font-medium">Filters</h2>
                       {/* Category filter */}
                       <div className="mb-2">
                         <label
                           htmlFor="category"
-                          className="block font-medium mb-1"
+                          className="mb-1 block font-medium"
                         >
                           Category
                         </label>
                         <select
                           id="category"
                           name="category"
-                          className="w-full border border-gray-300 rounded-lg p-2"
+                          className="w-full rounded-lg border border-gray-300 p-2"
                           value={filters.category || ""}
                           onChange={(e) =>
                             handleFilterChange(e.target.name, e.target.value)
                           }
                         >
                           <option value="">All</option>
-                          <option value="Clothing">Clothing</option>
+                          <option value="T-shirts">T-shirts</option>
                           <option value="Jacket">Jacket's</option>
-                          <option value="Pants">Pant's</option>
-                          <option value="BackPack">BackPack's</option>
-                          <option value="BagsEco">BagsEco's</option>
+                          <option value="Tank tops">Tank tops</option>
+                          <option value="Leggings">Leggings</option>
+                          <option value="Dresses">Dresses</option>
                         </select>
                       </div>
 
@@ -367,14 +396,14 @@ const Shop = () => {
                       <div className="mb-2">
                         <label
                           htmlFor="size"
-                          className="block font-medium mb-1"
+                          className="mb-1 block font-medium"
                         >
                           Size
                         </label>
                         <select
                           id="size"
                           name="size"
-                          className="w-full border border-gray-300 rounded-lg p-2"
+                          className="w-full rounded-lg border border-gray-300 p-2"
                           value={filters.size || ""}
                           onChange={(e) =>
                             handleFilterChange(e.target.name, e.target.value)
@@ -393,14 +422,14 @@ const Shop = () => {
                       <div className="mb-2">
                         <label
                           htmlFor="color"
-                          className="block font-medium mb-1"
+                          className="mb-1 block font-medium"
                         >
                           Color
                         </label>
                         <select
                           id="color"
                           name="color"
-                          className="w-full border border-gray-300 rounded-lg p-2"
+                          className="w-full rounded-lg border border-gray-300 p-2"
                           value={filters.color || ""}
                           onChange={(e) =>
                             handleFilterChange(e.target.name, e.target.value)
@@ -410,15 +439,37 @@ const Shop = () => {
                           <option value="Red">Red</option>
                           <option value="Blue">Blue</option>
                           <option value="Green">Green</option>
-                          <option value="Brown">Brown</option>
+                          <option value="Yellow">Yellow</option>
                           <option value="White">White</option>
                           <option value="Black">Black</option>
                           <option value="Gray">Gray</option>
                         </select>
                       </div>
                       <div className="mb-2">
+                        <label
+                          htmlFor="color"
+                          className="mb-1 block font-medium"
+                        >
+                          Gender
+                        </label>
+                        <select
+                          id="gender"
+                          name="gender"
+                          className="w-full rounded-lg border border-gray-300 p-2"
+                          value={filters.gender || ""}
+                          onChange={(e) =>
+                            handleFilterChange(e.target.name, e.target.value)
+                          }
+                        >
+                          <option value="">All</option>
+                          <option value="Man">Man</option>
+                          <option value="Woman">Woman</option>
+                          <option value="Unisex">Unisex</option>
+                        </select>
+                      </div>
+                      <div className="mb-2">
                         <button
-                          className="w-full bg-gray-800 text-white rounded-lg py-2"
+                          className="w-full rounded-lg bg-gray-800 py-2 text-white"
                           onClick={handleCleanFilters}
                         >
                           Clean Filters
@@ -431,41 +482,50 @@ const Shop = () => {
               {/* Tabla de productos */}
 
               <div className="row-span-3">
-                <div className="grid  ">
-                  <div className="grid grid-cols-1 sm:grid-cols-2  lg:grid-cols-4 gap-6">
+                <div className="flex flex-row justify-center  ">
+                  <div className="grid grid-cols-1 gap-6  sm:grid-cols-2 lg:grid-cols-4">
                     {error ? (
-                      <div className="text-center flex justify-center">
+                      <div className="flex justify-center text-center">
                         <h2 className="text-2xl font-semibold text-gray-800">
                           {error}
                         </h2>
                       </div>
                     ) : (
                       merchList.map((product) => (
-                        <div>
-                          <div
-                            key={product.id}
-                            className="bg-white rounded-lg p-4"
-                          >
-                            <Link href={`/detail/${product.id}`}>
-                              <div>
+                        <div
+                          key={product.id}
+                          className="group my-10 flex w-full max-w-xs flex-col overflow-hidden bg-white"
+                        >
+                          <Link href={`/detail/${product.id}`}>
+                            <div>
+                              <a className="relative  overflow-hidden">
                                 <img
                                   src={product.image}
                                   alt={product.name}
-                                  className=" max-w-max h-52 mb-2"
+                                  className=" peer  right-0 top-0 h-full w-full object-cover"
                                 />
-                                <h3 className="text-gray-800 font-semibold">
+                                <div className="absolute -right-16 bottom-0 mb-4 mr-2 space-y-2 transition-all duration-300 group-hover:right-0">
+                                  <button className="flex h-10 w-10 items-center justify-center bg-gray-900 text-white transition hover:bg-gray-700">
+                                    <ShoppingCartIcon
+                                      className="h-6 w-6"
+                                      aria-hidden="true"
+                                    />
+                                  </button>
+                                </div>
+                              </a>
+
+                              <div className="mt-4 pb-5">
+                                <h5 className="text-center tracking-tight text-gray-500">
                                   {product.name}
-                                </h3>
-                                <p className="text-gray-600">
-                                  ${product.price}
-                                </p>
+                                </h5>
+                                <div className="mb-5 flex justify-center">
+                                  <span className="text-base font-bold text-gray-900">
+                                    ${product.price}
+                                  </span>
+                                </div>
                               </div>
-                            </Link>
-                            <button className="bg-gray-800 text-white flex items-center justify-center w-full rounded-lg py-2 mt-4">
-                              <ShoppingCartIcon className="h-5 w-5 mr-2" />
-                              Add to Cart
-                            </button>
-                          </div>
+                            </div>
+                          </Link>
                         </div>
                       ))
                     )}
@@ -474,6 +534,7 @@ const Shop = () => {
               </div>
             </div>
           </section>
+
           <Pagination
             currentPage={filters.page}
             totalPages={paginationData.totalPages}

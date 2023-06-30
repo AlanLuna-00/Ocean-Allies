@@ -1,4 +1,5 @@
 const { User, Purchase } = require('../db');
+const bcrypt = require('bcryptjs');
 
 const createUserService = async (name, email, password, role) => {
     try {
@@ -26,24 +27,40 @@ const getAllUsersService = async () => {
 
 const getUserByIdService = async (userId) => {
     try {
-        const user = await User.findByPk(userId);
+        const user = await User.findByPk(userId, {
+            include: {
+                model: Purchase,
+                attributes: [
+                    'id',
+                    'productId',
+                    'userId',
+                    'quantity',
+                    'total',
+                    'sizes',
+                ],
+            },
+        });
         return user;
     } catch (error) {
         throw new Error('Error al obtener el usuario');
     }
 };
 
-const updateUserService = async (userId, name, email, password, role) => {
+const updateUserService = async (userId, updates) => {
     try {
         const user = await User.findByPk(userId);
         if (!user) {
             throw new Error('Usuario no encontrado');
         }
-        user.name = name;
-        user.email = email;
-        user.password = password;
-        user.role = role;
+
+        // Actualizar los campos proporcionados en el objeto `updates`
+        Object.keys(updates).forEach((key) => {
+            user[key] = updates[key];
+        });
+
+        // Guardar los cambios en la base de datos
         await user.save();
+
         return user;
     } catch (error) {
         throw new Error('Error al actualizar el usuario');
@@ -62,10 +79,36 @@ const deleteUserService = async (userId) => {
     }
 };
 
+const updateUserPasswordService = async (id, oldPassword, newPassword) => {
+    // Buscar al usuario en la base de datos
+    const user = await User.findByPk(id);
+  
+    if (!user) {
+      throw new Error('El usuario no existe');
+    }
+  
+    // Verificar que la contraseña antigua sea correcta
+    const isMatch = await bcrypt.compare(oldPassword, user.password);
+  
+    if (!isMatch) {
+      throw new Error('La contraseña antigua es incorrecta');
+    }
+  
+    // Generar el hash de la contraseña nueva y actualizar la base de datos
+    const salt = await bcrypt.genSalt(10);
+    const hash = await bcrypt.hash(newPassword, salt);
+  
+    user.password = hash;
+    await user.save();
+  
+    return { message: 'Contraseña actualizada correctamente' };
+  };
+
 module.exports = {
     createUserService,
     getAllUsersService,
     getUserByIdService,
     updateUserService,
     deleteUserService,
+    updateUserPasswordService,
 };

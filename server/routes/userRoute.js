@@ -5,17 +5,19 @@ const {
     createUser,
     deleteUser,
     updateUser,
+    updateUserPassword,
 } = require('../controllers/user.controller');
 const verifyJWT = require('../middlewares/verifyJwt');
 
 const userRoute = Router();
 
-userRoute.use(verifyJWT);
+// userRoute.use(verifyJWT);
 
-userRoute.get('/', getAllUsers);
-userRoute.get('/:id', getUserById);
-userRoute.post('/', createUser);
-userRoute.delete('/:id', deleteUser);
-userRoute.put('/:id', updateUser);
+userRoute.get('/', verifyJWT, getAllUsers);
+userRoute.get('/:id', verifyJWT, getUserById);
+userRoute.post('/', verifyJWT, createUser);
+userRoute.delete('/:id', verifyJWT, deleteUser);
+userRoute.put('/:id', verifyJWT, updateUser);
+userRoute.put('/password/:id', updateUserPassword);
 
 module.exports = userRoute;

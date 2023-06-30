@@ -1,22 +1,29 @@
 [
     {
         "id": "7f7e0710-bd4a-4080-9964-ccbb0a1a9a3f",
-        "name": "AProduct 1",
-        "description": "Description of Product 1",
-        "price": 24,
-        "category": "Pants",
+        "name": "Aquatic spectrum",
+        "description": "The classic t-shirt boasts a timeless, straight, and loose fit. It is crafted from a high-quality, thick, and resilient cotton fabric. Carefully stitched details, such as double-stitched collars and hems, ensure enhanced durability. Additionally, the materials used are sourced from manufacturers dedicated to sustainable cotton farming practices, supporting a more environmentally-conscious production.",
+        "price": 34,
+        "category": "T-shirts",
+        "gender": "Woman",
         "size": {
-            "XS": { "stock": 4 }
+            "XS": { "stock": 0 },
+            "S": { "stock": 0 },
+            "M": { "stock": 0 },
+            "L": { "stock": 33 },
+            "XL": { "stock": 35 },
+            "XXL": { "stock": 54 }
         },
-        "image": "https://cdn.fashiola.es/L604066493/under-armour-pantalon-pennant-woven-cargo-para-nino-downpour-gravel-gravel-g.jpg",
-        "color": "Blue"
+        "image": "https://ih1.redbubble.net/image.3482344322.8350/ssrco,classic_tee,womens,ffcf6e:da6eb664a1,front_alt,square_product,600x600.u2.jpg",
+        "color": "Yellow"
     },
     {
         "id": "843fd317-6c95-4f81-81b6-93b123d52d7a",
-        "name": "BProduct 2",
-        "description": "Description of Product 2",
-        "price": 20,
-        "category": "Clothing",
+        "name": "Jellyfish",
+        "description": "The classic t-shirt boasts a timeless, straight, and loose fit. It is crafted from a high-quality, thick, and resilient cotton fabric. Carefully stitched details, such as double-stitched collars and hems, ensure enhanced durability. Additionally, the materials used are sourced from manufacturers dedicated to sustainable cotton farming practices, supporting a more environmentally-conscious production.",
+        "price": 37,
+        "category": "T-shirts",
+        "gender": "Woman",
         "size": {
             "XS": { "stock": 4 },
             "S": { "stock": 9 },
@@ -25,49 +32,34 @@
             "XL": { "stock": 35 },
             "XXL": { "stock": 54 }
         },
-        "image": "https://d3ugyf2ht6aenh.cloudfront.net/stores/943/997/products/boy-marron1-17a822d3e01ce50ccc16676887357891-1024-1024.webp",
-        "color": "Brown"
-    },
-    {
-        "id": "e6cc582d-6b06-4a62-8d1c-61b31e05b597",
-        "name": "CProduct 3",
-        "description": "Description of Product 3",
-        "price": 15,
-        "category": "Clothing",
-        "size": {
-            "XS": { "stock": 4 },
-            "S": { "stock": 9 },
-            "M": { "stock": 67 },
-            "L": { "stock": 33 },
-            "XL": { "stock": 35 },
-            "XXL": { "stock": 54 }
-        },
-        "image": "https://www.cottonclub.com.ar/pub/media/catalog/product/cache/65e2670acbf1788249a95924f3789a80/7/0/705_negro_8_1_1_10.jpg",
-        "color": "Black"
-    },
-    {
-        "id": "dcd50ad4-21a7-442f-9a4d-d301f7c350ae",
-        "name": "DProduct 4",
-        "description": "Description of Product 4",
-        "price": 30,
-        "category": "Clothing",
-        "size": {
-            "XS": { "stock": 4 },
-            "S": { "stock": 9 },
-            "M": { "stock": 67 },
-            "L": { "stock": 33 },
-            "XL": { "stock": 35 },
-            "XXL": { "stock": 54 }
-        },
-        "image": "https://d2r9epyceweg5n.cloudfront.net/stores/001/205/102/products/remera-lisa-ro-rj-311-70b94603ae0bc70ca315911959189071-1024-1024.jpg",
+        "image": "https://ih1.redbubble.net/image.1423711311.0573/ssrco,classic_tee,womens,dd2121:8219e99865,front_alt,square_product,600x600.u2.jpg",
         "color": "Red"
     },
     {
-        "id": "156cd77b-66a5-4be7-b97d-5c4af4ac86d6",
-        "name": "EProduct 5",
-        "description": "Description of Product 5",
-        "price": 25,
-        "category": "Jacket",
+        "id": "e6cc582d-6b06-4a62-8d1c-61b31e05b597",
+        "name": "Two worlds, one ocean",
+        "description": "The classic t-shirt boasts a timeless, straight, and loose fit. It is crafted from a high-quality, thick, and resilient cotton fabric. Carefully stitched details, such as double-stitched collars and hems, ensure enhanced durability. Additionally, the materials used are sourced from manufacturers dedicated to sustainable cotton farming practices, supporting a more environmentally-conscious production.",
+        "price": 31,
+        "category": "T-shirts",
+        "gender": "Man",
+        "size": {
+            "XS": { "stock": 4 },
+            "S": { "stock": 9 },
+            "M": { "stock": 0 },
+            "L": { "stock": 0 },
+            "XL": { "stock": 0 },
+            "XXL": { "stock": 54 }
+        },
+        "image": "https://ih1.redbubble.net/image.5062525240.8418/ssrco,classic_tee,mens,fafafa:ca443f4786,front_alt,square_product,600x600.jpg",
+        "color": "White"
+    },
+    {
+        "id": "dcd50ad4-21a7-442f-9a4d-d301f7c350ae",
+        "name": "Marine life",
+        "description": "The classic t-shirt boasts a timeless, straight, and loose fit. It is crafted from a high-quality, thick, and resilient cotton fabric. Carefully stitched details, such as double-stitched collars and hems, ensure enhanced durability. Additionally, the materials used are sourced from manufacturers dedicated to sustainable cotton farming practices, supporting a more environmentally-conscious production.",
+        "price": 39,
+        "category": "T-shirts",
+        "gender": "Man",
         "size": {
             "XS": { "stock": 4 },
             "S": { "stock": 9 },
@@ -76,15 +68,34 @@
             "XL": { "stock": 35 },
             "XXL": { "stock": 54 }
         },
-        "image": "https://www.dexter.com.ar/on/demandware.static/-/Sites-365-dabra-catalog/default/dwdcc72ec5/products/LONIFW230005/LONIFW230005-1.JPG",
-        "color": "Green"
+        "image": "https://ih1.redbubble.net/image.1767655890.0555/ssrco,classic_tee,mens,101010:01c5ca27c6,front_alt,square_product,600x600.jpg",
+        "color": "Black"
+    },
+    {
+        "id": "156cd77b-66a5-4be7-b97d-5c4af4ac86d6",
+        "name": "Octopus dive helmet",
+        "description": "The clothing has a loose fit, and it is recommended to order two sizes larger if you prefer a looser fit. The fabric used is of high weight and primarily composed of cotton. The solid colors are made of 80% cotton and 20% polyester, while the heather gray contains 70% cotton and 30% polyester, and the heather anthracite is made of 60% cotton and 40% polyester. The garment features a front pocket, adjustable drawstring, and ribbed cuffs for added comfort and style. Additionally, the materials used are sourced from manufacturers committed to sustainable cotton farming practices.",
+        "price": 52,
+        "category": "Sweatshirts",
+        "gender": "Man",
+        "size": {
+            "XS": { "stock": 0 },
+            "S": { "stock": 9 },
+            "M": { "stock": 67 },
+            "L": { "stock": 33 },
+            "XL": { "stock": 35 },
+            "XXL": { "stock": 54 }
+        },
+        "image": "https://ih1.redbubble.net/image.194144166.9073/ssrco,mhoodie,womens,heather_grey,front,square_product,x600-bg,f8f8f8.1u2.jpg",
+        "color": "Gray"
     },
     {
         "id": "f94efabe-3650-4a2e-a422-7e49fb00d084",
-        "name": "FProduct 6",
-        "description": "Description of Product 6",
-        "price": 18,
-        "category": "Jacket",
+        "name": "Sharkasm",
+        "description": "The clothing has a loose fit, and it is recommended to order two sizes larger if you prefer a looser fit. The fabric used is of high weight and primarily composed of cotton. The solid colors are made of 80% cotton and 20% polyester, while the heather gray contains 70% cotton and 30% polyester, and the heather anthracite is made of 60% cotton and 40% polyester. The garment features a front pocket, adjustable drawstring, and ribbed cuffs for added comfort and style. Additionally, the materials used are sourced from manufacturers committed to sustainable cotton farming practices.",
+        "price": 55,
+        "category": "Sweatshirts",
+        "gender": "Man",
         "size": {
             "XS": { "stock": 4 },
             "S": { "stock": 9 },
@@ -93,32 +104,16 @@
             "XL": { "stock": 35 },
             "XXL": { "stock": 54 }
         },
-        "image": "https://www.dexter.com.ar/on/demandware.static/-/Sites-365-dabra-catalog/default/dwc2eafee5/products/LONIFW23920/LONIFW23920-1.JPG",
-        "color": "Black"
-    },
-    {
-        "id": "db76e659-91dd-46b0-995c-5238a4d2b8e9",
-        "name": "GProduct 7",
-        "description": "Description of Product 7",
-        "price": 12,
-        "category": "Jacket",
-        "size": {
-            "XS": { "stock": 4 },
-            "S": { "stock": 9 },
-            "M": { "stock": 67 },
-            "L": { "stock": 33 },
-            "XL": { "stock": 35 },
-            "XXL": { "stock": 54 }
-        },
-        "image": "https://http2.mlstatic.com/D_NQ_NP_929585-MLA54818524461_042023-O.webp",
+        "image": "https://ih1.redbubble.net/image.103057155.1650/ssrco,mhoodie,mens,353d77:4d8b4ffd91,front,square_product,x600-bg,f8f8f8.1u3.jpg",
         "color": "Blue"
     },
     {
-        "id": "c6ef4b4f-dc0c-46f1-aab9-68c76e39e418",
-        "name": "HProduct 8",
-        "description": "Description of Product 8",
-        "price": 22,
-        "category": "Jacket",
+        "id": "db76e659-91dd-46b0-995c-5238a4d2b8e9",
+        "name": "Fishes of the Sea",
+        "description": "The clothing has a loose fit, and it is recommended to order two sizes larger if you prefer a looser fit. The fabric used is of high weight and primarily composed of cotton. The solid colors are made of 80% cotton and 20% polyester, while the heather gray contains 70% cotton and 30% polyester, and the heather anthracite is made of 60% cotton and 40% polyester. The garment features a front pocket, adjustable drawstring, and ribbed cuffs for added comfort and style. Additionally, the materials used are sourced from manufacturers committed to sustainable cotton farming practices.",
+        "price": 51,
+        "category": "Sweatshirts",
+        "gender": "Man",
         "size": {
             "XS": { "stock": 4 },
             "S": { "stock": 9 },
@@ -127,15 +122,34 @@
             "XL": { "stock": 35 },
             "XXL": { "stock": 54 }
         },
-        "image": "https://www.digitalsport.com.ar/files/products/6112a7ca63293-564270-500x500.jpg",
-        "color": "Black"
+        "image": "https://ih1.redbubble.net/image.5018880636.9381/ssrco,mhoodie,mens,fafafa:ca443f4786,front,square_product,x600-bg,f8f8f8.1u1.jpg",
+        "color": "White"
+    },
+    {
+        "id": "c6ef4b4f-dc0c-46f1-aab9-68c76e39e418",
+        "name": "Kenai Fjords",
+        "description": "The clothing has a loose fit, and it is recommended to order two sizes larger if you prefer a looser fit. The fabric used is of high weight and primarily composed of cotton. The solid colors are made of 80% cotton and 20% polyester, while the heather gray contains 70% cotton and 30% polyester, and the heather anthracite is made of 60% cotton and 40% polyester. The garment features a front pocket, adjustable drawstring, and ribbed cuffs for added comfort and style. Additionally, the materials used are sourced from manufacturers committed to sustainable cotton farming practices.",
+        "price": 57,
+        "category": "Sweatshirts",
+        "gender": "Man",
+        "size": {
+            "XS": { "stock": 4 },
+            "S": { "stock": 9 },
+            "M": { "stock": 67 },
+            "L": { "stock": 33 },
+            "XL": { "stock": 35 },
+            "XXL": { "stock": 54 }
+        },
+        "image": "https://ih1.redbubble.net/image.1389585639.7227/ssrco,mhoodie,mens,heather_grey,front,square_product,x600-bg,f8f8f8.1.jpg",
+        "color": "Gray"
     },
     {
         "id": "2f76efdf-6c1f-459a-85c6-87409a38e721",
-        "name": "IProduct 9",
-        "description": "Description of Product 9",
-        "price": 28,
-        "category": "Pants",
+        "name": "Glowing jellyfish",
+        "description": "The clothing article offers a slim fit and the option to request an additional size for those who prefer a looser fit. The materials used in its production vary depending on the design, including options of 100% cotton and combinations of cotton and polyester in different proportions. Furthermore, the independent printing press responsible for manufacturing this product has been evaluated to ensure compliance with international labor standards. This reinforces their commitment to fair and ethical practices in the production process.",
+        "price": 27,
+        "category": "Tank tops",
+        "gender": "Man",
         "size": {
             "XS": { "stock": 4 },
             "S": { "stock": 9 },
@@ -144,32 +158,34 @@
             "XL": { "stock": 35 },
             "XXL": { "stock": 54 }
         },
-        "image": "https://d3ugyf2ht6aenh.cloudfront.net/stores/903/627/products/cargo-thorn1-10bef3610d1e937af116564434212455-640-0.webp",
+        "image": "https://ih1.redbubble.net/image.4884353749.4413/ra,tank,x1860,101010:01c5ca27c6,front-c,288,321,600,600-bg,f8f8f8.jpg",
         "color": "Black"
     },
     {
         "id": "d83d0c3a-10e4-416d-874d-5c3ac2faff57",
-        "name": "JProduct 10",
-        "description": "Description of Product 10",
-        "price": 14,
-        "category": "Pants",
+        "name": "Psychedelic turtle",
+        "description": "The clothing article offers a slim fit and the option to request an additional size for those who prefer a looser fit. The materials used in its production vary depending on the design, including options of 100% cotton and combinations of cotton and polyester in different proportions. Furthermore, the independent printing press responsible for manufacturing this product has been evaluated to ensure compliance with international labor standards. This reinforces their commitment to fair and ethical practices in the production process.",
+        "price": 26,
+        "category": "Tank tops",
+        "gender": "Man",
         "size": {
             "XS": { "stock": 4 },
             "S": { "stock": 9 },
-            "M": { "stock": 67 },
-            "L": { "stock": 33 },
-            "XL": { "stock": 35 },
-            "XXL": { "stock": 54 }
+            "M": { "stock": 0 },
+            "L": { "stock": 0 },
+            "XL": { "stock": 0 },
+            "XXL": { "stock": 0 }
         },
-        "image": "https://www.chefuniforms.com/dw/image/v2/BGPS_PRD/on/demandware.static/-/Sites-UAMasterCatalog/default/dw516d9911/115231/115231_BLACK_1_S.jpg?sw=600&sh=890&sm=fit",
-        "color": "Black"
+        "image": "https://ih1.redbubble.net/image.4747744091.3737/ra,tank,x1860,fafafa:ca443f4786,front-c,288,321,600,600-bg,f8f8f8.jpg",
+        "color": "White"
     },
     {
         "id": "1f2ff149-8a24-4be3-a1f6-c51ef58ad100",
-        "name": "LProduct 11",
-        "description": "Description of Product 11",
-        "price": 32,
-        "category": "Pants",
+        "name": "Oceanic wildlife",
+        "description": "The clothing article offers a slim fit and the option to request an additional size for those who prefer a looser fit. The materials used in its production vary depending on the design, including options of 100% cotton and combinations of cotton and polyester in different proportions. Furthermore, the independent printing press responsible for manufacturing this product has been evaluated to ensure compliance with international labor standards. This reinforces their commitment to fair and ethical practices in the production process.",
+        "price": 29,
+        "category": "Tank tops",
+        "gender": "Man",
         "size": {
             "XS": { "stock": 4 },
             "S": { "stock": 9 },
@@ -178,15 +194,16 @@
             "XL": { "stock": 35 },
             "XXL": { "stock": 54 }
         },
-        "image": "https://www.uniformadvantage.com/dw/image/v2/BGPS_PRD/on/demandware.static/-/Sites-UAMasterCatalog/default/dw6c47c721/11501/11501_BLACK_1_S.jpg?sw=600&sh=890&sm=fit",
-        "color": "Gray"
+        "image": "https://ih1.redbubble.net/image.2048030301.6538/ra,tank,x1860,fafafa:ca443f4786,front-c,288,321,600,600-bg,f8f8f8.u2.jpg",
+        "color": "White"
     },
     {
         "id": "7f7e0710-bd4a-4080-9964-ccbb0a1a9ae5",
-        "name": "MProduct 12",
-        "description": "Description of Product 12",
+        "name": "Heart of the ocean",
+        "description": "The clothing article offers a slim fit and the option to request an additional size for those who prefer a looser fit. The materials used in its production vary depending on the design, including options of 100% cotton and combinations of cotton and polyester in different proportions. Furthermore, the independent printing press responsible for manufacturing this product has been evaluated to ensure compliance with international labor standards. This reinforces their commitment to fair and ethical practices in the production process.",
         "price": 24,
-        "category": "Pants",
+        "category": "Tank tops",
+        "gender": "Man",
         "size": {
             "XS": { "stock": 4 },
             "S": { "stock": 9 },
@@ -195,83 +212,34 @@
             "XL": { "stock": 35 },
             "XXL": { "stock": 54 }
         },
-        "image": "https://cdn.fashiola.es/L604066493/under-armour-pantalon-pennant-woven-cargo-para-nino-downpour-gravel-gravel-g.jpg",
+        "image": "https://ih1.redbubble.net/image.3668749302.3877/ra,tank,x1860,353d77:4d8b4ffd91,front-c,288,321,600,600-bg,f8f8f8.jpg",
         "color": "Blue"
     },
     {
         "id": "6e60e88e-7485-4961-a898-8e858aad9571",
-        "name": "NProduct 13",
-        "description": "Description of Product 13",
-        "price": 17,
-        "category": "BackPack",
+        "name": "Octopus tentacles",
+        "description": "The product features an all-over printed design and is made from 83% polyester and 17% elastane. The stretchy knit fabric allows for freedom of movement, and it is recommended to choose the larger size if between two sizes. The product dimensions are based on garment measurements, not personal measurements. It is machine washable.",
+        "price": 49,
+        "category": "Leggings",
+        "gender": "Woman",
         "size": {
             "XS": { "stock": 4 },
             "S": { "stock": 9 },
             "M": { "stock": 67 },
-            "L": { "stock": 33 },
+            "L": { "stock": 0 },
             "XL": { "stock": 35 },
             "XXL": { "stock": 54 }
         },
-        "image": "https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/c4a031dff9844b31bfddac8900b9c0df_9366/Mochila_Classic_Adicolor_UNISEX_Azul_GQ4178_01_standard.jpg",
-        "color": "Blue"
-    },
-    {
-        "id": "1fb536b3-8df0-45b3-9d2c-25d19825eece",
-        "name": "OProduct 14",
-        "description": "Description of Product 14",
-        "price": 29,
-        "category": "BackPack",
-        "size": {
-            "XS": { "stock": 4 },
-            "S": { "stock": 9 },
-            "M": { "stock": 67 },
-            "L": { "stock": 33 },
-            "XL": { "stock": 35 },
-            "XXL": { "stock": 54 }
-        },
-        "image": "https://http2.mlstatic.com/D_NQ_NP_662674-MLA54428128429_032023-O.webp",
-        "color": "Gray"
-    },
-    {
-        "id": "7ae4bbbf-2532-42f2-9810-38cc28f6992c",
-        "name": "PProduct 15",
-        "description": "Description of Product 15",
-        "price": 21,
-        "category": "BackPack",
-        "size": {
-            "XS": { "stock": 4 },
-            "S": { "stock": 9 },
-            "M": { "stock": 67 },
-            "L": { "stock": 33 },
-            "XL": { "stock": 35 },
-            "XXL": { "stock": 54 }
-        },
-        "image": "https://http2.mlstatic.com/D_NQ_NP_926019-MLA54428106465_032023-O.webp",
-        "color": "Blue"
-    },
-    {
-        "id": "b5dd204c-1423-42a7-a98e-753dd5a5b3ef",
-        "name": "QProduct 16",
-        "description": "Description of Product 16",
-        "price": 13,
-        "category": "BackPack",
-        "size": {
-            "XS": { "stock": 4 },
-            "S": { "stock": 9 },
-            "M": { "stock": 67 },
-            "L": { "stock": 33 },
-            "XL": { "stock": 35 },
-            "XXL": { "stock": 54 }
-        },
-        "image": "https://http2.mlstatic.com/D_NQ_NP_629618-MLA54427881383_032023-O.webp",
+        "image": "https://ih1.redbubble.net/image.413779637.3123/leggings,m,x540,front-pad,600x600,f8f8f8.jpg",
         "color": "Black"
     },
     {
-        "id": "3a1615a4-253f-4e0a-831a-00ea2d221102",
-        "name": "RProduct 17",
-        "description": "Description of Product 17",
-        "price": 26,
-        "category": "BagsEco",
+        "id": "1fb536b3-8df0-45b3-9d2c-25d19825eece",
+        "name": "Watercolor of the ocean",
+        "description": "The product features an all-over printed design and is made from 83% polyester and 17% elastane. The stretchy knit fabric allows for freedom of movement, and it is recommended to choose the larger size if between two sizes. The product dimensions are based on garment measurements, not personal measurements. It is machine washable.",
+        "price": 46,
+        "category": "Leggings",
+        "gender": "Woman",
         "size": {
             "XS": { "stock": 4 },
             "S": { "stock": 9 },
@@ -280,15 +248,70 @@
             "XL": { "stock": 35 },
             "XXL": { "stock": 54 }
         },
-        "image": "https://cdn.shopify.com/s/files/1/0378/9747/0091/products/deckcopy_800x800.webp?v=1682240430",
+        "image": "https://ih1.redbubble.net/image.4928975555.9435/leggings,m,x540,front-pad,600x600,f8f8f8.jpg",
+        "color": "Blue"
+    },
+    {
+        "id": "7ae4bbbf-2532-42f2-9810-38cc28f6992c",
+        "name": "Jellyfish in the Deep",
+        "description": "The product features an all-over printed design and is made from 83% polyester and 17% elastane. The stretchy knit fabric allows for freedom of movement, and it is recommended to choose the larger size if between two sizes. The product dimensions are based on garment measurements, not personal measurements. It is machine washable.",
+        "price": 46,
+        "category": "Leggings",
+        "gender": "Woman",
+        "size": {
+            "XS": { "stock": 4 },
+            "S": { "stock": 9 },
+            "M": { "stock": 67 },
+            "L": { "stock": 33 },
+            "XL": { "stock": 35 },
+            "XXL": { "stock": 54 }
+        },
+        "image": "https://ih1.redbubble.net/image.4961506018.5024/leggings,m,x540,front-pad,600x600,f8f8f8.jpg",
+        "color": "Green"
+    },
+    {
+        "id": "b5dd204c-1423-42a7-a98e-753dd5a5b3ef",
+        "name": "Underwater world",
+        "description": "The product features an all-over printed design and is made from 83% polyester and 17% elastane. The stretchy knit fabric allows for freedom of movement, and it is recommended to choose the larger size if between two sizes. The product dimensions are based on garment measurements, not personal measurements. It is machine washable.",
+        "price": 47,
+        "category": "Leggings",
+        "gender": "Woman",
+        "size": {
+            "XS": { "stock": 4 },
+            "S": { "stock": 9 },
+            "M": { "stock": 67 },
+            "L": { "stock": 33 },
+            "XL": { "stock": 35 },
+            "XXL": { "stock": 54 }
+        },
+        "image": "https://ih1.redbubble.net/image.316730927.4996/leggings,m,x540,front-pad,600x600,f8f8f8.u7.jpg",
+        "color": "White"
+    },
+    {
+        "id": "3a1615a4-253f-4e0a-831a-00ea2d221102",
+        "name": "Underwater dream",
+        "description": "The article offers a wide and comfortable loose fit. It is recommended to order a size smaller than usual as the sizes are large. Both the front and back are fully printed with the chosen independent artist's design. The fabric has a silky touch and is made of 97% polyester and 3% elastane. Please note that during production, the print may vary slightly compared to the preview.",
+        "price": 38,
+        "category": "Dresses",
+        "gender": "Woman",
+        "size": {
+            "XS": { "stock": 4 },
+            "S": { "stock": 9 },
+            "M": { "stock": 67 },
+            "L": { "stock": 33 },
+            "XL": { "stock": 35 },
+            "XXL": { "stock": 54 }
+        },
+        "image": "https://ih1.redbubble.net/image.487248995.8121/aldr,x1440,front-c,168,326,600,600-bg,f8f8f8.u6.jpg",
         "color": "Blue"
     },
     {
         "id": "4a8fb2a2-11b7-474f-9e82-6b9ef0d35af3",
-        "name": "SProduct 18",
-        "description": "Description of Product 18",
-        "price": 19,
-        "category": "BagsEco",
+        "name": "Underwater dream II",
+        "description": "The article offers a wide and comfortable loose fit. It is recommended to order a size smaller than usual as the sizes are large. Both the front and back are fully printed with the chosen independent artist's design. The fabric has a silky touch and is made of 97% polyester and 3% elastane. Please note that during production, the print may vary slightly compared to the preview.",
+        "price": 43,
+        "category": "Dresses",
+        "gender": "Woman",
         "size": {
             "XS": { "stock": 4 },
             "S": { "stock": 9 },
@@ -297,32 +320,43 @@
             "XL": { "stock": 35 },
             "XXL": { "stock": 54 }
         },
-        "image": "https://cdn.shopify.com/s/files/1/0378/9747/0091/products/DSC02473copy_800x800.webp?v=1682080766",
+        "image": "https://ih1.redbubble.net/image.1179911996.0304/aldr,x1440,front-c,168,326,600,600-bg,f8f8f8.u8.jpg",
         "color": "White"
     },
     {
         "id": "42a06f54-32a7-4e0d-9be7-3eaee4fe04fe",
-        "name": "TProduct 19",
-        "description": "Description of Product 19",
-        "price": 31,
-        "category": "BagsEco",
+        "name": "Snail pattern",
+        "description": "The article offers a wide and comfortable loose fit. It is recommended to order a size smaller than usual as the sizes are large. Both the front and back are fully printed with the chosen independent artist's design. The fabric has a silky touch and is made of 97% polyester and 3% elastane. Please note that during production, the print may vary slightly compared to the preview.",
+        "price": 59,
+        "category": "Dresses",
+        "gender": "Woman",
         "size": {
+            "XS": { "stock": 4 },
+            "S": { "stock": 0 },
+            "M": { "stock": 67 },
+            "L": { "stock": 33 },
             "XL": { "stock": 35 },
             "XXL": { "stock": 54 }
         },
-        "image": "https://cdn.shopify.com/s/files/1/0378/9747/0091/products/96251298_227238675232304_1194681613359775744_ncopy_800x800.webp?v=1682080742",
-        "color": "Blue"
+        "image": "https://ih1.redbubble.net/image.1118455899.4493/aldr,x1440,front-c,168,326,600,600-bg,f8f8f8.jpg",
+        "color": "White"
     },
     {
         "id": "7ef66d1c-c6fb-4809-aedf-72a6bfb277d0",
-        "name": "UProduct 20",
-        "description": "Description of Product 20",
-        "price": 23,
-        "category": "BagsEco",
+        "name": "Sharks and rays",
+        "description": "The article offers a wide and comfortable loose fit. It is recommended to order a size smaller than usual as the sizes are large. Both the front and back are fully printed with the chosen independent artist's design. The fabric has a silky touch and is made of 97% polyester and 3% elastane. Please note that during production, the print may vary slightly compared to the preview.",
+        "price": 50,
+        "category": "Dresses",
+        "gender": "Woman",
         "size": {
-            "XS": { "stock": 4 }
+            "XS": { "stock": 4 },
+            "S": { "stock": 0 },
+            "M": { "stock": 67 },
+            "L": { "stock": 33 },
+            "XL": { "stock": 0 },
+            "XXL": { "stock": 54 }
         },
-        "image": "https://cdn.shopify.com/s/files/1/0378/9747/0091/products/COP_totebag_trashcopy_800x800.webp?v=1682080722",
-        "color": "White"
+        "image": "https://ih1.redbubble.net/image.245776842.2888/aldr,x1440,front-c,168,326,600,600-bg,f8f8f8.u5.jpg",
+        "color": "Black"
     }
 ]

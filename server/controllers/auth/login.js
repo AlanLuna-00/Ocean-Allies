@@ -1,45 +1,69 @@
 const { User } = require('../../db');
 const bcryptjs = require('bcryptjs');
 const generateJwt = require('../../utils/generateJwt');
-const { serialize } = require('cookie');
+const admin = require('firebase-admin');
 
 const login = async (req, res) => {
-    const { email, password } = req.body;
+    const { id, email, password, google } = req.body;
     console.log(req.body);
     try {
-        const user = await User.findOne({ where: { email } });
+        // Verificar credenciales con Firebase Authentication
+        const userRecord = await admin.auth().getUserByEmail(email);
 
-        if (!user) {
-            return res.status(400).json({
-                msg: 'Email o contraseña incorrectos - email',
+        const userId = userRecord.uid;
+        const userEmail = userRecord.email;
+        console.log('userId', userId);
+
+        let user = {};
+
+        if (google) {
+            // Buscar usuario en la base de datos
+            user = await User.findOne({
+                where: {
+                    email: userEmail,
+                },
             });
+        } else {
+            // Buscar usuario en la base de datos
+            user = await User.findOne({
+                where: {
+                    id: userId,
+                },
+            });
+            if (!user || !user.password) {
+                return res.status(400).json({
+                    msg: 'No se encontró el hash de la contraseña en el usuario',
+                });
+            }
+
+            const validPassword = await bcryptjs.compare(
+                password,
+                user.password
+            );
+            console.log(validPassword);
+
+            if (!validPassword) {
+                return res.status(400).json({
+                    msg: 'Email o contraseña incorrectos',
+                });
+            }
         }
 
-        const validPassword = await bcryptjs.compare(password, user.password);
+        console.log('MEEJEC', user);
 
-        if (!validPassword) {
-            return res.status(400).json({
-                msg: 'Email o contraseña incorrectos - password',
-            });
-        }
-
-        // Generar el token
-        const token = await generateJwt(user.id);
-
-        // Configurar la cookie
-        const cookieOptions = {
-            maxAge: 4 * 60 * 60 * 1000,
-            httpOnly: true,
-            secure: true,
-            sameSite: 'none',
-        };
-
-        // Establecer la cookie
-        res.cookie('token', token, cookieOptions);
+        // Generar el token JWT
+        const token = await generateJwt(userRecord.uid);
 
         // Enviar la respuesta
         res.json({
-            user,
+            user: {
+                id: userRecord.uid,
+                email: userRecord.email,
+                name: userRecord.displayName,
+                id: user.id,
+                role: user.role,
+                photoUrl: userRecord.photoURL,
+            },
             token,
         });
     } catch (error) {

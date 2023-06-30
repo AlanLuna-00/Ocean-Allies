@@ -24,7 +24,9 @@ const getAllProducts = async (
     size,
     name,
     sort,
-    color
+    color,
+    gender,
+    active
 ) => {
     try {
         const offset = (page - 1) * pageSize;
@@ -51,6 +53,14 @@ const getAllProducts = async (
 
         if (color) {
             whereCondition.color = color;
+        }
+
+        if (gender) {
+            whereCondition.gender = gender;
+        }
+
+        if (active !== null) {
+            whereCondition.active = active; // Add active filter condition
         }
 
         let order = [];
@@ -86,6 +96,7 @@ const getAllProducts = async (
                         'comment',
                         'productId',
                         'userId',
+                        
                     ],
                 },
             ],
@@ -106,14 +117,33 @@ const getAllProducts = async (
             currentPage: page,
         };
     } catch (error) {
-        console.log(error);
         throw error;
     }
 };
 
 const getProductsById = async (id) => {
     try {
-        const product = Product.findByPk(id);
+        const product = await Product.findByPk(id, {
+            include: [
+                {
+                    model: Purchase,
+                    attributes: ['id', 'productId', 'userId'],
+                },
+                {
+                    model: Review,
+                    attributes: [
+                        'id',
+                        'rating',
+                        'comment',
+                        'name',
+                        'image',
+                        'productId',
+                        'userId',
+                        
+                    ],
+                },
+            ],
+        });
         return product;
     } catch (error) {
         console.log(error);

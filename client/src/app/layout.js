@@ -1,9 +1,11 @@
+// "use client";
 import "./globals.css";
 import { Akshar } from "next/font/google";
 import Navigation from "../components/Navigation";
 import Footer from "@/components/Footer";
 import Providers from "../store/provider";
 import { AuthProvider } from "../context/AuthContext";
+import { CloudinaryProvider } from "@/context/cloudinaryContext";
 
 const akshar = Akshar({
   subsets: ["latin"],
@@ -31,7 +33,12 @@ export default function RootLayout({ children }) {
           </head>
           <body className={akshar.className}>
             <Navigation />
-            <main>{children}</main>
+            <main>
+              {/* Envuelve tu componente con CloudinaryContext */}
+              <CloudinaryProvider cloudName="di8ocqpu1">
+                {children}
+              </CloudinaryProvider>
+            </main>
             <Footer />
           </body>
         </AuthProvider>
