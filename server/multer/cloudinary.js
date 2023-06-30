@@ -1,25 +1,9 @@
-const cloudinary = require('cloudinary');
+const cloudinary = require('cloudinary').v2;
 
 cloudinary.config({
-    cloud_name: 'di8ocqpu1',
-    api_key: '888444416473822',
-    api_secret: 'i5CycR7GJHkEREdvb4O65jmxByM',
+    cloud_name: 'dp3j8dfa7',
+    api_key: '238265935755577',
+    api_secret: '-q0eW-ellM3D3Vt75Ks9dK41lH8'
 });
 
-exports.uploads = (file, folder) => {
-    return new Promise((resolve) => {
-        cloudinary.uploader.upload(
-            file,
-            (result) => {
-                resolve({
-                    url: result.url,
-                    id: result.public_id,
-                });
-            },
-            {
-                resource_type: 'auto',
-                folder: folder,
-            }
-        );
-    });
-};
+module.exports = cloudinary;
