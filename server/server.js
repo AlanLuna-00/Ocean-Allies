@@ -73,7 +73,6 @@ class Server {
         this.app.use(this.reviewsPath, require('./routes/reviewRoute'));
         this.app.use(this.purchasePath, require('./routes/purchaseRoute'));
         this.app.use(this.paymentPath, require('./routes/paymentRoute'));
-        this.app.use(this.cloudinaryPath, require('./routes/cloudinaryRoute'));
     }
 
     listen() {

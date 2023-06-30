@@ -103,7 +103,6 @@ const fs = require('fs');
 
 const createProductController = async (req, res) => {
     const productData = req.body;
-    console.log(productData);
 
     const products = Array.isArray(productData) ? productData : [productData];
 
