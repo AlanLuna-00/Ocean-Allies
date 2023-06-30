@@ -16,14 +16,13 @@ class Server {
         this.authPath = '/api/auth';
         this.purchasePath = '/api/purchase';
         this.paymentPath = '/api/payment';
-        this.cloudinaryPath = '/api/cloudinary';
-        // Conectar a la base de datos
+        // Conectar a base de datos
         this.conectarDB();
         // Inicializar Firebase Admin
         this.inicializarFirebaseAdmin();
         // Middlewares
         this.middlewares();
-        // Rutas de la aplicación
+        // Rutas de mi aplicación
         this.routes();
     }
 
@@ -49,7 +48,7 @@ class Server {
         this.app.use(express.static('public'));
         // Cookie parser
         this.app.use(cookieParser());
-        // CORS
+        // CORs
         this.app.use(
             cors({
                 allowedHeaders: [
@@ -79,7 +78,7 @@ class Server {
 
     listen() {
         this.app.listen(this.port, () => {
-            console.log(`Servidor corriendo en el puerto ${this.port}`);
+            console.log(`Servidor corriendo en puerto ${this.port}`);
         });
     }
 }

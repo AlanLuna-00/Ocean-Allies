@@ -98,51 +98,12 @@ const deleteProductController = async (req, res) => {
     }
 };
 
-const Joi = require('joi');
-const cloudinary = require('cloudinary').v2;
-const Product = require('../models/Product');
-
-const allowedSizes = ['XS', 'S', 'M', 'L', 'XL', 'XXL'];
-
-const productSchema = Joi.object({
-    name: Joi.string().required(),
-    description: Joi.string().required(),
-    price: Joi.number().positive().required(),
-    category: Joi.string().required(),
-    size: Joi.object()
-        .pattern(
-            /^[a-zA-Z]+$/,
-            Joi.object({
-                stock: Joi.number().integer().min(0).required(),
-            })
-        )
-        .required()
-        .custom((value, helpers) => {
-            const sizes = Object.keys(value);
-            const invalidSizes = sizes.filter(
-                (size) => !allowedSizes.includes(size)
-            );
-            if (invalidSizes.length > 0) {
-                return helpers.error('any.invalid');
-            }
-            return value;
-        }),
-    color: Joi.string().required(),
-    image: Joi.required(),
-    gender: Joi.string().valid('Man', 'Woman', 'Unisex').required(),
-    active: Joi.boolean().optional(),
-});
+const cloudinary = require('../middleware/cloudinary');
+const fs = require('fs');
 
 const createProductController = async (req, res) => {
     const productData = req.body;
-    const file = req.file; // Obtener el archivo subido con Multer
-    console.log(file);
-
-    if (!file) {
-        return res.status(400).json({
-            message: 'No file uploaded',
-        });
-    }
+    console.log(productData);
 
     const products = Array.isArray(productData) ? productData : [productData];
 
@@ -151,7 +112,7 @@ const createProductController = async (req, res) => {
         const invalidProducts = [];
 
         for (const product of products) {
-            const { error } = productSchema.validate(product);
+            const { error } = validateProduct(product);
 
             if (error) {
                 invalidProducts.push({
@@ -160,13 +121,20 @@ const createProductController = async (req, res) => {
                 });
             } else {
                 try {
-                    // Obtener la URL de la imagen cargada en Cloudinary
-                    const result = await cloudinary.uploader.upload(file.path);
-                    productData.image = result.secure_url; // Agregar la URL de la imagen a los datos del producto
+                    let imageUrl;
+
+                    if (product.image) {
+                        // Si se proporciona una URL de imagen
+                        imageUrl = await uploadUrlToCloudinary(product.image);
+                    } else if (req.file) {
+                        // Si se carga un archivo a través de Multer
+                        const result = await uploadFileToCloudinary(req.file);
+                        imageUrl = result.secure_url;
+                    }
 
                     const createdProduct = await createProduct({
                         ...product,
-                        image: result.secure_url,
+                        image: imageUrl,
                     });
                     createdProducts.push(createdProduct);
                 } catch (error) {
@@ -205,11 +173,52 @@ const createProductController = async (req, res) => {
             });
         }
     } catch (error) {
-        console.error(error); // Cambiado a console.error para asegurar la salida del log
-        res.status(500).json({
-            message: 'Internal server error',
-        });
+        res.status(500).json({ message: 'Error creating the products' });
     }
+};
+
+// Función para validar el producto (sin utilizar Joi)
+const validateProduct = (product) => {
+    // Realiza las validaciones deseadas para el producto
+    // Retorna un objeto { error } en caso de error, o un objeto vacío en caso contrario
+    // Por ejemplo:
+    if (!product.name) {
+        return { error: 'Product name is required' };
+    }
+
+    if (!product.price) {
+        return { error: 'Product price is required' };
+    }
+
+    // Agrega las validaciones adicionales según tus necesidades
+
+    return {}; // Retorna un objeto vacío si no hay errores
+};
+
+// Función para subir un archivo a Cloudinary
+const uploadFileToCloudinary = (file) => {
+    return new Promise((resolve, reject) => {
+        cloudinary.uploader.upload(file.path, (error, result) => {
+            if (error) {
+                reject(error);
+            } else {
+                resolve(result);
+            }
+        });
+    });
+};
+
+// Función para subir una imagen por URL a Cloudinary
+const uploadUrlToCloudinary = (imageUrl) => {
+    return new Promise((resolve, reject) => {
+        cloudinary.uploader.upload(imageUrl, (error, result) => {
+            if (error) {
+                reject(error);
+            } else {
+                resolve(result.secure_url);
+            }
+        });
+    });
 };
 
 const updateProductController = async (req, res) => {
