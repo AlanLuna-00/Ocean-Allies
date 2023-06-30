@@ -6,7 +6,7 @@ const {
     deleteProductController,
     updateProductController,
 } = require('../controllers/products.controller');
-const upload = require('../multer/multer'); // Asegúrate de que la ruta sea correcta
+const upload = require('../middleware/multer');
 const verifyJWT = require('../middlewares/verifyJwt');
 
 const productRoute = Router();

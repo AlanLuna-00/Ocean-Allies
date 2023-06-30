@@ -13,7 +13,7 @@ import { setFilterList } from '@/store/Slices/Filters'
 
 
 
-export default function page() {
+export default function Productos() {
 
   const [products, setProducts] = useState([])
   const [isNew, setIsNew] = useState(false)
