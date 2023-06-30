@@ -1,9 +1,11 @@
 "use client";
 import ChangePassword from "@/components/ChangePassword";
+import Review from "@/components/Review";
 import AuthContext from "@/context/AuthContext";
 import axios from "axios";
 import Link from "next/link";
 import React, { useContext, useEffect, useState } from "react";
+
 
 const Profile = () => {
   const { isLoggedIn } = useContext(AuthContext);
@@ -74,9 +76,10 @@ const Profile = () => {
                   </h2>
                 </div>
                 <hr className="my-4" />
-                <ChangePassword user={user} />
+                
               </div>
             </div>
+                <ChangePassword user={user} />
             <div className="md:w-2/3">
               <div className="bg-white rounded-lg p-4 mb-4">
                 <h3 className="text-lg font-bold flex justify-center text-gray-800 mb-4">
@@ -93,7 +96,7 @@ const Profile = () => {
                           href={`/detail/${product.id}`}
                           className="text-blue-500 hover:text-blue-700"
                         >
-                          <div className="relative w-24 h-24 overflow-hidden rounded-md mr-4 hover:scale-110 z-10" >
+                          <div className="relative w-24 h-24 overflow-hidden rounded-md mr-4 hover:scale-110 " >
                             <img
                               src={product.image}
                               alt={product.name}
@@ -117,6 +120,7 @@ const Profile = () => {
                           </p>
                         </div>
                       </div>
+                      <Review userId={user.id} productId={product.id}/>
                     </div>
                   ))
                 ) : (

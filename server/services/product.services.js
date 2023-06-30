@@ -96,6 +96,7 @@ const getAllProducts = async (
                         'comment',
                         'productId',
                         'userId',
+                        
                     ],
                 },
             ],
@@ -134,8 +135,11 @@ const getProductsById = async (id) => {
                         'id',
                         'rating',
                         'comment',
+                        'name',
+                        'image',
                         'productId',
                         'userId',
+                        
                     ],
                 },
             ],

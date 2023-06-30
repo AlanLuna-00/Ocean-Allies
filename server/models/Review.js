@@ -20,6 +20,14 @@ const Review = (sequelize) => {
             active: {
                 type: DataTypes.BOOLEAN,
                 defaultValue: true,
+            },
+            name: {
+                type: DataTypes.STRING,
+                allowNull: false,
+            },
+            image: {
+                type: DataTypes.TEXT,
+                
             }
         },
         {

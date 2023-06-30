@@ -2,6 +2,7 @@
 import React from "react";
 import { useContext, useState, useEffect } from "react";
 import AuthContext from "@/context/AuthContext";
+import user from '../../../public/img/user.png'
 
 export default function Test({ product }) {
   const { addToCart, userCart, loadUserCart } = useContext(AuthContext);
@@ -276,11 +277,11 @@ export default function Test({ product }) {
                             <div className="flex items-center mb-5 space-x-4">
                               <img
                                 className="w-10 h-10 rounded-full"
-                                src=""
+                                src={review.image ? review.image : `/img/user.png`}
                                 alt=""
                               />
                               <div className="text-zinc-950 space-y-1 font-medium">
-                                <p>{review.userId}</p>
+                                <p>{review.name}</p>
                               </div>
                             </div>
                             <div className="flex items-center mb-1">
