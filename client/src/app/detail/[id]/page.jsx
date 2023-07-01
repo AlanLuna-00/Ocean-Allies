@@ -7,7 +7,7 @@ import Link from "next/link";
 async function getDetail(id) {
   try {
     const response = await axios.get(
-      `${process.env.SERVER}/api/products/${id}`
+      `https://ocean-allies-production.up.railway.app/api/products/${id}`
     );
     const data = response.data;
     return data;

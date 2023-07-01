@@ -34,7 +34,7 @@ export default function Productos() {
   const fetchMerchList = async (active = "") => {
     try {
       const response = await axios.get(
-        `${process.env.SERVER}/api/products?active=${active}`,
+        `https://ocean-allies-production.up.railway.app/api/products?active=${active}`,
         {
           params: filters,
         }
@@ -97,7 +97,7 @@ export default function Productos() {
     const replaceToken = token.replace(/['"]+/g, "");
 
     const res = await axios.put(
-      `${process.env.SERVER}/api/products/${id}`,
+      `https://ocean-allies-production.up.railway.app/api/products/${id}`,
       {
         name: name,
         description: description,
@@ -135,7 +135,7 @@ export default function Productos() {
     const replaceToken = token.replace(/['"]+/g, "");
 
     const res = await axios.post(
-      `${process.env.SERVER}/api/products`,
+      `https://ocean-allies-production.up.railway.app/api/products`,
       {
         name: name,
         description: description,

@@ -18,8 +18,8 @@ const createOrder = async (req, res) => {
             ],
             back_urls: {
                 success: 'http://localhost:3000/shop',
-                // failure: '${process.env.SERVER}/failure',
-                // pending: '${process.env.SERVER}/pending',
+                // failure: 'https://ocean-allies-production.up.railway.app/failure',
+                // pending: 'https://ocean-allies-production.up.railway.app/pending',
             },
             notification_url:
                 'https://10ba-186-158-240-67.ngrok-free.app/webhook',

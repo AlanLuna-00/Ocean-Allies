@@ -26,7 +26,7 @@ const useLogin = () => {
 
       // Hacer la petición al backend para iniciar sesión
       const response = await axios.post(
-        `${process.env.SERVER}/api/auth/login`,
+        `https://ocean-allies-production.up.railway.app/api/auth/login`,
         {
           email: credentials.email,
           password: credentials.password,
@@ -63,7 +63,7 @@ const useLogin = () => {
 
       // Hacer la petición al backend para obtener el token JWT
       const response = await axios.post(
-        `${process.env.SERVER}/api/auth/login`,
+        `https://ocean-allies-production.up.railway.app/api/auth/login`,
         {
           id: auth.currentUser.uid,
           email: auth.currentUser.email,

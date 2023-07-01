@@ -6,7 +6,7 @@ const useLogoutUser = () => {
   const logout = async () => {
     try {
       const response = await axios.post(
-        `${process.env.SERVER}/api/auth/logout`
+        `https://ocean-allies-production.up.railway.app/api/auth/logout`
       );
 
       if (response.status !== 200) {

@@ -36,11 +36,11 @@ const Shop = () => {
   const [open, setOpen] = useState(false);
 
   const merchList = useSelector((state) => state.merch.list);
-
+  console.log(process.env.SERVER);
   const fetchMerchList = async () => {
     try {
       const response = await axios.get(
-        `${process.env.SERVER}/api/products?active=true`,
+        `https://ocean-allies-production.up.railway.app/api/products?active=true`,
         {
           params: filters,
         }

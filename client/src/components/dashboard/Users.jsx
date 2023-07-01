@@ -15,11 +15,14 @@ function Users() {
     const token = localStorage.getItem("token");
     const replaceToken = token.replace(/['"]+/g, "");
 
-    const res = await axios(`${process.env.SERVER}/api/users`, {
-      headers: {
-        Authorization: replaceToken,
-      },
-    });
+    const res = await axios(
+      `https://ocean-allies-production.up.railway.app/api/users`,
+      {
+        headers: {
+          Authorization: replaceToken,
+        },
+      }
+    );
 
     setUsers(res.data);
     return users;
@@ -34,11 +37,14 @@ function Users() {
     const token = localStorage.getItem("token");
     const replaceToken = token.replace(/['"]+/g, "");
 
-    const res = await axios.delete(`${process.env.SERVER}/api/users/${id}`, {
-      headers: {
-        Authorization: replaceToken,
-      },
-    });
+    const res = await axios.delete(
+      `https://ocean-allies-production.up.railway.app/api/users/${id}`,
+      {
+        headers: {
+          Authorization: replaceToken,
+        },
+      }
+    );
 
     fetchUsers();
   };
@@ -49,7 +55,7 @@ function Users() {
     const replaceToken = token.replace(/['"]+/g, "");
 
     const res = await axios.put(
-      `${process.env.SERVER}/api/users/${id}`,
+      `https://ocean-allies-production.up.railway.app/api/users/${id}`,
       {
         active: true,
       },
@@ -68,7 +74,7 @@ function Users() {
     const replaceToken = token.replace(/['"]+/g, "");
 
     const res = await axios.put(
-      `${process.env.SERVER}/api/users/${id}`,
+      `https://ocean-allies-production.up.railway.app/api/users/${id}`,
       {
         name: name,
         email: email,

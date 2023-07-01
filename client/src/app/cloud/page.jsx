@@ -11,7 +11,7 @@ function Page() {
       formData.append("image", selectedImage);
 
       const response = await axios.post(
-        `${process.env.SERVER}/api/products`,
+        `https://ocean-allies-production.up.railway.app/api/products`,
         formData
       );
       console.log("Image uploaded successfully:", response.data);
