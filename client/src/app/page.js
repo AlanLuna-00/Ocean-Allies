@@ -9,7 +9,7 @@ function Page() {
   const dispatch = useDispatch();
   const fetchMerchList = async () => {
     try {
-      const response = await axios.get("http://localhost:8080/api/products");
+      const response = await axios.get(`${process.env.SERVER}/api/products`);
       dispatch(setMerchList(response.data.products));
       console.log(response.data.products);
     } catch (error) {

@@ -1,9 +1,8 @@
-"use client"
+"use client";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
 function ChangePassword({ user }) {
-  
   const [isOpen, setIsOpen] = useState(false);
 
   const [formData, setFormData] = useState({
@@ -31,7 +30,7 @@ function ChangePassword({ user }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const { id } = user;
-    
+
     try {
       // Verificar que las contraseñas nuevas coincidan
       if (formData.newPassword !== formData.confirmPassword) {
@@ -39,7 +38,11 @@ function ChangePassword({ user }) {
       }
 
       // Enviar solicitud PUT al servidor para actualizar la contraseña del usuario
-      await updateUserPasswordHandler(id, formData.oldPassword, formData.newPassword);
+      await updateUserPasswordHandler(
+        id,
+        formData.oldPassword,
+        formData.newPassword
+      );
 
       console.log("Contraseña actualizada correctamente");
       closeModal();
@@ -50,10 +53,13 @@ function ChangePassword({ user }) {
 
   async function updateUserPasswordHandler(id, oldPassword, newPassword) {
     try {
-      const response = await axios.put(`http://localhost:8080/api/users/password/${id}`, {
-        oldPassword,
-        newPassword,
-      });
+      const response = await axios.put(
+        `${process.env.SERVER}/api/users/password/${id}`,
+        {
+          oldPassword,
+          newPassword,
+        }
+      );
       return response.data;
     } catch (error) {
       throw new Error("Error al actualizar la contraseña del usuario");
@@ -62,15 +68,12 @@ function ChangePassword({ user }) {
 
   return (
     <div className="">
-     
       <div className="text-center">
-        <button 
-        onClick={openModal} className="text-indigo-600 hover:underline">
+        <button onClick={openModal} className="text-indigo-600 hover:underline">
           Cambiar contraseña
         </button>
       </div>
 
-      
       {isOpen && (
         <div className="fixed inset-0 flex items-center justify-center z-50">
           <div className="bg-white w-1/2 rounded-lg p-8">
@@ -128,7 +131,7 @@ function ChangePassword({ user }) {
                 />
               </div>
 
-             <div className="flex justify-end">
+              <div className="flex justify-end">
                 <button
                   className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2"
                   type="submit"
@@ -146,10 +149,8 @@ function ChangePassword({ user }) {
           </div>
         </div>
       )}
-      </div>
+    </div>
   );
 }
-
-
 
 export default ChangePassword;

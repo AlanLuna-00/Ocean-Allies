@@ -45,9 +45,8 @@ function Review({ userId, productId }) {
   };
 
   async function updateUserPasswordHandler(rating, comment, productId, userId) {
-    
     try {
-      const response = await axios.post(`http://localhost:8080/api/reviews`, {
+      const response = await axios.post(`${process.env.SERVER}/api/reviews`, {
         rating,
         comment,
         productId,
@@ -55,7 +54,7 @@ function Review({ userId, productId }) {
       });
       return response.data;
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
   }
 

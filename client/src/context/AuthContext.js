@@ -34,7 +34,7 @@ export const AuthProvider = ({ children }) => {
   const loadUserCart = async (userId) => {
     try {
       const response = await axios.get(
-        `http://localhost:8080/api/cart/${userId}`
+        `${process.env.SERVER}/api/cart/${userId}`
       );
       setUserCart(response.data.cart.cartItems);
       setPrice(response.data.total);
@@ -46,12 +46,12 @@ export const AuthProvider = ({ children }) => {
 
   const addToCart = async (product, userId) => {
     try {
-      const add = await axios.post(`http://localhost:8080/api/cart/${userId}`, {
+      const add = await axios.post(`${process.env.SERVER}/api/cart/${userId}`, {
         ...product,
       });
       setPrice(add.data.total);
       const response = await axios.get(
-        `http://localhost:8080/api/cart/${userId}`
+        `${process.env.SERVER}/api/cart/${userId}`
       );
       setUserCart(response.data.cartItems);
       setChange(!change);
@@ -62,9 +62,9 @@ export const AuthProvider = ({ children }) => {
 
   const removeFromCart = async (itemId, userId) => {
     try {
-      await axios.delete(`http://localhost:8080/api/cart/${itemId}`);
+      await axios.delete(`${process.env.SERVER}/api/cart/${itemId}`);
       const response = await axios.get(
-        `http://localhost:8080/api/cart/${userId}`
+        `${process.env.SERVER}/api/cart/${userId}`
       );
       setUserCart(response.data.cartItems);
       setPrice(response.data.total);
@@ -77,7 +77,7 @@ export const AuthProvider = ({ children }) => {
   const clearUserCart = async () => {
     try {
       await axios.delete(
-        `http://localhost:8080/api/cart/${auth.currentUser.uid}`
+        `${process.env.SERVER}/api/cart/${auth.currentUser.uid}`
       );
       setUserCart([]);
       setPrice(0);
@@ -109,7 +109,7 @@ export const AuthProvider = ({ children }) => {
 
       try {
         const response = await axios.post(
-          "http://localhost:8080/api/purchase",
+          `${process.env.SERVER}/api/purchase`,
           {
             userId,
             productId,

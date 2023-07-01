@@ -26,7 +26,7 @@ const useLogin = () => {
 
       // Hacer la petición al backend para iniciar sesión
       const response = await axios.post(
-        "http://localhost:8080/api/auth/login",
+        `${process.env.SERVER}/api/auth/login`,
         {
           email: credentials.email,
           password: credentials.password,
@@ -63,7 +63,7 @@ const useLogin = () => {
 
       // Hacer la petición al backend para obtener el token JWT
       const response = await axios.post(
-        "http://localhost:8080/api/auth/login",
+        `${process.env.SERVER}/api/auth/login`,
         {
           id: auth.currentUser.uid,
           email: auth.currentUser.email,

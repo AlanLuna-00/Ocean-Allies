@@ -19,7 +19,7 @@ const Dashboard = () => {
     const token = localStorage.getItem("token");
     const replaceToken = token.replace(/['"]+/g, "");
     console.log(replaceToken);
-    const res = await axios("http://localhost:8080/api/users", {
+    const res = await axios(`${process.env.SERVER}/api/users`, {
       headers: {
         Authorization: replaceToken,
       },
@@ -72,15 +72,12 @@ const Dashboard = () => {
           </p>
         </div>
         <div id="content" className="bg-white/10 col-span-9 rounded-lg  p-6">
-
           {!showUsers && !showProducts && (
             <div className="flex flex-col items-center justify-center opacity-25">
               <h1 className="text-5xl lg:text-7xl font-bold text-center bg-gradient-to-br from-white via-white/50 to-transparent bg-clip-text text-transparent mb-6">
                 Ocean Allies.
               </h1>
-              <img className="w-1/2 "
-                src="/img/ocean.svg" alt="" 
-               />
+              <img className="w-1/2 " src="/img/ocean.svg" alt="" />
             </div>
           )}
 
