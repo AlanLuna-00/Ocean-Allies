@@ -5,7 +5,8 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import Link from "next/link";
 import EditUsers from "@/components/dashboard/EditUsers";
-import { UserIcon, WrenchScrewdriverIcon } from "@heroicons/react/20/solid"; // kausdfhksdjhfkhsdkjfsd
+import { UserIcon, WrenchScrewdriverIcon } from "@heroicons/react/20/solid";
+import { showError, showSuccess } from "../SweetAlerts"; // SWEETALERT
 
 
 
@@ -69,28 +70,33 @@ function Users() {
     const token = localStorage.getItem("token");
     const replaceToken = token.replace(/['"]+/g, "");
 
-    const res = await axios.put(
-      `http://localhost:8080/api/users/${id}`,
-      {
-        name: name,
-        email: email,
-        role: role,
-      },
-      {
-        headers: {
-          Authorization: replaceToken,
+     try {
+        const res = await axios.put(
+        `http://localhost:8080/api/users/${id}`,
+        {
+          name: name,
+          email: email,
+          role: role,
         },
-      }
-    );
-    fetchUsers();
+        {
+          headers: {
+            Authorization: replaceToken,
+          },
+        }
+      );
+      fetchUsers();
+      showSuccess() //SWEETALERT
+
+    } catch (error) {
+      console.log(error);
+      showError() //SWEETALERT
+    }
   };
   
 //   * --------------- EDITAR USUARIO ---------------
   
 
-console.log('USUARIOSSSSSSSSS',users)
-
-
+//*-------------------------------------------------------------------------------------------
   return (
     <div id="last-users">
 

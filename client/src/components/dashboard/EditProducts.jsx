@@ -2,7 +2,6 @@ import React from "react";
 import { useEffect, useState } from "react";
 
 export default function EditProducts({ product, updateProducts, newProducts, isNew, setIsNew, }) {
-
   //*----USESTATE--------
   const [isOpen, setIsOpen] = useState(false);
   const [checked, setChecked] = useState(false);
@@ -15,7 +14,7 @@ export default function EditProducts({ product, updateProducts, newProducts, isN
     gender: false,
     size: false,
     description: false,
-    image: false,
+    // image: false,
   });
 
   const [formData, setFormData] = useState({
@@ -41,6 +40,53 @@ export default function EditProducts({ product, updateProducts, newProducts, isN
   };
 
   //* ------------------ HANDLES -------------------------------
+  //! ------------------ HANDLES TEST -------------------------------
+  //! ------------------ HANDLES PARA SUBIR IMAGEN CON MULTER -------------------------------
+  // const handleImageChange = (e) => {
+  //   const file = e.target.files[0];
+  //   if (file) {
+  //     // Aquí puedes realizar cualquier manipulación necesaria con la imagen seleccionada
+  //     // Por ejemplo, puedes mostrar una vista previa de la imagen antes de subirla al servidor
+      
+  //     // Actualiza el formData con la imagen seleccionada
+  //     setFormData((prevData) => ({
+  //       ...prevData,
+  //       image: file,
+  //     }));
+  //   }
+  // };
+  //! ------------------ HANDLES PARA SUBIR IMAGEN CON MULTER -------------------------------
+
+  // const handleSizeChange = (e, size) => {
+  //   const { value } = e.target;
+  //   setFormData((prevData) => ({
+  //     ...prevData,
+  //     size: {
+  //       ...prevData.size,
+  //       [size]: {
+  //         stock: parseInt(value),
+  //       },
+  //     },
+  //   }));
+  // };
+
+  // const handleSizeChange = (e) => {
+  //   const { name, value } = e.target;
+  //   setFormData((prevData) => ({
+  //     ...prevData,
+  //     size: {
+  //       ...prevData.size,
+  //       [name]: {
+  //         // ...prevData.size[name],
+  //         stock: parseInt(value),
+  //       },
+  //     }
+  //   }));
+  // };
+
+  //! ------------------ HANDLES TEST -------------------------------
+
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
@@ -77,6 +123,23 @@ export default function EditProducts({ product, updateProducts, newProducts, isN
     e.preventDefault();
 
     // validacion(formData, setFormErrors);
+ //! ----------------- TEST -----------------
+
+//  const updatedFormData = { ...formData };
+
+//  // Convertir el objeto size en el formato adecuado
+//  const size = {};
+//  Object.entries(updatedFormData.size).forEach(([key, value]) => {
+//    size[key] = { stock: value };
+//  });
+
+//  // Actualizar el objeto formData con el nuevo formato de size
+//  updatedFormData.size = size;
+
+//  // Guardar el objeto actualizado en el estado
+//  setFormData(updatedFormData);
+
+ //! ----------------- TEST -----------------
 
     const errors = {
       name: !formData.name,
@@ -123,9 +186,6 @@ export default function EditProducts({ product, updateProducts, newProducts, isN
     return;
   };
   //*------------ SUBMIT------------
-
-
-  console.log("FORM-ERROR", formErrors);
 
   return (
     <div>
@@ -279,10 +339,10 @@ export default function EditProducts({ product, updateProducts, newProducts, isN
                 {!Object.values(formErrors).every(
                   (error) => error === false
                 ) && (
-                    <span className="text-red-500">
-                      * Complete los campos obligatorios
-                    </span>
-                  )}
+                  <span className="text-red-500">
+                    * Complete los campos obligatorios
+                  </span>
+                )}
               </div>
 
               <hr className="border border-gray-300 my-4" />
@@ -294,6 +354,63 @@ export default function EditProducts({ product, updateProducts, newProducts, isN
               </div>
 
               <div className="grid grid-cols-6 gap-4">
+                
+                {/* <label htmlFor="sizeL">Size L:</label>
+                <input
+                  type="number"
+                  id="sizeL"
+                  name="L"
+                  value={formData.size.L.stock}
+                  onChange={handleSizeChange}
+                />
+
+                <label htmlFor="sizeM">Size M:</label>
+                <input
+                  type="number"
+                  id="sizeM"
+                  name="M"
+                  value={formData.size.M.stock}
+                  onChange={handleSizeChange}
+                />
+
+                <label htmlFor="sizeS">Size S:</label>
+                <input
+                  type="number"
+                  id="sizeS"
+                  name="S"
+                  value={formData.size.S.stock}
+                  onChange={handleSizeChange}
+                />
+
+                <label htmlFor="sizeXL">Size XL:</label>
+                <input
+                  type="number"
+                  id="sizeXL"
+                  name="XL"
+                  value={formData.size.XL.stock}
+                  onChange={handleSizeChange}
+                />
+
+                <label htmlFor="sizeXS">Size XS:</label>
+                <input
+                  type="number"
+                  id="sizeXS"
+                  name="XS"
+                  value={formData.size.XS.stock}
+                  onChange={handleSizeChange}
+                />
+
+                <label htmlFor="sizeXXL">Size XXL:</label>
+                <input
+                  type="number"
+                  id="sizeXXL"
+                  name="XXL"
+                  value={formData.size.XXL.stock}
+                  onChange={handleSizeChange}
+                /> */}
+
+
+                
                 {Object.keys(formData.size).map((talle) => (
                   <div className="mb-4" key={talle}>
                     <label
@@ -314,6 +431,7 @@ export default function EditProducts({ product, updateProducts, newProducts, isN
                     />
                   </div>
                 ))}
+
               </div>
               {formErrors.size && (
                 <span className="text-red-500 flex justify-center">
@@ -324,8 +442,9 @@ export default function EditProducts({ product, updateProducts, newProducts, isN
               <hr className="border border-gray-300 my-4" />
 
               <div
-                className={`mb-4 ${formErrors.description ? "border-red-500" : ""
-                  }`}
+                className={`mb-4 ${
+                  formErrors.description ? "border-red-500" : ""
+                }`}
               >
                 <label
                   className="block text-gray-700 font-bold mb-2"
@@ -334,8 +453,9 @@ export default function EditProducts({ product, updateProducts, newProducts, isN
                   Descripcion <span className="text-red-500">*</span>
                 </label>
                 <textarea
-                  className={`mb-4 ${formErrors.description ? "border-red-500" : ""
-                    }
+                  className={`mb-4 ${
+                    formErrors.description ? "border-red-500" : ""
+                  }
                   appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-blue-500`}
                   type="text"
                   id="description"
@@ -345,6 +465,7 @@ export default function EditProducts({ product, updateProducts, newProducts, isN
                 />
               </div>
 
+              {/* agregar imagen por URL */}
               <div className="mb-4">
                 <label
                   className="block text-gray-700 font-bold mb-2"
@@ -363,6 +484,13 @@ export default function EditProducts({ product, updateProducts, newProducts, isN
                   onChange={handleInputChange}
                 />
               </div>
+
+              {/* Boton para agregar imagen como FILE para multer */}
+              {/* <input
+                type="file"
+                accept="image/*"
+                onChange={handleImageChange}
+              /> */}
 
               <div
                 className="mb-4 flex items-center" //? al no tener id se deesabilita para cuando se crea un nuevo producto

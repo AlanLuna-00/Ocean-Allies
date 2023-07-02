@@ -9,30 +9,30 @@ import { useEffect, useState } from "react";
 import Productos from "@/components/dashboard/Productos";
 
 const Dashboard = () => {
-  const [users, setUsers] = useState([]);
+  // const [users, setUsers] = useState([]);
 
   const [showUsers, setShowUsers] = useState(false);
   const [showProducts, setShowProducts] = useState(false);
 
-  //* --------------- OBTENER USARIOS ---------------
-  const fetchUsers = async () => {
-    const token = localStorage.getItem("token");
-    const replaceToken = token.replace(/['"]+/g, "");
-    console.log(replaceToken);
-    const res = await axios("http://localhost:8080/api/users", {
-      headers: {
-        Authorization: replaceToken,
-      },
-    });
-    console.log(res.data);
-    setUsers(res.data);
-  };
-  console.log("--------USERS FECH---------", users);
-  //* --------------- OBTENER USARIOS ---------------
+  // //* --------------- OBTENER USARIOS ---------------
+  // const fetchUsers = async () => {
+  //   const token = localStorage.getItem("token");
+  //   const replaceToken = token.replace(/['"]+/g, "");
+  //   console.log(replaceToken);
+  //   const res = await axios("http://localhost:8080/api/users", {
+  //     headers: {
+  //       Authorization: replaceToken,
+  //     },
+  //   });
+  //   console.log(res.data);
+  //   setUsers(res.data);
+  // };
+  // // console.log("--------USERS FECH---------", users);
+  // //* --------------- OBTENER USARIOS ---------------
 
-  useEffect(() => {
-    fetchUsers();
-  }, []);
+  // useEffect(() => {
+  //   fetchUsers();
+  // }, []);
 
   return (
     <div className="antialiased bg-black w-full pb-10 text-slate-300 relative py-4">
