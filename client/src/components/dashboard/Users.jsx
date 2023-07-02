@@ -100,7 +100,7 @@ function Users() {
   return (
     <div id="last-users">
 
-      <div className="overflow-x-scroll">
+      <div className="">
         <table className="w-full whitespace-nowrap">
           <thead className="bg-black/60">
             <tr>

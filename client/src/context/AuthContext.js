@@ -10,6 +10,7 @@ const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
+  const [userId, setUserId] = useState("");
   const { logout } = useLogoutUser();
   const [userCart, setUserCart] = useState([]);
   const [price, setPrice] = useState(0);
@@ -20,6 +21,7 @@ export const AuthProvider = ({ children }) => {
   const handleLogin = (user) => {
     setIsLoggedIn(true);
     setIsAdmin(user.role === "admin");
+    setUserId(user.id); // Guardo el id del usuario en el estado para luego obtener en la Dashboard
     loadUserCart(user.id);
   };
 
@@ -140,6 +142,7 @@ export const AuthProvider = ({ children }) => {
   const value = {
     isLoggedIn,
     isAdmin,
+    userId, // ID del usuario logeado
     handleLogin,
     handleLogout,
     userCart,

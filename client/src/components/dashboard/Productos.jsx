@@ -223,7 +223,7 @@ export default function Productos() {
       <h1 className="font-bold py-4 uppercase pl-3">Edit Product:</h1>
 
 
-      <div className="overflow-x-scroll">
+      <div className="">
         <table className="w-full whitespace-nowrap">
           <thead className="bg-black/60">
             <tr>
