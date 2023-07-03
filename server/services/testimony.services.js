@@ -6,18 +6,18 @@ const createTestimonyService = async (name, comment, uid) => {
 
         const existTestimony = await Testimony.findOne({
             where: {
-                userId: uid
-            }
-        })
+                userId: uid,
+            },
+        });
 
         if (existTestimony) {
-            throw new Error('El usuario puede tener solo 1 testimonio')
+            throw new Error('El usuario puede tener solo 1 testimonio');
         }
 
         const testimony = await Testimony.create({ name, comment });
 
         await testimony.setUser(user);
-        
+
         return testimony;
     } catch (error) {
         console.log(error);
@@ -64,7 +64,8 @@ const deleteTestimonyService = async (testimonyId) => {
         if (!testimony) {
             throw new Error('Testimonio no encontrado');
         }
-        await testimony.update({ active: false });
+
+        await testimony.update({ active: !testimony.active });
     } catch (error) {
         throw new Error('Error al eliminar el testimonio');
     }
