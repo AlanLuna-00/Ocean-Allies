@@ -19,8 +19,8 @@ const Testimony = (sequelize) => {
             },
             active: {
                 type: DataTypes.BOOLEAN,
-                defaultValue: true,
-            }
+                defaultValue: false,
+            },
         },
         {
             timestamps: false,
