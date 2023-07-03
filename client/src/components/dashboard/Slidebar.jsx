@@ -1,43 +1,18 @@
 import Link from "next/link";
 
-function Slidebar({ showUsers, setShowUsers, showProducts, setShowProducts }) {
+function Slidebar({ setShowUsers, setShowProducts, setShowTestimonys }) {
   return (
     <div id="menu" className="flex flex-col space-y-2 my-5">
-      <Link
-        href="#"
-        className="hover:bg-white/10 transition duration-150 ease-linear rounded-lg py-3 px-2 group"
-      >
-        <div className="flex flex-col space-y-2 md:flex-row md:space-y-0 space-x-2 items-center">
-          <div>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke-width="1.5"
-              stroke="currentColor"
-              className="w-6 h-6 group-hover:text-indigo-400"
-            >
-              <path
-                stroke-linecap="round"
-                strokeLinejoin="round"
-                d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"
-              />
-            </svg>
-          </div>
-          <div>
-            <p className="font-bold text-base lg:text-lg text-slate-200 leading-4 group-hover:text-indigo-400">
-              Dashboard
-            </p>
-            <p className="text-slate-400 text-sm hidden md:block">
-              Home Dashboard
-            </p>
-          </div>
-        </div>
-      </Link>
 
-      <Link
+
+      <button
         href="#"
         className="hover:bg-white/10 transition duration-150 ease-linear rounded-lg py-3 px-2 group"
+        onClick={() => {
+          setShowProducts(false);
+          setShowUsers(false);
+          setShowTestimonys(true);
+        }}
       >
         <div className="relative flex flex-col space-y-2 md:flex-row md:space-y-0 space-x-2 items-center">
           <div>
@@ -56,19 +31,18 @@ function Slidebar({ showUsers, setShowUsers, showProducts, setShowProducts }) {
               />
             </svg>
           </div>
+
           <div>
             <p className="font-bold text-base lg:text-lg text-slate-200 leading-4 group-hover:text-indigo-400">
-              Messages
+              Testimony
             </p>
             <p className="text-slate-400 text-sm hidden md:block">
-              Manage messages
+              Manage Testimony
             </p>
           </div>
-          <div className="absolute -top-3 -right-3 md:top-0 md:right-0 px-2 py-1.5 rounded-full bg-indigo-800 text-xs font-mono font-bold">
-            23
-          </div>
+
         </div>
-      </Link>
+      </button>
 
       <button
         // href="/dashboard/users"
@@ -76,6 +50,7 @@ function Slidebar({ showUsers, setShowUsers, showProducts, setShowProducts }) {
         onClick={() => {
           setShowProducts(false);
           setShowUsers(true);
+          setShowTestimonys(false);
         }}
       >
         <div className="flex flex-col space-y-2 md:flex-row md:space-y-0 space-x-2 items-center">
@@ -112,6 +87,7 @@ function Slidebar({ showUsers, setShowUsers, showProducts, setShowProducts }) {
         onClick={() => {
           setShowProducts(true);
           setShowUsers(false);
+          setShowTestimonys(false);
         }}
       >
         <div className="flex flex-col space-y-2 md:flex-row md:space-y-0 space-x-2 items-center">

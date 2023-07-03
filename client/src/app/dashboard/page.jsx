@@ -10,6 +10,7 @@ import Productos from "@/components/dashboard/Productos";
 import { useContext } from "react";
 import AuthContext from "@/context/AuthContext";
 import { WrenchScrewdriverIcon } from "@heroicons/react/20/solid";
+import AdminTestimonys from "@/components/dashboard/AdminTestimonys";
 
 const Dashboard = () => {
   const [user, setUser] = useState([]);
@@ -17,6 +18,7 @@ const Dashboard = () => {
   
   const [showUsers, setShowUsers] = useState(false);
   const [showProducts, setShowProducts] = useState(false);
+  const [showTestimonys, setShowTestimonys] = useState(false);
 
 
   //* --------------- OBTENER USARIO LOGEADO ---------------
@@ -70,10 +72,9 @@ const Dashboard = () => {
           </div>
           <hr className="my-2 border-slate-700" />
           <Slidebar
-            showUsers={showUsers}
             setShowUsers={setShowUsers}
-            showProducts={showProducts}
             setShowProducts={setShowProducts}
+            setShowTestimonys={setShowTestimonys}
           />
           <p className="text-sm text-center text-gray-600">
             v1.0.0.0 | &copy; 2023 Ocean Allies
@@ -81,7 +82,7 @@ const Dashboard = () => {
         </div>
         <div id="content" className="bg-white/10 col-span-9 rounded-lg  p-6">
 
-          {!showUsers && !showProducts && (
+          {!showUsers && !showProducts && !showTestimonys && (
             <div className="flex flex-col items-center justify-center opacity-25">
               <h1 className="text-5xl lg:text-7xl font-bold text-center bg-gradient-to-br from-white via-white/50 to-transparent bg-clip-text text-transparent mb-6">
                 Ocean Allies.
@@ -91,7 +92,7 @@ const Dashboard = () => {
                />
             </div>
           )}
-
+          {showTestimonys && <AdminTestimonys />}
           {showUsers && <Users />}
           {showProducts && <Productos />}
         </div>

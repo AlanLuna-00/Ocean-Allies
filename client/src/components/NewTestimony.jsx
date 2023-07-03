@@ -6,13 +6,13 @@ export default function NewTestimony() {
   const [checked, setChecked] = useState(false);
 
   const [formErrors, setFormErrors] = useState({
-    name: false,
+    titulo: false,
     description: false,
   });
 
   const [formData, setFormData] = useState({
     // id: product.id,
-    name: "",
+    titulo: "",
     description: "",
   });
 
@@ -23,8 +23,8 @@ export default function NewTestimony() {
 
   const closeModal = () => {
     setIsOpen(false);
-    setFormData({ name: "", description: "" })
-    setFormErrors({ name: false, description: false })
+    setFormData({ titulo: "", description: "" })
+    setFormErrors({ titulo: false, description: false })
   };
   //* MODAL -----------------
 
@@ -40,12 +40,12 @@ export default function NewTestimony() {
     e.preventDefault();
 
     const errors = {
-        name: !formData.name,
+        titulo: !formData.name,
         description: !formData.description,
     };
       setFormErrors(errors);
 
-    if (!errors.name || !errors.description) {
+    if (!errors.titulo || !errors.description) {
 
     }
   };
@@ -79,12 +79,12 @@ export default function NewTestimony() {
                     Nombre <span className="text-red-500">*</span>
                   </label>
                   <input
-                    className={`${formErrors.name ? "border-red-500" : ""}
+                    className={`${formErrors.titulo ? "border-red-500" : ""}
                     appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-blue-500`}
                     type="text"
                     id="name"
                     name="name"
-                    value={formData.name}
+                    value={formData.titulo}
                     onChange={handleInputChange}
                   />
                 </div>

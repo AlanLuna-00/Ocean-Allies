@@ -2,6 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
+import NewTestimony from './NewTestimony';
 
 const Testimonials = () => {
     const testimonials = [
@@ -125,6 +126,7 @@ const Testimonials = () => {
     return (
         <div className="py-10">
             <h1 className="text-2xl font-bold text-center mb-8">Testimonials</h1>
+            <NewTestimony/>
             <Carousel
                 responsive={responsive}
                 infinite
