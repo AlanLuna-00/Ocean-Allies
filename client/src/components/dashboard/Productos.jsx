@@ -119,66 +119,66 @@ export default function Productos() {
   };
   //*-------------- EDIT PRODUCTS ----------------
   //! -------------- TEST CARGAR IMAGEN CON MULTER ----------------
-  // const newProducts = async (name, description, price, category, gender, image, color, size, active) => {
-  //   try {
-  //     const formData = new FormData();
-  //     formData.append('name', name);
-  //     formData.append('description', description);
-  //     formData.append('price', price);
-  //     formData.append('category', category);
-  //     formData.append('gender', gender);
-  //     formData.append('image', image);
-  //     formData.append('color', color);
-  //     // formData.append('size', size);
-  //     formData.append('size', JSON.stringify(size));
-  //     formData.append('active', active);
+  const newProducts = async (name, description, price, category, gender, image, color, size, active) => {
+    try {
+      const formData = new FormData();
+      formData.append('name', name);
+      formData.append('description', description);
+      formData.append('price', price);
+      formData.append('category', category);
+      formData.append('gender', gender);
+      formData.append('image', image);
+      formData.append('color', color);
+      // formData.append('size', size);
+      formData.append('size', JSON.stringify(size));
+      formData.append('active', active);
 
   
-  //     const response = await axios.post('http://localhost:8080/api/products', formData, {
-  //       headers: {
-  //         'Content-Type': 'multipart/form-data',
-  //       },
-  //     });
-  
-  //     console.log('Product created:', response.data);
-  //   } catch (error) {
-  //     console.error('Error creating product:', error.message);
-  //   }
-  // }
-    
-  //   //! -------------- TEST ----------------
-  //*-------------- NEW PRODUCTS ----------------
-  const newProducts = async (name, description, price, category, gender, image, color, size, active) => {
-    const token = localStorage.getItem("token");
-    const replaceToken = token.replace(/['"]+/g, "");
-    
-    try {
-      const res = await axios.post(
-        `http://localhost:8080/api/products`,
-        {
-          name: name,
-          description: description,
-          price: price,
-          category: category,
-          gender: gender,
-          image: image,
-          color: color,
-          size: size,
-          active: active,
+      const response = await axios.post('http://localhost:8080/api/products', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
         },
-        {
-          headers: {
-            Authorization: replaceToken,
-          },
-        }
-      );
-      fetchMerchList();
-      showSuccess(); //SWEETALERT
+      });
+  
+      console.log('Product created:', response.data);
     } catch (error) {
       console.error('Error creating product:', error.message);
-      showError(); //SWEETALERT
     }
-  };
+  }
+    
+  //   //! -------------- TEST ----------------
+  // //*-------------- NEW PRODUCTS ----------------
+  // const newProducts = async (name, description, price, category, gender, image, color, size, active) => {
+  //   const token = localStorage.getItem("token");
+  //   const replaceToken = token.replace(/['"]+/g, "");
+    
+  //   try {
+  //     const res = await axios.post(
+  //       `http://localhost:8080/api/products`,
+  //       {
+  //         name: name,
+  //         description: description,
+  //         price: price,
+  //         category: category,
+  //         gender: gender,
+  //         image: image,
+  //         color: color,
+  //         size: size,
+  //         active: active,
+  //       },
+  //       {
+  //         headers: {
+  //           Authorization: replaceToken,
+  //         },
+  //       }
+  //     );
+  //     fetchMerchList();
+  //     showSuccess(); //SWEETALERT
+  //   } catch (error) {
+  //     console.error('Error creating product:', error.message);
+  //     showError(); //SWEETALERT
+  //   }
+  // };
 
   const newProduct = {
     // id: product.id,

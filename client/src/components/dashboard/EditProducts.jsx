@@ -42,19 +42,19 @@ export default function EditProducts({ product, updateProducts, newProducts, isN
   //* ------------------ HANDLES -------------------------------
   //! ------------------ HANDLES TEST -------------------------------
   //! ------------------ HANDLES PARA SUBIR IMAGEN CON MULTER -------------------------------
-  // const handleImageChange = (e) => {
-  //   const file = e.target.files[0];
-  //   if (file) {
-  //     // Aquí puedes realizar cualquier manipulación necesaria con la imagen seleccionada
-  //     // Por ejemplo, puedes mostrar una vista previa de la imagen antes de subirla al servidor
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      // Aquí puedes realizar cualquier manipulación necesaria con la imagen seleccionada
+      // Por ejemplo, puedes mostrar una vista previa de la imagen antes de subirla al servidor
       
-  //     // Actualiza el formData con la imagen seleccionada
-  //     setFormData((prevData) => ({
-  //       ...prevData,
-  //       image: file,
-  //     }));
-  //   }
-  // };
+      // Actualiza el formData con la imagen seleccionada
+      setFormData((prevData) => ({
+        ...prevData,
+        image: file,
+      }));
+    }
+  };
   //! ------------------ HANDLES PARA SUBIR IMAGEN CON MULTER -------------------------------
 
   // const handleSizeChange = (e, size) => {
@@ -486,11 +486,11 @@ export default function EditProducts({ product, updateProducts, newProducts, isN
               </div>
 
               {/* Boton para agregar imagen como FILE para multer */}
-              {/* <input
+              <input
                 type="file"
                 accept="image/*"
                 onChange={handleImageChange}
-              /> */}
+              />
 
               <div
                 className="mb-4 flex items-center" //? al no tener id se deesabilita para cuando se crea un nuevo producto

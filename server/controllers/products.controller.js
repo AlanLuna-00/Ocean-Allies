@@ -102,8 +102,15 @@ const cloudinary = require('../middleware/cloudinary');
 const fs = require('fs');
 
 const createProductController = async (req, res) => {
-    const productData = req.body;
+    let productData = req.body;
+    console.log("PRODUC CONTROLER", req.body)
 
+    const { size } = productData;
+    const parsedSize = typeof size === 'string' ? JSON.parse(size) : size;
+
+    productData.size = parsedSize;
+    
+    console.log("PARSED PRODUCT", productData)
     const products = Array.isArray(productData) ? productData : [productData];
 
     try {

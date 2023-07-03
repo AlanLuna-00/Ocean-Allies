@@ -23,7 +23,7 @@ const Dashboard = () => {
   const fetchUsers = async (id) => {
     const token = localStorage.getItem("token");
     const replaceToken = token.replace(/['"]+/g, "");
-    console.log(replaceToken);
+    
     const res = await axios(`http://localhost:8080/api/users/${id}`, {
       headers: {
         Authorization: replaceToken,
