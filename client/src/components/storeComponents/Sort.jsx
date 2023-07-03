@@ -33,11 +33,11 @@ const Sort = ({ filters, onChange }) => {
   ];
   return (
     <Menu as="div" className="flex flex-col">
-      <div>
+      <div className="mb-2">
         <select
           id="price"
           name="price"
-          className="w-full border border-gray-300 rounded-lg p-2"
+          className="w-full rounded-lg border border-gray-300 p-2"
           value={filters.price || ""}
           onChange={onChange}
         >
@@ -46,11 +46,11 @@ const Sort = ({ filters, onChange }) => {
           <option value="asc">Lowest</option>
         </select>
       </div>
-      <div className="">
+      <div className="mb-2">
         <select
           id="sort"
           name="sort"
-          className="w-full border border-gray-300 rounded-lg p-2"
+          className="w-full rounded-lg border border-gray-300 p-2"
           value={filters.sort || ""}
           onChange={onChange}
         >

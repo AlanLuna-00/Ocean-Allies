@@ -90,7 +90,7 @@ export default function Home() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 4, duration: 1 }}
-        className="text-center max-w-xl mx-auto p-20 mt-10  "
+        className="text-center max-w-3xl mx-auto p-20 mt-10  "
       >
         <div className="text-center mb-10">
           <span className="inline-block w-1 h-1 rounded-full bg-blue-600 ml-1"></span>
