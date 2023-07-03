@@ -80,7 +80,7 @@ export default function Test({ product }) {
                 </div>
               </div>
 
-              <div className="mt-2 w-full lg:order-1 lg:w-32 lg:flex-shrink-0">
+              {/* <div className="mt-2 w-full lg:order-1 lg:w-32 lg:flex-shrink-0">
                 <div className="flex flex-row items-start lg:flex-col">
                   <button
                     type="button"
@@ -113,7 +113,7 @@ export default function Test({ product }) {
                     />
                   </button>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
 
