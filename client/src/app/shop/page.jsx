@@ -339,7 +339,7 @@ const Shop = () => {
                 onClick={() => setMobileFiltersOpen(true)}
               >
                 <span className="sr-only">Filters</span>
-                <FunnelIcon className="h-5 w-5" aria-hidden="true" />
+                <FunnelIcon className="h-5 w-5 mb-1" aria-hidden="true" />
               </button>
             </div>
           </div>
@@ -505,14 +505,14 @@ const Shop = () => {
                                   alt={product.name}
                                   className=" peer  right-0 top-0 h-full w-full object-cover"
                                 />
-                                <div className="absolute -right-16 bottom-0 mb-4 mr-2 space-y-2 transition-all duration-300 group-hover:right-0">
+                                {/* <div className="absolute -right-16 bottom-0 mb-4 mr-2 space-y-2 transition-all duration-300 group-hover:right-0">
                                   <button className="flex h-10 w-10 items-center justify-center bg-gray-900 text-white transition hover:bg-gray-700">
                                     <ShoppingCartIcon
                                       className="h-6 w-6"
                                       aria-hidden="true"
                                     />
                                   </button>
-                                </div>
+                                </div> */}
                               </a>
 
                               <div className="mt-4 pb-5">
