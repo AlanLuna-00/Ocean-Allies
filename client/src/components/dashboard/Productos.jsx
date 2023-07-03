@@ -168,17 +168,20 @@ export default function Productos() {
       // formData.append('size', size);
       formData.append('size', JSON.stringify(size));
       formData.append('active', active);
-
-  
+      
+      
       const response = await axios.post('http://localhost:8080/api/products', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
       });
-  
+      
       console.log('Product created:', response.data);
+      showSuccess(); //SWEETALERT
+      
     } catch (error) {
       console.error('Error creating product:', error.message);
+      showError(); //SWEETALERT
     }
   }
     

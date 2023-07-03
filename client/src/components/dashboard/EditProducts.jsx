@@ -14,7 +14,7 @@ export default function EditProducts({ product, updateProducts, newProducts, isN
     gender: false,
     size: false,
     description: false,
-    // image: false,
+    image: false,
   });
 
   const [formData, setFormData] = useState({
@@ -37,6 +37,18 @@ export default function EditProducts({ product, updateProducts, newProducts, isN
 
   const closeModal = () => {
     setIsOpen(false);
+    setFormData({
+      id: product.id,
+      name: product.name,
+      description: product.description,
+      price: product.price,
+      category: product.category,
+      gender: product.gender,
+      image: product.image,
+      color: product.color,
+      size: product.size,
+      active: product.active,
+    })
   };
 
   //* ------------------ HANDLES -------------------------------
@@ -466,7 +478,7 @@ export default function EditProducts({ product, updateProducts, newProducts, isN
               </div>
 
               {/* agregar imagen por URL */}
-              <div className="mb-4">
+              {/* <div className="mb-4">
                 <label
                   className="block text-gray-700 font-bold mb-2"
                   htmlFor="name"
@@ -483,7 +495,7 @@ export default function EditProducts({ product, updateProducts, newProducts, isN
                   value={formData.image}
                   onChange={handleInputChange}
                 />
-              </div>
+              </div> */}
 
               {/* Boton para agregar imagen como FILE para multer */}
               <input

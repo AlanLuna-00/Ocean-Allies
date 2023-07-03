@@ -15,7 +15,7 @@ productRoute.get('/', getAllProductsController);
 productRoute.get('/:id', getProductByIdController);
 productRoute.post(
     '/',
-    verifyJWT,
+    // verifyJWT,
     upload.single('image'),
     createProductController
 );
