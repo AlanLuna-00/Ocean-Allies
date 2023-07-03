@@ -43,7 +43,7 @@ const CheckoutButton = ({ price }) => {
   return (
     <button
       id="checkout"
-      className="flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm"
+      className="flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6  text-base font-medium text-white shadow-sm"
       onClick={handleClick}
     >
       PAY
