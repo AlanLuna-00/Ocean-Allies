@@ -76,10 +76,10 @@ function ChangePassword({ user }) {
 
       {isOpen && (
         <div className="fixed inset-0 flex items-center justify-center z-50">
-          <div className="dark:bg-gray-600 w-1/2 rounded-lg p-8">
+          <div className="bg-gray-50 dark:border-gray-700 dark:bg-gray-800  w-1/2 rounded-lg p-8 border-2 border-blue-500 outline-blue-500">
             <div className="text-center mt-4">
               <h3 className="text-2xl font-semibold text-gray-700 dark:text-white">
-                Login to your account
+                Change password
               </h3>
             </div>
 
@@ -90,7 +90,7 @@ function ChangePassword({ user }) {
               <div>
                 <div className="relative before:absolute before:bottom-0 before:h-0.5 before:left-0 before:origin-right focus-within:before:origin-left before:right-0 before:scale-x-0 before:m-auto before:bg-sky-400 dark:before:bg-sky-800 focus-within:before:!scale-x-100 focus-within:invalid:before:bg-red-400 before:transition before:duration-300">
                   <input
-                    className="w-full bg-transparent pb-3 border-b border-gray-300 dark:placeholder-gray-300 dark:border-gray-600 outline-none invalid:border-red-400 transition"
+                    className="w-full bg-transparent pb-3 border-b border-gray-300 dark:placeholder-gray-300 dark:border-gray-600 outline-none invalid:border-red-400 transition "
                     type="password"
                     id="oldPassword"
                     placeholder="Your old password"

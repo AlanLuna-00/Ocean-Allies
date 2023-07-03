@@ -121,8 +121,8 @@ export default function Home() {
         transition={{ delay: 5, duration: 1 }}
         className="grid grid-cols-1 lg:grid-cols-2 md:grid-cols-1 gap-20 md:max-w-full"
       >
-        <div className="col-span-1">
-          {/* Contenido de la tercera columna */}
+        {/* <div className="col-span-1">
+
           <Link
             href="/shop"
             className="h-64 bg-cover bg-center flex flex-col items-center justify-center"
@@ -134,7 +134,7 @@ export default function Home() {
           </Link>
         </div>
         <div className="col-span-1">
-          {/* Contenido de la tercera columna */}
+
           <Link
             href="/#"
             className="h-64 bg-cover bg-center flex flex-col items-center justify-center"
@@ -144,7 +144,7 @@ export default function Home() {
               DONATIONS
             </h1>
           </Link>
-        </div>
+        </div> */}
       </motion.div>
       <Testimonials />
     </div>
