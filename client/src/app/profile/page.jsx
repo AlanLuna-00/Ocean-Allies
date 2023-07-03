@@ -96,11 +96,11 @@ const Profile = () => {
 
             <div className="md:w-2/3">
               <div className=" rounded-lg p-4 mb-4">
-                <h3 className="text-lg font-bold flex justify-center text-gray-800 mb-4">
+                <h3 className="text-lg font-bold flex justify-center text-white mb-4">
                   Historial de compra
                 </h3>
-                <div class="pt-6 mx-6 mt-6 text-center ">
-                  <div class="flex flex-wrap justify-center">
+                <div className="pt-6 mx-6 mt-6 text-center ">
+                  <div className="flex flex-col justify-center">
                     {products.length > 0 ? (
                       products.map((product, index) => (
                         <div
