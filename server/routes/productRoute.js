@@ -13,8 +13,18 @@ const productRoute = Router();
 
 productRoute.get('/', getAllProductsController);
 productRoute.get('/:id', getProductByIdController);
-productRoute.post('/', upload.single('image'), createProductController);
+productRoute.post(
+    '/',
+    verifyJWT,
+    upload.single('image'),
+    createProductController
+);
 productRoute.delete('/:id', verifyJWT, deleteProductController);
-productRoute.put('/:id', verifyJWT, updateProductController);
+productRoute.put(
+    '/:id',
+    verifyJWT,
+    upload.single('image'),
+    updateProductController
+);
 
 module.exports = productRoute;
