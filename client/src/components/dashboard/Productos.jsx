@@ -83,38 +83,74 @@ export default function Productos() {
     fetchMerchList(active);
     dispatch(setFilterList(filters))
   }, [filters, active]);
+  // //*-------------- EDIT PRODUCTS ----------------
+  // const updateProducts = async (id, name, description, price, category, gender, image, color, size, active) => {
+  //   const token = localStorage.getItem("token");
+  //   const replaceToken = token.replace(/['"]+/g, "");
+
+  //   try {
+  //     const res = await axios.put(
+  //       `http://localhost:8080/api/products/${id}`,
+  //       {
+  //         name: name,
+  //         description: description,
+  //         price: price,
+  //         category: category,
+  //         gender: gender,
+  //         image: image,
+  //         color: color,
+  //         size: size,
+  //         active: active,
+  //       },
+  //       {
+  //         headers: {
+  //           Authorization: replaceToken,
+  //         },
+  //       }
+  //       );
+  //     fetchMerchList();
+  //     showSuccess(); //SWEETALERT
+
+  //   } catch (error) {
+  //     console.log(error)
+  //     showError(); //SWEETALERT
+    
+  //   }
+  // };
+  // //*-------------- EDIT PRODUCTS ----------------
   //*-------------- EDIT PRODUCTS ----------------
   const updateProducts = async (id, name, description, price, category, gender, image, color, size, active) => {
     const token = localStorage.getItem("token");
     const replaceToken = token.replace(/['"]+/g, "");
-
+  
     try {
-      const res = await axios.put(
+      const formData = new FormData();
+      formData.append('name', name);
+      formData.append('description', description);
+      formData.append('price', price);
+      formData.append('category', category);
+      formData.append('gender', gender);
+      formData.append('image', image);
+      formData.append('color', color);
+      formData.append('size', JSON.stringify(size));
+      formData.append('active', active);
+  
+      const response = await axios.put(
         `http://localhost:8080/api/products/${id}`,
-        {
-          name: name,
-          description: description,
-          price: price,
-          category: category,
-          gender: gender,
-          image: image,
-          color: color,
-          size: size,
-          active: active,
-        },
+        formData,
         {
           headers: {
             Authorization: replaceToken,
+            'Content-Type': 'multipart/form-data',
           },
         }
-        );
+      );
+  
       fetchMerchList();
       showSuccess(); //SWEETALERT
-
     } catch (error) {
-      console.log(error)
+      console.log(error);
       showError(); //SWEETALERT
-    
     }
   };
   //*-------------- EDIT PRODUCTS ----------------
