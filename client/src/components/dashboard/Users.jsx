@@ -8,22 +8,20 @@ import EditUsers from "@/components/dashboard/EditUsers";
 import { UserIcon, WrenchScrewdriverIcon } from "@heroicons/react/20/solid";
 import { showError, showSuccess } from "../SweetAlerts"; // SWEETALERT
 
-
-
 function Users() {
   const [users, setUsers] = useState([]);
-  
+
   //* --------------- OBTENER USARIOS ---------------
   const fetchUsers = async () => {
     const token = localStorage.getItem("token");
     const replaceToken = token.replace(/['"]+/g, "");
-    
+
     const res = await axios("http://localhost:8080/api/users", {
       headers: {
         Authorization: replaceToken,
       },
     });
-    
+
     setUsers(res.data);
     return users;
   };
@@ -70,8 +68,8 @@ function Users() {
     const token = localStorage.getItem("token");
     const replaceToken = token.replace(/['"]+/g, "");
 
-     try {
-        const res = await axios.put(
+    try {
+      const res = await axios.put(
         `http://localhost:8080/api/users/${id}`,
         {
           name: name,
@@ -85,21 +83,18 @@ function Users() {
         }
       );
       fetchUsers();
-      showSuccess() //SWEETALERT
-
+      showSuccess(); //SWEETALERT
     } catch (error) {
       console.log(error);
-      showError() //SWEETALERT
+      showError(); //SWEETALERT
     }
   };
-  
-// * --------------- EDITAR USUARIO ---------------
-  
 
-//*-------------------------------------------------------------------------------------------
+  // * --------------- EDITAR USUARIO ---------------
+
+  //*-------------------------------------------------------------------------------------------
   return (
     <div id="last-users">
-
       <div className="">
         <table className="w-full whitespace-nowrap">
           <thead className="bg-black/60">
@@ -116,21 +111,20 @@ function Users() {
               <tr key={user.id} className="border-b border-gray-700">
                 <td className="py-3 px-2 font-bold">
                   <div className="inline-flex space-x-3 items-center">
-                    <span  className="ml-2 -mr-1 h-5 w-8 text-violet-200 ">                          
-                        {user.image ? (
-                            <Image
-                              className="rounded-full h-8 object-cover"
-                              src={user.image}
-                              height={40}
-                              width={40}
-                              alt=""
-                            />
-                            ) : user.role === "admin" ? (
-                                <WrenchScrewdriverIcon/>
-                            ) : (
-                                <UserIcon />
-                            )
-                        }
+                    <span className="ml-2 -mr-1 h-5 w-8 text-violet-200 ">
+                      {user.image ? (
+                        <img
+                          className="rounded-full h-8 object-cover"
+                          src={user.image}
+                          height={40}
+                          width={40}
+                          alt=""
+                        />
+                      ) : user.role === "admin" ? (
+                        <WrenchScrewdriverIcon />
+                      ) : (
+                        <UserIcon />
+                      )}
                     </span>
                     <span>{user.name}</span>
                   </div>
@@ -146,17 +140,17 @@ function Users() {
                 <td className="py-3 px-2">
                   <div className="inline-flex items-center space-x-3">
                     {/* -----------------------EDITAR ---------------------- */}
-                    <EditUsers user={user} updateUser={updateUser}/>
+                    <EditUsers user={user} updateUser={updateUser} />
 
                     {/* -----------------------BORRAR ---------------------- */}
                     {user.active ? (
                       <Link
-                      href=""
-                      title="Suspend user"
-                      className="hover:text-white "
-                      onClick={() => {
-                        deleteUser(user.id);
-                      }}
+                        href=""
+                        title="Suspend user"
+                        className="hover:text-white "
+                        onClick={() => {
+                          deleteUser(user.id);
+                        }}
                       >
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
@@ -165,23 +159,23 @@ function Users() {
                           strokeWidth="1.5"
                           stroke="green"
                           className="w-5 h-5"
-                          >
+                        >
                           <path
                             strokeLinecap="round"
                             strokeLinejoin="round"
                             strokeWidth="2"
                             d="M5 13l4 4L19 7"
-                            />
+                          />
                         </svg>
                       </Link>
                     ) : (
                       <Link
-                      href=""
-                      title="Suspend user"
-                      className="hover:text-white"
-                      onClick={() => {
-                        activateUser(user.id);
-                      }}
+                        href=""
+                        title="Suspend user"
+                        className="hover:text-white"
+                        onClick={() => {
+                          activateUser(user.id);
+                        }}
                       >
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
@@ -189,17 +183,16 @@ function Users() {
                           viewBox="0 0 24 24"
                           stroke="red"
                           className="w-5 h-5"
-                          >
+                        >
                           <path
                             strokeLinecap="round"
                             strokeLinejoin="round"
                             d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636"
-                            />
+                          />
                         </svg>
                       </Link>
                     )}
                     {/* ^^^^^^^^^^^^^^^^^^^^^^^^ BORRAR ^^^^^^^^^^^^^^^^^^^^^^^^ */}
-
                   </div>
                 </td>
               </tr>
