@@ -58,10 +58,10 @@ const Profile = () => {
   }, [newName]);
   //? ---------------------------------------------------------------------------------
   return (
-    <div className="bg-gray-100 ">
+    <div className="bg-gray-100  ">
       {isLoggedIn ? (
         <div className="flex items-center justify-center m-20 ">
-          <div className="flex flex-col md:flex-row shadow-2xl dark:bg-gray-800 rounded-xl max-w-4xl mx-auto px-4 py-8 sm:px-6 lg:px-8 ">
+          <div className="flex flex-col md:flex-row shadow-2xl dark:bg-gray-800 rounded-xl  px-4 py-8 sm:px-6 lg:px-8 ">
             <div className="md:w-1/3">
               <div className=" md:top-8 -lg p-4 mb-4">
                 <div className="flex flex-wrap justify-center">
@@ -161,7 +161,7 @@ const Profile = () => {
                       ))
                     ) : (
                       <div className="flex flex-col items-center justify-center py-8">
-                        <p className="text-lg font-medium mb-2">
+                        <p className="text-lg font-medium mb-2 text-white">
                           No products were found.
                         </p>
                         <Link

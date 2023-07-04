@@ -69,7 +69,7 @@ function ChangePassword({ user }) {
   return (
     <div className="">
       <div className="text-center">
-        <button onClick={openModal} className="text-indigo-600 hover:underline">
+        <button onClick={openModal} className="text-white hover:underline">
           Change password
         </button>
       </div>
@@ -78,7 +78,7 @@ function ChangePassword({ user }) {
         <div className="fixed inset-0 flex items-center justify-center z-50">
           <div className="bg-gray-50 dark:border-gray-700 dark:bg-gray-800  w-1/2 rounded-lg p-8 border-2 border-blue-500 outline-blue-500">
             <div className="text-center mt-4">
-              <h3 className="text-2xl font-semibold text-gray-700 dark:text-white">
+              <h3 className="text-2xl font-semibold text-white">
                 Change password
               </h3>
             </div>
