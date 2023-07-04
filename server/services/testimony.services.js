@@ -1,12 +1,12 @@
 const { Testimony, User } = require('../db');
 
-const createTestimonyService = async (name, comment, uid) => {
+const createTestimonyService = async (name, comment, userId) => {
     try {
-        const user = await User.findByPk(uid);
+        const user = await User.findByPk(userId);
 
         const existTestimony = await Testimony.findOne({
             where: {
-                userId: uid,
+                userId: userId,
             },
         });
 
@@ -14,7 +14,11 @@ const createTestimonyService = async (name, comment, uid) => {
             throw new Error('El usuario puede tener solo 1 testimonio');
         }
 
-        const testimony = await Testimony.create({ name, comment });
+        const testimony = await Testimony.create({ 
+            name: user.name,
+            comment: comment,
+            image: user.image
+        });
 
         await testimony.setUser(user);
 

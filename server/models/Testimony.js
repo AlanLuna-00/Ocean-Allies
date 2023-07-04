@@ -9,13 +9,16 @@ const Testimony = (sequelize) => {
                 defaultValue: DataTypes.UUIDV4,
                 primaryKey: true,
             },
-            name: {
-                type: DataTypes.STRING(100),
-                allowNull: false,
-            },
             comment: {
                 type: DataTypes.TEXT,
                 allowNull: false,
+            },
+            name: {
+                type: DataTypes.STRING,
+                allowNull: false,
+            },
+            image: {
+                type: DataTypes.TEXT,
             },
             active: {
                 type: DataTypes.BOOLEAN,
