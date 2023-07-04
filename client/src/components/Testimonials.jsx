@@ -154,7 +154,7 @@ const Testimonials = () => {
                                 <div className="flex flex-col items-center">
                                     <div className="mb-4">
                                         { testimonial.image ? 
-                                        (<Image
+                                        (<img
                                             src={testimonial.image}
                                             alt="avatar"
                                             width={100}
