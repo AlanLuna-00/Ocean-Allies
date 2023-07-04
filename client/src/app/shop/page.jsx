@@ -180,7 +180,7 @@ const Shop = () => {
                             >
                               <option value="">All</option>
                               <option value="T-shirts">T-shirts</option>
-                              <option value="Jacket">Jacket's</option>
+                              <option value="Sweatshirts">Sweatshirts</option>
                               <option value="Tank tops">Tank tops</option>
                               <option value="Leggings">Leggings</option>
                               <option value="Dresses">Dresses</option>
@@ -386,7 +386,7 @@ const Shop = () => {
                         >
                           <option value="">All</option>
                           <option value="T-shirts">T-shirts</option>
-                          <option value="Jacket">Jacket's</option>
+                          <option value="Sweatshirts">Sweatshirts</option>
                           <option value="Tank tops">Tank tops</option>
                           <option value="Leggings">Leggings</option>
                           <option value="Dresses">Dresses</option>
