@@ -49,7 +49,7 @@ export default function AdminTestimonys() {
             </tr>
           </thead>
           <tbody>
-            {testimonys.map((testimony) => (
+            {testimonys?.map((testimony) => (
               <tr key={testimony.id} className="border-b border-gray-700">
                 <td className="py-3 px-2 font-bold">
                   <div className="inline-flex space-x-3 items-center">
