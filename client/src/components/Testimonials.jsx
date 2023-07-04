@@ -178,9 +178,7 @@ const Testimonials = () => {
                     max-width: 960px;
                     margin: 0 auto;
                 }
-
                 .carousel-item {
-
                     flex-direction: column;
                     align-items: center;
                     justify-content: center;
@@ -193,19 +191,15 @@ const Testimonials = () => {
                     box-shadow: 0 2px 60px rgba(0, 0, 0, 0.1);
                     text-align: center;
                 }
-
                 .carousel-item:hover {
                     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
                 }
-
                 .carousel-item:not(:last-child) {
                     margin-right: 20px;
                 }
-
                 .carousel-item:first-child {
                     margin-left: 20px;
                 }
-
                 .fas.fa-quote-left {
                     font-size: 20px;
                     position: relative;
