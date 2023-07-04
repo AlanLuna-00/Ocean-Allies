@@ -6,9 +6,8 @@ import axios from "axios";
 export default function NewTestimony() {
   const [isOpen, setIsOpen] = useState(false);
 
-  const [formErrors, setFormErrors] = useState({ comment: false, });
-  const [formData, setFormData] = useState({ comment: "", });
-
+  const [formErrors, setFormErrors] = useState({ comment: false });
+  const [formData, setFormData] = useState({ comment: "" });
 
   //* MODAL -----------------
   const openModal = () => {
@@ -17,20 +16,23 @@ export default function NewTestimony() {
 
   const closeModal = () => {
     setIsOpen(false);
-    setFormData({ comment: "" })
-    setFormErrors({ comment: false })
+    setFormData({ comment: "" });
+    setFormErrors({ comment: false });
   };
   //* MODAL -----------------
   //* NEW TESTIMONY -----------------
   const newTestimony = async (comment) => {
     const token = localStorage.getItem("token");
     const replaceToken = token.replace(/['"]+/g, "");
-
+    let id;
+    if (localStorage.getItem("user")) {
+      id = JSON.parse(localStorage.getItem("user")).id;
+    }
     try {
       const res = await axios.post(
-        `http://localhost:8080/api/testimony`,
+        `http://localhost:8080/api/testimony/${id}`,
         {
-          comment: comment
+          comment: comment,
         },
         {
           headers: {
@@ -40,7 +42,7 @@ export default function NewTestimony() {
       );
       showSuccess(); //SWEETALERT
     } catch (error) {
-      console.error('Error creating testimony:', error.message);
+      console.error("Error creating testimony:", error.message);
       showError(); //SWEETALERT
     }
   };
@@ -65,7 +67,7 @@ export default function NewTestimony() {
       newTestimony(formData.comment);
       closeModal();
     }
-    return
+    return;
   };
   //----------------------------------------------------------------
   return (
@@ -109,8 +111,7 @@ export default function NewTestimony() {
               </div> */}
 
               <div
-                className={`mb-4 ${formErrors.comment ? "border-red-500" : ""
-                  }`}
+                className={`mb-4 ${formErrors.comment ? "border-red-500" : ""}`}
               >
                 <label
                   className="block text-gray-700 font-bold mb-2"
@@ -119,8 +120,7 @@ export default function NewTestimony() {
                   Description <span className="text-red-500">*</span>
                 </label>
                 <textarea
-                  className={`mb-4 ${formErrors.comment ? "border-red-500" : ""
-                    }
+                  className={`mb-4 ${formErrors.comment ? "border-red-500" : ""}
                   appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-blue-500`}
                   type="text"
                   id="comment"
@@ -134,10 +134,10 @@ export default function NewTestimony() {
                 {!Object.values(formErrors).every(
                   (error) => error === false
                 ) && (
-                    <span className="text-red-500">
-                      * Complete the required fields
-                    </span>
-                  )}
+                  <span className="text-red-500">
+                    * Complete the required fields
+                  </span>
+                )}
               </div>
 
               <hr className="border border-gray-300 my-4" />
@@ -161,7 +161,6 @@ export default function NewTestimony() {
           </div>
         </div>
       )}
-
     </div>
   );
 }

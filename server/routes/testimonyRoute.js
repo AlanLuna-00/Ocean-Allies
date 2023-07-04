@@ -12,7 +12,7 @@ const testimonyRoute = Router();
 
 testimonyRoute.get('/', getAllTestimonies);
 testimonyRoute.get('/:id', getTestimonyById);
-testimonyRoute.post('/', verifyJWT, createTestimony);
+testimonyRoute.post('/:id', verifyJWT, createTestimony);
 testimonyRoute.delete('/:id', verifyJWT, deleteTestimony);
 testimonyRoute.put('/:id', verifyJWT, updateTestimony);
 
