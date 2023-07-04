@@ -1,21 +1,18 @@
-'use client'
-import { useEffect, useState } from 'react'
-import React, { use } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import axios from 'axios'
-import { setMerchList } from '@/store/Slices/Merch'
-import Link from 'next/link'
-import EditProducts from '@/components/dashboard/EditProducts'
-import Pagination from '@/components/Pagination'
-import { setFilterList } from '@/store/Slices/Filters'
-import { showSuccess, showError } from '../SweetAlerts' //? Alertas personalizadas y Molulares en componente aparte
-
-
+"use client";
+import { useEffect, useState } from "react";
+import React, { use } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import axios from "axios";
+import { setMerchList } from "@/store/Slices/Merch";
+import Link from "next/link";
+import EditProducts from "@/components/dashboard/EditProducts";
+import Pagination from "@/components/Pagination";
+import { setFilterList } from "@/store/Slices/Filters";
+import { showSuccess, showError } from "../SweetAlerts"; //? Alertas personalizadas y Molulares en componente aparte
 
 export default function Productos() {
-
-  const [products, setProducts] = useState([])
-  const [isNew, setIsNew] = useState(false)
+  const [products, setProducts] = useState([]);
+  const [isNew, setIsNew] = useState(false);
 
   const merchList = useSelector((state) => state.merch.list);
   const filters = useSelector((state) => state.filters.list);
@@ -32,16 +29,16 @@ export default function Productos() {
     nextPage: null,
     previousPage: null,
   });
-    
 
   //*-------------- GET PRODUCTS ----------------
   const fetchMerchList = async (active = "") => {
     try {
-      const response = await axios.get(`http://localhost:8080/api/products?active=${active}`, {
-
-        params: filters,
-
-      });
+      const response = await axios.get(
+        `https://ocean-allies-production.up.railway.app/api/products?active=${active}`,
+        {
+          params: filters,
+        }
+      );
       if (response.status == 204) {
         setError(
           `No results found for the specified filters ${Object.keys(filters)
@@ -63,7 +60,7 @@ export default function Productos() {
       });
       dispatch(setMerchList(products));
     } catch (error) {
-      console.error('Error al obtener los usuarios', error); 
+      console.error("Error al obtener los usuarios", error);
     }
   };
   //*-------------- GET PRODUCTS ----------------
@@ -81,7 +78,7 @@ export default function Productos() {
   //*-------------- PAGINADO -----------------
   useEffect(() => {
     fetchMerchList(active);
-    dispatch(setFilterList(filters))
+    dispatch(setFilterList(filters));
   }, [filters, active]);
   // //*-------------- EDIT PRODUCTS ----------------
   // const updateProducts = async (id, name, description, price, category, gender, image, color, size, active) => {
@@ -90,7 +87,7 @@ export default function Productos() {
 
   //   try {
   //     const res = await axios.put(
-  //       `http://localhost:8080/api/products/${id}`,
+  //       `https://ocean-allies-production.up.railway.app/api/products/${id}`,
   //       {
   //         name: name,
   //         description: description,
@@ -114,38 +111,49 @@ export default function Productos() {
   //   } catch (error) {
   //     console.log(error)
   //     showError(); //SWEETALERT
-    
+
   //   }
   // };
   // //*-------------- EDIT PRODUCTS ----------------
   //*-------------- EDIT PRODUCTS ----------------
-  const updateProducts = async (id, name, description, price, category, gender, image, color, size, active) => {
+  const updateProducts = async (
+    id,
+    name,
+    description,
+    price,
+    category,
+    gender,
+    image,
+    color,
+    size,
+    active
+  ) => {
     const token = localStorage.getItem("token");
     const replaceToken = token.replace(/['"]+/g, "");
-  
+
     try {
       const formData = new FormData();
-      formData.append('name', name);
-      formData.append('description', description);
-      formData.append('price', price);
-      formData.append('category', category);
-      formData.append('gender', gender);
-      formData.append('image', image);
-      formData.append('color', color);
-      formData.append('size', JSON.stringify(size));
-      formData.append('active', active);
-  
+      formData.append("name", name);
+      formData.append("description", description);
+      formData.append("price", price);
+      formData.append("category", category);
+      formData.append("gender", gender);
+      formData.append("image", image);
+      formData.append("color", color);
+      formData.append("size", JSON.stringify(size));
+      formData.append("active", active);
+
       const response = await axios.put(
-        `http://localhost:8080/api/products/${id}`,
+        `https://ocean-allies-production.up.railway.app/api/products/${id}`,
         formData,
         {
           headers: {
             Authorization: replaceToken,
-            'Content-Type': 'multipart/form-data',
+            "Content-Type": "multipart/form-data",
           },
         }
       );
-  
+
       fetchMerchList();
       showSuccess(); //SWEETALERT
     } catch (error) {
@@ -155,45 +163,57 @@ export default function Productos() {
   };
   //*-------------- EDIT PRODUCTS ----------------
   //! -------------- TEST CARGAR IMAGEN CON MULTER ----------------
-  const newProducts = async (name, description, price, category, gender, image, color, size, active) => {
+  const newProducts = async (
+    name,
+    description,
+    price,
+    category,
+    gender,
+    image,
+    color,
+    size,
+    active
+  ) => {
     try {
       const formData = new FormData();
-      formData.append('name', name);
-      formData.append('description', description);
-      formData.append('price', price);
-      formData.append('category', category);
-      formData.append('gender', gender);
-      formData.append('image', image);
-      formData.append('color', color);
+      formData.append("name", name);
+      formData.append("description", description);
+      formData.append("price", price);
+      formData.append("category", category);
+      formData.append("gender", gender);
+      formData.append("image", image);
+      formData.append("color", color);
       // formData.append('size', size);
-      formData.append('size', JSON.stringify(size));
-      formData.append('active', active);
-      
-      
-      const response = await axios.post('http://localhost:8080/api/products', formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        },
-      });
-      
-      console.log('Product created:', response.data);
+      formData.append("size", JSON.stringify(size));
+      formData.append("active", active);
+
+      const response = await axios.post(
+        "https://ocean-allies-production.up.railway.app/api/products",
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
+
+      console.log("Product created:", response.data);
       showSuccess(); //SWEETALERT
-      
     } catch (error) {
-      console.error('Error creating product:', error.message);
+      console.error("Error creating product:", error.message);
       showError(); //SWEETALERT
     }
-  }
-    
+  };
+
   //   //! -------------- TEST ----------------
   // //*-------------- NEW PRODUCTS ----------------
   // const newProducts = async (name, description, price, category, gender, image, color, size, active) => {
   //   const token = localStorage.getItem("token");
   //   const replaceToken = token.replace(/['"]+/g, "");
-    
+
   //   try {
   //     const res = await axios.post(
-  //       `http://localhost:8080/api/products`,
+  //       `https://ocean-allies-production.up.railway.app/api/products`,
   //       {
   //         name: name,
   //         description: description,
@@ -221,46 +241,49 @@ export default function Productos() {
 
   const newProduct = {
     // id: product.id,
-    name: '',
-    description: '',
+    name: "",
+    description: "",
     price: 0,
-    category: '',
-    gender: '',
-    image: '',
-    color: '',
+    category: "",
+    gender: "",
+    image: "",
+    color: "",
     size: {
       L: {
-        stock: 0
+        stock: 0,
       },
       M: {
-        stock: 0
+        stock: 0,
       },
       S: {
-        stock: 0
+        stock: 0,
       },
       XL: {
-        stock: 0
+        stock: 0,
       },
       XS: {
-        stock: 0
+        stock: 0,
       },
       XXL: {
-        stock: 0
+        stock: 0,
       },
     },
     active: true,
-  }
+  };
   //*-------------- NEW PRODUCTS ----------------
-
 
   return (
     <div id="last-products">
-      <div >
-        <EditProducts product={newProduct} newProducts={newProducts} isNew={isNew} setIsNew={setIsNew} />
+      <div>
+        <EditProducts
+          product={newProduct}
+          newProducts={newProducts}
+          isNew={isNew}
+          setIsNew={setIsNew}
+        />
       </div>
 
       <h1 className="font-bold py-4 uppercase pl-3">Edit Product:</h1>
-
 
       <div className="">
         <table className="w-full whitespace-nowrap">
@@ -271,11 +294,17 @@ export default function Productos() {
               <th className="text-left py-3 px-2">Category</th>
               <th className="text-left py-3 px-2">Color</th>
               <th className="text-left py-3 px-2">Gender</th>
-              <th className={`text-left py-3 px-2
+              <th
+                className={`text-left py-3 px-2
                       ${active ? "text-green-500" : "text-red-500"}
                       cursor-pointer
                        `}
-                onClick={() => { setActive(!active) }}>Status</th>
+                onClick={() => {
+                  setActive(!active);
+                }}
+              >
+                Status
+              </th>
               {/* <th className="text-left py-3 px-2">Status</th> */}
               <th className="text-left py-3 px-2 rounded-r-lg">Actions</th>
             </tr>
@@ -311,7 +340,10 @@ export default function Productos() {
 
                 <td className="py-3 px-2">
                   <div className="inline-flex items-center space-x-3">
-                    <EditProducts product={product} updateProducts={updateProducts} />
+                    <EditProducts
+                      product={product}
+                      updateProducts={updateProducts}
+                    />
                   </div>
                 </td>
               </tr>

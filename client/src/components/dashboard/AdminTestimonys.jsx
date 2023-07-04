@@ -1,44 +1,46 @@
-import React from 'react'
-import axios from 'axios';
-import { useState, useEffect } from 'react';
-import Link from 'next/link';
-
+import React from "react";
+import axios from "axios";
+import { useState, useEffect } from "react";
+import Link from "next/link";
 
 export default function AdminTestimonys() {
-  const [ testimonys, setTestimonys ] = useState([])
+  const [testimonys, setTestimonys] = useState([]);
 
-//* --------------- OBTENER TESTIMONIOS ---------------
-    const fetchUsers = async () => {
-      
-      const res = await axios("http://localhost:8080/api/testimony");
-      
-      setTestimonys(res.data);
-      return testimonys;
-    };
-  
-//* --------------- OBTENER TESTIMONIOS ---------------
-    useEffect(() => {
-      fetchUsers();
-    }, []);
-//* --------------- BORRAR TESTIMONIOS ---------------
-    const deleteUser = async (id) => {
-      const token = localStorage.getItem("token");
-      const replaceToken = token.replace(/['"]+/g, "");
-  
-      const res = await axios.delete(`http://localhost:8080/api/testimony/${id}`, {
+  //* --------------- OBTENER TESTIMONIOS ---------------
+  const fetchUsers = async () => {
+    const res = await axios(
+      "https://ocean-allies-production.up.railway.app/api/testimony"
+    );
+
+    setTestimonys(res.data);
+    return testimonys;
+  };
+
+  //* --------------- OBTENER TESTIMONIOS ---------------
+  useEffect(() => {
+    fetchUsers();
+  }, []);
+  //* --------------- BORRAR TESTIMONIOS ---------------
+  const deleteUser = async (id) => {
+    const token = localStorage.getItem("token");
+    const replaceToken = token.replace(/['"]+/g, "");
+
+    const res = await axios.delete(
+      `https://ocean-allies-production.up.railway.app/api/testimony/${id}`,
+      {
         headers: {
           Authorization: replaceToken,
         },
-      });
-  
-      fetchUsers();
-    };
-//* --------------- BORRAR TESTIMONIOS ---------------
+      }
+    );
 
-//?-----------------------------------------------------------------------
+    fetchUsers();
+  };
+  //* --------------- BORRAR TESTIMONIOS ---------------
+
+  //?-----------------------------------------------------------------------
   return (
     <div id="last-users">
-
       <div className="">
         <table className="w-full whitespace-nowrap">
           <thead className="bg-black/60">
@@ -80,12 +82,12 @@ export default function AdminTestimonys() {
                     {/* -----------------------ACTIVAR O NO ---------------------- */}
                     {testimony.active ? (
                       <Link
-                      href=""
-                      title="Suspend user"
-                      className="hover:text-white "
-                      onClick={() => {
-                        deleteUser(testimony.id); //!-------------------------------------
-                      }}
+                        href=""
+                        title="Suspend user"
+                        className="hover:text-white "
+                        onClick={() => {
+                          deleteUser(testimony.id); //!-------------------------------------
+                        }}
                       >
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
@@ -94,23 +96,23 @@ export default function AdminTestimonys() {
                           strokeWidth="1.5"
                           stroke="green"
                           className="w-5 h-5"
-                          >
+                        >
                           <path
                             strokeLinecap="round"
                             strokeLinejoin="round"
                             strokeWidth="2"
                             d="M5 13l4 4L19 7"
-                            />
+                          />
                         </svg>
                       </Link>
                     ) : (
                       <Link
-                      href=""
-                      title="Suspend user"
-                      className="hover:text-white"
-                      onClick={() => {
-                        deleteUser(testimony.id) //!-------------------------------------
-                      }}
+                        href=""
+                        title="Suspend user"
+                        className="hover:text-white"
+                        onClick={() => {
+                          deleteUser(testimony.id); //!-------------------------------------
+                        }}
                       >
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
@@ -118,17 +120,16 @@ export default function AdminTestimonys() {
                           viewBox="0 0 24 24"
                           stroke="red"
                           className="w-5 h-5"
-                          >
+                        >
                           <path
                             strokeLinecap="round"
                             strokeLinejoin="round"
                             d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636"
-                            />
+                          />
                         </svg>
                       </Link>
                     )}
                     {/* ^^^^^^^^^^^^^^^^^^^^^^^^ BORRAR ^^^^^^^^^^^^^^^^^^^^^^^^ */}
-
                   </div>
                 </td>
               </tr>
@@ -137,5 +138,5 @@ export default function AdminTestimonys() {
         </table>
       </div>
     </div>
-  )
+  );
 }

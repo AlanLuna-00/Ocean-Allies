@@ -46,12 +46,15 @@ function Review({ userId, productId }) {
 
   async function updateUserPasswordHandler(rating, comment, productId, userId) {
     try {
-      const response = await axios.post(`http://localhost:8080/api/reviews`, {
-        rating,
-        comment,
-        productId,
-        userId,
-      });
+      const response = await axios.post(
+        `https://ocean-allies-production.up.railway.app/api/reviews`,
+        {
+          rating,
+          comment,
+          productId,
+          userId,
+        }
+      );
       return response.data;
     } catch (error) {
       console.log(error);

@@ -23,7 +23,7 @@ export default function ChangeImage({ user, image, setImage, onImageUpdate }) {
       formData.append("image", image);
 
       const response = await axios.put(
-        `http://localhost:8080/api/users/${id}`,
+        `https://ocean-allies-production.up.railway.app/api/users/${id}`,
         formData,
         {
           headers: {

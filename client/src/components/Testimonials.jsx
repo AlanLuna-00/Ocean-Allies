@@ -10,7 +10,9 @@ const Testimonials = () => {
 
   const fetchTestimonials = async () => {
     try {
-      const response = await axios.get("http://localhost:8080/api/testimony");
+      const response = await axios.get(
+        "https://ocean-allies-production.up.railway.app/api/testimony"
+      );
       setTestimonials(response.data);
       //console.log(response.data);
     } catch (error) {

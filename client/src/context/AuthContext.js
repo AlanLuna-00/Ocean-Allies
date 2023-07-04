@@ -36,7 +36,7 @@ export const AuthProvider = ({ children }) => {
   const loadUserCart = async (userId) => {
     try {
       const response = await axios.get(
-        `http://localhost:8080/api/cart/${userId}`
+        `https://ocean-allies-production.up.railway.app/api/cart/${userId}`
       );
       setUserCart(response.data.cart.cartItems);
       setPrice(response.data.total);
@@ -48,12 +48,15 @@ export const AuthProvider = ({ children }) => {
 
   const addToCart = async (product, userId) => {
     try {
-      const add = await axios.post(`http://localhost:8080/api/cart/${userId}`, {
-        ...product,
-      });
+      const add = await axios.post(
+        `https://ocean-allies-production.up.railway.app/api/cart/${userId}`,
+        {
+          ...product,
+        }
+      );
       setPrice(add.data.total);
       const response = await axios.get(
-        `http://localhost:8080/api/cart/${userId}`
+        `https://ocean-allies-production.up.railway.app/api/cart/${userId}`
       );
       setUserCart(response.data.cartItems);
       setChange(!change);
@@ -64,9 +67,11 @@ export const AuthProvider = ({ children }) => {
 
   const removeFromCart = async (itemId, userId) => {
     try {
-      await axios.delete(`http://localhost:8080/api/cart/${itemId}`);
+      await axios.delete(
+        `https://ocean-allies-production.up.railway.app/api/cart/${itemId}`
+      );
       const response = await axios.get(
-        `http://localhost:8080/api/cart/${userId}`
+        `https://ocean-allies-production.up.railway.app/api/cart/${userId}`
       );
       setUserCart(response.data.cartItems);
       setPrice(response.data.total);
@@ -79,7 +84,7 @@ export const AuthProvider = ({ children }) => {
   const clearUserCart = async () => {
     try {
       await axios.delete(
-        `http://localhost:8080/api/cart/${auth.currentUser.uid}`
+        `https://ocean-allies-production.up.railway.app/api/cart/${auth.currentUser.uid}`
       );
       setUserCart([]);
       setPrice(0);
@@ -111,7 +116,7 @@ export const AuthProvider = ({ children }) => {
 
       try {
         const response = await axios.post(
-          "http://localhost:8080/api/purchase",
+          "https://ocean-allies-production.up.railway.app/api/purchase",
           {
             userId,
             productId,

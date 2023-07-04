@@ -32,18 +32,23 @@ const Profile = () => {
           // Obtener usuario
           const token = localStorage.getItem("token");
           const replaceToken = token.replace(/['"]+/g, "");
-          const res = await axios.get(`http://localhost:8080/api/users/${id}`, {
-            headers: {
-              Authorization: replaceToken,
-            },
-          });
+          const res = await axios.get(
+            `https://ocean-allies-production.up.railway.app/api/users/${id}`,
+            {
+              headers: {
+                Authorization: replaceToken,
+              },
+            }
+          );
           setUser(res.data);
           setBuy(res.data.purchases);
 
           // Obtener productos comprados
           const productIds = res.data.purchases.map((item) => item.productId);
           const productRequests = productIds.map((id) =>
-            axios.get(`http://localhost:8080/api/products/${id}`)
+            axios.get(
+              `https://ocean-allies-production.up.railway.app/api/products/${id}`
+            )
           );
           const responses = await Promise.all(productRequests);
           const products = responses.map((response) => response.data);

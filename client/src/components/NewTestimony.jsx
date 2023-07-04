@@ -30,7 +30,7 @@ export default function NewTestimony() {
     }
     try {
       const res = await axios.post(
-        `http://localhost:8080/api/testimony/${id}`,
+        `https://ocean-allies-production.up.railway.app/api/testimony/${id}`,
         {
           comment: comment,
         },

@@ -54,7 +54,7 @@ function ChangePassword({ user }) {
   async function updateUserPasswordHandler(id, oldPassword, newPassword) {
     try {
       const response = await axios.put(
-        `http://localhost:8080/api/users/password/${id}`,
+        `https://ocean-allies-production.up.railway.app/api/users/password/${id}`,
         {
           oldPassword,
           newPassword,

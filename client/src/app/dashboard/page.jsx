@@ -15,31 +15,33 @@ import AdminTestimonys from "@/components/dashboard/AdminTestimonys";
 const Dashboard = () => {
   const [user, setUser] = useState([]);
   const { userId } = useContext(AuthContext);
-  
+
   const [showUsers, setShowUsers] = useState(false);
   const [showProducts, setShowProducts] = useState(false);
   const [showTestimonys, setShowTestimonys] = useState(false);
-
 
   //* --------------- OBTENER USARIO LOGEADO ---------------
   const fetchUsers = async (id) => {
     const token = localStorage.getItem("token");
     const replaceToken = token.replace(/['"]+/g, "");
-    
-    const res = await axios(`http://localhost:8080/api/users/${id}`, {
-      headers: {
-        Authorization: replaceToken,
-      },
-    });
+
+    const res = await axios(
+      `https://ocean-allies-production.up.railway.app/api/users/${id}`,
+      {
+        headers: {
+          Authorization: replaceToken,
+        },
+      }
+    );
     console.log(res.data);
     setUser(res.data);
   };
   //* --------------- OBTENER USARIOS LOGEADO ---------------
-  
+
   useEffect(() => {
     fetchUsers(userId);
   }, []);
-  
+
   return (
     <div className="antialiased bg-black w-full pb-10 text-slate-300 relative py-4">
       <div className="grid grid-cols-12 mx-auto gap-2 sm:gap-4 md:gap-6 lg:gap-10 xl:gap-14 max-w-7xl  my-5 px-2">
@@ -52,21 +54,18 @@ const Dashboard = () => {
           <div
             href="#"
             className="flex flex-col space-y-2 md:space-y-0 md:flex-row mb-5 items-center md:space-x-2  group transition duration-150 ease-linear rounded-lg group w-full py-3 px-2"
-            >
-              {user.image ? (
-                <img
-                  className="rounded-full w-10 h-10 relative object-cover"
-                  src={user.image}
-                  alt=""
-                /> 
-                ) : (
-                  <WrenchScrewdriverIcon className="rounded-full w-10 h-10 relative object-cover"/>
-                )
-              }
+          >
+            {user.image ? (
+              <img
+                className="rounded-full w-10 h-10 relative object-cover"
+                src={user.image}
+                alt=""
+              />
+            ) : (
+              <WrenchScrewdriverIcon className="rounded-full w-10 h-10 relative object-cover" />
+            )}
             <div>
-              <p className="font-medium  leading-4">
-                {user.name}
-              </p>
+              <p className="font-medium  leading-4">{user.name}</p>
               <span className="text-xs text-slate-400">{user.email}</span>
             </div>
           </div>
@@ -81,15 +80,12 @@ const Dashboard = () => {
           </p>
         </div>
         <div id="content" className="bg-white/10 col-span-9 rounded-lg  p-6">
-
           {!showUsers && !showProducts && !showTestimonys && (
             <div className="flex flex-col items-center justify-center opacity-25">
               <h1 className="text-5xl lg:text-7xl font-bold text-center bg-gradient-to-br from-white via-white/50 to-transparent bg-clip-text text-transparent mb-6">
                 Ocean Allies.
               </h1>
-              <img className="w-1/2 "
-                src="/img/ocean.svg" alt="" 
-               />
+              <img className="w-1/2 " src="/img/ocean.svg" alt="" />
             </div>
           )}
           {showTestimonys && <AdminTestimonys />}

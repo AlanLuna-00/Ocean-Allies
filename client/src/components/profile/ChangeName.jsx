@@ -22,9 +22,12 @@ export default function ChangeName({ user, setUser, updateName }) {
   //* ------------ UPDATE NAME ---------------
   const updateUser = async (id, name) => {
     try {
-      const res = await axios.put(`http://localhost:8080/api/users/${id}`, {
-        name: name,
-      });
+      const res = await axios.put(
+        `https://ocean-allies-production.up.railway.app/api/users/${id}`,
+        {
+          name: name,
+        }
+      );
       showSuccess(); //SWEETALERT
       updateName(res.data.name);
     } catch (error) {
