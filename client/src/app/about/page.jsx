@@ -70,12 +70,12 @@ export default function About() {
 
       <div className="max-w-4xl mx-auto flex flex-col">
         <p className="bg-opacity-60 shadow-xl  text-2xl font-medium mb-6 text-center text-black grid  gap-8 rounded-lg bg-white p-6">
-          Ocean Allies es una plataforma dedicada a la conservación y protección
-          de los animales marinos. Nuestra misión es salvaguardar la vida en los
-          océanos y preservar los hábitats marinos para las generaciones
-          futuras. Estamos comprometidos en crear conciencia sobre los desafíos
-          que enfrentan los animales marinos y promover acciones para mitigar
-          las amenazas que enfrentan en su entorno.
+          Ocean Allies is a plataform devoted to the conservation and protection
+          of marine animals. Our mission is to save the life in the oceans and
+          preserve the marine environment for generations to come. we are
+          compromise in creating curiosity about the challenges that the marine
+          animals face and promote actions to mitigate the dangers that they
+          face in their environment.
         </p>
         <div className="px-4  mx-auto  ">
           <p className="border-t-0 inline-block px-3 py-px mb-4 text-lg font-semibold tracking-wider text-teal-900 uppercase rounded-full bg-teal-accent-400">
@@ -128,7 +128,11 @@ export default function About() {
                         target="_blank"
                         className="px-2"
                       >
-                        <img className="w-7 " src="/img/Linkedin.svg" alt="" />
+                        <img
+                          className="w-7 text-primary dark:text-primary-400 transition-all duration-300  hover:scale-125 "
+                          src="/img/Linkedin.svg"
+                          alt=""
+                        />
                       </a>
                       {/* </ul> */}
                     </div>

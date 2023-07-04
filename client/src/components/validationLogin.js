@@ -2,28 +2,27 @@ export const validationLogin = (userData, errors, setErrors) => {
   const newErrors = { ...errors };
 
   if (!userData.email) {
-    newErrors.email = "Se requiere email";
+    newErrors.email = "email is required";
   } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(userData.email)) {
-    newErrors.email = "Formato invalido";
+    newErrors.email = "invalid format";
   } else if (userData.email.length > 35) {
-    newErrors.email = "Email nombre de usurio no puede tener mas de 35";
+    newErrors.email = "Email username cannot be longer than 35 characters ";
   } else {
     newErrors.email = "";
   }
 
   if (!userData.password) {
-    newErrors.password = "Ingrese contraseña";
+    newErrors.password = "insert password";
   } else if (userData.password.length < 5 || userData.password.length > 11) {
-    newErrors.password =
-      "La contraseña tiene que tener una longitud entre 6 y 10 caracteres";
+    newErrors.password = "Password must be between 5 and 11 characters";
   } else {
     newErrors.password = "";
   }
 
   if (!userData.name) {
-    newErrors.name = "Se requiere nombre";
+    newErrors.name = "name is required";
   } else if (userData.name.length > 15) {
-    newErrors.name = "El nombre no puede tener más de 15 caracteres";
+    newErrors.name = "name cannot be longer than 15 characters";
   } else {
     newErrors.name = "";
   }
