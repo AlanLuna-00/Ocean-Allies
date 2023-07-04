@@ -138,11 +138,10 @@ const Testimonials = () => {
             <NewTestimony />
             <Carousel
                 responsive={responsive}
+                autoPlay={true}
                 infinite
-                containerClassName="carousel-container"
-                itemClassName="carousel-item"
-                centerMode={true}
-                autoPlay={true} // Agrega esta propiedad
+                containerclassName="carousel-container"
+                item className="carousel-item"
             >
                 {combinedTestimonials.map((testimonial) => {
                     if (!testimonial.active) {
@@ -181,12 +180,12 @@ const Testimonials = () => {
                 }
 
                 .carousel-item {
-                    display: flex;
+
                     flex-direction: column;
                     align-items: center;
                     justify-content: center;
                     height: ${maxCommentLength * 2.5}px;
-                    width: 500px;
+                    width: auto;
                     margin: 0 10px;
                     padding: 20px;
                     background-color: #fff;
@@ -212,13 +211,6 @@ const Testimonials = () => {
                     position: relative;
                     top: 2px;
                 }
-                @media (max-width: 464px) {
-                .carousel-item {
-                width: 90%; // Ajusta el ancho del testimonio para ocupar el 90% del ancho de la pantalla
-                height: auto; // Permite que el testimonio crezca en altura según su contenido
-                margin: 0 auto; // Centra el testimonio horizontalmente
-                }
-            }
             `}</style>
         </div>
     );
