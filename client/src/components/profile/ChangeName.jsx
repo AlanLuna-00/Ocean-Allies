@@ -1,11 +1,10 @@
 import React from "react";
 import axios from "axios";
 import { useState } from "react";
-import { showSuccess, showError  } from "../SweetAlerts";
+import { showSuccess, showError } from "../SweetAlerts";
 import { PencilSquareIcon } from "@heroicons/react/20/solid";
 
-
-export default function ChangeName({ user, setUser, updateName}) {
+export default function ChangeName({ user, setUser, updateName }) {
   const [isOpen, setIsOpen] = useState(false);
   const [newName, setNewName] = useState("");
   const [error, setError] = useState(false);
@@ -43,11 +42,11 @@ export default function ChangeName({ user, setUser, updateName}) {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    setError(!newName)
+    setError(!newName);
 
     if (newName) {
-        updateUser(user.id, newName);
-        closeModal();
+      updateUser(user.id, newName);
+      closeModal();
     }
     return;
   };
@@ -56,9 +55,12 @@ export default function ChangeName({ user, setUser, updateName}) {
   //? ---------------------------------------------------------------------------------
   return (
     <div>
-        <button className="flex flex-col items-center" onClick={openModal}>
-            <PencilSquareIcon className="h-6 w-6 text-white" aria-hidden="true" />
-        </button>
+      <button className="flex flex-col items-center" onClick={openModal}>
+        <PencilSquareIcon
+          className="h-6 w-6 text-white ml-1"
+          aria-hidden="true"
+        />
+      </button>
       {/* <div className="p-2 flex justify-center border-r">
         <button
           className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md mr-2"
@@ -82,20 +84,21 @@ export default function ChangeName({ user, setUser, updateName}) {
                 <label
                   className="block text-gray-700 font-bold mb-2"
                   htmlFor="name"
-                  >
+                >
                   New Name
                   <span className="text-red-500">*</span>
                 </label>
-                <input className="mb-4 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-blue-500"
+                <input
+                  className="mb-4 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-blue-500"
                   type="text"
                   id="name"
                   name="newName"
                   value={newName}
-                    onChange={handleInputChange}
+                  onChange={handleInputChange}
                 />
               </div>
 
-              {error &&<span className="text-red-500">Insert Name</span>}
+              {error && <span className="text-red-500">Insert Name</span>}
 
               <hr className="border border-gray-300 my-4" />
 

@@ -91,7 +91,7 @@ const Profile = () => {
                     />
                   </div>
                 </div>
-                <div className="flex justify-center m-2">
+                <div className="flex justify-center m-2 ml-7">
                   <h3 className="mb-1 text-2xl font-bold leading-normal text-gray-700 dark:text-gray-300">
                     {user.name}
                   </h3>
