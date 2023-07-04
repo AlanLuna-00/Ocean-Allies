@@ -13,8 +13,6 @@ export const validationLogin = (userData, errors, setErrors) => {
 
   if (!userData.password) {
     newErrors.password = "Ingrese contraseña";
-  } else if (!/\d/.test(userData.password)) {
-    newErrors.password = "la contraseña tiene que tener al menos un número";
   } else if (userData.password.length < 5 || userData.password.length > 11) {
     newErrors.password =
       "La contraseña tiene que tener una longitud entre 6 y 10 caracteres";
