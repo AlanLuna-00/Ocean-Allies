@@ -2,6 +2,7 @@ import React from "react";
 import axios from "axios";
 import { useState } from "react";
 import { showSuccess, showError  } from "../SweetAlerts";
+import { PencilSquareIcon } from "@heroicons/react/20/solid";
 
 
 export default function ChangeName({ user, setUser, updateName}) {
@@ -55,14 +56,17 @@ export default function ChangeName({ user, setUser, updateName}) {
   //? ---------------------------------------------------------------------------------
   return (
     <div>
-      <div className="p-2 flex justify-center border-r">
+        <button className="flex flex-col items-center" onClick={openModal}>
+            <PencilSquareIcon className="h-6 w-6 text-white" aria-hidden="true" />
+        </button>
+      {/* <div className="p-2 flex justify-center border-r">
         <button
           className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md mr-2"
           onClick={openModal}
         >
           Change Name
         </button>
-      </div>
+      </div> */}
 
       {isOpen && (
         <div className="fixed inset-0 flex items-center justify-center z-50">

@@ -91,14 +91,16 @@ const Profile = () => {
                     />
                   </div>
                 </div>
-                <div className="text-center mt-4">
+                <div className="flex justify-center m-2">
                   <h3 className="mb-1 text-2xl font-bold leading-normal text-gray-700 dark:text-gray-300">
                     {user.name}
                   </h3>
+                  <ChangeName
+                    user={user}
+                    setUser={setUser}
+                    updateName={setNewName}
+                  />
                 </div>
-
-                <ChangeName user={user} setUser={setUser} updateName={setNewName}/>
-
 
                 <hr className="my-4" />
                 <div className="flex flex-row justify-center w-full mx-auto space-x-2 text-center">
