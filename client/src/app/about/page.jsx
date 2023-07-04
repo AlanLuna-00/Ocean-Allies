@@ -12,11 +12,11 @@ export default function About() {
       gitHub: "https://github.com/AlanLuna-00",
     },
     {
-      name: "Fran",
-      image: "/img/Fran.jpg",
-      text: "Backend Developer",
-      linkedIn: "https://www.linkedin.com/in/francisco-puy-02406b269",
-      gitHub: "https://github.com/franciscopuy",
+      name: "Seba",
+      image: "/img/Seba.jpg",
+      text: "Full Stack Developer",
+      linkedIn: "https://www.linkedin.com/in/sebastian-aguzzi-757341277/",
+      gitHub: "https://github.com/SebAguzzi",
     },
     {
       name: "Kevin",
@@ -47,11 +47,11 @@ export default function About() {
       gitHub: "https://github.com/pablopissoni",
     },
     {
-      name: "Seba",
-      image: "/img/Seba.jpg",
-      text: "Full Stack Developer",
-      linkedIn: "https://www.linkedin.com/in/sebastian-aguzzi-757341277/",
-      gitHub: "https://github.com/SebAguzzi",
+      name: "Fran",
+      image: "/img/Fran.jpg",
+      text: "Backend Developer",
+      linkedIn: "https://www.linkedin.com/in/francisco-puy-02406b269",
+      gitHub: "https://github.com/franciscopuy",
     },
   ];
 
