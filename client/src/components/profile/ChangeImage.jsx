@@ -1,12 +1,11 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import axios from "axios";
-import { showSuccess, showError} from "@/components/SweetAlerts";
+import { showSuccess, showError } from "@/components/SweetAlerts";
 
-export default function ChangeImage({ user, image, setImage, onImageUpdate}) {
+export default function ChangeImage({ user, image, setImage, onImageUpdate }) {
   const [isOpen, setIsOpen] = useState(false);
+  const [imageUrl, setImageUrl] = useState(image);
 
-  //* ----------- MODAL -----------------
   const openModal = () => {
     setIsOpen(true);
   };
@@ -14,8 +13,7 @@ export default function ChangeImage({ user, image, setImage, onImageUpdate}) {
   const closeModal = () => {
     setIsOpen(false);
   };
-  //* ----------- MODAL -----------------
-  //* ------ CAMBIAR IMAGEN -----------------
+
   const updateImage = async (id, image) => {
     try {
       const formData = new FormData();
@@ -32,29 +30,27 @@ export default function ChangeImage({ user, image, setImage, onImageUpdate}) {
       );
 
       console.log("Product created:", response.data);
-      showSuccess(); //SWEETALERT
-        onImageUpdate()
-    } catch (error) {
-        console.error("Error creating product:", error.message);
-        showError(); //SWEETALERT
-    }
-};
+      showSuccess();
+      setImageUrl(response.data.image); // Actualizar la URL de la imagen
 
-//* ------ CAMBIAR IMAGEN -----------------
-//*--------------- HANDLES ------------------
-const handleImageChange = (event) => {
+      onImageUpdate();
+    } catch (error) {
+      console.error("Error creating product:", error.message);
+      showError();
+    }
+  };
+
+  const handleImageChange = (event) => {
     const file = event.target.files[0];
     setImage(file);
-};
+  };
 
-const handleSubmit = (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
     updateImage(user.id, image);
     closeModal();
-}
-  //*--------------- HANDLES ------------------
+  };
 
-  //?-------------------------------------------------------------------
   return (
     <div>
       <div className="p-2 flex justify-center border-r">
@@ -76,10 +72,7 @@ const handleSubmit = (event) => {
             <form onSubmit={handleSubmit}>
               <hr className="border border-gray-300 my-4" />
 
-              <div
-                className={`mb-4 `}
-
-              >
+              <div className={`mb-4 `}>
                 <label
                   className="block text-gray-700 font-bold mb-2"
                   htmlFor="name"
@@ -87,7 +80,6 @@ const handleSubmit = (event) => {
                   New Image
                   <span className="text-red-500">*</span>
                 </label>
-                {/* Boton para agregar imagen como FILE para multer */}
                 <input
                   type="file"
                   accept="image/*"
@@ -102,14 +94,14 @@ const handleSubmit = (event) => {
                   className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2 shadow-md"
                   type="submit"
                 >
-                  Guardar
+                  Save
                 </button>
 
                 <button
                   className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded shadow-md"
                   onClick={closeModal}
                 >
-                  Cerrar
+                  Close
                 </button>
               </div>
             </form>

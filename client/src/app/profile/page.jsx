@@ -1,13 +1,12 @@
-"use client";
+"use client"
+import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import Link from "next/link";
-import React, { useContext, useEffect, useState } from "react";
 import AuthContext from "@/context/AuthContext";
 import ChangePassword from "@/components/ChangePassword";
 import Review from "@/components/Review";
-import { showSuccess, showError} from "@/components/SweetAlerts";
+import { showSuccess, showError } from "@/components/SweetAlerts";
 import ChangeImage from "@/components/profile/ChangeImage";
-// import { useRouter } from "next/router";
 
 const Profile = () => {
   const { isLoggedIn } = useContext(AuthContext);
@@ -16,16 +15,13 @@ const Profile = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
   const [image, setImage] = useState(null);
-  // const router = useRouter();
 
-  const handleImageUpdate = () => { //! Falta optimizar
-    // Redireccionar a la página de perfil para actualizar los datos
-    window.location.href = "/profile";
-    // router.replace(router.asPath);
+  const handleImageUpdate = () => {
+    // Actualizar la imagen en el componente Profile sin recargar la página
+    const updatedUser = { ...user, image: URL.createObjectURL(image) };
+    setUser(updatedUser);
   };
 
-
-  // Accedo a la información del usuario
   useEffect(() => {
     if (localStorage.getItem("user")) {
       const id = JSON.parse(localStorage.getItem("user")).id;
@@ -50,19 +46,14 @@ const Profile = () => {
           const responses = await Promise.all(productRequests);
           const products = responses.map((response) => response.data);
           setProducts(products);
-          setTimeout(() => {
-            setLoading(true);
-          }, 1000);
+          setLoading(true);
         } catch (error) {
           console.log(error);
         }
       }
       fetchData();
-      console.log('TEST de USEEFFECT PROFILE', user)
     }
   }, []);
-
-  // Pop-up para cambiar contraseña (modal).
 
   return (
     <div className="bg-gray-100 ">
@@ -92,8 +83,12 @@ const Profile = () => {
                     </div>
                   </div>
 
-                <ChangeImage user={user} image={image} setImage={setImage} onImageUpdate = {handleImageUpdate} />
-
+                  <ChangeImage
+                    user={user}
+                    image={image}
+                    setImage={setImage}
+                    onImageUpdate={handleImageUpdate}
+                  />
                 </div>
                 <div className="text-center mt-4">
                   <h3 className="mb-1 text-2xl font-bold leading-normal text-gray-700 dark:text-gray-300">
@@ -112,7 +107,7 @@ const Profile = () => {
             <div className="md:w-2/3">
               <div className=" rounded-lg p-4 mb-4">
                 <h3 className="text-lg font-bold flex justify-center text-white mb-4">
-                  Historial de compra
+                  Purchase history
                 </h3>
                 <div className="pt-6 mx-6 mt-6 text-center ">
                   <div className="flex flex-col justify-center">
@@ -160,13 +155,13 @@ const Profile = () => {
                     ) : (
                       <div className="flex flex-col items-center justify-center py-8">
                         <p className="text-lg font-medium mb-2">
-                          No se encontraron productos.
+                          No products were found.
                         </p>
                         <Link
                           href="/shop"
                           className="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-md"
                         >
-                          Ir a la tienda
+                          Go to the store
                         </Link>
                       </div>
                     )}
@@ -179,7 +174,7 @@ const Profile = () => {
       ) : (
         <div className="flex flex-col items-center justify-center h-screen">
           <h1 className="text-3xl font-bold text-blue-500 mb-4">
-            No estas logeado.
+            You are not logged in.
           </h1>
         </div>
       )}

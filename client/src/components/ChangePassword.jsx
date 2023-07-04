@@ -70,7 +70,7 @@ function ChangePassword({ user }) {
     <div className="">
       <div className="text-center">
         <button onClick={openModal} className="text-indigo-600 hover:underline">
-          Cambiar contraseña
+          Change password
         </button>
       </div>
 
@@ -133,13 +133,13 @@ function ChangePassword({ user }) {
                   className=" font-bold bg-sky-500  px-6 py-3 rounded-full mr-2 transition hover:bg-sky-600 focus:bg-sky-600 active:bg-sky-800"
                   type="submit"
                 >
-                  Guardar
+                  Save
                 </button>
                 <button
                   className="bg-gray-300  text-gray-800 font-bold px-6 py-3 mr-2 rounded-full transition hover:bg-gray-400 focus:bg-gray-400 active:bg-gray-500"
                   onClick={closeModal}
                 >
-                  Cerrar
+                  Close
                 </button>
               </div>
             </form>
