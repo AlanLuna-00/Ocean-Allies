@@ -1,21 +1,15 @@
 import React from "react";
 import { useState } from "react";
+import { showSuccess, showError } from "./SweetAlerts";
+import axios from "axios";
 
 export default function NewTestimony() {
   const [isOpen, setIsOpen] = useState(false);
-  const [checked, setChecked] = useState(false);
 
-  const [formErrors, setFormErrors] = useState({
-    titulo: false,
-    description: false,
-  });
-
-  const [formData, setFormData] = useState({
-    // id: product.id,
-    titulo: "",
-    description: "",
-  });
-
+  const [formErrors, setFormErrors] = useState({ name: false, comment: false,});
+  const [formData, setFormData] = useState({ name: "", comment: "",});
+  
+  
   //* MODAL -----------------
   const openModal = () => {
     setIsOpen(true);
@@ -23,10 +17,35 @@ export default function NewTestimony() {
 
   const closeModal = () => {
     setIsOpen(false);
-    setFormData({ titulo: "", description: "" })
-    setFormErrors({ titulo: false, description: false })
+    setFormData({ name: "", comment: "" })
+    setFormErrors({ name: false, comment: false })
   };
   //* MODAL -----------------
+  //* NEW TESTIMONY -----------------
+  const newTestimony = async (name, comment) => {
+    const token = localStorage.getItem("token");
+    const replaceToken = token.replace(/['"]+/g, "");
+    
+    try {
+      const res = await axios.post(
+        `http://localhost:8080/api/testimony`,
+        {
+          name: name,
+          comment: comment
+        },
+        {
+          headers: {
+            Authorization: replaceToken,
+          },
+        }
+      );
+      showSuccess(); //SWEETALERT
+    } catch (error) {
+      console.error('Error creating product:', error.message);
+      showError(); //SWEETALERT
+    }
+  };
+  //* NEW TESTIMONY -----------------
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -40,14 +59,16 @@ export default function NewTestimony() {
     e.preventDefault();
 
     const errors = {
-        titulo: !formData.name,
-        description: !formData.description,
+        name: !formData.name,
+        comment: !formData.comment,
     };
       setFormErrors(errors);
 
-    if (!errors.titulo || !errors.description) {
-
+    if (!errors.name || !errors.comment) {
+      newTestimony(formData.name, formData.comment);
+      closeModal();
     }
+    return
   };
   //----------------------------------------------------------------
   return (
@@ -79,12 +100,12 @@ export default function NewTestimony() {
                     Nombre <span className="text-red-500">*</span>
                   </label>
                   <input
-                    className={`${formErrors.titulo ? "border-red-500" : ""}
+                    className={`${formErrors.name ? "border-red-500" : ""}
                     appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-blue-500`}
                     type="text"
                     id="name"
                     name="name"
-                    value={formData.titulo}
+                    value={formData.name}
                     onChange={handleInputChange}
                   />
                 </div>
@@ -92,7 +113,7 @@ export default function NewTestimony() {
 
               <div
                 className={`mb-4 ${
-                  formErrors.description ? "border-red-500" : ""
+                  formErrors.comment ? "border-red-500" : ""
                 }`}
               >
                 <label
@@ -103,13 +124,13 @@ export default function NewTestimony() {
                 </label>
                 <textarea
                   className={`mb-4 ${
-                    formErrors.description ? "border-red-500" : ""
+                    formErrors.comment ? "border-red-500" : ""
                   }
                   appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-blue-500`}
                   type="text"
-                  id="description"
-                  name="description"
-                  value={formData.description}
+                  id="comment"
+                  name="comment"
+                  value={formData.comment}
                   onChange={handleInputChange}
                 />
               </div>
@@ -133,6 +154,7 @@ export default function NewTestimony() {
                 >
                   Guardar
                 </button>
+
                 <button
                   className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded shadow-md"
                   onClick={closeModal}

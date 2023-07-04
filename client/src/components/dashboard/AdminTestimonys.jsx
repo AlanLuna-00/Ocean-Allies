@@ -9,8 +9,6 @@ export default function AdminTestimonys() {
 
 //* --------------- OBTENER TESTIMONIOS ---------------
     const fetchUsers = async () => {
-      // const token = localStorage.getItem("token");
-      // const replaceToken = token.replace(/['"]+/g, "");
       
       const res = await axios("http://localhost:8080/api/testimony");
       
