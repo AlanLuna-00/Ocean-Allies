@@ -6,10 +6,14 @@ const admin = require('firebase-admin');
 const register = async (req, res) => {
     try {
         const { name, email, password, role, google, image } = req.body;
-        console.log('me ejec', req.body);
+        // console.log('me ejec', req.body);
 
         // Verificar si el correo electrónico ya está en uso en Firebase Authentication y en la base de datos
-        const userRecord = await admin.auth().getUserByEmail(email);
+        const userRecord = await admin
+            .auth()
+            .getUserByEmail(email)
+            .catch(() => null);
+        console.log('me ej');
         const emailExists = await User.findOne({
             where: {
                 email,
