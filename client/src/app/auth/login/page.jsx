@@ -94,7 +94,7 @@ const Login = () => {
                 <div className="flex flex-col items-end">
                   <button type="reset" className="-mr-3 w-max p-3">
                     <span className="text-sm tracking-wide text-sky-600 dark:text-sky-400">
-                      Forgot password ? no disponible aun
+                      Forgot password
                     </span>
                   </button>
                 </div>
@@ -104,11 +104,10 @@ const Login = () => {
                 <button
                   type="submit"
                   disabled={isLoading || isFormIncomplete}
-                  className={`w-full rounded-full h-11 flex items-center justify-center px-6 py-3 transition  focus:bg-sky-600 active:bg-sky-800 ${
-                    isLoading || isFormIncomplete
+                  className={`w-full rounded-full h-11 flex items-center justify-center px-6 py-3 transition  focus:bg-sky-600 active:bg-sky-800 ${isLoading || isFormIncomplete
                       ? "bg-gray-400 cursor-not-allowed"
                       : "bg-sky-500 dark:bg-sky-400"
-                  }`}
+                    }`}
                 >
                   {isLoading ? "Loading..." : "Login"}
                 </button>

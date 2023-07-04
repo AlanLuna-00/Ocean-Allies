@@ -22,7 +22,6 @@ const useLogin = () => {
     try {
       // Iniciar sesión con Firebase Authentication
       const auth = getAuth();
-      console.log(credentials);
 
       // Hacer la petición al backend para iniciar sesión
       const response = await axios.post(
@@ -38,14 +37,12 @@ const useLogin = () => {
       }
 
       // Guardar datos del usuario en el store
-      console.log("yes login", response.data);
       localStorage.setItem("token", JSON.stringify(response.data.token));
       localStorage.setItem("user", JSON.stringify(response.data.user));
       setIsLoading(false);
       handleLogin(response.data.user);
       router.push("/home"); // Redireccionar al home después del inicio de sesión
     } catch (error) {
-      console.log("no login", error);
       setIsLoading(false);
       setError(error.message);
     }

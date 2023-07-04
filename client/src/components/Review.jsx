@@ -62,7 +62,7 @@ function Review({ userId, productId }) {
     <div>
       <div className="text-center">
         <button onClick={openModal} className="text-indigo-600 hover:underline">
-          Agregar review
+          Add review
         </button>
       </div>
 
@@ -84,7 +84,7 @@ function Review({ userId, productId }) {
                   onChange={handleInputChange}
                   className="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline-blue focus:border-blue-500"
                 >
-                  <option value="">-- Calificacion --</option>
+                  <option value="">-- Qualification --</option>
                   <option value="1">⭐ ☆ ☆ ☆ ☆</option>
                   <option value="2">⭐⭐ ☆ ☆ ☆</option>
                   <option value="3">⭐⭐⭐ ☆ ☆</option>
@@ -115,13 +115,13 @@ function Review({ userId, productId }) {
                   className="font-bold bg-sky-500  px-6 py-3 rounded-full mr-2 transition hover:bg-sky-600 focus:bg-sky-600 active:bg-sky-800"
                   type="submit"
                 >
-                  Guardar
+                  Save
                 </button>
                 <button
                   className="bg-gray-300  text-gray-800 font-bold px-6 py-3 mr-2 rounded-full transition hover:bg-gray-400 focus:bg-gray-400 active:bg-gray-500"
                   onClick={closeModal}
                 >
-                  Cerrar
+                  Close
                 </button>
               </div>
             </form>

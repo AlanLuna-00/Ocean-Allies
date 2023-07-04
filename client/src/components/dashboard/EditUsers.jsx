@@ -72,7 +72,7 @@ function EditUsers({ user, updateUser }) {
       {isOpen && (
         <div className="fixed inset-0 flex items-center justify-center z-50">
           <div className="bg-white w-1/2 rounded-lg p-8">
-            <h2 className="text-lg font-bold mb-4">Editar Usuario</h2>
+            <h2 className="text-lg font-bold mb-4">Edit User</h2>
 
             <form onSubmit={handleSubmit}>
               <div className="mb-4">
@@ -80,7 +80,7 @@ function EditUsers({ user, updateUser }) {
                   className="block text-gray-700 font-bold mb-2"
                   htmlFor="name"
                 >
-                  Nombre
+                  Name
                 </label>
                 <input
                   className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-blue-500"
@@ -119,7 +119,7 @@ function EditUsers({ user, updateUser }) {
                   onChange={handleSwitchChange}
                 />
                 <label className="text-gray-700 font-bold" htmlFor="isActive">
-                  Hacer Administrador
+                  Make admin
                 </label>
               </div>
 
@@ -128,13 +128,13 @@ function EditUsers({ user, updateUser }) {
                   className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2"
                   type="submit"
                 >
-                  Guardar
+                  Save
                 </button>
                 <button
                   className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded"
                   onClick={closeModal}
                 >
-                  Cerrar
+                  Close
                 </button>
               </div>
             </form>
