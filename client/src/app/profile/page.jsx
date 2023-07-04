@@ -7,6 +7,7 @@ import ChangePassword from "@/components/ChangePassword";
 import Review from "@/components/Review";
 import { showSuccess, showError } from "@/components/SweetAlerts";
 import ChangeImage from "@/components/profile/ChangeImage";
+import ChangeName from "@/components/profile/ChangeName";
 
 const Profile = () => {
   const { isLoggedIn } = useContext(AuthContext);
@@ -15,6 +16,7 @@ const Profile = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
   const [image, setImage] = useState(null);
+  const [newName, setNewName] = useState("");
 
   const handleImageUpdate = () => {
     // Actualizar la imagen en el componente Profile sin recargar la página
@@ -53,8 +55,8 @@ const Profile = () => {
       }
       fetchData();
     }
-  }, []);
-
+  }, [newName]);
+  //? ---------------------------------------------------------------------------------
   return (
     <div className="bg-gray-100 ">
       {isLoggedIn ? (
@@ -95,6 +97,10 @@ const Profile = () => {
                     {user.name}
                   </h3>
                 </div>
+
+                <ChangeName user={user} setUser={setUser} updateName={setNewName}/>
+
+
                 <hr className="my-4" />
                 <div className="flex flex-row justify-center w-full mx-auto space-x-2 text-center">
                   <div className="text-lg font-bold tracking-wide text-gray-600 dark:text-gray-300 font-mono ">
