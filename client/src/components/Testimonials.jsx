@@ -12,7 +12,7 @@ const Testimonials = () => {
         try {
             const response = await axios.get('http://localhost:8080/api/testimony');
             setTestimonials(response.data);
-            console.log(response.data);
+            //console.log(response.data);
         } catch (error) {
             console.log(error);
         }
@@ -139,8 +139,10 @@ const Testimonials = () => {
             <Carousel
                 responsive={responsive}
                 infinite
-                containerclassName="carousel-container"
-                item className="carousel-item"
+                containerClassName="carousel-container"
+                itemClassName="carousel-item"
+                centerMode={true}
+                autoPlay={true} // Agrega esta propiedad
             >
                 {combinedTestimonials.map((testimonial) => {
                     if (!testimonial.active) {
@@ -162,7 +164,6 @@ const Testimonials = () => {
                                     </div>
                                     <h5 className="text-lg font-bold mb-3">{testimonial.name}</h5>
                                 </div>
-                                {/* <p>{testimonial.role}</p> */}
                             </div>
                             <p className="text-gray-500 my-4">
                                 <i className="fas fa-quote-left pe-2"></i>
@@ -211,6 +212,13 @@ const Testimonials = () => {
                     position: relative;
                     top: 2px;
                 }
+                @media (max-width: 464px) {
+                .carousel-item {
+                width: 90%; // Ajusta el ancho del testimonio para ocupar el 90% del ancho de la pantalla
+                height: auto; // Permite que el testimonio crezca en altura según su contenido
+                margin: 0 auto; // Centra el testimonio horizontalmente
+                }
+            }
             `}</style>
         </div>
     );
