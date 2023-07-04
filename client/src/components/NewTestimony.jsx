@@ -6,8 +6,8 @@ import axios from "axios";
 export default function NewTestimony() {
   const [isOpen, setIsOpen] = useState(false);
 
-  const [formErrors, setFormErrors] = useState({ name: false, comment: false,});
-  const [formData, setFormData] = useState({ name: "", comment: "",});
+  const [formErrors, setFormErrors] = useState({  comment: false,});
+  const [formData, setFormData] = useState({  comment: "",});
   
   
   //* MODAL -----------------
@@ -17,12 +17,12 @@ export default function NewTestimony() {
 
   const closeModal = () => {
     setIsOpen(false);
-    setFormData({ name: "", comment: "" })
-    setFormErrors({ name: false, comment: false })
+    setFormData({ comment: "" })
+    setFormErrors({ comment: false })
   };
   //* MODAL -----------------
   //* NEW TESTIMONY -----------------
-  const newTestimony = async (name, comment) => {
+  const newTestimony = async (comment) => {
     const token = localStorage.getItem("token");
     const replaceToken = token.replace(/['"]+/g, "");
     
@@ -30,7 +30,6 @@ export default function NewTestimony() {
       const res = await axios.post(
         `http://localhost:8080/api/testimony`,
         {
-          name: name,
           comment: comment
         },
         {
@@ -41,7 +40,7 @@ export default function NewTestimony() {
       );
       showSuccess(); //SWEETALERT
     } catch (error) {
-      console.error('Error creating product:', error.message);
+      console.error('Error creating testimony:', error.message);
       showError(); //SWEETALERT
     }
   };
@@ -58,14 +57,12 @@ export default function NewTestimony() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const errors = {
-        name: !formData.name,
-        comment: !formData.comment,
-    };
+    const errors = { comment: !formData.comment };
+
       setFormErrors(errors);
 
-    if (!errors.name || !errors.comment) {
-      newTestimony(formData.name, formData.comment);
+    if (!errors.comment) {
+      newTestimony(formData.comment);
       closeModal();
     }
     return
@@ -91,7 +88,7 @@ export default function NewTestimony() {
 
             <form onSubmit={handleSubmit}>
               <hr className="border border-gray-300 my-4" />
-              <div className="grid grid-cols-3 gap-2">
+              {/* <div className="grid grid-cols-3 gap-2">
                 <div className="mb-4 col-span-2">
                   <label
                     className="block text-gray-700 font-bold mb-2"
@@ -109,7 +106,7 @@ export default function NewTestimony() {
                     onChange={handleInputChange}
                   />
                 </div>
-              </div>
+              </div> */}
 
               <div
                 className={`mb-4 ${

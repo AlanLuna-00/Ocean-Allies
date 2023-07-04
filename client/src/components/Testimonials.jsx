@@ -153,13 +153,24 @@ const Testimonials = () => {
                             <div className="text-center">
                                 <div className="flex flex-col items-center">
                                     <div className="mb-4">
-                                        <Image
+                                        { testimonial.image ? 
+                                        (<img
                                             src={testimonial.image}
                                             alt="avatar"
                                             width={100}
                                             height={100}
                                             className="rounded-full shadow-1-strong"
-                                        />
+                                        />) : (
+                                            <img
+                                            src="/img/user.png"
+                                            alt="Imagen por defecto"
+                                            width={120}
+                                            height={120}
+                                            className="rounded-full shadow-1-strong"
+                                          />
+
+                                        )
+                                    }
                                     </div>
                                     <h5 className="text-lg font-bold mb-3">{testimonial.name}</h5>
                                 </div>
