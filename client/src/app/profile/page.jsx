@@ -5,6 +5,9 @@ import React, { useContext, useEffect, useState } from "react";
 import AuthContext from "@/context/AuthContext";
 import ChangePassword from "@/components/ChangePassword";
 import Review from "@/components/Review";
+import { showSuccess, showError} from "@/components/SweetAlerts";
+import ChangeImage from "@/components/profile/ChangeImage";
+// import { useRouter } from "next/router";
 
 const Profile = () => {
   const { isLoggedIn } = useContext(AuthContext);
@@ -12,6 +15,15 @@ const Profile = () => {
   const [user, setUser] = useState({});
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [image, setImage] = useState(null);
+  // const router = useRouter();
+
+  const handleImageUpdate = () => { //! Falta optimizar
+    // Redireccionar a la página de perfil para actualizar los datos
+    window.location.href = "/profile";
+    // router.replace(router.asPath);
+  };
+
 
   // Accedo a la información del usuario
   useEffect(() => {
@@ -45,8 +57,8 @@ const Profile = () => {
           console.log(error);
         }
       }
-
       fetchData();
+      console.log('TEST de USEEFFECT PROFILE', user)
     }
   }, []);
 
@@ -79,6 +91,9 @@ const Profile = () => {
                       )}
                     </div>
                   </div>
+
+                <ChangeImage user={user} image={image} setImage={setImage} onImageUpdate = {handleImageUpdate} />
+
                 </div>
                 <div className="text-center mt-4">
                   <h3 className="mb-1 text-2xl font-bold leading-normal text-gray-700 dark:text-gray-300">
