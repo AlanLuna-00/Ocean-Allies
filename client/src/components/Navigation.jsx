@@ -169,7 +169,7 @@ function Navigation() {
                         href="/profile"
                         className="group flex w-full items-center rounded-md px-2 py-1 text-lg"
                       >
-                        profile
+                        Profile
                       </Link>
                     </Menu.Item>
                     <Menu.Item>

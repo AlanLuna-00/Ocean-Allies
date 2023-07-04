@@ -11,13 +11,13 @@ export default function About() {
       linkedIn: "https://www.linkedin.com/in/alan-luna-304655214/",
       gitHub: "https://github.com/AlanLuna-00",
     },
-    // {
-    //   name: "Fran",
-    //   image: "/img/Fran.jpg",
-    //   text: "Backend Developer",
-    //   linkedIn: "https://www.linkedin.com/in/francisco-puy-02406b269",
-    //   gitHub: "https://github.com/franciscopuy",
-    // },
+    {
+      name: "Fran",
+      image: "/img/Fran.jpg",
+      text: "Backend Developer",
+      linkedIn: "https://www.linkedin.com/in/francisco-puy-02406b269",
+      gitHub: "https://github.com/franciscopuy",
+    },
     {
       name: "Kevin",
       image: "/img/Kevin.png",
