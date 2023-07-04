@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import Link from "next/link";
@@ -65,8 +65,8 @@ const Profile = () => {
             <div className="md:w-1/3">
               <div className=" md:top-8 -lg p-4 mb-4">
                 <div className="flex flex-wrap justify-center">
-                  <div className="flex justify-center w-full mt-6">
-                    <div className="relative">
+                  <div className="flex justify-center w-full mt-6 ml-4">
+                    <div className="relative ">
                       {user.image ? (
                         <img
                           src={user.image}
@@ -83,14 +83,13 @@ const Profile = () => {
                         />
                       )}
                     </div>
+                    <ChangeImage
+                      user={user}
+                      image={image}
+                      setImage={setImage}
+                      onImageUpdate={handleImageUpdate}
+                    />
                   </div>
-
-                  <ChangeImage
-                    user={user}
-                    image={image}
-                    setImage={setImage}
-                    onImageUpdate={handleImageUpdate}
-                  />
                 </div>
                 <div className="text-center mt-4">
                   <h3 className="mb-1 text-2xl font-bold leading-normal text-gray-700 dark:text-gray-300">
