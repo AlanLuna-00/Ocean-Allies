@@ -32,8 +32,10 @@ const useLogin = () => {
         }
       );
 
-      if (response.status !== 200) {
-        throw new Error(response.data.message || "Login failed");
+      console.log(response.data);
+
+      if (response.status === 206) {
+        setError(response.data.msg);
       }
 
       // Guardar datos del usuario en el store
@@ -44,7 +46,7 @@ const useLogin = () => {
       router.push("/home"); // Redireccionar al home después del inicio de sesión
     } catch (error) {
       setIsLoading(false);
-      setError(error.message);
+      setError(error.response.data.msg);
     }
   };
 
@@ -69,10 +71,7 @@ const useLogin = () => {
           //image: auth.currentUser.photoURL,
         }
       );
-
-      if (response.status !== 200) {
-        throw new Error(response.data.message || "Login failed");
-      }
+      console.log(response.data);
 
       // Guardar datos del usuario en el store
       console.log(response.data);
@@ -83,7 +82,8 @@ const useLogin = () => {
       router.push("/home"); // Redireccionar al home después del inicio de sesión
     } catch (error) {
       setIsLoading(false);
-      setError(error.message);
+      console.log(error);
+      setError(error.response.data.msg);
     }
   };
 

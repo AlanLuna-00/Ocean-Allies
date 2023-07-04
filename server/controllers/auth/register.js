@@ -8,27 +8,28 @@ const register = async (req, res) => {
         const { name, email, password, role, google, image } = req.body;
         console.log('me ejec', req.body);
 
-        // Verificar si el correo electrónico ya está en uso en Firebase Authentication
-        const emailExists = await admin
-            .auth()
-            .getUserByEmail(email)
-            .then(() => true)
-            .catch((error) => {
-                if (error.code === 'auth/user-not-found') {
-                    return false;
-                }
-                throw error;
+        // Verificar si el correo electrónico ya está en uso en Firebase Authentication y en la base de datos
+        const userRecord = await admin.auth().getUserByEmail(email);
+        const emailExists = await User.findOne({
+            where: {
+                email,
+            },
+        });
+
+        // Si el usuario ya existe en Firebase Authentication y no es un registro con Google, enviar error
+        if (userRecord && !google) {
+            return res.status(401).json({
+                msg: 'El correo electrónico ya está registrado',
             });
+        }
+        // si es un registro con Google y ya existe en firebase, enviar error
+        if (userRecord && google) {
+            return res.status(401).json({
+                msg: 'El correo electrónico ya está registrado',
+            });
+        }
 
         console.log('emailExists', emailExists);
-
-        if (google) {
-            if (!emailExists) {
-                return res.status(400).json({
-                    msg: 'El correo electrónico ya está registrado',
-                });
-            }
-        }
 
         // Generar el hash de la contraseña
         const salt = await bcryptjs.genSalt(10);

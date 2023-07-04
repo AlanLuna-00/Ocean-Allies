@@ -34,7 +34,7 @@ const useRegister = () => {
     } catch (error) {
       console.log(error);
       setIsLoading(false);
-      setError(error.message);
+      setError(error.response.data.msg || "Registration failed");
     }
   };
 
@@ -72,7 +72,7 @@ const useRegister = () => {
       router.push("/auth/login"); // Redireccionar al login después del registro
     } catch (error) {
       setIsLoading(false);
-      setError(error.message);
+      setError(error.response.data.msg || "Registration failed");
     }
   };
 
