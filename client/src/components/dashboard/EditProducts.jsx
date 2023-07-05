@@ -139,25 +139,6 @@ export default function EditProducts({
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // validacion(formData, setFormErrors);
-    //! ----------------- TEST -----------------
-
-    //  const updatedFormData = { ...formData };
-
-    //  // Convertir el objeto size en el formato adecuado
-    //  const size = {};
-    //  Object.entries(updatedFormData.size).forEach(([key, value]) => {
-    //    size[key] = { stock: value };
-    //  });
-
-    //  // Actualizar el objeto formData con el nuevo formato de size
-    //  updatedFormData.size = size;
-
-    //  // Guardar el objeto actualizado en el estado
-    //  setFormData(updatedFormData);
-
-    //! ----------------- TEST -----------------
-
     const errors = {
       name: !formData.name,
       price: !formData.price,
@@ -232,7 +213,7 @@ export default function EditProducts({
             className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2"
             onClick={openModal}
           >
-            Crear nuevo producto
+            Create Product
           </button>
         </div>
       )}
@@ -241,7 +222,7 @@ export default function EditProducts({
         <div className="fixed inset-0 flex items-center justify-center z-50">
           <div className="bg-white w-1/2 rounded-lg p-8">
             <h2 className="text-lg font-bold mb-4 flex justify-center">
-              Editar Producto
+              Edit Product
             </h2>
 
             <form onSubmit={handleSubmit}>
@@ -251,7 +232,7 @@ export default function EditProducts({
                     className="block text-gray-700 font-bold mb-2"
                     htmlFor="name"
                   >
-                    Nombre <span className="text-red-500">*</span>
+                    Name <span className="text-red-500">*</span>
                   </label>
                   <input
                     className={`${formErrors.name ? "border-red-500" : ""}
@@ -355,10 +336,10 @@ export default function EditProducts({
                 {!Object.values(formErrors).every(
                   (error) => error === false
                 ) && (
-                  <span className="text-red-500">
-                    * Complete los campos obligatorios
-                  </span>
-                )}
+                    <span className="text-red-500">
+                      * Complete the required fields
+                    </span>
+                  )}
               </div>
 
               <hr className="border border-gray-300 my-4" />
@@ -370,60 +351,6 @@ export default function EditProducts({
               </div>
 
               <div className="grid grid-cols-6 gap-4">
-                {/* <label htmlFor="sizeL">Size L:</label>
-                <input
-                  type="number"
-                  id="sizeL"
-                  name="L"
-                  value={formData.size.L.stock}
-                  onChange={handleSizeChange}
-                />
-
-                <label htmlFor="sizeM">Size M:</label>
-                <input
-                  type="number"
-                  id="sizeM"
-                  name="M"
-                  value={formData.size.M.stock}
-                  onChange={handleSizeChange}
-                />
-
-                <label htmlFor="sizeS">Size S:</label>
-                <input
-                  type="number"
-                  id="sizeS"
-                  name="S"
-                  value={formData.size.S.stock}
-                  onChange={handleSizeChange}
-                />
-
-                <label htmlFor="sizeXL">Size XL:</label>
-                <input
-                  type="number"
-                  id="sizeXL"
-                  name="XL"
-                  value={formData.size.XL.stock}
-                  onChange={handleSizeChange}
-                />
-
-                <label htmlFor="sizeXS">Size XS:</label>
-                <input
-                  type="number"
-                  id="sizeXS"
-                  name="XS"
-                  value={formData.size.XS.stock}
-                  onChange={handleSizeChange}
-                />
-
-                <label htmlFor="sizeXXL">Size XXL:</label>
-                <input
-                  type="number"
-                  id="sizeXXL"
-                  name="XXL"
-                  value={formData.size.XXL.stock}
-                  onChange={handleSizeChange}
-                /> */}
-
                 {Object.keys(formData.size).map((talle) => (
                   <div className="mb-4" key={talle}>
                     <label
@@ -438,8 +365,6 @@ export default function EditProducts({
                       id={talle}
                       name={talle}
                       value={formData.size[talle].stock}
-                      // name={`size.${talle}.stock`}
-                      // value={formData.size[talle].stock}
                       onChange={(e) => handleSizeChange(e, talle)}
                     />
                   </div>
@@ -447,27 +372,25 @@ export default function EditProducts({
               </div>
               {formErrors.size && (
                 <span className="text-red-500 flex justify-center">
-                  Agrega algun talle
+                  Add some size
                 </span>
               )}
 
               <hr className="border border-gray-300 my-4" />
 
               <div
-                className={`mb-4 ${
-                  formErrors.description ? "border-red-500" : ""
-                }`}
+                className={`mb-4 ${formErrors.description ? "border-red-500" : ""
+                  }`}
               >
                 <label
                   className="block text-gray-700 font-bold mb-2"
                   htmlFor="name"
                 >
-                  Descripcion <span className="text-red-500">*</span>
+                  Description <span className="text-red-500">*</span>
                 </label>
                 <textarea
-                  className={`mb-4 ${
-                    formErrors.description ? "border-red-500" : ""
-                  }
+                  className={`mb-4 ${formErrors.description ? "border-red-500" : ""
+                    }
                   appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-blue-500`}
                   type="text"
                   id="description"
@@ -476,26 +399,6 @@ export default function EditProducts({
                   onChange={handleInputChange}
                 />
               </div>
-
-              {/* agregar imagen por URL */}
-              {/* <div className="mb-4">
-                <label
-                  className="block text-gray-700 font-bold mb-2"
-                  htmlFor="name"
-                >
-                  URL Image <span className="text-red-500">*</span>
-                </label>
-
-                <input
-                  className={`${formErrors.image ? "border-red-500" : ""}
-                    appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-blue-500`}
-                  type="text"
-                  id="image"
-                  name="image"
-                  value={formData.image}
-                  onChange={handleInputChange}
-                />
-              </div> */}
 
               {/* Boton para agregar imagen como FILE para multer */}
               <input
@@ -517,7 +420,7 @@ export default function EditProducts({
                   onChange={handleSwitchChange}
                 />
                 <label className="text-gray-700 font-bold" htmlFor="isActive">
-                  Activado
+                  Activated
                 </label>
               </div>
 
@@ -526,13 +429,13 @@ export default function EditProducts({
                   className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2"
                   type="submit"
                 >
-                  Guardar
+                  Save
                 </button>
                 <button
                   className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded"
                   onClick={closeModal}
                 >
-                  Cerrar
+                  Close
                 </button>
               </div>
             </form>

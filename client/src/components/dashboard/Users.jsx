@@ -145,10 +145,9 @@ function Users() {
                 </td>
                 <td className="py-3 px-2">
                   <div className="inline-flex items-center space-x-3">
-                    {/* -----------------------EDITAR ---------------------- */}
+
                     <EditUsers user={user} updateUser={updateUser} />
 
-                    {/* -----------------------BORRAR ---------------------- */}
                     {user.active ? (
                       <Link
                         href=""
@@ -198,7 +197,6 @@ function Users() {
                         </svg>
                       </Link>
                     )}
-                    {/* ^^^^^^^^^^^^^^^^^^^^^^^^ BORRAR ^^^^^^^^^^^^^^^^^^^^^^^^ */}
                   </div>
                 </td>
               </tr>

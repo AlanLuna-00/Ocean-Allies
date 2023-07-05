@@ -64,21 +64,6 @@ export default function Message() {
     message: "",
   });
 
-
-  // function validation (userData) {
-  //   let errors = {};
-  //   if (!userData.user_name || !/^[A-Za-z\s]{2,30}$/.test(userData.user_name )) errors.user_name = "Se requiere un nombre valido";
-
-  //   if (!userData.user_email || !/^[\w.%+-]+@[\w.-]+\.[a-zA-Z]{2,}$/.test(userData.user_email )) errors.user_email = "Se requiere un mail valido";
-
-  //   if ( !userData.message || userData.message.length > 400) errors.message = "Ingrese el mensaje menor a 400 caracteres"; 
-
-  //   setError(errors);
-  // }
-
-  // // useEffect(() => {
-  // //   validation(userData);
-  // // },[userData]);
   // //* ------------------- VALIDACION ------------------------
 
   const handleChange = (event) => {

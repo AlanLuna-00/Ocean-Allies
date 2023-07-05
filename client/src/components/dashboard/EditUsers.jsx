@@ -1,7 +1,4 @@
 import { useEffect, useState } from "react";
-// useEffect(()=>{
-//   return (()=> { accion que quiero ejecutar}
-//   },[])
 
 function EditUsers({ user, updateUser }) {
   const [isOpen, setIsOpen] = useState(false);

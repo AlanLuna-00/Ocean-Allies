@@ -23,9 +23,6 @@ const useDashboard = () => {
     return users;
   };
 
-  //   useEffect(() => {
-  //     fetchUsers();
-  //   }, []);
   //* --------------- OBTENER USARIOS ---------------
   //* --------------- BORRAR USUARIO ---------------
   const deleteUser = async (id) => {

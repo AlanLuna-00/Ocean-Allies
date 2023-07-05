@@ -45,7 +45,6 @@ function Slidebar({ setShowUsers, setShowProducts, setShowTestimonys }) {
       </button>
 
       <button
-        // href="/dashboard/users"
         className="hover:bg-white/10 transition duration-150 ease-linear rounded-lg py-3 px-2 group"
         onClick={() => {
           setShowProducts(false);
@@ -82,7 +81,6 @@ function Slidebar({ setShowUsers, setShowProducts, setShowTestimonys }) {
       </button>
 
       <button
-        // href="/dashboard/products"
         className="hover:bg-white/10 transition duration-150 ease-linear rounded-lg py-3 px-2 group"
         onClick={() => {
           setShowProducts(true);

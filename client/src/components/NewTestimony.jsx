@@ -90,25 +90,7 @@ export default function NewTestimony() {
 
             <form onSubmit={handleSubmit}>
               <hr className="border border-gray-300 my-4" />
-              {/* <div className="grid grid-cols-3 gap-2">
-                <div className="mb-4 col-span-2">
-                  <label
-                    className="block text-gray-700 font-bold mb-2"
-                    htmlFor="name"
-                  >
-                    Nombre <span className="text-red-500">*</span>
-                  </label>
-                  <input
-                    className={`${formErrors.name ? "border-red-500" : ""}
-                    appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-blue-500`}
-                    type="text"
-                    id="name"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleInputChange}
-                  />
-                </div>
-              </div> */}
+
 
               <div
                 className={`mb-4 ${formErrors.comment ? "border-red-500" : ""}`}

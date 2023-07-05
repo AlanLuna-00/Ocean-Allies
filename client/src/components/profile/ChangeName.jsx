@@ -64,21 +64,10 @@ export default function ChangeName({ user, setUser, updateName }) {
           aria-hidden="true"
         />
       </button>
-      {/* <div className="p-2 flex justify-center border-r">
-        <button
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md mr-2"
-          onClick={openModal}
-        >
-          Change Name
-        </button>
-      </div> */}
 
       {isOpen && (
         <div className="fixed inset-0 flex items-center justify-center z-50">
           <div className="bg-white w-1/3 rounded-lg p-8 shadow-xl">
-            {/* <h2 className="text-lg font-bold mb-4 flex justify-center">
-              Change Name
-            </h2> */}
 
             <form onSubmit={handleSubmit}>
               <hr className="border border-gray-300 my-4" />

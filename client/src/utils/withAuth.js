@@ -27,7 +27,6 @@ export function withAuth(Component) {
       );
     }
 
-    // Si el usuario está autenticado y tiene el rol adecuado, renderizar el componente
     return <Component {...props} />;
   };
 }
