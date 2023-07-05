@@ -17,7 +17,7 @@ const createOrder = async (req, res) => {
                 },
             ],
             back_urls: {
-                success: 'http://localhost:3000/shop',
+                success: 'https://ocean-allies.vercel.app/shop',
                 // failure: 'https://ocean-allies-production.up.railway.app/failure',
                 // pending: 'https://ocean-allies-production.up.railway.app/pending',
             },
