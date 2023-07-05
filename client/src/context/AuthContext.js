@@ -131,7 +131,7 @@ export const AuthProvider = ({ children }) => {
     if (loggedInUser) {
       loadUserCart(loggedInUser.id);
     }
-  }, [change]);
+  }, []);
 
   useEffect(() => {
     const loggedInUser = JSON.parse(localStorage.getItem("user"));
