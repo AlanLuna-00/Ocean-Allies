@@ -13,7 +13,6 @@ function Page() {
         "https://ocean-allies-production.up.railway.app/api/products"
       );
       dispatch(setMerchList(response.data.products));
-      console.log(response.data.products);
     } catch (error) {
       console.log(error);
     }

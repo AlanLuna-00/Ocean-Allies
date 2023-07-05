@@ -85,7 +85,7 @@ export default function NewTestimony() {
         <div className="fixed inset-0 flex items-center justify-center z-50">
           <div className="bg-white w-1/2 rounded-lg p-8 shadow-xl">
             <h2 className="text-lg font-bold mb-4 flex justify-center">
-              Edit Product
+              Send Testimony
             </h2>
 
             <form onSubmit={handleSubmit}>
@@ -134,10 +134,10 @@ export default function NewTestimony() {
                 {!Object.values(formErrors).every(
                   (error) => error === false
                 ) && (
-                  <span className="text-red-500">
-                    * Complete the required fields
-                  </span>
-                )}
+                    <span className="text-red-500">
+                      * Complete the required fields
+                    </span>
+                  )}
               </div>
 
               <hr className="border border-gray-300 my-4" />

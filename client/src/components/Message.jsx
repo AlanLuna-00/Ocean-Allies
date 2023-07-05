@@ -6,16 +6,16 @@ import { showSuccessMessage, showErrorMessage } from "./SweetAlerts";
 
 
 export default function Message() {
-  
+
   const [error, setError] = useState({});
   const form = useRef();
-  
-  
+
+
   //*-------------------- EMAILJS ------------------------
   const sendEmail = (event) => {
     event.preventDefault();
     // validation(userData);
-  
+
     // if (Object.values(error).length > 0) {
     //   return;
     // }
@@ -29,29 +29,29 @@ export default function Message() {
     const hasError = Object.values(errors).some(Boolean);
     if (hasError) {
       return;
-    } 
+    }
     // ! validacion test ---------------
     const YOUR_SERVICE_ID = 'service_3khjvbt';
     const YOUR_TEMPLATE_ID = 'template_0fpnoce';
     const YOUR_PUBLIC_KEY = 'Dvtl9YLNRNuOmlvn4';
-    
-    emailjs.sendForm(YOUR_SERVICE_ID, YOUR_TEMPLATE_ID, form.current, YOUR_PUBLIC_KEY )
-    .then((result) => {
-      console.log(result.text);
-      setIsSent(true);
-      showSuccessMessage(); // vetana de alerta exitosa
-    })
-    .catch((error) => {
+
+    emailjs.sendForm(YOUR_SERVICE_ID, YOUR_TEMPLATE_ID, form.current, YOUR_PUBLIC_KEY)
+      .then((result) => {
+
+        setIsSent(true);
+        showSuccessMessage(); // vetana de alerta exitosa
+      })
+      .catch((error) => {
         console.log(error.text);
         setIsSent(false);
         showErrorMessage();  // ventana de alerta de error
-      });    
-      
-      setUserData({
-        user_name: '',
-        user_email: "",
-        message: "",
       });
+
+    setUserData({
+      user_name: '',
+      user_email: "",
+      message: "",
+    });
   };
   //* ------------------- EMAILJS ---------------------------
   // //* ------------------- VALIDACION ------------------------
@@ -80,7 +80,7 @@ export default function Message() {
   // //   validation(userData);
   // // },[userData]);
   // //* ------------------- VALIDACION ------------------------
-  
+
   const handleChange = (event) => {
     const { name, value } = event.target;
     setUserData({ ...userData, [name]: value });
@@ -89,13 +89,13 @@ export default function Message() {
   console.log(error)
   return (
     <div className="max-w-md mx-auto rounded-lg bg-slate-200 shadow-xl p-6">
-    <form ref={form} onSubmit={sendEmail}>
+      <form ref={form} onSubmit={sendEmail}>
         <div className="mb-6">
           <label className="block mb-1 font-bold text-gray-700" htmlFor="name">
             Name <span className="text-red-500">*</span>
           </label>
           <input
-            className={`${error.name? 'border-red-500' : ''} w-full px-3 py-2 leading-tight text-gray-700 border 
+            className={`${error.name ? 'border-red-500' : ''} w-full px-3 py-2 leading-tight text-gray-700 border 
             border-gray-400 rounded appearance-none focus:outline-none focus:border-primary focus:ring-primary`}
             id="name"
             name="user_name"
@@ -111,7 +111,7 @@ export default function Message() {
             Email address <span className="text-red-500">*</span>
           </label>
           <input
-            className={`${error.email? 'border-red-500' : ''} w-full px-3 py-2 leading-tight text-gray-700 border 
+            className={`${error.email ? 'border-red-500' : ''} w-full px-3 py-2 leading-tight text-gray-700 border 
             border-gray-400 rounded appearance-none focus:outline-none focus:border-primary focus:ring-primary`}
             id="email"
             name="user_email"
@@ -127,7 +127,7 @@ export default function Message() {
             Message <span className="text-red-500">*</span>
           </label>
           <textarea
-            className={`${error.message? 'border-red-500' : ''} w-full px-3 py-2 leading-tight text-gray-700 border border-gray-400 
+            className={`${error.message ? 'border-red-500' : ''} w-full px-3 py-2 leading-tight text-gray-700 border border-gray-400 
             rounded resize-none h-32 appearance-none focus:outline-none focus:border-primary focus:ring-primary`}
             id="message"
             name="message"

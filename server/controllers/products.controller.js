@@ -227,7 +227,7 @@ const updateProductController = async (req, res) => {
     const { id } = req.params;
     const updatedData = req.body;
 
-    console.log('updateProductController', updatedData);
+
 
     const { size } = updatedData;
     const parsedSize = typeof size === 'string' ? JSON.parse(size) : size;

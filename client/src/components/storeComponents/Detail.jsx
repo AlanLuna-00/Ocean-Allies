@@ -51,9 +51,9 @@ export default function Test({ product }) {
 
     // Agregar el producto al carrito
     const userId = JSON.parse(localStorage.getItem("user")).id;
-    console.log(productToAdd, userId);
+
     addToCart(productToAdd, userId);
-    console.log(userCart);
+
   };
 
   const handleSizeChange = (size, e) => {
@@ -145,8 +145,8 @@ export default function Test({ product }) {
                   <div key={size} className="flex items-center">
                     <button
                       className={`border text-sm leading-none text-gray-600 ${selectedSizes[size]
-                          ? "border-indigo-500"
-                          : "border-gray-300"
+                        ? "border-indigo-500"
+                        : "border-gray-300"
                         } mr-2 rounded-md px-3 py-1`}
                       onClick={() =>
                         setSelectedSizes((prevSelectedSizes) => ({
@@ -217,8 +217,8 @@ export default function Test({ product }) {
               <nav className="flex gap-4">
                 <button
                   className={`${showDescriptions
-                      ? "border-b-2 border-gray-900 py-4 text-sm font-medium text-gray-900 hover:border-gray-400 hover:text-gray-800"
-                      : " border-gray-900 py-4 text-sm font-medium text-gray-900 hover:border-gray-400 hover:text-gray-800"
+                    ? "border-b-2 border-gray-900 py-4 text-sm font-medium text-gray-900 hover:border-gray-400 hover:text-gray-800"
+                    : " border-gray-900 py-4 text-sm font-medium text-gray-900 hover:border-gray-400 hover:text-gray-800"
                     } px-4 py-2 rounded-md`}
                   onClick={() => {
                     setShowDescriptions(true);
@@ -229,8 +229,8 @@ export default function Test({ product }) {
                 </button>
                 <button
                   className={`${showReviews
-                      ? "border-b-2 border-gray-900 py-4 text-sm font-medium text-gray-900 hover:border-gray-400 hover:text-gray-800"
-                      : "border-gray-900 py-4 text-sm font-medium text-gray-900 hover:border-gray-400 hover:text-gray-800"
+                    ? "border-b-2 border-gray-900 py-4 text-sm font-medium text-gray-900 hover:border-gray-400 hover:text-gray-800"
+                    : "border-gray-900 py-4 text-sm font-medium text-gray-900 hover:border-gray-400 hover:text-gray-800"
                     } px-4 py-2 rounded-md`}
                   onClick={() => {
                     setShowDescriptions(false);

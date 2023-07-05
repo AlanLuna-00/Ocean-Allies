@@ -20,7 +20,6 @@ const CheckoutButton = ({ price }) => {
         }
       );
 
-      console.log(response.status);
 
       if (response.status === 200) {
         await axios.delete(

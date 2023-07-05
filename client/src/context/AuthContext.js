@@ -108,11 +108,7 @@ export const AuthProvider = ({ children }) => {
         }));
       }
 
-      console.log({
-        userId,
-        productId,
-        sizes,
-      });
+
 
       try {
         const response = await axios.post(
@@ -123,7 +119,7 @@ export const AuthProvider = ({ children }) => {
             sizes,
           }
         );
-        console.log(response.data);
+
       } catch (error) {
         console.log(error);
       }

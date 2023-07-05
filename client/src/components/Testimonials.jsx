@@ -24,7 +24,7 @@ const Testimonials = () => {
     fetchTestimonials();
   }, []);
 
-  console.log(testimonials);
+
 
   const hardcodedTestimonials = [
     {

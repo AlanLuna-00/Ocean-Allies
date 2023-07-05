@@ -36,14 +36,14 @@ export default function About() {
       name: "Mauri",
       image: "/img/Mauri.jpg",
       text: "Frontend Developer",
-      linkedIn: "",
+      linkedIn: "https://www.linkedin.com/in/juan-mauricio-mu%C3%B1oz-0584b4237/",
       gitHub: "https://github.com/jmauriciom",
     },
     {
       name: "Pablo",
       image: "/img/Pablo.jpg",
       text: "Frontend Developer",
-      linkedIn: "",
+      linkedIn: "https://www.linkedin.com/in/pablo-german-pissoni-a2ab4b148/",
       gitHub: "https://github.com/pablopissoni",
     },
     {
