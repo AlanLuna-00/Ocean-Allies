@@ -1,12 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Image from "next/image";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import NewTestimony from "./NewTestimony";
 import axios from "axios";
+import AuthContext from "@/context/AuthContext";
 
 const Testimonials = () => {
   const [testimonials, setTestimonials] = useState([]);
+  const { isLoggedIn } = useContext(AuthContext);
 
   const fetchTestimonials = async () => {
     try {
@@ -23,8 +25,6 @@ const Testimonials = () => {
   useEffect(() => {
     fetchTestimonials();
   }, []);
-
-
 
   const hardcodedTestimonials = [
     {
@@ -141,7 +141,7 @@ const Testimonials = () => {
   return (
     <div className="py-10">
       <h1 className="text-2xl font-bold text-center mb-8">Testimonials</h1>
-      {localStorage.getItem("user") && <NewTestimony />}
+      {isLoggedIn && <NewTestimony />}
       <Carousel
         responsive={responsive}
         autoPlay={true}
