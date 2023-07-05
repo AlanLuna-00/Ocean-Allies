@@ -15,7 +15,7 @@ const login = async (req, res) => {
         } catch (error) {
             console.log('error', error);
             return res.status(401).json({
-                msg: 'El correo electrónico no está registrado',
+                msg: 'Email is not registered',
             });
         }
 
@@ -35,13 +35,13 @@ const login = async (req, res) => {
 
             if (!user) {
                 return res.status(401).json({
-                    msg: 'El usuario no existe, registrese. GOOGLE',
+                    msg: 'The user does not exist, please register. GOOGLE',
                 });
             }
 
             if (user.active === false) {
                 return res.status(401).json({
-                    msg: 'Usuario desactivado',
+                    msg: 'deactivated user',
                 });
             }
         } else {
@@ -54,13 +54,13 @@ const login = async (req, res) => {
 
             if (!user) {
                 return res.status(401).json({
-                    msg: 'El usuario no existe, registrese.',
+                    msg: 'The user does not exist, please register.',
                 });
             }
 
             if (user.active === false) {
                 return res.status(401).json({
-                    msg: 'Usuario desactivado',
+                    msg: 'Deactivated user',
                 });
             }
 
@@ -72,7 +72,7 @@ const login = async (req, res) => {
 
             if (!validPassword) {
                 return res.status(401).json({
-                    msg: 'Email o contraseña incorrectos',
+                    msg: 'Wrong email or password',
                 });
             }
         }
@@ -97,7 +97,7 @@ const login = async (req, res) => {
         res.json(response);
     } catch (error) {
         res.status(500).json({
-            msg: 'Hable con el administrador',
+            msg: 'Talk to the administrator',
         });
     }
 };

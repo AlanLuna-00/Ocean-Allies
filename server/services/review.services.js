@@ -6,7 +6,7 @@ const createReviewService = async (rating, comment, productId, userId) => {
         const user = await User.findByPk(userId);
 
         if (!product || !user) {
-            throw new Error('El producto o el usuario no existen');
+            throw new Error('The product or user does not exist');
         }
 
         const existingReview = await Review.findOne({
@@ -18,7 +18,7 @@ const createReviewService = async (rating, comment, productId, userId) => {
 
         if (existingReview) {
             throw new Error(
-                'El usuario solo puede enviar una única review por producto'
+                'The user can only send a single review per product'
             );
         }
 
@@ -31,7 +31,7 @@ const createReviewService = async (rating, comment, productId, userId) => {
 
         if (!purchase) {
             throw new Error(
-                'El usuario debe comprar el producto antes de realizar una review'
+                'The user must buy the product before making a review'
             );
         }
 
@@ -56,7 +56,7 @@ const getAllReviewService = async () => {
         const reviews = await Review.findAll();
         return reviews;
     } catch (error) {
-        throw new Error('Error al obtener las reviews');
+        throw new Error('Error getting reviews');
     }
 };
 
@@ -65,7 +65,7 @@ const getReviewByIdService = async (reviewId) => {
         const review = await Review.findByPk(reviewId);
         return review;
     } catch (error) {
-        throw new Error('Error al obtener la review');
+        throw new Error('Error getting review');
     }
 };
 
@@ -73,14 +73,14 @@ const updateReviewService = async (reviewId, rating, comment) => {
     try {
         const review = await Review.findByPk(reviewId);
         if (!review) {
-            throw new Error('Review no encontrada');
+            throw new Error('Review not found');
         }
         review.rating = rating;
         review.comment = comment;
         await review.save();
         return review;
     } catch (error) {
-        throw new Error('Error al actualizar la review');
+        throw new Error('Error updating review');
     }
 };
 
@@ -88,11 +88,11 @@ const deleteReviewService = async (reviewId) => {
     try {
         const review = await Review.findByPk(reviewId);
         if (!review) {
-            throw new Error('Review no encontrada');
+            throw new Error('Review not found');
         }
         await review.update({ active: false });
     } catch (error) {
-        throw new Error('Error al eliminar la review');
+        throw new Error('Error deleting review');
     }
 };
 
