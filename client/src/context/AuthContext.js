@@ -1,5 +1,11 @@
 "use client";
-import React, { createContext, useEffect, useState, useContext } from "react";
+import React, {
+  createContext,
+  useEffect,
+  useState,
+  useContext,
+  use,
+} from "react";
 import { FirebaseContext } from "./FirebaseContext";
 import axios from "axios";
 import useLogoutUser from "@/hooks/useLogoutUser";
@@ -69,16 +75,30 @@ export const AuthProvider = ({ children }) => {
 
   const removeFromCart = async (itemId, userId) => {
     try {
-      await axios.delete(
-        `https://ocean-allies-production.up.railway.app/api/cart/${itemId}`
-      );
-      const response = await axios.get(
+      const userCart = await axios.get(
         `https://ocean-allies-production.up.railway.app/api/cart/${userId}`
       );
-      setUserCart(response.data.cartItems);
-      setPrice(response.data.total);
+
+      const cartItems = userCart.data.cartItems;
+
+      const item = cartItems.find((item) => item.productId === itemId);
+
+      const response = await axios.delete(
+        `https://ocean-allies-production.up.railway.app/api/cart/${item.id}`
+      );
+
       setChange(!change);
       showRemoveFromCart();
+      // await axios.delete(
+      //   `https://ocean-allies-production.up.railway.app/api/cart/${itemId}`
+      // );
+      // const response = await axios.get(
+      //   `https://ocean-allies-production.up.railway.app/api/cart/${userId}`
+      // );
+      // setUserCart(response.data.cartItems);
+      // setPrice(response.data.total);
+      // setChange(!change);
+      // showRemoveFromCart();
     } catch (error) {
       console.error(error);
     }

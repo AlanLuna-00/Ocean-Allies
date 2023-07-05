@@ -65,22 +65,13 @@ exports.addToCart = async (userId, itemData) => {
     });
 };
 
-exports.removeFromCart = async (userId, cartItemId) => {
-    const cart = await Cart.findOne({
-        where: { userId: userId },
-    });
-
-    if (!cart) {
-        throw new Error('Cart not found.');
-    }
-
-    // Buscar el item en el carrito
+exports.removeFromCart = async (cartItemId) => {
     const cartItem = await CartItem.findOne({
-        where: { cartId: cart.id, id: cartItemId },
+        where: { id: cartItemId },
     });
 
     if (!cartItem) {
-        throw new Error('Item not found.');
+        throw new Error('Cart item not found.');
     }
 
     await cartItem.destroy();
