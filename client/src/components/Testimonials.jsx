@@ -14,7 +14,7 @@ const Testimonials = () => {
         "https://ocean-allies-production.up.railway.app/api/testimony"
       );
       setTestimonials(response.data);
-      //console.log(response.data);
+      console.log(response.data);
     } catch (error) {
       console.log(error);
     }
