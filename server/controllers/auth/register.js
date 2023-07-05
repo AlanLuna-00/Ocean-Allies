@@ -20,17 +20,34 @@ const register = async (req, res) => {
             },
         });
 
+        console.log('userRecord', userRecord);
+        console.log('google', google);
+
         // Si el usuario ya existe en Firebase Authentication y no es un registro con Google, enviar error
-        if (userRecord && !google) {
-            return res.status(401).json({
-                msg: 'El correo electrónico ya está registrado',
+        // if (userRecord && !google) {
+        //     return res.status(401).json({
+        //         msg: 'El correo electrónico ya está registrado',
+        //     });
+        // }
+        // // si es un registro con Google y ya existe en firebase, enviar error
+        // if (userRecord && google) {
+        //     return res.status(401).json({
+        //         msg: 'El correo electrónico ya está registrado',
+        //     });
+        // }
+
+        if (userRecord) {
+            let userExist = User.findOne({
+                where: {
+                    email: userRecord.email,
+                },
             });
-        }
-        // si es un registro con Google y ya existe en firebase, enviar error
-        if (userRecord && google) {
-            return res.status(401).json({
-                msg: 'El correo electrónico ya está registrado',
-            });
+            const exist = await userExist;
+            if (exist) {
+                return res.status(401).json({
+                    msg: 'El correo electrónico ya está registrado',
+                });
+            }
         }
 
         console.log('emailExists', emailExists);
