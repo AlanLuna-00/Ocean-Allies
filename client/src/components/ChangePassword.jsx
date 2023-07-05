@@ -44,7 +44,7 @@ function ChangePassword({ user }) {
         formData.newPassword
       );
 
-      console.log("Contraseña actualizada correctamente");
+
       closeModal();
     } catch (error) {
       console.error(error);

@@ -32,7 +32,7 @@ const useLogin = () => {
         }
       );
 
-      console.log(response.data);
+
 
       if (response.status === 206) {
         setError(response.data.msg);
@@ -71,10 +71,10 @@ const useLogin = () => {
           //image: auth.currentUser.photoURL,
         }
       );
-      console.log(response.data);
+
 
       // Guardar datos del usuario en el store
-      console.log(response.data);
+
       localStorage.setItem("token", JSON.stringify(response.data.token));
       localStorage.setItem("user", JSON.stringify(response.data.user));
       setIsLoading(false);

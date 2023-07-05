@@ -25,7 +25,7 @@ const createOrder = async (req, res) => {
                 'https://10ba-186-158-240-67.ngrok-free.app/webhook',
         });
 
-        // console.log("este es result", result);
+
 
         res.send(result.body);
     } catch (error) {
@@ -39,7 +39,7 @@ const receiveWebhook = async (req, res) => {
         console.log('ESTE ES PAYMENT', payment);
         if (payment.type === 'payment') {
             const data = await mercadopago.payment.findById(payment['data.id']);
-            console.log(data);
+
         }
 
         res.sendStatus(204);

@@ -5,7 +5,7 @@ const admin = require('firebase-admin');
 
 const login = async (req, res) => {
     const { id, email, password, google } = req.body;
-    console.log(req.body);
+
     try {
         let userRecord;
 
@@ -21,7 +21,7 @@ const login = async (req, res) => {
 
         const userId = userRecord.uid;
         const userEmail = userRecord.email;
-        console.log('userId', userId);
+
 
         let user = {};
 
@@ -68,7 +68,7 @@ const login = async (req, res) => {
                 password,
                 user.password
             );
-            console.log(validPassword);
+
 
             if (!validPassword) {
                 return res.status(401).json({

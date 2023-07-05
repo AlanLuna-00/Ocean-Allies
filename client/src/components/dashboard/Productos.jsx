@@ -197,7 +197,7 @@ export default function Productos() {
         }
       );
 
-      console.log("Product created:", response.data);
+
       showSuccess(); //SWEETALERT
     } catch (error) {
       console.error("Error creating product:", error.message);

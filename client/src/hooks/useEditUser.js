@@ -9,7 +9,7 @@ const useDashboard = () => {
     const token = localStorage.getItem("token");
     const replaceToken = token.replace(/['"]+/g, "");
 
-    console.log("REPLACE TOKEN", replaceToken);
+
     const res = await axios(
       "https://ocean-allies-production.up.railway.app/api/users",
       {

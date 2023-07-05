@@ -14,7 +14,6 @@ function Page() {
         "https://ocean-allies-production.up.railway.app/api/products",
         formData
       );
-      console.log("Image uploaded successfully:", response.data);
     } catch (error) {
       console.error("Error uploading image:", error);
     }
