@@ -15,7 +15,7 @@ const ShoppingCart = ({ open, setOpen }) => {
     }
   }, []);
 
-  console.log(userCart);
+
 
   return (
     <Transition.Root show={open} as={Fragment}>

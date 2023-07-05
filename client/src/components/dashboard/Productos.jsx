@@ -16,7 +16,6 @@ export default function Productos() {
 
   const merchList = useSelector((state) => state.merch.list);
   const filters = useSelector((state) => state.filters.list);
-
   //*-----CLICK Status----
   const [active, setActive] = useState(true);
 
@@ -81,39 +80,6 @@ export default function Productos() {
     dispatch(setFilterList(filters));
   }, [filters, active]);
   // //*-------------- EDIT PRODUCTS ----------------
-  // const updateProducts = async (id, name, description, price, category, gender, image, color, size, active) => {
-  //   const token = localStorage.getItem("token");
-  //   const replaceToken = token.replace(/['"]+/g, "");
-
-  //   try {
-  //     const res = await axios.put(
-  //       `https://ocean-allies-production.up.railway.app/api/products/${id}`,
-  //       {
-  //         name: name,
-  //         description: description,
-  //         price: price,
-  //         category: category,
-  //         gender: gender,
-  //         image: image,
-  //         color: color,
-  //         size: size,
-  //         active: active,
-  //       },
-  //       {
-  //         headers: {
-  //           Authorization: replaceToken,
-  //         },
-  //       }
-  //       );
-  //     fetchMerchList();
-  //     showSuccess(); //SWEETALERT
-
-  //   } catch (error) {
-  //     console.log(error)
-  //     showError(); //SWEETALERT
-
-  //   }
-  // };
   // //*-------------- EDIT PRODUCTS ----------------
   //*-------------- EDIT PRODUCTS ----------------
   const updateProducts = async (
@@ -197,7 +163,6 @@ export default function Productos() {
         }
       );
 
-      console.log("Product created:", response.data);
       showSuccess(); //SWEETALERT
     } catch (error) {
       console.error("Error creating product:", error.message);
@@ -205,39 +170,22 @@ export default function Productos() {
     }
   };
 
+  const handleStatus = () => {
+    setActive(!active);
+    const initialFilters = {
+      page: 1,
+      category: null,
+      price: null,
+      sort: null,
+      size: null,
+      name: "",
+      color: null,
+    };
+    dispatch(setFilterList(initialFilters));
+  };
+
   //   //! -------------- TEST ----------------
   // //*-------------- NEW PRODUCTS ----------------
-  // const newProducts = async (name, description, price, category, gender, image, color, size, active) => {
-  //   const token = localStorage.getItem("token");
-  //   const replaceToken = token.replace(/['"]+/g, "");
-
-  //   try {
-  //     const res = await axios.post(
-  //       `https://ocean-allies-production.up.railway.app/api/products`,
-  //       {
-  //         name: name,
-  //         description: description,
-  //         price: price,
-  //         category: category,
-  //         gender: gender,
-  //         image: image,
-  //         color: color,
-  //         size: size,
-  //         active: active,
-  //       },
-  //       {
-  //         headers: {
-  //           Authorization: replaceToken,
-  //         },
-  //       }
-  //     );
-  //     fetchMerchList();
-  //     showSuccess(); //SWEETALERT
-  //   } catch (error) {
-  //     console.error('Error creating product:', error.message);
-  //     showError(); //SWEETALERT
-  //   }
-  // };
 
   const newProduct = {
     // id: product.id,
@@ -299,13 +247,10 @@ export default function Productos() {
                       ${active ? "text-green-500" : "text-red-500"}
                       cursor-pointer
                        `}
-                onClick={() => {
-                  setActive(!active);
-                }}
+                onClick={handleStatus}
               >
                 Status
               </th>
-              {/* <th className="text-left py-3 px-2">Status</th> */}
               <th className="text-left py-3 px-2 rounded-r-lg">Actions</th>
             </tr>
           </thead>

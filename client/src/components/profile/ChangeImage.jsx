@@ -32,7 +32,7 @@ export default function ChangeImage({ user, image, setImage, onImageUpdate }) {
         }
       );
 
-      console.log("Product created:", response.data);
+
       showSuccess();
       setImageUrl(response.data.image); // Actualizar la URL de la imagen
 

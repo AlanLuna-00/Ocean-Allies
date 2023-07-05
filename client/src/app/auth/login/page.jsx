@@ -12,13 +12,6 @@ const Login = () => {
   });
   const { login, loginWithGoogle, error, isLoading } = useLogin(); // Usa el hook useLogin
 
-  // const handleChange = (e) => {
-  //   setCredentials({
-  //     ...credentials,
-  //     [e.target.name]: e.target.value,
-  //   });
-  // };
-
   const handleSubmit = (e) => {
     e.preventDefault();
     login(credentials);
@@ -105,8 +98,8 @@ const Login = () => {
                   type="submit"
                   disabled={isLoading || isFormIncomplete}
                   className={`w-full rounded-full h-11 flex items-center justify-center px-6 py-3 transition  focus:bg-sky-600 active:bg-sky-800 ${isLoading || isFormIncomplete
-                      ? "bg-gray-400 cursor-not-allowed"
-                      : "bg-sky-500 dark:bg-sky-400"
+                    ? "bg-gray-400 cursor-not-allowed"
+                    : "bg-sky-500 dark:bg-sky-400"
                     }`}
                 >
                   {isLoading ? "Loading..." : "Login"}

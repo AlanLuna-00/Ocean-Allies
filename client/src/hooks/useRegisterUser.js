@@ -2,6 +2,10 @@ import { useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import {
+  showSuccessRegister,
+  showErrorRegister,
+} from "@/components/SweetAlerts";
 
 // Hook para registro
 const useRegister = () => {
@@ -31,10 +35,14 @@ const useRegister = () => {
 
       setIsLoading(false);
       router.push("/auth/login"); // Redireccionar al login después del registro
+      setTimeout(() => {
+        showSuccessRegister();
+      }, 1000);
     } catch (error) {
       console.log(error);
       setIsLoading(false);
       setError(error.response.data.msg || "Registration failed");
+      showErrorRegister();
     }
   };
 
@@ -50,7 +58,6 @@ const useRegister = () => {
 
       const { user } = result;
 
-      console.log("me ejec hook");
       // Hacer la petición al backend para registrar el usuario en la base de datos
       const response = await axios.post(
         "https://ocean-allies-production.up.railway.app/api/auth/register",
@@ -70,6 +77,9 @@ const useRegister = () => {
 
       setIsLoading(false);
       router.push("/auth/login"); // Redireccionar al login después del registro
+      setTimeout(() => {
+        showSuccessRegister();
+      }, 1000);
     } catch (error) {
       setIsLoading(false);
       setError(error.response?.data?.msg || "Registration failed");

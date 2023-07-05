@@ -8,7 +8,7 @@ const {
 
 const createReview = async (req, res) => {
     const { rating, comment, productId, userId } = req.body;
-    console.log(req.body)
+
 
     try {
         const review = await createReviewService(
@@ -38,7 +38,7 @@ const getReviewById = async (req, res) => {
     try {
         const review = await getReviewByIdService(reviewId);
         if (!review) {
-            return res.status(404).json({ error: 'Review no encontrado' });
+            return res.status(404).json({ error: 'Review not found' });
         }
         res.json(review);
     } catch (error) {
@@ -53,7 +53,7 @@ const updateReview = async (req, res) => {
     try {
         const review = await getReviewByIdService(reviewId);
         if (!review) {
-            return res.status(404).json({ error: 'Review no encontrado' });
+            return res.status(404).json({ error: 'Review not found' });
         }
         // Actualizar la review
         const updatedReview = await updateReviewService(
@@ -73,7 +73,7 @@ const deleteReview = async (req, res) => {
     try {
         const review = await getReviewByIdService(reviewId);
         if (!review) {
-            return res.status(404).json({ error: 'Review no encontrada' });
+            return res.status(404).json({ error: 'Review not found' });
         }
 
         // Eliminar la review

@@ -32,11 +32,11 @@ exports.getCartByUserId = async (userId) => {
 // Agregar un item al carrito
 exports.addToCart = async (userId, itemData) => {
     const { id } = itemData;
-    console.log(userId, itemData, id);
+
     const cart = await Cart.findOne({
         where: { userId: userId },
     });
-    console.log(cart);
+
     if (!cart) {
         const newCart = await Cart.create({ userId: userId });
         return CartItem.create({

@@ -11,11 +11,14 @@ import { useContext } from "react";
 import AuthContext from "@/context/AuthContext";
 import { WrenchScrewdriverIcon } from "@heroicons/react/20/solid";
 import AdminTestimonys from "@/components/dashboard/AdminTestimonys";
+import { setMerchList } from "@/store/Slices/Merch";
+import { setFilterList } from "@/store/Slices/Filters";
+import { useDispatch } from "react-redux";
 
 const Dashboard = () => {
   const [user, setUser] = useState([]);
   const { userId } = useContext(AuthContext);
-
+  const dispatch = useDispatch();
   const [showUsers, setShowUsers] = useState(false);
   const [showProducts, setShowProducts] = useState(false);
   const [showTestimonys, setShowTestimonys] = useState(false);
@@ -40,6 +43,21 @@ const Dashboard = () => {
 
   useEffect(() => {
     fetchUsers(userId);
+  }, []);
+
+  useEffect(() => {
+    dispatch(
+      setFilterList({
+        page: 1,
+        category: null,
+        price: null,
+        sort: null,
+        size: null,
+        name: "",
+        color: null,
+      })
+    );
+    console.log("cleaning filters");
   }, []);
 
   return (

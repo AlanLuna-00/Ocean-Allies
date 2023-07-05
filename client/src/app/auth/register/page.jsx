@@ -10,14 +10,6 @@ const Register = () => {
   const [userDataError, setUserDataError] = useState({});
   const { register, registerWithGoogle, error, isLoading } = useRegister(); // Usa el hook useRegister
 
-  // const handleChange = (e) => {
-  //   setUserData({
-  //     ...userData,
-  //     [e.target.name]: e.target.value,
-  //     role: "user",
-  //   });
-  // };
-
   const handleChange = (event) => {
     const { name, value } = event.target;
     setUserData({ ...userData, [name]: value });
@@ -105,11 +97,10 @@ const Register = () => {
               <button
                 type="submit"
                 disabled={isLoading || isFormIncomplete}
-                className={`w-full rounded-full h-11 flex items-center justify-center px-6 py-3 transition  focus:bg-sky-600 active:bg-sky-800 ${
-                  isLoading || isFormIncomplete
+                className={`w-full rounded-full h-11 flex items-center justify-center px-6 py-3 transition  focus:bg-sky-600 active:bg-sky-800 ${isLoading || isFormIncomplete
                     ? "bg-gray-400 cursor-not-allowed"
                     : "bg-sky-500 dark:bg-sky-400"
-                }`}
+                  }`}
               >
                 {isLoading ? "Loading..." : "Login"}
               </button>

@@ -4,6 +4,10 @@ import { useContext, useState, useEffect } from "react";
 import AuthContext from "@/context/AuthContext";
 import user from "../../../public/img/user.png";
 import { ShoppingCartIcon } from "@heroicons/react/20/solid";
+import {
+  showErrorNotLogged,
+  showErrorNotSelectedSize,
+} from "@/components/SweetAlerts";
 
 export default function Test({ product }) {
   const { addToCart, userCart, loadUserCart } = useContext(AuthContext);
@@ -22,13 +26,13 @@ export default function Test({ product }) {
 
   const handleAddToCart = () => {
     if (!localStorage.getItem("user")) {
-      return alert("Debes iniciar sesión para agregar productos al carrito");
+      return showErrorNotLogged();
     }
     if (
       Object.values(selectedSizes).every((size) => size === 0) ||
       selectedQuantity === 0
     ) {
-      return alert("Debes seleccionar al menos una talla y una cantidad");
+      return showErrorNotSelectedSize();
     }
     // Crear el objeto del producto a agregar al carrito
     const productToAdd = {
@@ -51,9 +55,8 @@ export default function Test({ product }) {
 
     // Agregar el producto al carrito
     const userId = JSON.parse(localStorage.getItem("user")).id;
-    console.log(productToAdd, userId);
+
     addToCart(productToAdd, userId);
-    console.log(userCart);
   };
 
   const handleSizeChange = (size, e) => {
@@ -79,41 +82,6 @@ export default function Test({ product }) {
                   />
                 </div>
               </div>
-
-              {/* <div className="mt-2 w-full lg:order-1 lg:w-32 lg:flex-shrink-0">
-                <div className="flex flex-row items-start lg:flex-col">
-                  <button
-                    type="button"
-                    className="flex-0 mb-3 aspect-square h-20 overflow-hidden rounded-lg border-2 border-gray-900 text-center"
-                  >
-                    <img
-                      src={product.image}
-                      alt={product.image}
-                      className="h-full w-full object-cover"
-                    />
-                  </button>
-                  <button
-                    type="button"
-                    className="flex-0 mb-3 aspect-square h-20 overflow-hidden rounded-lg border-2 border-transparent text-center"
-                  >
-                    <img
-                      src={product.image}
-                      alt={product.image}
-                      className="h-full w-full object-cover"
-                    />
-                  </button>
-                  <button
-                    type="button"
-                    className="flex-0 mb-3 aspect-square h-20 overflow-hidden rounded-lg border-2 border-transparent text-center"
-                  >
-                    <img
-                      src={product.image}
-                      alt={product.image}
-                      className="h-full w-full object-cover"
-                    />
-                  </button>
-                </div>
-              </div> */}
             </div>
           </div>
 
@@ -144,10 +112,11 @@ export default function Test({ product }) {
                 .map(([size, stock]) => (
                   <div key={size} className="flex items-center">
                     <button
-                      className={`border text-sm leading-none text-gray-600 ${selectedSizes[size]
+                      className={`border text-sm leading-none text-gray-600 ${
+                        selectedSizes[size]
                           ? "border-indigo-500"
                           : "border-gray-300"
-                        } mr-2 rounded-md px-3 py-1`}
+                      } mr-2 rounded-md px-3 py-1`}
                       onClick={() =>
                         setSelectedSizes((prevSelectedSizes) => ({
                           ...prevSelectedSizes,
@@ -216,10 +185,11 @@ export default function Test({ product }) {
             <div className="border-b border-gray-300">
               <nav className="flex gap-4">
                 <button
-                  className={`${showDescriptions
+                  className={`${
+                    showDescriptions
                       ? "border-b-2 border-gray-900 py-4 text-sm font-medium text-gray-900 hover:border-gray-400 hover:text-gray-800"
                       : " border-gray-900 py-4 text-sm font-medium text-gray-900 hover:border-gray-400 hover:text-gray-800"
-                    } px-4 py-2 rounded-md`}
+                  } px-4 py-2 rounded-md`}
                   onClick={() => {
                     setShowDescriptions(true);
                     setShowReviews(false);
@@ -228,10 +198,11 @@ export default function Test({ product }) {
                   Descriptions
                 </button>
                 <button
-                  className={`${showReviews
+                  className={`${
+                    showReviews
                       ? "border-b-2 border-gray-900 py-4 text-sm font-medium text-gray-900 hover:border-gray-400 hover:text-gray-800"
                       : "border-gray-900 py-4 text-sm font-medium text-gray-900 hover:border-gray-400 hover:text-gray-800"
-                    } px-4 py-2 rounded-md`}
+                  } px-4 py-2 rounded-md`}
                   onClick={() => {
                     setShowDescriptions(false);
                     setShowReviews(true);

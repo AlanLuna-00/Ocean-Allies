@@ -55,18 +55,6 @@ export default function AdminTestimonys() {
               <tr key={testimony.id} className="border-b border-gray-700">
                 <td className="py-3 px-2 font-bold">
                   <div className="inline-flex space-x-3 items-center">
-                    {/* <span  className="ml-2 -mr-1 h-5 w-8 text-violet-200 ">                          
-                        {user.image ? (
-                            <Image
-                              className="rounded-full h-8 object-cover"
-                              src={user.image}
-                              height={40}
-                              width={40}
-                              alt=""
-                            />
-                            ) :  <UserIcon />
-                        }
-                    </span> */}
                     <span>{testimony.name}</span>
                   </div>
                 </td>
@@ -79,7 +67,6 @@ export default function AdminTestimonys() {
 
                 <td className="py-3 px-2">
                   <div className="inline-flex items-center space-x-3">
-                    {/* -----------------------ACTIVAR O NO ---------------------- */}
                     {testimony.active ? (
                       <Link
                         href=""
@@ -129,7 +116,6 @@ export default function AdminTestimonys() {
                         </svg>
                       </Link>
                     )}
-                    {/* ^^^^^^^^^^^^^^^^^^^^^^^^ BORRAR ^^^^^^^^^^^^^^^^^^^^^^^^ */}
                   </div>
                 </td>
               </tr>

@@ -6,22 +6,20 @@ const admin = require('firebase-admin');
 const register = async (req, res) => {
     try {
         const { name, email, password, role, google, image } = req.body;
-        // console.log('me ejec', req.body);
+
 
         // Verificar si el correo electrónico ya está en uso en Firebase Authentication y en la base de datos
         const userRecord = await admin
             .auth()
             .getUserByEmail(email)
             .catch(() => null);
-        console.log('me ej');
+
         const emailExists = await User.findOne({
             where: {
                 email,
             },
         });
 
-        console.log('userRecord', userRecord);
-        console.log('google', google);
 
         // Si el usuario ya existe en Firebase Authentication y no es un registro con Google, enviar error
         // if (userRecord && !google) {
@@ -50,7 +48,7 @@ const register = async (req, res) => {
             }
         }
 
-        console.log('emailExists', emailExists);
+
 
         // Generar el hash de la contraseña
         const salt = await bcryptjs.genSalt(10);
@@ -64,7 +62,7 @@ const register = async (req, res) => {
             role,
             image,
         });
-        console.log('user reg', user);
+
         // Crear usuario en Firebase Authentication
         if (!google) {
             const userRecord = await admin.auth().createUser({

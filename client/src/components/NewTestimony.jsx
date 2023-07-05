@@ -85,30 +85,12 @@ export default function NewTestimony() {
         <div className="fixed inset-0 flex items-center justify-center z-50">
           <div className="bg-white w-1/2 rounded-lg p-8 shadow-xl">
             <h2 className="text-lg font-bold mb-4 flex justify-center">
-              Edit Product
+              Send Testimony
             </h2>
 
             <form onSubmit={handleSubmit}>
               <hr className="border border-gray-300 my-4" />
-              {/* <div className="grid grid-cols-3 gap-2">
-                <div className="mb-4 col-span-2">
-                  <label
-                    className="block text-gray-700 font-bold mb-2"
-                    htmlFor="name"
-                  >
-                    Nombre <span className="text-red-500">*</span>
-                  </label>
-                  <input
-                    className={`${formErrors.name ? "border-red-500" : ""}
-                    appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-blue-500`}
-                    type="text"
-                    id="name"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleInputChange}
-                  />
-                </div>
-              </div> */}
+
 
               <div
                 className={`mb-4 ${formErrors.comment ? "border-red-500" : ""}`}
@@ -134,10 +116,10 @@ export default function NewTestimony() {
                 {!Object.values(formErrors).every(
                   (error) => error === false
                 ) && (
-                  <span className="text-red-500">
-                    * Complete the required fields
-                  </span>
-                )}
+                    <span className="text-red-500">
+                      * Complete the required fields
+                    </span>
+                  )}
               </div>
 
               <hr className="border border-gray-300 my-4" />
