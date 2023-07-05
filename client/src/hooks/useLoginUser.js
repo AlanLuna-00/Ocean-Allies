@@ -22,32 +22,31 @@ const useLogin = () => {
     try {
       // Iniciar sesión con Firebase Authentication
       const auth = getAuth();
-      console.log(credentials);
 
       // Hacer la petición al backend para iniciar sesión
       const response = await axios.post(
-        "http://localhost:8080/api/auth/login",
+        "https://ocean-allies-production.up.railway.app/api/auth/login",
         {
           email: credentials.email,
           password: credentials.password,
         }
       );
 
-      if (response.status !== 200) {
-        throw new Error(response.data.message || "Login failed");
+      console.log(response.data);
+
+      if (response.status === 206) {
+        setError(response.data.msg);
       }
 
       // Guardar datos del usuario en el store
-      console.log("yes login", response.data);
       localStorage.setItem("token", JSON.stringify(response.data.token));
       localStorage.setItem("user", JSON.stringify(response.data.user));
       setIsLoading(false);
       handleLogin(response.data.user);
       router.push("/home"); // Redireccionar al home después del inicio de sesión
     } catch (error) {
-      console.log("no login", error);
       setIsLoading(false);
-      setError(error.message);
+      setError(error.response.data.msg);
     }
   };
 
@@ -63,7 +62,7 @@ const useLogin = () => {
 
       // Hacer la petición al backend para obtener el token JWT
       const response = await axios.post(
-        "http://localhost:8080/api/auth/login",
+        "https://ocean-allies-production.up.railway.app/api/auth/login",
         {
           id: auth.currentUser.uid,
           email: auth.currentUser.email,
@@ -72,10 +71,7 @@ const useLogin = () => {
           //image: auth.currentUser.photoURL,
         }
       );
-
-      if (response.status !== 200) {
-        throw new Error(response.data.message || "Login failed");
-      }
+      console.log(response.data);
 
       // Guardar datos del usuario en el store
       console.log(response.data);
@@ -86,7 +82,8 @@ const useLogin = () => {
       router.push("/home"); // Redireccionar al home después del inicio de sesión
     } catch (error) {
       setIsLoading(false);
-      setError(error.message);
+      console.log(error);
+      setError(error.response.data.msg);
     }
   };
 

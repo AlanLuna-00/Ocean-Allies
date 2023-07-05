@@ -41,8 +41,7 @@ const Footer = () => {
                         </a>
                         <div className="mt-6 lg:max-w-sm">
                             <p className="text-sm text-gray-500">
-                                Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-                                accusantium doloremque laudantium, totam rem aperiam.
+                                We are an NGO related to the care and preservation of the marine world and its ecosystem.
                             </p>
                         </div>
                     </div>
@@ -69,7 +68,7 @@ const Footer = () => {
                                 title="Our email"
                                 className="transition-colors duration-300 text-deep-purple-accent-400 hover:text-deep-purple-800"
                             >
-                                info@ong.mail
+                                oceanalliestest@gmail.com
                             </a>
                         </div>
                         <div className="flex">
@@ -82,7 +81,7 @@ const Footer = () => {
                                 title="Our address"
                                 className="transition-colors duration-300 text-deep-purple-accent-400 hover:text-deep-purple-800"
                             >
-                                312 Lovely Street, NY
+                                123 Buenos Aires, ARG
                             </a>
                         </div>
                     </div>
@@ -118,14 +117,13 @@ const Footer = () => {
                             </a>
                         </div>
                         <p className="mt-4 text-sm text-gray-500">
-                            Bacon ipsum dolor amet short ribs pig sausage prosciutto chicken
-                            spare ribs salami.
+                            We may be in different ecosystems, but we share the same planet. As Ocean Allies we want to achieve that goal.
                         </p>
                     </div>
                 </div>
                 <div className="flex flex-col-reverse justify-between pt-5 pb-10 border-t lg:flex-row">
                     <p className="text-sm text-gray-600">
-                        © {new Date().getFullYear()} Lorem Inc. All rights reserved.
+                        © {new Date().getFullYear()} Ocean Allies. All rights reserved.
                     </p>
                     <ul className="flex flex-col mb-3 space-y-2 lg:mb-0 sm:space-y-0 sm:space-x-5 sm:flex-row">
                         <li>

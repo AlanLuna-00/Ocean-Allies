@@ -90,7 +90,7 @@ export default function Home() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 4, duration: 1 }}
-        className="text-center max-w-xl mx-auto p-20 mt-10  "
+        className="text-center max-w-3xl mx-auto p-20 mt-10  "
       >
         <div className="text-center mb-10">
           <span className="inline-block w-1 h-1 rounded-full bg-blue-600 ml-1"></span>
@@ -121,8 +121,8 @@ export default function Home() {
         transition={{ delay: 5, duration: 1 }}
         className="grid grid-cols-1 lg:grid-cols-2 md:grid-cols-1 gap-20 md:max-w-full"
       >
-        <div className="col-span-1">
-          {/* Contenido de la tercera columna */}
+        {/* <div className="col-span-1">
+
           <Link
             href="/shop"
             className="h-64 bg-cover bg-center flex flex-col items-center justify-center"
@@ -134,7 +134,7 @@ export default function Home() {
           </Link>
         </div>
         <div className="col-span-1">
-          {/* Contenido de la tercera columna */}
+
           <Link
             href="/#"
             className="h-64 bg-cover bg-center flex flex-col items-center justify-center"
@@ -144,7 +144,7 @@ export default function Home() {
               DONATIONS
             </h1>
           </Link>
-        </div>
+        </div> */}
       </motion.div>
       <Testimonials />
     </div>

@@ -7,9 +7,10 @@ import Link from "next/link";
 async function getDetail(id) {
   try {
     const response = await axios.get(
-      `http://localhost:8080/api/products/${id}`
+      `https://ocean-allies-production.up.railway.app/api/products/${id}`
     );
     const data = response.data;
+    console.log("PRODUCTO----------------", data);
     return data;
   } catch (error) {
     console.error(error);
@@ -20,7 +21,7 @@ async function getDetail(id) {
 export default async function page({ params }) {
   const product = await getDetail(params.id);
 
-  console.log(product);
+  console.log("PRODUCTO----------------", product);
 
   return (
     <div>

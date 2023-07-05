@@ -61,7 +61,11 @@ class Server {
                     'Authorization',
                 ],
                 credentials: true,
-                origin: ['http://localhost:3000', '*'],
+                origin: [
+                    'http://localhost:3000',
+                    '*',
+                    'https://ocean-allies.vercel.app',
+                ],
                 methods: ['GET', 'POST', 'PUT', 'DELETE'],
             })
         );

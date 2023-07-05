@@ -102,7 +102,12 @@ const cloudinary = require('../middleware/cloudinary');
 const fs = require('fs');
 
 const createProductController = async (req, res) => {
-    const productData = req.body;
+    let productData = req.body;
+
+    const { size } = productData;
+    const parsedSize = typeof size === 'string' ? JSON.parse(size) : size;
+
+    productData.size = parsedSize;
 
     const products = Array.isArray(productData) ? productData : [productData];
 
@@ -189,8 +194,6 @@ const validateProduct = (product) => {
         return { error: 'Product price is required' };
     }
 
-    // Agrega las validaciones adicionales según tus necesidades
-
     return {}; // Retorna un objeto vacío si no hay errores
 };
 
@@ -225,7 +228,22 @@ const updateProductController = async (req, res) => {
     const updatedData = req.body;
 
     try {
-        const updatedProduct = await updateProduct(id, updatedData);
+        let imageUrl;
+
+        if (req.file) {
+            // Si se carga un archivo a través de Multer
+            const result = await uploadFileToCloudinary(req.file);
+            imageUrl = result.secure_url;
+        } else {
+            // Si no se proporciona una nueva imagen, mantener la imagen existente
+            imageUrl = updatedData.image;
+        }
+
+        const updatedProduct = await updateProduct(id, {
+            ...updatedData,
+            image: imageUrl,
+        });
+
         res.status(200).json(updatedProduct);
     } catch (error) {
         console.log(error);

@@ -9,12 +9,12 @@ const {
 const verifyIsAdmin = require('../utils/verifyIsAdmin');
 
 const createTestimony = async (req, res) => {
-    const { name, comment } = req.body;
-    const { uid } = req.user;
+    const { comment } = req.body;
+    const { id } = req.params;
     try {
-        const result = await verifyIsAdmin(uid);
-        result ? res.status(401).json({ error: 'No autorizado' }) : null;
-        const testimony = await createTestimonyService(name, comment);
+        // const result = await verifyIsAdmin(uid);
+        // result ? res.status(401).json({ error: 'No autorizado' }) : null;
+        const testimony = await createTestimonyService(comment, id);
         res.json(testimony);
     } catch (error) {
         res.status(500).json({ error: error.message });

@@ -1,31 +1,4 @@
 import { Menu, Transition } from "@headlessui/react";
-import { ChevronDownIcon } from "@heroicons/react/20/solid";
-import { Fragment } from "react";
-
-{
-  /* <div className="mb-2">
-<label
-  htmlFor="price"
-  className="block font-medium mb-1"
->
-  Price
-</label>
-<select
-  id="price"
-  name="price"
-  className="w-full border border-gray-300 rounded-lg p-2"
-  value={filters.price || ""}
-  onChange={(e) =>
-    handleFilterChange(e.target.name, e.target.value)
-  }
->
-  <option defaultValue={null}>All</option>
-  <option value="desc">Highest</option>
-  <option value="asc">Lowest</option>
-</select>
-</div> */
-}
-
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
@@ -59,15 +32,12 @@ const Sort = ({ filters, onChange }) => {
     },
   ];
   return (
-    <Menu as="div" className="flex">
-      <div>
-        {/* <label htmlFor="sort" className="block font-medium mb-1">
-            Sort by ( $ )
-          </label> */}
+    <Menu as="div" className="flex flex-col">
+      <div className="mb-2">
         <select
           id="price"
           name="price"
-          className="w-full border border-gray-300 rounded-lg p-2"
+          className="w-full rounded-lg border border-gray-300 p-2"
           value={filters.price || ""}
           onChange={onChange}
         >
@@ -76,14 +46,11 @@ const Sort = ({ filters, onChange }) => {
           <option value="asc">Lowest</option>
         </select>
       </div>
-      <div className="md:ml-2">
-        {/* <label htmlFor="sort" className="block font-medium mb-1">
-            Sort by ( A - Z)
-          </label> */}
+      <div className="mb-2">
         <select
           id="sort"
           name="sort"
-          className="w-full border border-gray-300 rounded-lg p-2"
+          className="w-full rounded-lg border border-gray-300 p-2"
           value={filters.sort || ""}
           onChange={onChange}
         >

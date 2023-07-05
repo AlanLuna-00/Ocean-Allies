@@ -14,7 +14,7 @@ const CheckoutButton = ({ price }) => {
   const handleClick = async () => {
     try {
       const response = await axios.post(
-        "http://localhost:8080/api/payment/create-order",
+        "https://ocean-allies-production.up.railway.app/api/payment/create-order",
         {
           price: price,
         }
@@ -23,7 +23,9 @@ const CheckoutButton = ({ price }) => {
       console.log(response.status);
 
       if (response.status === 200) {
-        await axios.delete(`http://localhost:8080/api/cart/all/${id}`);
+        await axios.delete(
+          `https://ocean-allies-production.up.railway.app/api/cart/all/${id}`
+        );
         await getPurchaseData();
 
         const data = response.data;
@@ -43,7 +45,7 @@ const CheckoutButton = ({ price }) => {
   return (
     <button
       id="checkout"
-      className="flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm"
+      className="flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6  text-base font-medium text-white shadow-sm"
       onClick={handleClick}
     >
       PAY
