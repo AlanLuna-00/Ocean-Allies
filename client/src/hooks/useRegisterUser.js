@@ -2,6 +2,10 @@ import { useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import {
+  showSuccessRegister,
+  showErrorRegister,
+} from "@/components/SweetAlerts";
 
 // Hook para registro
 const useRegister = () => {
@@ -31,10 +35,14 @@ const useRegister = () => {
 
       setIsLoading(false);
       router.push("/auth/login"); // Redireccionar al login después del registro
+      setTimeout(() => {
+        showSuccessRegister();
+      }, 1000);
     } catch (error) {
       console.log(error);
       setIsLoading(false);
       setError(error.response.data.msg || "Registration failed");
+      showErrorRegister();
     }
   };
 
@@ -49,7 +57,6 @@ const useRegister = () => {
       const result = await signInWithPopup(auth, provider);
 
       const { user } = result;
-
 
       // Hacer la petición al backend para registrar el usuario en la base de datos
       const response = await axios.post(
@@ -70,6 +77,9 @@ const useRegister = () => {
 
       setIsLoading(false);
       router.push("/auth/login"); // Redireccionar al login después del registro
+      setTimeout(() => {
+        showSuccessRegister();
+      }, 1000);
     } catch (error) {
       setIsLoading(false);
       setError(error.response?.data?.msg || "Registration failed");

@@ -4,6 +4,7 @@ import { FirebaseContext } from "./FirebaseContext";
 import axios from "axios";
 import useLogoutUser from "@/hooks/useLogoutUser";
 import { useRouter } from "next/navigation";
+import { showAddToCart, showRemoveFromCart } from "@/components/SweetAlerts";
 
 const AuthContext = createContext();
 
@@ -60,6 +61,7 @@ export const AuthProvider = ({ children }) => {
       );
       setUserCart(response.data.cartItems);
       setChange(!change);
+      showAddToCart();
     } catch (error) {
       console.error(error);
     }
@@ -76,6 +78,7 @@ export const AuthProvider = ({ children }) => {
       setUserCart(response.data.cartItems);
       setPrice(response.data.total);
       setChange(!change);
+      showRemoveFromCart();
     } catch (error) {
       console.error(error);
     }
@@ -108,8 +111,6 @@ export const AuthProvider = ({ children }) => {
         }));
       }
 
-
-
       try {
         const response = await axios.post(
           "https://ocean-allies-production.up.railway.app/api/purchase",
@@ -119,7 +120,6 @@ export const AuthProvider = ({ children }) => {
             sizes,
           }
         );
-
       } catch (error) {
         console.log(error);
       }
