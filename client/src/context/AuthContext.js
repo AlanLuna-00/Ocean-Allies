@@ -79,9 +79,10 @@ export const AuthProvider = ({ children }) => {
         `https://ocean-allies-production.up.railway.app/api/cart/${userId}`
       );
 
-      const cartItems = userCart.data.cartItems;
+      const cartItems = userCart.data.cart.cartItems;
 
-      const item = cartItems.find((item) => item.productId === itemId);
+      const item = cartItems.find((item) => item.id === itemId);
+      console.log(item);
 
       const response = await axios.delete(
         `https://ocean-allies-production.up.railway.app/api/cart/${item.id}`
@@ -151,12 +152,13 @@ export const AuthProvider = ({ children }) => {
     if (loggedInUser) {
       loadUserCart(loggedInUser.id);
     }
-  }, []);
+  }, [change]);
 
   useEffect(() => {
     const loggedInUser = JSON.parse(localStorage.getItem("user"));
     if (loggedInUser) {
       handleLogin(loggedInUser);
+      loadUserCart(loggedInUser.id);
     }
   }, []);
 
