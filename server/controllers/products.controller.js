@@ -227,6 +227,11 @@ const updateProductController = async (req, res) => {
     const { id } = req.params;
     const updatedData = req.body;
 
+    console.log('updateProductController', updatedData);
+
+    const { size } = updatedData;
+    const parsedSize = typeof size === 'string' ? JSON.parse(size) : size;
+
     try {
         let imageUrl;
 
@@ -241,8 +246,11 @@ const updateProductController = async (req, res) => {
 
         const updatedProduct = await updateProduct(id, {
             ...updatedData,
+            size: parsedSize,
             image: imageUrl,
         });
+
+        console.log('before ', updatedProduct);
 
         res.status(200).json(updatedProduct);
     } catch (error) {

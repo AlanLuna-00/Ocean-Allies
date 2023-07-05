@@ -46,7 +46,7 @@ const useLogin = () => {
       router.push("/home"); // Redireccionar al home después del inicio de sesión
     } catch (error) {
       setIsLoading(false);
-      setError(error.response.data.msg);
+      setError(error.response?.data?.msg || "Registration failed");
     }
   };
 

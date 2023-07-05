@@ -35,7 +35,7 @@ const login = async (req, res) => {
 
             if (!user) {
                 return res.status(401).json({
-                    msg: 'El usuario no existe, registrese.',
+                    msg: 'El usuario no existe, registrese. GOOGLE',
                 });
             }
 

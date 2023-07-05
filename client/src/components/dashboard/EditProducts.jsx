@@ -1,7 +1,13 @@
 import React from "react";
 import { useEffect, useState } from "react";
 
-export default function EditProducts({ product, updateProducts, newProducts, isNew, setIsNew, }) {
+export default function EditProducts({
+  product,
+  updateProducts,
+  newProducts,
+  isNew,
+  setIsNew,
+}) {
   //*----USESTATE--------
   const [isOpen, setIsOpen] = useState(false);
   const [checked, setChecked] = useState(false);
@@ -48,7 +54,7 @@ export default function EditProducts({ product, updateProducts, newProducts, isN
       color: product.color,
       size: product.size,
       active: product.active,
-    })
+    });
   };
 
   //* ------------------ HANDLES -------------------------------
@@ -59,7 +65,7 @@ export default function EditProducts({ product, updateProducts, newProducts, isN
     if (file) {
       // Aquí puedes realizar cualquier manipulación necesaria con la imagen seleccionada
       // Por ejemplo, puedes mostrar una vista previa de la imagen antes de subirla al servidor
-      
+
       // Actualiza el formData con la imagen seleccionada
       setFormData((prevData) => ({
         ...prevData,
@@ -98,7 +104,6 @@ export default function EditProducts({ product, updateProducts, newProducts, isN
 
   //! ------------------ HANDLES TEST -------------------------------
 
-
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
@@ -135,23 +140,23 @@ export default function EditProducts({ product, updateProducts, newProducts, isN
     e.preventDefault();
 
     // validacion(formData, setFormErrors);
- //! ----------------- TEST -----------------
+    //! ----------------- TEST -----------------
 
-//  const updatedFormData = { ...formData };
+    //  const updatedFormData = { ...formData };
 
-//  // Convertir el objeto size en el formato adecuado
-//  const size = {};
-//  Object.entries(updatedFormData.size).forEach(([key, value]) => {
-//    size[key] = { stock: value };
-//  });
+    //  // Convertir el objeto size en el formato adecuado
+    //  const size = {};
+    //  Object.entries(updatedFormData.size).forEach(([key, value]) => {
+    //    size[key] = { stock: value };
+    //  });
 
-//  // Actualizar el objeto formData con el nuevo formato de size
-//  updatedFormData.size = size;
+    //  // Actualizar el objeto formData con el nuevo formato de size
+    //  updatedFormData.size = size;
 
-//  // Guardar el objeto actualizado en el estado
-//  setFormData(updatedFormData);
+    //  // Guardar el objeto actualizado en el estado
+    //  setFormData(updatedFormData);
 
- //! ----------------- TEST -----------------
+    //! ----------------- TEST -----------------
 
     const errors = {
       name: !formData.name,
@@ -318,7 +323,6 @@ export default function EditProducts({ product, updateProducts, newProducts, isN
                   >
                     <option value="">Select</option>
                     <option value="T-shirts">T-shirts</option>
-                    <option value="Jacket">Jacket</option>
                     <option value="Tank tops">Tank tops</option>
                     <option value="Leggings">Leggings</option>
                     <option value="Dresses">Dresses</option>
@@ -366,7 +370,6 @@ export default function EditProducts({ product, updateProducts, newProducts, isN
               </div>
 
               <div className="grid grid-cols-6 gap-4">
-                
                 {/* <label htmlFor="sizeL">Size L:</label>
                 <input
                   type="number"
@@ -421,8 +424,6 @@ export default function EditProducts({ product, updateProducts, newProducts, isN
                   onChange={handleSizeChange}
                 /> */}
 
-
-                
                 {Object.keys(formData.size).map((talle) => (
                   <div className="mb-4" key={talle}>
                     <label
@@ -443,7 +444,6 @@ export default function EditProducts({ product, updateProducts, newProducts, isN
                     />
                   </div>
                 ))}
-
               </div>
               {formErrors.size && (
                 <span className="text-red-500 flex justify-center">
@@ -500,7 +500,8 @@ export default function EditProducts({ product, updateProducts, newProducts, isN
               {/* Boton para agregar imagen como FILE para multer */}
               <input
                 type="file"
-                accept="image/*"
+                // only jpg, png files
+                accept=".jpg, .png"
                 onChange={handleImageChange}
               />
 
