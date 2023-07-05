@@ -16,7 +16,6 @@ export default function Productos() {
 
   const merchList = useSelector((state) => state.merch.list);
   const filters = useSelector((state) => state.filters.list);
-
   //*-----CLICK Status----
   const [active, setActive] = useState(true);
 
@@ -164,12 +163,25 @@ export default function Productos() {
         }
       );
 
-
       showSuccess(); //SWEETALERT
     } catch (error) {
       console.error("Error creating product:", error.message);
       showError(); //SWEETALERT
     }
+  };
+
+  const handleStatus = () => {
+    setActive(!active);
+    const initialFilters = {
+      page: 1,
+      category: null,
+      price: null,
+      sort: null,
+      size: null,
+      name: "",
+      color: null,
+    };
+    dispatch(setFilterList(initialFilters));
   };
 
   //   //! -------------- TEST ----------------
@@ -235,9 +247,7 @@ export default function Productos() {
                       ${active ? "text-green-500" : "text-red-500"}
                       cursor-pointer
                        `}
-                onClick={() => {
-                  setActive(!active);
-                }}
+                onClick={handleStatus}
               >
                 Status
               </th>

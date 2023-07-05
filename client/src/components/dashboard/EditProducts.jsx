@@ -304,6 +304,7 @@ export default function EditProducts({
                   >
                     <option value="">Select</option>
                     <option value="T-shirts">T-shirts</option>
+                    <option value="Sweatshirts">Sweatshirts</option>
                     <option value="Tank tops">Tank tops</option>
                     <option value="Leggings">Leggings</option>
                     <option value="Dresses">Dresses</option>
@@ -336,10 +337,10 @@ export default function EditProducts({
                 {!Object.values(formErrors).every(
                   (error) => error === false
                 ) && (
-                    <span className="text-red-500">
-                      * Complete the required fields
-                    </span>
-                  )}
+                  <span className="text-red-500">
+                    * Complete the required fields
+                  </span>
+                )}
               </div>
 
               <hr className="border border-gray-300 my-4" />
@@ -379,8 +380,9 @@ export default function EditProducts({
               <hr className="border border-gray-300 my-4" />
 
               <div
-                className={`mb-4 ${formErrors.description ? "border-red-500" : ""
-                  }`}
+                className={`mb-4 ${
+                  formErrors.description ? "border-red-500" : ""
+                }`}
               >
                 <label
                   className="block text-gray-700 font-bold mb-2"
@@ -389,8 +391,9 @@ export default function EditProducts({
                   Description <span className="text-red-500">*</span>
                 </label>
                 <textarea
-                  className={`mb-4 ${formErrors.description ? "border-red-500" : ""
-                    }
+                  className={`mb-4 ${
+                    formErrors.description ? "border-red-500" : ""
+                  }
                   appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-blue-500`}
                   type="text"
                   id="description"
