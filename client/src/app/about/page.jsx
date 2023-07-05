@@ -6,9 +6,9 @@ export default function About() {
   const developers = [
     {
       name: "Alan",
-      image: "/img/Alan.jpeg",
+      image: "/img/Alan.png",
       text: "Full Stack",
-      linkedIn: "https://www.linkedin.com/in/alan-luna-304655214/",
+      linkedIn: "https://www.linkedin.com/in/alanluna00",
       gitHub: "https://github.com/AlanLuna-00",
     },
     {
@@ -36,7 +36,8 @@ export default function About() {
       name: "Mauri",
       image: "/img/Mauri.jpg",
       text: "Frontend Developer",
-      linkedIn: "https://www.linkedin.com/in/juan-mauricio-mu%C3%B1oz-0584b4237/",
+      linkedIn:
+        "https://www.linkedin.com/in/juan-mauricio-mu%C3%B1oz-0584b4237/",
       gitHub: "https://github.com/jmauriciom",
     },
     {
