@@ -34,7 +34,7 @@ function ChangePassword({ user }) {
     try {
       // Verificar que las contraseñas nuevas coincidan
       if (formData.newPassword !== formData.confirmPassword) {
-        throw new Error("Las contraseñas nuevas no coinciden");
+        throw new Error("New passwords do not match");
       }
 
       // Enviar solicitud PUT al servidor para actualizar la contraseña del usuario
@@ -62,7 +62,7 @@ function ChangePassword({ user }) {
       );
       return response.data;
     } catch (error) {
-      throw new Error("Error al actualizar la contraseña del usuario");
+      throw new Error("Failed to update user password");
     }
   }
 
