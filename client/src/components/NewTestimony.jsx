@@ -107,6 +107,7 @@ export default function NewTestimony() {
                   type="text"
                   id="comment"
                   name="comment"
+                  maxLength={200}
                   value={formData.comment}
                   onChange={handleInputChange}
                 />
