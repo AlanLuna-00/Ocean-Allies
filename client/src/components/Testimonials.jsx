@@ -199,7 +199,7 @@ const Testimonials = () => {
           flex-direction: column;
           align-items: center;
           justify-content: center;
-          height: ${maxCommentLength * 2.5}px;
+          height: ${maxCommentLength * 1.5}px;
           width: auto;
           margin: 0 10px;
           padding: 20px;

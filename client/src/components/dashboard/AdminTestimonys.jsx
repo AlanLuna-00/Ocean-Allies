@@ -42,7 +42,7 @@ export default function AdminTestimonys() {
   return (
     <div id="last-users">
       <div className="">
-        <table className="w-full whitespace-nowrap">
+        <table className="w-full ">
           <thead className="bg-black/60">
             <tr>
               <th className="text-left py-3 px-2 rounded-l-lg">Name</th>
